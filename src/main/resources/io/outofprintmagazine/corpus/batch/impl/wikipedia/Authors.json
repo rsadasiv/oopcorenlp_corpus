@@ -1,0 +1,59 @@
+{
+	"corpusId" : "Wikipedia",
+	"corpusBatchId": "Authors",
+	"corpusBatchSteps": [
+		{
+			"corpusId" : "Wikipedia",
+			"corpusBatchId": "Authors",
+			"corpusBatchStepId": "ParseTOC",
+			"corpusBatchStepSequenceId": 0,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.wikipedia.ParseTOC",
+			"properties": {
+				"pageTitle": "List_of_authors_by_name:_%s",
+				"range" : ["A"],
+				"noCache": "true"
+			},
+			"input": [
+				{
+					"corpusId" : "Wikipedia",
+					"corpusBatchId": "Authors"
+				}
+			],
+			"output": []
+		},
+		{
+			"corpusId" : "Wikipedia",
+			"corpusBatchId": "Authors",
+			"corpusBatchStepId": "DownloadStory",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Wikipedia",
+			"corpusBatchId": "Authors",
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.wikipedia.ParseStory",
+			"properties": {
+					"esnlc_DocTitleAnnotation": "head > title",
+					"oop_Text": "#mw-content-text > div > p",
+					"oop_DocThumbnail": "head > meta[property=og:image]"
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Wikipedia",
+			"corpusBatchId": "Authors",
+			"corpusBatchStepId": "CleanText",
+			"corpusBatchStepSequenceId": 3,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		}
+	]
+}

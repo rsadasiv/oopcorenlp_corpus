@@ -1,0 +1,1978 @@
+{
+  "scratchStorageClass" : "io.outofprintmagazine.corpus.storage.s3.S3ScratchStorage",
+  "batchStorageClass" : "io.outofprintmagazine.corpus.storage.mongodb.MongoDBBatchStorage",
+  "corpusBatchSteps" : [ {
+    "properties" : {
+      "issueNumber" : "Potential Stories ",
+      "subdirectoryName" : "Stories",
+      "noCache" : "true"
+    },
+    "input" : [ {
+      "link" : "//Out of Print Reading"
+    } ],
+    "corpusBatchStepId" : "ParseArchive",
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.dropbox.ParseArchive",
+    "corpusBatchId" : "OOPReading",
+    "corpusId" : "Submissions",
+    "output" : [ {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Basak.Sohini.Pour Out the Evening’s Dose of Snails.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Pour Out the Evening’s Dose of Snails",
+      "esnlc_AuthorAnnotation" : "Basak Sohini"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Jayan.Aravind.Dinner for Three.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Dinner for Three",
+      "esnlc_AuthorAnnotation" : "Jayan Aravind"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/David.Esther.Dwaraka – The Floating Kitchen.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Dwaraka – The Floating Kitchen",
+      "esnlc_AuthorAnnotation" : "David Esther"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Margosa.Neha.Sixteen.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Sixteen",
+      "esnlc_AuthorAnnotation" : "Margosa Neha"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Coelho.Shebana.Who sees Colour First.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Who sees Colour First",
+      "esnlc_AuthorAnnotation" : "Coelho Shebana"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Gzar.Mortada.The Helmet House.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "The Helmet House",
+      "esnlc_AuthorAnnotation" : "Gzar Mortada"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Varma.Vinayak.Instant Karma.pdf",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Instant Karma",
+      "esnlc_AuthorAnnotation" : "Varma Vinayak"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Kumar.Shinjini.A Place to Love.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "A Place to Love",
+      "esnlc_AuthorAnnotation" : "Kumar Shinjini"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Kumar.Shinjini.The Jamun Tree.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "The Jamun Tree",
+      "esnlc_AuthorAnnotation" : "Kumar Shinjini"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Swinney.Janet.Title.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Title",
+      "esnlc_AuthorAnnotation" : "Swinney Janet"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Varma.Vinayak.Instant Karma.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Instant Karma",
+      "esnlc_AuthorAnnotation" : "Varma Vinayak"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/BabyMashup.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "BabyMashup"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Bhandaru.Deepa.The Essay Competition.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "The Essay Competition",
+      "esnlc_AuthorAnnotation" : "Bhandaru Deepa"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Dincy Mariyam.The Altruist.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Altruist",
+      "esnlc_AuthorAnnotation" : "Dincy Mariyam"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Lahari Mahalanabish.Dilemma.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Dilemma",
+      "esnlc_AuthorAnnotation" : "Lahari Mahalanabish"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Manish Pathania.The Ghost Town.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Ghost Town",
+      "esnlc_AuthorAnnotation" : "Manish Pathania"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Radhika Kapoor.The Baby Gull.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Baby Gull",
+      "esnlc_AuthorAnnotation" : "Radhika Kapoor"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Revathi Seshadri and Ramesh Gowri Raghavan.The Champion Typist.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Champion Typist",
+      "esnlc_AuthorAnnotation" : "Revathi Seshadri and Ramesh Gowri Raghavan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Sasikanta Misra.THE DNA TEST.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "THE DNA TEST",
+      "esnlc_AuthorAnnotation" : "Sasikanta Misra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/V P Sivakumar.Ascension of Carlos or The Pilgrim’s Progress.trans Rithwick Bhattathiri.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Ascension of Carlos or The Pilgrim’s Progress",
+      "esnlc_AuthorAnnotation" : "V P Sivakumar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Willem Myra.The Stage Of The Spirit.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Stage Of The Spirit",
+      "esnlc_AuthorAnnotation" : "Willem Myra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Norzin Dickyi.The Full Circle.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Full Circle",
+      "esnlc_AuthorAnnotation" : "Norzin Dickyi"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Jayakrishna Menon.Ekadashi.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Ekadashi",
+      "esnlc_AuthorAnnotation" : "Jayakrishna Menon"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Vidhya Kripashankar.After the Maincure.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "After the Maincure",
+      "esnlc_AuthorAnnotation" : "Vidhya Kripashankar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Salik Shah.The Legend of Gwara and Shakya.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Legend of Gwara and Shakya",
+      "esnlc_AuthorAnnotation" : "Salik Shah"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Adithya Narayan.The Banks of the Ganga.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Banks of the Ganga",
+      "esnlc_AuthorAnnotation" : "Adithya Narayan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Gangadhar Gadgil.12_Bitter sweet.Keerti Ramachandra.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Keerti Ramachandra",
+      "esnlc_AuthorAnnotation" : "Gangadhar Gadgil 12_Bitter sweet"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Siddharth Jayaprakash.A man lay in the mud.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A man lay in the mud",
+      "esnlc_AuthorAnnotation" : "Siddharth Jayaprakash"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Kavita Buganna.A Sweet Life.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A Sweet Life",
+      "esnlc_AuthorAnnotation" : "Kavita Buganna"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Saudha Kasim.Unjointed.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Unjointed",
+      "esnlc_AuthorAnnotation" : "Saudha Kasim"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Joyeeta Nag Choudhury.Heat of the Moment.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Heat of the Moment",
+      "esnlc_AuthorAnnotation" : "Joyeeta Nag Choudhury"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Manoj Kumar Mishra.One Fine Morning.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "One Fine Morning",
+      "esnlc_AuthorAnnotation" : "Manoj Kumar Mishra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Karthik Krishnan.A Meeting of Maids.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A Meeting of Maids",
+      "esnlc_AuthorAnnotation" : "Karthik Krishnan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Pravin Vemuri.NO ESCAPE.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "NO ESCAPE",
+      "esnlc_AuthorAnnotation" : "Pravin Vemuri"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Prateek Nigam.Nuptial Matters.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Nuptial Matters",
+      "esnlc_AuthorAnnotation" : "Prateek Nigam"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Janet Swinney.The Bhaskar Boys.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Bhaskar Boys",
+      "esnlc_AuthorAnnotation" : "Janet Swinney"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Chika Unigwe.The Itinerary of Grief.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Itinerary of Grief",
+      "esnlc_AuthorAnnotation" : "Chika Unigwe"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Rakhshanda Jalil.Release.doc",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Release",
+      "esnlc_AuthorAnnotation" : "Rakhshanda Jalil"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Zuha Siddiqui.22 Mayfair.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "22 Mayfair",
+      "esnlc_AuthorAnnotation" : "Zuha Siddiqui"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Ahmed Al Shamandy.Practicing Absence .docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Practicing Absence ",
+      "esnlc_AuthorAnnotation" : "Ahmed Al Shamandy"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Swapnil Bhatnagar.Whispers.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Whispers",
+      "esnlc_AuthorAnnotation" : "Swapnil Bhatnagar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Niyantha Shekar.27 Hours to California.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "27 Hours to California",
+      "esnlc_AuthorAnnotation" : "Niyantha Shekar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Anmol Sandhu.Remember Me.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Remember Me",
+      "esnlc_AuthorAnnotation" : "Anmol Sandhu"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Kakoli Mukherjee.The Hackers.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Hackers",
+      "esnlc_AuthorAnnotation" : "Kakoli Mukherjee"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Avishek Parui.The Return.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Return",
+      "esnlc_AuthorAnnotation" : "Avishek Parui"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Mridula Garg.Seven Little Rooms.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Seven Little Rooms",
+      "esnlc_AuthorAnnotation" : "Mridula Garg"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Komal Singh.Dear Future Self.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Dear Future Self",
+      "esnlc_AuthorAnnotation" : "Komal Singh"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/LC Sumithra.The Valley Home or Kanive Mane.Trans Sushnumna Kannan.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Valley Home or Kanive Mane",
+      "esnlc_AuthorAnnotation" : "LC Sumithra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Barnali Ray Shukla.Pickpocket.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Pickpocket",
+      "esnlc_AuthorAnnotation" : "Barnali Ray Shukla"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Salil Chaturvedi.Caw.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Caw",
+      "esnlc_AuthorAnnotation" : "Salil Chaturvedi"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Neera Kashyap.Dual awakenings.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Dual awakenings",
+      "esnlc_AuthorAnnotation" : "Neera Kashyap"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/LC Sumithra.The Valley Home or Kanive Mane.Trans Sushumna Kannan.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Valley Home or Kanive Mane",
+      "esnlc_AuthorAnnotation" : "LC Sumithra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Prashila Naik.The Monk.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Monk",
+      "esnlc_AuthorAnnotation" : "Prashila Naik"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Salvatore Difalco.Time of the Djinns.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Time of the Djinns",
+      "esnlc_AuthorAnnotation" : "Salvatore Difalco"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Akshat Jain.Resurrection of a Dead Soul.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Resurrection of a Dead Soul",
+      "esnlc_AuthorAnnotation" : "Akshat Jain"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Ekadashi.Jayakrishna Menon.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Jayakrishna Menon",
+      "esnlc_AuthorAnnotation" : "Ekadashi"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Giorgia Stavropoulou.Once Upon a Time in Hindustan.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Once Upon a Time in Hindustan",
+      "esnlc_AuthorAnnotation" : "Giorgia Stavropoulou"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Nidhi.Arora It is in the eyes.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Arora It is in the eyes",
+      "esnlc_AuthorAnnotation" : "Nidhi"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Prashant Bhagat.Accomplishment.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Accomplishment",
+      "esnlc_AuthorAnnotation" : "Prashant Bhagat"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Merlin Flower.High Crack.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "High Crack",
+      "esnlc_AuthorAnnotation" : "Merlin Flower"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Anannya.Dasgupta.On my way upstairs.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "On my way upstairs",
+      "esnlc_AuthorAnnotation" : "Anannya Dasgupta"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Sowmya Suresh.Suhana.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Suhana",
+      "esnlc_AuthorAnnotation" : "Sowmya Suresh"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Razia Sajjad Zaheer.The Yellow Rose.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "The Yellow Rose",
+      "esnlc_AuthorAnnotation" : "Razia Sajjad Zaheer"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Semicircle of Life.pdf",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Semicircle of Life"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Bikram Yogi and Hetal.pdf",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Bikram Yogi and Hetal"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Ewa Mazierska.The Jewellers of Goa.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Jewellers of Goa",
+      "esnlc_AuthorAnnotation" : "Ewa Mazierska"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Swetha S.My Old Hometown.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "My Old Hometown",
+      "esnlc_AuthorAnnotation" : "Swetha S"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Semicircle of Life.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Semicircle of Life"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Currency has Changed.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Currency has Changed"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Krishna Sobti.The Currency has Changed.trans.Daisy Rockwell.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Currency has Changed",
+      "esnlc_AuthorAnnotation" : "Krishna Sobti"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Ananya Dasgupta.Regret.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Regret",
+      "esnlc_AuthorAnnotation" : "Ananya Dasgupta"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Parineeta Singh.The House on Fox Hill.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The House on Fox Hill",
+      "esnlc_AuthorAnnotation" : "Parineeta Singh"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Mustansar Hussain Tarar.Baba Bagloos.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Baba Bagloos",
+      "esnlc_AuthorAnnotation" : "Mustansar Hussain Tarar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Nina Macheel - SMOKE RINGS.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "SMOKE RINGS",
+      "esnlc_AuthorAnnotation" : "Nina Macheel"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Swetha S - My Old Hometown.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "My Old Hometown",
+      "esnlc_AuthorAnnotation" : "Swetha S"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Zui Kumar Reddy - Oranges.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Oranges",
+      "esnlc_AuthorAnnotation" : "Zui Kumar Reddy"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Barnali Ray Shukla - Electric kettles dont always sing.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Electric kettles dont always sing",
+      "esnlc_AuthorAnnotation" : "Barnali Ray Shukla"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Ila Ananya - If I Remember Correctly.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "If I Remember Correctly",
+      "esnlc_AuthorAnnotation" : "Ila Ananya"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Utkarsh Sharma - Arms in Marriage.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Arms in Marriage",
+      "esnlc_AuthorAnnotation" : "Utkarsh Sharma"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Saumya Singh-New Paint.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "New Paint",
+      "esnlc_AuthorAnnotation" : "Saumya Singh"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Enver Sajjad.The Cow.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "The Cow",
+      "esnlc_AuthorAnnotation" : "Enver Sajjad"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Supriya Kaur Dhaliwal.Phantom Vibration Syndrome.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Phantom Vibration Syndrome",
+      "esnlc_AuthorAnnotation" : "Supriya Kaur Dhaliwal"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Rahad Abir.The Jump.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "The Jump",
+      "esnlc_AuthorAnnotation" : "Rahad Abir"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Jyothi Vinod.God on a Griddle.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "God on a Griddle",
+      "esnlc_AuthorAnnotation" : "Jyothi Vinod"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Younis Bashir.The Naked Debater.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "The Naked Debater",
+      "esnlc_AuthorAnnotation" : "Younis Bashir"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Chaity Das.Love is Haughty Falconry.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Love is Haughty Falconry",
+      "esnlc_AuthorAnnotation" : "Chaity Das"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/AG Sekhar.Visiting Archie.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Visiting Archie",
+      "esnlc_AuthorAnnotation" : "AG Sekhar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Shahnaaz Khan.Super Power.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Super Power",
+      "esnlc_AuthorAnnotation" : "Shahnaaz Khan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Dalpat Chauhan.Home.trans Hemang Desai.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Home",
+      "esnlc_AuthorAnnotation" : "Dalpat Chauhan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Susheela Menon.Mating Strategies of Wild Dolphins.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Mating Strategies of Wild Dolphins",
+      "esnlc_AuthorAnnotation" : "Susheela Menon"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Shashi Desphande.The Princesses of Kashi.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "The Princesses of Kashi",
+      "esnlc_AuthorAnnotation" : "Shashi Desphande"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Susheela Menon.Mating Strategies of Wild Dolphins.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Mating Strategies of Wild Dolphins",
+      "esnlc_AuthorAnnotation" : "Susheela Menon"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Prashila Naik.Leftovers.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Leftovers",
+      "esnlc_AuthorAnnotation" : "Prashila Naik"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Krishan Chander.Jamun ka Ped.Raza Naeem.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Raza Naeem",
+      "esnlc_AuthorAnnotation" : "Krishan Chander Jamun ka Ped"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Saniya.Bequest.Transl by Keerti Ramachandra.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Bequest",
+      "esnlc_AuthorAnnotation" : "Saniya"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Rebecca Winslow-Pandey.The Flood.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "The Flood",
+      "esnlc_AuthorAnnotation" : "Rebecca Winslow-Pandey"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Praveena Shivram.Senthil s Last Song.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Senthil s Last Song",
+      "esnlc_AuthorAnnotation" : "Praveena Shivram"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vidya Ravi. The Year of the Kurinji.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "The Year of the Kurinji",
+      "esnlc_AuthorAnnotation" : "Vidya Ravi"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Bildungsroman. Jan 2020.pdf",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Jan 2020",
+      "esnlc_AuthorAnnotation" : "Bildungsroman"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Anuradha Kumar.All The Way to the Twelfth Floor (1).doc",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "All The Way to the Twelfth Floor (1)",
+      "esnlc_AuthorAnnotation" : "Anuradha Kumar"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Gatha.Umrao.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Umrao",
+      "esnlc_AuthorAnnotation" : "Gatha"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Supriya Dhaliwal.Phantom Vibration Syndrome.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Phantom Vibration Syndrome",
+      "esnlc_AuthorAnnotation" : "Supriya Dhaliwal"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Maria La Rocha Vimla Devi.Dom Teotónio.trans Paul Castro.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Dom Teotónio",
+      "esnlc_AuthorAnnotation" : "Maria La Rocha Vimla Devi"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Praveena Shivram.Senthil s Last Song_PS.doc",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Senthil s Last Song_PS",
+      "esnlc_AuthorAnnotation" : "Praveena Shivram"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vignesh Babu.Gobi Manchurian.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Gobi Manchurian",
+      "esnlc_AuthorAnnotation" : "Vignesh Babu"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vignesh Babu.Corrections_Gobi Manchurian.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Corrections_Gobi Manchurian",
+      "esnlc_AuthorAnnotation" : "Vignesh Babu"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Banojyotsna.Lahiri.Curse of the Marathwada.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Curse of the Marathwada",
+      "esnlc_AuthorAnnotation" : "Banojyotsna Lahiri"
+    } ],
+    "corpusBatchStepSequenceId" : 0
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Basak.Sohini.Pour Out the Evening’s Dose of Snails.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Pour Out the Evening’s Dose of Snails",
+      "esnlc_AuthorAnnotation" : "Basak Sohini"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Jayan.Aravind.Dinner for Three.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Dinner for Three",
+      "esnlc_AuthorAnnotation" : "Jayan Aravind"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/David.Esther.Dwaraka – The Floating Kitchen.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Dwaraka – The Floating Kitchen",
+      "esnlc_AuthorAnnotation" : "David Esther"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Margosa.Neha.Sixteen.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Sixteen",
+      "esnlc_AuthorAnnotation" : "Margosa Neha"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Coelho.Shebana.Who sees Colour First.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Who sees Colour First",
+      "esnlc_AuthorAnnotation" : "Coelho Shebana"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Gzar.Mortada.The Helmet House.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "The Helmet House",
+      "esnlc_AuthorAnnotation" : "Gzar Mortada"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Varma.Vinayak.Instant Karma.pdf",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Instant Karma",
+      "esnlc_AuthorAnnotation" : "Varma Vinayak"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Kumar.Shinjini.A Place to Love.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "A Place to Love",
+      "esnlc_AuthorAnnotation" : "Kumar Shinjini"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Kumar.Shinjini.The Jamun Tree.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "The Jamun Tree",
+      "esnlc_AuthorAnnotation" : "Kumar Shinjini"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Swinney.Janet.Title.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Title",
+      "esnlc_AuthorAnnotation" : "Swinney Janet"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Varma.Vinayak.Instant Karma.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Instant Karma",
+      "esnlc_AuthorAnnotation" : "Varma Vinayak"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/BabyMashup.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "BabyMashup"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Bhandaru.Deepa.The Essay Competition.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "The Essay Competition",
+      "esnlc_AuthorAnnotation" : "Bhandaru Deepa"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Dincy Mariyam.The Altruist.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Altruist",
+      "esnlc_AuthorAnnotation" : "Dincy Mariyam"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Lahari Mahalanabish.Dilemma.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Dilemma",
+      "esnlc_AuthorAnnotation" : "Lahari Mahalanabish"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Manish Pathania.The Ghost Town.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Ghost Town",
+      "esnlc_AuthorAnnotation" : "Manish Pathania"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Radhika Kapoor.The Baby Gull.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Baby Gull",
+      "esnlc_AuthorAnnotation" : "Radhika Kapoor"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Revathi Seshadri and Ramesh Gowri Raghavan.The Champion Typist.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Champion Typist",
+      "esnlc_AuthorAnnotation" : "Revathi Seshadri and Ramesh Gowri Raghavan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Sasikanta Misra.THE DNA TEST.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "THE DNA TEST",
+      "esnlc_AuthorAnnotation" : "Sasikanta Misra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/V P Sivakumar.Ascension of Carlos or The Pilgrim’s Progress.trans Rithwick Bhattathiri.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Ascension of Carlos or The Pilgrim’s Progress",
+      "esnlc_AuthorAnnotation" : "V P Sivakumar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Willem Myra.The Stage Of The Spirit.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Stage Of The Spirit",
+      "esnlc_AuthorAnnotation" : "Willem Myra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Norzin Dickyi.The Full Circle.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Full Circle",
+      "esnlc_AuthorAnnotation" : "Norzin Dickyi"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Jayakrishna Menon.Ekadashi.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Ekadashi",
+      "esnlc_AuthorAnnotation" : "Jayakrishna Menon"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Vidhya Kripashankar.After the Maincure.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "After the Maincure",
+      "esnlc_AuthorAnnotation" : "Vidhya Kripashankar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Salik Shah.The Legend of Gwara and Shakya.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Legend of Gwara and Shakya",
+      "esnlc_AuthorAnnotation" : "Salik Shah"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Adithya Narayan.The Banks of the Ganga.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Banks of the Ganga",
+      "esnlc_AuthorAnnotation" : "Adithya Narayan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Gangadhar Gadgil.12_Bitter sweet.Keerti Ramachandra.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Keerti Ramachandra",
+      "esnlc_AuthorAnnotation" : "Gangadhar Gadgil 12_Bitter sweet"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Siddharth Jayaprakash.A man lay in the mud.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A man lay in the mud",
+      "esnlc_AuthorAnnotation" : "Siddharth Jayaprakash"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Kavita Buganna.A Sweet Life.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A Sweet Life",
+      "esnlc_AuthorAnnotation" : "Kavita Buganna"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Saudha Kasim.Unjointed.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Unjointed",
+      "esnlc_AuthorAnnotation" : "Saudha Kasim"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Joyeeta Nag Choudhury.Heat of the Moment.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Heat of the Moment",
+      "esnlc_AuthorAnnotation" : "Joyeeta Nag Choudhury"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Manoj Kumar Mishra.One Fine Morning.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "One Fine Morning",
+      "esnlc_AuthorAnnotation" : "Manoj Kumar Mishra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Karthik Krishnan.A Meeting of Maids.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A Meeting of Maids",
+      "esnlc_AuthorAnnotation" : "Karthik Krishnan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Pravin Vemuri.NO ESCAPE.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "NO ESCAPE",
+      "esnlc_AuthorAnnotation" : "Pravin Vemuri"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Prateek Nigam.Nuptial Matters.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Nuptial Matters",
+      "esnlc_AuthorAnnotation" : "Prateek Nigam"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Janet Swinney.The Bhaskar Boys.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Bhaskar Boys",
+      "esnlc_AuthorAnnotation" : "Janet Swinney"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Chika Unigwe.The Itinerary of Grief.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Itinerary of Grief",
+      "esnlc_AuthorAnnotation" : "Chika Unigwe"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Rakhshanda Jalil.Release.doc",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Release",
+      "esnlc_AuthorAnnotation" : "Rakhshanda Jalil"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Zuha Siddiqui.22 Mayfair.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "22 Mayfair",
+      "esnlc_AuthorAnnotation" : "Zuha Siddiqui"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Ahmed Al Shamandy.Practicing Absence .docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Practicing Absence ",
+      "esnlc_AuthorAnnotation" : "Ahmed Al Shamandy"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Swapnil Bhatnagar.Whispers.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Whispers",
+      "esnlc_AuthorAnnotation" : "Swapnil Bhatnagar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Niyantha Shekar.27 Hours to California.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "27 Hours to California",
+      "esnlc_AuthorAnnotation" : "Niyantha Shekar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Anmol Sandhu.Remember Me.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Remember Me",
+      "esnlc_AuthorAnnotation" : "Anmol Sandhu"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Kakoli Mukherjee.The Hackers.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Hackers",
+      "esnlc_AuthorAnnotation" : "Kakoli Mukherjee"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Avishek Parui.The Return.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Return",
+      "esnlc_AuthorAnnotation" : "Avishek Parui"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Mridula Garg.Seven Little Rooms.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Seven Little Rooms",
+      "esnlc_AuthorAnnotation" : "Mridula Garg"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Komal Singh.Dear Future Self.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Dear Future Self",
+      "esnlc_AuthorAnnotation" : "Komal Singh"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/LC Sumithra.The Valley Home or Kanive Mane.Trans Sushnumna Kannan.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Valley Home or Kanive Mane",
+      "esnlc_AuthorAnnotation" : "LC Sumithra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Barnali Ray Shukla.Pickpocket.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Pickpocket",
+      "esnlc_AuthorAnnotation" : "Barnali Ray Shukla"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Salil Chaturvedi.Caw.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Caw",
+      "esnlc_AuthorAnnotation" : "Salil Chaturvedi"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Neera Kashyap.Dual awakenings.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Dual awakenings",
+      "esnlc_AuthorAnnotation" : "Neera Kashyap"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/LC Sumithra.The Valley Home or Kanive Mane.Trans Sushumna Kannan.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Valley Home or Kanive Mane",
+      "esnlc_AuthorAnnotation" : "LC Sumithra"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Prashila Naik.The Monk.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Monk",
+      "esnlc_AuthorAnnotation" : "Prashila Naik"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Salvatore Difalco.Time of the Djinns.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Time of the Djinns",
+      "esnlc_AuthorAnnotation" : "Salvatore Difalco"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Akshat Jain.Resurrection of a Dead Soul.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Resurrection of a Dead Soul",
+      "esnlc_AuthorAnnotation" : "Akshat Jain"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Ekadashi.Jayakrishna Menon.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Jayakrishna Menon",
+      "esnlc_AuthorAnnotation" : "Ekadashi"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Giorgia Stavropoulou.Once Upon a Time in Hindustan.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Once Upon a Time in Hindustan",
+      "esnlc_AuthorAnnotation" : "Giorgia Stavropoulou"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Nidhi.Arora It is in the eyes.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Arora It is in the eyes",
+      "esnlc_AuthorAnnotation" : "Nidhi"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Prashant Bhagat.Accomplishment.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Accomplishment",
+      "esnlc_AuthorAnnotation" : "Prashant Bhagat"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Merlin Flower.High Crack.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "High Crack",
+      "esnlc_AuthorAnnotation" : "Merlin Flower"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Anannya.Dasgupta.On my way upstairs.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "On my way upstairs",
+      "esnlc_AuthorAnnotation" : "Anannya Dasgupta"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Sowmya Suresh.Suhana.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Suhana",
+      "esnlc_AuthorAnnotation" : "Sowmya Suresh"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Razia Sajjad Zaheer.The Yellow Rose.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "The Yellow Rose",
+      "esnlc_AuthorAnnotation" : "Razia Sajjad Zaheer"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Semicircle of Life.pdf",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Semicircle of Life"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Bikram Yogi and Hetal.pdf",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Bikram Yogi and Hetal"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Ewa Mazierska.The Jewellers of Goa.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Jewellers of Goa",
+      "esnlc_AuthorAnnotation" : "Ewa Mazierska"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Swetha S.My Old Hometown.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "My Old Hometown",
+      "esnlc_AuthorAnnotation" : "Swetha S"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Semicircle of Life.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Semicircle of Life"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Currency has Changed.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Currency has Changed"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Krishna Sobti.The Currency has Changed.trans.Daisy Rockwell.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Currency has Changed",
+      "esnlc_AuthorAnnotation" : "Krishna Sobti"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Ananya Dasgupta.Regret.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Regret",
+      "esnlc_AuthorAnnotation" : "Ananya Dasgupta"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Parineeta Singh.The House on Fox Hill.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The House on Fox Hill",
+      "esnlc_AuthorAnnotation" : "Parineeta Singh"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Mustansar Hussain Tarar.Baba Bagloos.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Baba Bagloos",
+      "esnlc_AuthorAnnotation" : "Mustansar Hussain Tarar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Nina Macheel - SMOKE RINGS.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "SMOKE RINGS",
+      "esnlc_AuthorAnnotation" : "Nina Macheel"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Swetha S - My Old Hometown.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "My Old Hometown",
+      "esnlc_AuthorAnnotation" : "Swetha S"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Zui Kumar Reddy - Oranges.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Oranges",
+      "esnlc_AuthorAnnotation" : "Zui Kumar Reddy"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Barnali Ray Shukla - Electric kettles dont always sing.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Electric kettles dont always sing",
+      "esnlc_AuthorAnnotation" : "Barnali Ray Shukla"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Ila Ananya - If I Remember Correctly.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "If I Remember Correctly",
+      "esnlc_AuthorAnnotation" : "Ila Ananya"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Utkarsh Sharma - Arms in Marriage.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Arms in Marriage",
+      "esnlc_AuthorAnnotation" : "Utkarsh Sharma"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Saumya Singh-New Paint.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "New Paint",
+      "esnlc_AuthorAnnotation" : "Saumya Singh"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Enver Sajjad.The Cow.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "The Cow",
+      "esnlc_AuthorAnnotation" : "Enver Sajjad"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Supriya Kaur Dhaliwal.Phantom Vibration Syndrome.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Phantom Vibration Syndrome",
+      "esnlc_AuthorAnnotation" : "Supriya Kaur Dhaliwal"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Rahad Abir.The Jump.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "The Jump",
+      "esnlc_AuthorAnnotation" : "Rahad Abir"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Jyothi Vinod.God on a Griddle.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "God on a Griddle",
+      "esnlc_AuthorAnnotation" : "Jyothi Vinod"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Younis Bashir.The Naked Debater.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "The Naked Debater",
+      "esnlc_AuthorAnnotation" : "Younis Bashir"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Chaity Das.Love is Haughty Falconry.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Love is Haughty Falconry",
+      "esnlc_AuthorAnnotation" : "Chaity Das"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/AG Sekhar.Visiting Archie.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Visiting Archie",
+      "esnlc_AuthorAnnotation" : "AG Sekhar"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Shahnaaz Khan.Super Power.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Super Power",
+      "esnlc_AuthorAnnotation" : "Shahnaaz Khan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Dalpat Chauhan.Home.trans Hemang Desai.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Home",
+      "esnlc_AuthorAnnotation" : "Dalpat Chauhan"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Susheela Menon.Mating Strategies of Wild Dolphins.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Mating Strategies of Wild Dolphins",
+      "esnlc_AuthorAnnotation" : "Susheela Menon"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Shashi Desphande.The Princesses of Kashi.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "The Princesses of Kashi",
+      "esnlc_AuthorAnnotation" : "Shashi Desphande"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Susheela Menon.Mating Strategies of Wild Dolphins.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Mating Strategies of Wild Dolphins",
+      "esnlc_AuthorAnnotation" : "Susheela Menon"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Prashila Naik.Leftovers.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Leftovers",
+      "esnlc_AuthorAnnotation" : "Prashila Naik"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Krishan Chander.Jamun ka Ped.Raza Naeem.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Raza Naeem",
+      "esnlc_AuthorAnnotation" : "Krishan Chander Jamun ka Ped"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Saniya.Bequest.Transl by Keerti Ramachandra.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Bequest",
+      "esnlc_AuthorAnnotation" : "Saniya"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Rebecca Winslow-Pandey.The Flood.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "The Flood",
+      "esnlc_AuthorAnnotation" : "Rebecca Winslow-Pandey"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Praveena Shivram.Senthil s Last Song.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Senthil s Last Song",
+      "esnlc_AuthorAnnotation" : "Praveena Shivram"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vidya Ravi. The Year of the Kurinji.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "The Year of the Kurinji",
+      "esnlc_AuthorAnnotation" : "Vidya Ravi"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Bildungsroman. Jan 2020.pdf",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Jan 2020",
+      "esnlc_AuthorAnnotation" : "Bildungsroman"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Anuradha Kumar.All The Way to the Twelfth Floor (1).doc",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "All The Way to the Twelfth Floor (1)",
+      "esnlc_AuthorAnnotation" : "Anuradha Kumar"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Gatha.Umrao.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Umrao",
+      "esnlc_AuthorAnnotation" : "Gatha"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Supriya Dhaliwal.Phantom Vibration Syndrome.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Phantom Vibration Syndrome",
+      "esnlc_AuthorAnnotation" : "Supriya Dhaliwal"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Maria La Rocha Vimla Devi.Dom Teotónio.trans Paul Castro.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Dom Teotónio",
+      "esnlc_AuthorAnnotation" : "Maria La Rocha Vimla Devi"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Praveena Shivram.Senthil s Last Song_PS.doc",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Senthil s Last Song_PS",
+      "esnlc_AuthorAnnotation" : "Praveena Shivram"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vignesh Babu.Gobi Manchurian.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Gobi Manchurian",
+      "esnlc_AuthorAnnotation" : "Vignesh Babu"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vignesh Babu.Corrections_Gobi Manchurian.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Corrections_Gobi Manchurian",
+      "esnlc_AuthorAnnotation" : "Vignesh Babu"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Banojyotsna.Lahiri.Curse of the Marathwada.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Curse of the Marathwada",
+      "esnlc_AuthorAnnotation" : "Banojyotsna Lahiri"
+    } ],
+    "corpusBatchStepId" : "DropboxDownload",
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.dropbox.DropboxDownload",
+    "corpusBatchId" : "OOPReading",
+    "corpusId" : "Submissions",
+    "output" : [ {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Basak.Sohini.Pour Out the Evening’s Dose of Snails.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Pour Out the Evening’s Dose of Snails",
+      "esnlc_AuthorAnnotation" : "Basak Sohini",
+      "esnlc_DocDateAnnotation" : "Sun, 11 Dec 2016 07:52:24 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Basak.Sohini.Pour Out the Evening’s Dose of Snails.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Jayan.Aravind.Dinner for Three.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Dinner for Three",
+      "esnlc_AuthorAnnotation" : "Jayan Aravind",
+      "esnlc_DocDateAnnotation" : "Sun, 11 Dec 2016 08:14:16 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Jayan.Aravind.Dinner for Three.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/David.Esther.Dwaraka – The Floating Kitchen.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Dwaraka – The Floating Kitchen",
+      "esnlc_AuthorAnnotation" : "David Esther",
+      "esnlc_DocDateAnnotation" : "Sun, 11 Dec 2016 08:55:04 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/David.Esther.Dwaraka – The Floating Kitchen.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Margosa.Neha.Sixteen.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Sixteen",
+      "esnlc_AuthorAnnotation" : "Margosa Neha",
+      "esnlc_DocDateAnnotation" : "Sun, 11 Dec 2016 09:30:04 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Margosa.Neha.Sixteen.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Coelho.Shebana.Who sees Colour First.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "Who sees Colour First",
+      "esnlc_AuthorAnnotation" : "Coelho Shebana",
+      "esnlc_DocDateAnnotation" : "Sun, 11 Dec 2016 18:05:47 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Coelho.Shebana.Who sees Colour First.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 25/Stories25 next pass/Gzar.Mortada.The Helmet House.docx",
+      "issueNumber" : "Issue 25",
+      "esnlc_DocTitleAnnotation" : "The Helmet House",
+      "esnlc_AuthorAnnotation" : "Gzar Mortada",
+      "esnlc_DocDateAnnotation" : "Mon, 12 Dec 2016 01:49:19 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Gzar.Mortada.The Helmet House.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Varma.Vinayak.Instant Karma.pdf",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Instant Karma",
+      "esnlc_AuthorAnnotation" : "Varma Vinayak",
+      "esnlc_DocDateAnnotation" : "Thu, 26 Jan 2017 00:02:33 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Varma.Vinayak.Instant Karma.pdf",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Kumar.Shinjini.A Place to Love.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "A Place to Love",
+      "esnlc_AuthorAnnotation" : "Kumar Shinjini",
+      "esnlc_DocDateAnnotation" : "Sat, 21 Jan 2017 23:56:17 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Kumar.Shinjini.A Place to Love.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Kumar.Shinjini.The Jamun Tree.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "The Jamun Tree",
+      "esnlc_AuthorAnnotation" : "Kumar Shinjini",
+      "esnlc_DocDateAnnotation" : "Thu, 26 Jan 2017 00:12:41 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Kumar.Shinjini.The Jamun Tree.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Swinney.Janet.Title.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Title",
+      "esnlc_AuthorAnnotation" : "Swinney Janet",
+      "esnlc_DocDateAnnotation" : "Thu, 23 Feb 2017 22:19:05 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Swinney.Janet.Title.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Varma.Vinayak.Instant Karma.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "Instant Karma",
+      "esnlc_AuthorAnnotation" : "Varma Vinayak",
+      "esnlc_DocDateAnnotation" : "Fri, 24 Feb 2017 07:23:59 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Varma.Vinayak.Instant Karma.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/BabyMashup.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "BabyMashup",
+      "esnlc_DocDateAnnotation" : "Mon, 6 Mar 2017 22:22:48 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/BabyMashup.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 26/Stories/Bhandaru.Deepa.The Essay Competition.docx",
+      "issueNumber" : "Issue 26",
+      "esnlc_DocTitleAnnotation" : "The Essay Competition",
+      "esnlc_AuthorAnnotation" : "Bhandaru Deepa",
+      "esnlc_DocDateAnnotation" : "Sun, 12 Mar 2017 09:58:22 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Bhandaru.Deepa.The Essay Competition.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Dincy Mariyam.The Altruist.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Altruist",
+      "esnlc_AuthorAnnotation" : "Dincy Mariyam",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:20:49 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Dincy Mariyam.The Altruist.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Lahari Mahalanabish.Dilemma.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Dilemma",
+      "esnlc_AuthorAnnotation" : "Lahari Mahalanabish",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:34:43 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Lahari Mahalanabish.Dilemma.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Manish Pathania.The Ghost Town.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Ghost Town",
+      "esnlc_AuthorAnnotation" : "Manish Pathania",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:31:34 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Manish Pathania.The Ghost Town.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Radhika Kapoor.The Baby Gull.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Baby Gull",
+      "esnlc_AuthorAnnotation" : "Radhika Kapoor",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:23:00 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Radhika Kapoor.The Baby Gull.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Revathi Seshadri and Ramesh Gowri Raghavan.The Champion Typist.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Champion Typist",
+      "esnlc_AuthorAnnotation" : "Revathi Seshadri and Ramesh Gowri Raghavan",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:12:50 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Revathi Seshadri and Ramesh Gowri Raghavan.The Champion Typist.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Sasikanta Misra.THE DNA TEST.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "THE DNA TEST",
+      "esnlc_AuthorAnnotation" : "Sasikanta Misra",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:29:21 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Sasikanta Misra.THE DNA TEST.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/V P Sivakumar.Ascension of Carlos or The Pilgrim’s Progress.trans Rithwick Bhattathiri.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Ascension of Carlos or The Pilgrim’s Progress",
+      "esnlc_AuthorAnnotation" : "V P Sivakumar",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:18:04 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/V P Sivakumar.Ascension of Carlos or The Pilgrim’s Progress.trans Rithwick Bhattathiri.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Willem Myra.The Stage Of The Spirit.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Stage Of The Spirit",
+      "esnlc_AuthorAnnotation" : "Willem Myra",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:25:30 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Willem Myra.The Stage Of The Spirit.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Norzin Dickyi.The Full Circle.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Full Circle",
+      "esnlc_AuthorAnnotation" : "Norzin Dickyi",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:38:27 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Norzin Dickyi.The Full Circle.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Jayakrishna Menon.Ekadashi.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Ekadashi",
+      "esnlc_AuthorAnnotation" : "Jayakrishna Menon",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:49:52 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Jayakrishna Menon.Ekadashi.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Vidhya Kripashankar.After the Maincure.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "After the Maincure",
+      "esnlc_AuthorAnnotation" : "Vidhya Kripashankar",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:56:55 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Vidhya Kripashankar.After the Maincure.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Salik Shah.The Legend of Gwara and Shakya.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Legend of Gwara and Shakya",
+      "esnlc_AuthorAnnotation" : "Salik Shah",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 22:52:01 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Salik Shah.The Legend of Gwara and Shakya.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Adithya Narayan.The Banks of the Ganga.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Banks of the Ganga",
+      "esnlc_AuthorAnnotation" : "Adithya Narayan",
+      "esnlc_DocDateAnnotation" : "Sat, 3 Mar 2018 23:09:26 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Adithya Narayan.The Banks of the Ganga.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Gangadhar Gadgil.12_Bitter sweet.Keerti Ramachandra.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Keerti Ramachandra",
+      "esnlc_AuthorAnnotation" : "Gangadhar Gadgil 12_Bitter sweet",
+      "esnlc_DocDateAnnotation" : "Thu, 8 Mar 2018 01:02:03 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Gangadhar Gadgil.12_Bitter sweet.Keerti Ramachandra.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Siddharth Jayaprakash.A man lay in the mud.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A man lay in the mud",
+      "esnlc_AuthorAnnotation" : "Siddharth Jayaprakash",
+      "esnlc_DocDateAnnotation" : "Thu, 8 Mar 2018 00:53:19 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Siddharth Jayaprakash.A man lay in the mud.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Kavita Buganna.A Sweet Life.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A Sweet Life",
+      "esnlc_AuthorAnnotation" : "Kavita Buganna",
+      "esnlc_DocDateAnnotation" : "Fri, 9 Mar 2018 07:32:12 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Kavita Buganna.A Sweet Life.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Saudha Kasim.Unjointed.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Unjointed",
+      "esnlc_AuthorAnnotation" : "Saudha Kasim",
+      "esnlc_DocDateAnnotation" : "Fri, 9 Mar 2018 21:20:11 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Saudha Kasim.Unjointed.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Joyeeta Nag Choudhury.Heat of the Moment.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Heat of the Moment",
+      "esnlc_AuthorAnnotation" : "Joyeeta Nag Choudhury",
+      "esnlc_DocDateAnnotation" : "Fri, 9 Mar 2018 21:23:14 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Joyeeta Nag Choudhury.Heat of the Moment.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Manoj Kumar Mishra.One Fine Morning.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "One Fine Morning",
+      "esnlc_AuthorAnnotation" : "Manoj Kumar Mishra",
+      "esnlc_DocDateAnnotation" : "Fri, 9 Mar 2018 21:42:51 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Manoj Kumar Mishra.One Fine Morning.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Karthik Krishnan.A Meeting of Maids.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "A Meeting of Maids",
+      "esnlc_AuthorAnnotation" : "Karthik Krishnan",
+      "esnlc_DocDateAnnotation" : "Fri, 9 Mar 2018 21:45:36 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Karthik Krishnan.A Meeting of Maids.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Pravin Vemuri.NO ESCAPE.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "NO ESCAPE",
+      "esnlc_AuthorAnnotation" : "Pravin Vemuri",
+      "esnlc_DocDateAnnotation" : "Fri, 9 Mar 2018 22:01:52 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Pravin Vemuri.NO ESCAPE.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Prateek Nigam.Nuptial Matters.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Nuptial Matters",
+      "esnlc_AuthorAnnotation" : "Prateek Nigam",
+      "esnlc_DocDateAnnotation" : "Fri, 9 Mar 2018 23:07:33 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Prateek Nigam.Nuptial Matters.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Janet Swinney.The Bhaskar Boys.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Bhaskar Boys",
+      "esnlc_AuthorAnnotation" : "Janet Swinney",
+      "esnlc_DocDateAnnotation" : "Wed, 14 Mar 2018 04:20:19 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Janet Swinney.The Bhaskar Boys.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Chika Unigwe.The Itinerary of Grief.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Itinerary of Grief",
+      "esnlc_AuthorAnnotation" : "Chika Unigwe",
+      "esnlc_DocDateAnnotation" : "Thu, 15 Mar 2018 08:32:29 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Chika Unigwe.The Itinerary of Grief.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Rakhshanda Jalil.Release.doc",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Release",
+      "esnlc_AuthorAnnotation" : "Rakhshanda Jalil",
+      "esnlc_DocDateAnnotation" : "Tue, 30 Jan 2018 07:00:21 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Rakhshanda Jalil.Release.doc",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Zuha Siddiqui.22 Mayfair.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "22 Mayfair",
+      "esnlc_AuthorAnnotation" : "Zuha Siddiqui",
+      "esnlc_DocDateAnnotation" : "Fri, 16 Mar 2018 09:17:03 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Zuha Siddiqui.22 Mayfair.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Ahmed Al Shamandy.Practicing Absence .docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Practicing Absence ",
+      "esnlc_AuthorAnnotation" : "Ahmed Al Shamandy",
+      "esnlc_DocDateAnnotation" : "Sat, 17 Mar 2018 07:02:20 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Ahmed Al Shamandy.Practicing Absence .docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Swapnil Bhatnagar.Whispers.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Whispers",
+      "esnlc_AuthorAnnotation" : "Swapnil Bhatnagar",
+      "esnlc_DocDateAnnotation" : "Sat, 17 Mar 2018 07:03:58 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Swapnil Bhatnagar.Whispers.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Niyantha Shekar.27 Hours to California.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "27 Hours to California",
+      "esnlc_AuthorAnnotation" : "Niyantha Shekar",
+      "esnlc_DocDateAnnotation" : "Sat, 17 Mar 2018 07:29:49 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Niyantha Shekar.27 Hours to California.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Anmol Sandhu.Remember Me.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "Remember Me",
+      "esnlc_AuthorAnnotation" : "Anmol Sandhu",
+      "esnlc_DocDateAnnotation" : "Sat, 17 Mar 2018 07:33:38 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Anmol Sandhu.Remember Me.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Kakoli Mukherjee.The Hackers.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Hackers",
+      "esnlc_AuthorAnnotation" : "Kakoli Mukherjee",
+      "esnlc_DocDateAnnotation" : "Sat, 17 Mar 2018 07:43:03 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Kakoli Mukherjee.The Hackers.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 30/Stories/Avishek Parui.The Return.docx",
+      "issueNumber" : "Issue 30",
+      "esnlc_DocTitleAnnotation" : "The Return",
+      "esnlc_AuthorAnnotation" : "Avishek Parui",
+      "esnlc_DocDateAnnotation" : "Sat, 17 Mar 2018 06:59:59 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Avishek Parui.The Return.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Mridula Garg.Seven Little Rooms.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Seven Little Rooms",
+      "esnlc_AuthorAnnotation" : "Mridula Garg",
+      "esnlc_DocDateAnnotation" : "Thu, 14 Jun 2018 00:20:59 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Mridula Garg.Seven Little Rooms.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Komal Singh.Dear Future Self.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Dear Future Self",
+      "esnlc_AuthorAnnotation" : "Komal Singh",
+      "esnlc_DocDateAnnotation" : "Thu, 14 Jun 2018 02:38:33 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Komal Singh.Dear Future Self.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/LC Sumithra.The Valley Home or Kanive Mane.Trans Sushnumna Kannan.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Valley Home or Kanive Mane",
+      "esnlc_AuthorAnnotation" : "LC Sumithra",
+      "esnlc_DocDateAnnotation" : "Thu, 14 Jun 2018 04:59:30 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/LC Sumithra.The Valley Home or Kanive Mane.Trans Sushnumna Kannan.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Barnali Ray Shukla.Pickpocket.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Pickpocket",
+      "esnlc_AuthorAnnotation" : "Barnali Ray Shukla",
+      "esnlc_DocDateAnnotation" : "Thu, 14 Jun 2018 08:38:01 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Barnali Ray Shukla.Pickpocket.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Salil Chaturvedi.Caw.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Caw",
+      "esnlc_AuthorAnnotation" : "Salil Chaturvedi",
+      "esnlc_DocDateAnnotation" : "Fri, 15 Jun 2018 07:06:45 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Salil Chaturvedi.Caw.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Neera Kashyap.Dual awakenings.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Dual awakenings",
+      "esnlc_AuthorAnnotation" : "Neera Kashyap",
+      "esnlc_DocDateAnnotation" : "Sat, 16 Jun 2018 23:40:18 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Neera Kashyap.Dual awakenings.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/LC Sumithra.The Valley Home or Kanive Mane.Trans Sushumna Kannan.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Valley Home or Kanive Mane",
+      "esnlc_AuthorAnnotation" : "LC Sumithra",
+      "esnlc_DocDateAnnotation" : "Thu, 14 Jun 2018 04:59:02 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/LC Sumithra.The Valley Home or Kanive Mane.Trans Sushumna Kannan.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Prashila Naik.The Monk.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "The Monk",
+      "esnlc_AuthorAnnotation" : "Prashila Naik",
+      "esnlc_DocDateAnnotation" : "Sun, 17 Jun 2018 14:36:20 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Prashila Naik.The Monk.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 31/Stories/Salvatore Difalco.Time of the Djinns.docx",
+      "issueNumber" : "Issue 31",
+      "esnlc_DocTitleAnnotation" : "Time of the Djinns",
+      "esnlc_AuthorAnnotation" : "Salvatore Difalco",
+      "esnlc_DocDateAnnotation" : "Sun, 17 Jun 2018 23:15:58 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Salvatore Difalco.Time of the Djinns.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Akshat Jain.Resurrection of a Dead Soul.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Resurrection of a Dead Soul",
+      "esnlc_AuthorAnnotation" : "Akshat Jain",
+      "esnlc_DocDateAnnotation" : "Thu, 13 Sep 2018 08:12:22 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Akshat Jain.Resurrection of a Dead Soul.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Ekadashi.Jayakrishna Menon.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Jayakrishna Menon",
+      "esnlc_AuthorAnnotation" : "Ekadashi",
+      "esnlc_DocDateAnnotation" : "Sun, 8 Jul 2018 08:42:54 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Ekadashi.Jayakrishna Menon.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Giorgia Stavropoulou.Once Upon a Time in Hindustan.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Once Upon a Time in Hindustan",
+      "esnlc_AuthorAnnotation" : "Giorgia Stavropoulou",
+      "esnlc_DocDateAnnotation" : "Sun, 9 Sep 2018 01:59:08 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Giorgia Stavropoulou.Once Upon a Time in Hindustan.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Nidhi.Arora It is in the eyes.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Arora It is in the eyes",
+      "esnlc_AuthorAnnotation" : "Nidhi",
+      "esnlc_DocDateAnnotation" : "Mon, 3 Sep 2018 01:09:55 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Nidhi.Arora It is in the eyes.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Prashant Bhagat.Accomplishment.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Accomplishment",
+      "esnlc_AuthorAnnotation" : "Prashant Bhagat",
+      "esnlc_DocDateAnnotation" : "Fri, 7 Sep 2018 23:32:29 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Prashant Bhagat.Accomplishment.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Merlin Flower.High Crack.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "High Crack",
+      "esnlc_AuthorAnnotation" : "Merlin Flower",
+      "esnlc_DocDateAnnotation" : "Fri, 14 Sep 2018 01:42:38 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Merlin Flower.High Crack.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Anannya.Dasgupta.On my way upstairs.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "On my way upstairs",
+      "esnlc_AuthorAnnotation" : "Anannya Dasgupta",
+      "esnlc_DocDateAnnotation" : "Fri, 14 Sep 2018 10:15:01 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Anannya.Dasgupta.On my way upstairs.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Sowmya Suresh.Suhana.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "Suhana",
+      "esnlc_AuthorAnnotation" : "Sowmya Suresh",
+      "esnlc_DocDateAnnotation" : "Fri, 14 Sep 2018 23:18:19 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Sowmya Suresh.Suhana.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 32/Stories/Razia Sajjad Zaheer.The Yellow Rose.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 32",
+      "esnlc_DocTitleAnnotation" : "The Yellow Rose",
+      "esnlc_AuthorAnnotation" : "Razia Sajjad Zaheer",
+      "esnlc_DocDateAnnotation" : "Thu, 20 Sep 2018 09:59:53 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Razia Sajjad Zaheer.The Yellow Rose.Trans Raza Naeem.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Semicircle of Life.pdf",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Semicircle of Life",
+      "esnlc_DocDateAnnotation" : "Fri, 5 Oct 2018 04:30:04 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Semicircle of Life.pdf",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Bikram Yogi and Hetal.pdf",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Bikram Yogi and Hetal",
+      "esnlc_DocDateAnnotation" : "Thu, 1 Nov 2018 02:41:52 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/The Bikram Yogi and Hetal.pdf",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Ewa Mazierska.The Jewellers of Goa.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Jewellers of Goa",
+      "esnlc_AuthorAnnotation" : "Ewa Mazierska",
+      "esnlc_DocDateAnnotation" : "Sun, 30 Dec 2018 14:55:22 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Ewa Mazierska.The Jewellers of Goa.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Swetha S.My Old Hometown.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "My Old Hometown",
+      "esnlc_AuthorAnnotation" : "Swetha S",
+      "esnlc_DocDateAnnotation" : "Sun, 30 Dec 2018 16:45:43 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Swetha S.My Old Hometown.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Semicircle of Life.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Semicircle of Life",
+      "esnlc_DocDateAnnotation" : "Sun, 30 Dec 2018 17:01:18 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/The Semicircle of Life.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/The Currency has Changed.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Currency has Changed",
+      "esnlc_DocDateAnnotation" : "Wed, 6 Mar 2019 20:37:56 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/The Currency has Changed.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Krishna Sobti.The Currency has Changed.trans.Daisy Rockwell.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The Currency has Changed",
+      "esnlc_AuthorAnnotation" : "Krishna Sobti",
+      "esnlc_DocDateAnnotation" : "Wed, 6 Mar 2019 20:38:30 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Krishna Sobti.The Currency has Changed.trans.Daisy Rockwell.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Ananya Dasgupta.Regret.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Regret",
+      "esnlc_AuthorAnnotation" : "Ananya Dasgupta",
+      "esnlc_DocDateAnnotation" : "Wed, 6 Mar 2019 21:56:18 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Ananya Dasgupta.Regret.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Parineeta Singh.The House on Fox Hill.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "The House on Fox Hill",
+      "esnlc_AuthorAnnotation" : "Parineeta Singh",
+      "esnlc_DocDateAnnotation" : "Fri, 8 Mar 2019 09:27:23 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Parineeta Singh.The House on Fox Hill.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 33/Stories/Mustansar Hussain Tarar.Baba Bagloos.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 33",
+      "esnlc_DocTitleAnnotation" : "Baba Bagloos",
+      "esnlc_AuthorAnnotation" : "Mustansar Hussain Tarar",
+      "esnlc_DocDateAnnotation" : "Tue, 12 Mar 2019 03:48:34 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Mustansar Hussain Tarar.Baba Bagloos.Trans Raza Naeem.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Nina Macheel - SMOKE RINGS.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "SMOKE RINGS",
+      "esnlc_AuthorAnnotation" : "Nina Macheel",
+      "esnlc_DocDateAnnotation" : "Sun, 26 May 2019 15:20:13 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Nina Macheel - SMOKE RINGS.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Swetha S - My Old Hometown.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "My Old Hometown",
+      "esnlc_AuthorAnnotation" : "Swetha S",
+      "esnlc_DocDateAnnotation" : "Sun, 26 May 2019 15:24:52 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Swetha S - My Old Hometown.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Zui Kumar Reddy - Oranges.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Oranges",
+      "esnlc_AuthorAnnotation" : "Zui Kumar Reddy",
+      "esnlc_DocDateAnnotation" : "Sun, 26 May 2019 15:39:06 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Zui Kumar Reddy - Oranges.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Barnali Ray Shukla - Electric kettles dont always sing.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Electric kettles dont always sing",
+      "esnlc_AuthorAnnotation" : "Barnali Ray Shukla",
+      "esnlc_DocDateAnnotation" : "Thu, 30 May 2019 04:39:17 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Barnali Ray Shukla - Electric kettles dont always sing.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Ila Ananya - If I Remember Correctly.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "If I Remember Correctly",
+      "esnlc_AuthorAnnotation" : "Ila Ananya",
+      "esnlc_DocDateAnnotation" : "Thu, 30 May 2019 06:57:14 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Ila Ananya - If I Remember Correctly.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Utkarsh Sharma - Arms in Marriage.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "Arms in Marriage",
+      "esnlc_AuthorAnnotation" : "Utkarsh Sharma",
+      "esnlc_DocDateAnnotation" : "Mon, 17 Jun 2019 03:20:08 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Utkarsh Sharma - Arms in Marriage.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Saumya Singh-New Paint.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "New Paint",
+      "esnlc_AuthorAnnotation" : "Saumya Singh",
+      "esnlc_DocDateAnnotation" : "Mon, 17 Jun 2019 03:20:11 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Saumya Singh-New Paint.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 34/Stories/Enver Sajjad.The Cow.Trans Raza Naeem.docx",
+      "issueNumber" : "Issue 34",
+      "esnlc_DocTitleAnnotation" : "The Cow",
+      "esnlc_AuthorAnnotation" : "Enver Sajjad",
+      "esnlc_DocDateAnnotation" : "Sun, 23 Jun 2019 23:08:16 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Enver Sajjad.The Cow.Trans Raza Naeem.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Supriya Kaur Dhaliwal.Phantom Vibration Syndrome.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Phantom Vibration Syndrome",
+      "esnlc_AuthorAnnotation" : "Supriya Kaur Dhaliwal",
+      "esnlc_DocDateAnnotation" : "Sat, 20 Jul 2019 23:48:45 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Supriya Kaur Dhaliwal.Phantom Vibration Syndrome.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Rahad Abir.The Jump.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "The Jump",
+      "esnlc_AuthorAnnotation" : "Rahad Abir",
+      "esnlc_DocDateAnnotation" : "Thu, 15 Aug 2019 01:03:39 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Rahad Abir.The Jump.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Jyothi Vinod.God on a Griddle.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "God on a Griddle",
+      "esnlc_AuthorAnnotation" : "Jyothi Vinod",
+      "esnlc_DocDateAnnotation" : "Wed, 14 Aug 2019 22:26:29 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Jyothi Vinod.God on a Griddle.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Younis Bashir.The Naked Debater.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "The Naked Debater",
+      "esnlc_AuthorAnnotation" : "Younis Bashir",
+      "esnlc_DocDateAnnotation" : "Fri, 16 Aug 2019 04:50:00 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Younis Bashir.The Naked Debater.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Chaity Das.Love is Haughty Falconry.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Love is Haughty Falconry",
+      "esnlc_AuthorAnnotation" : "Chaity Das",
+      "esnlc_DocDateAnnotation" : "Sat, 17 Aug 2019 22:02:29 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Chaity Das.Love is Haughty Falconry.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/AG Sekhar.Visiting Archie.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Visiting Archie",
+      "esnlc_AuthorAnnotation" : "AG Sekhar",
+      "esnlc_DocDateAnnotation" : "Sun, 18 Aug 2019 14:00:23 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/AG Sekhar.Visiting Archie.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Shahnaaz Khan.Super Power.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Super Power",
+      "esnlc_AuthorAnnotation" : "Shahnaaz Khan",
+      "esnlc_DocDateAnnotation" : "Sun, 18 Aug 2019 22:36:30 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Shahnaaz Khan.Super Power.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Dalpat Chauhan.Home.trans Hemang Desai.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Home",
+      "esnlc_AuthorAnnotation" : "Dalpat Chauhan",
+      "esnlc_DocDateAnnotation" : "Sat, 21 Sep 2019 22:45:13 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Dalpat Chauhan.Home.trans Hemang Desai.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/potential stories issue 35/Stories/Susheela Menon.Mating Strategies of Wild Dolphins.docx",
+      "issueNumber" : "Issue 35",
+      "esnlc_DocTitleAnnotation" : "Mating Strategies of Wild Dolphins",
+      "esnlc_AuthorAnnotation" : "Susheela Menon",
+      "esnlc_DocDateAnnotation" : "Thu, 26 Sep 2019 21:52:13 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Susheela Menon.Mating Strategies of Wild Dolphins.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Shashi Desphande.The Princesses of Kashi.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "The Princesses of Kashi",
+      "esnlc_AuthorAnnotation" : "Shashi Desphande",
+      "esnlc_DocDateAnnotation" : "Thu, 5 Dec 2019 01:06:17 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Shashi Desphande.The Princesses of Kashi.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Susheela Menon.Mating Strategies of Wild Dolphins.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Mating Strategies of Wild Dolphins",
+      "esnlc_AuthorAnnotation" : "Susheela Menon",
+      "esnlc_DocDateAnnotation" : "Thu, 26 Sep 2019 21:52:13 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Susheela Menon.Mating Strategies of Wild Dolphins.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Prashila Naik.Leftovers.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Leftovers",
+      "esnlc_AuthorAnnotation" : "Prashila Naik",
+      "esnlc_DocDateAnnotation" : "Tue, 10 Dec 2019 01:18:50 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Prashila Naik.Leftovers.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Krishan Chander.Jamun ka Ped.Raza Naeem.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Raza Naeem",
+      "esnlc_AuthorAnnotation" : "Krishan Chander Jamun ka Ped",
+      "esnlc_DocDateAnnotation" : "Sat, 11 Jan 2020 10:34:10 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Krishan Chander.Jamun ka Ped.Raza Naeem.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Saniya.Bequest.Transl by Keerti Ramachandra.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "Bequest",
+      "esnlc_AuthorAnnotation" : "Saniya",
+      "esnlc_DocDateAnnotation" : "Tue, 14 Jan 2020 21:36:51 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Saniya.Bequest.Transl by Keerti Ramachandra.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 36/Stories/Rebecca Winslow-Pandey.The Flood.docx",
+      "issueNumber" : "Issue 36",
+      "esnlc_DocTitleAnnotation" : "The Flood",
+      "esnlc_AuthorAnnotation" : "Rebecca Winslow-Pandey",
+      "esnlc_DocDateAnnotation" : "Sat, 18 Jan 2020 08:52:49 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Rebecca Winslow-Pandey.The Flood.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Praveena Shivram.Senthil s Last Song.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Senthil s Last Song",
+      "esnlc_AuthorAnnotation" : "Praveena Shivram",
+      "esnlc_DocDateAnnotation" : "Sun, 23 Feb 2020 23:53:37 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Praveena Shivram.Senthil s Last Song.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vidya Ravi. The Year of the Kurinji.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "The Year of the Kurinji",
+      "esnlc_AuthorAnnotation" : "Vidya Ravi",
+      "esnlc_DocDateAnnotation" : "Tue, 25 Feb 2020 06:22:21 EST",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Vidya Ravi. The Year of the Kurinji.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Bildungsroman. Jan 2020.pdf",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Jan 2020",
+      "esnlc_AuthorAnnotation" : "Bildungsroman",
+      "esnlc_DocDateAnnotation" : "Thu, 26 Mar 2020 22:33:52 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Bildungsroman. Jan 2020.pdf",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Anuradha Kumar.All The Way to the Twelfth Floor (1).doc",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "All The Way to the Twelfth Floor (1)",
+      "esnlc_AuthorAnnotation" : "Anuradha Kumar",
+      "esnlc_DocDateAnnotation" : "Fri, 27 Mar 2020 00:48:29 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Anuradha Kumar.All The Way to the Twelfth Floor (1).doc",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Gatha.Umrao.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Umrao",
+      "esnlc_AuthorAnnotation" : "Gatha",
+      "esnlc_DocDateAnnotation" : "Sun, 29 Mar 2020 01:05:15 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Gatha.Umrao.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Supriya Dhaliwal.Phantom Vibration Syndrome.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Phantom Vibration Syndrome",
+      "esnlc_AuthorAnnotation" : "Supriya Dhaliwal",
+      "esnlc_DocDateAnnotation" : "Thu, 2 Apr 2020 01:14:28 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Supriya Dhaliwal.Phantom Vibration Syndrome.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Maria La Rocha Vimla Devi.Dom Teotónio.trans Paul Castro.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Dom Teotónio",
+      "esnlc_AuthorAnnotation" : "Maria La Rocha Vimla Devi",
+      "esnlc_DocDateAnnotation" : "Sat, 4 Apr 2020 04:30:49 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Maria La Rocha Vimla Devi.Dom Teotónio.trans Paul Castro.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Praveena Shivram.Senthil s Last Song_PS.doc",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Senthil s Last Song_PS",
+      "esnlc_AuthorAnnotation" : "Praveena Shivram",
+      "esnlc_DocDateAnnotation" : "Sun, 5 Apr 2020 22:37:43 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Praveena Shivram.Senthil s Last Song_PS.doc",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vignesh Babu.Gobi Manchurian.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Gobi Manchurian",
+      "esnlc_AuthorAnnotation" : "Vignesh Babu",
+      "esnlc_DocDateAnnotation" : "Tue, 7 Apr 2020 12:53:11 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Vignesh Babu.Gobi Manchurian.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Vignesh Babu.Corrections_Gobi Manchurian.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Corrections_Gobi Manchurian",
+      "esnlc_AuthorAnnotation" : "Vignesh Babu",
+      "esnlc_DocDateAnnotation" : "Tue, 7 Apr 2020 12:53:29 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Vignesh Babu.Corrections_Gobi Manchurian.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    }, {
+      "link" : "/Out of Print Reading/Potential Stories Issue 37/Stories/Banojyotsna.Lahiri.Curse of the Marathwada.docx",
+      "issueNumber" : "Issue 37",
+      "esnlc_DocTitleAnnotation" : "Curse of the Marathwada",
+      "esnlc_AuthorAnnotation" : "Banojyotsna Lahiri",
+      "esnlc_DocDateAnnotation" : "Wed, 8 Apr 2020 03:11:02 EDT",
+      "stagingLinkStorage" : "OOPReading/1-DropboxDownload/Banojyotsna.Lahiri.Curse of the Marathwada.docx",
+      "oop_DocThumbnail" : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Dropbox_Icon.svg/500px-Dropbox_Icon.svg.png"
+    } ],
+    "corpusBatchStepSequenceId" : 1
+  }, {
+    "properties" : { },
+    "input" : [ ],
+    "corpusBatchStepId" : "ParseStory",
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.dropbox.ParseStory",
+    "corpusBatchId" : "OOPReading",
+    "corpusId" : "Submissions",
+    "output" : [ ],
+    "corpusBatchStepSequenceId" : 2
+  }, {
+    "properties" : { },
+    "input" : [ ],
+    "corpusBatchStepId" : "CleanStory",
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.dropbox.CleanStory",
+    "corpusBatchId" : "OOPReading",
+    "corpusId" : "Submissions",
+    "output" : [ ],
+    "corpusBatchStepSequenceId" : 3
+  }, {
+    "properties" : { },
+    "input" : [ ],
+    "corpusBatchStepId" : "CleanText",
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.CleanText",
+    "corpusBatchId" : "OOPReading",
+    "corpusId" : "Submissions",
+    "output" : [ ],
+    "corpusBatchStepSequenceId" : 4
+  }, {
+    "properties" : { },
+    "input" : [ ],
+    "corpusBatchStepId" : "GenerateDocID",
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
+    "corpusBatchId" : "OOPReading",
+    "corpusId" : "Submissions",
+    "output" : [ ],
+    "corpusBatchStepSequenceId" : 5
+  } ],
+  "corpusBatchId" : "OOPReading",
+  "corpusId" : "Submissions"
+}

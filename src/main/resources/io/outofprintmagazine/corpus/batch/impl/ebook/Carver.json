@@ -1,0 +1,52 @@
+{
+	"corpusId" : "Ebook",
+	"corpusBatchId": "Carver",
+	"corpusBatchSteps": [
+		{
+			"corpusId" : "Ebook",
+			"corpusBatchId": "Carver",
+			"corpusBatchStepId": "ParseTOC",
+			"corpusBatchStepSequenceId": 0,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ebook.ParseTOC",
+			"properties": {
+				"upperCase": "true",
+				"noCache": "true"
+			},
+			"input": [
+				{
+					"corpusId" : "Ebook",
+					"corpusBatchId": "Carver",
+					"esnlc_AuthorAnnotation": "Raymond Carver",
+					"esnlc_DocDateAnnotation": "1988",
+					"stagingLinkStorage" : {
+				        "corpusId" : "Ebook",
+				        "corpusBatchId" : "Carver",
+				        "storageEngine" : "file",
+				        "objectName" : "Where_Im_Calling_From.txt"
+			        }
+				}
+			],
+			"output": []
+		},
+		{
+			"corpusId" : "Ebook",
+			"corpusBatchId": "Carver",
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ebook.ParseStory",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Ebook",
+			"corpusBatchId": "Carver",
+			"corpusBatchStepId": "CleanText",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		}
+	]
+}

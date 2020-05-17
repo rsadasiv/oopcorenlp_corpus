@@ -1,0 +1,93 @@
+{
+	"corpusId" : "Gutenberg",
+	"corpusBatchId": "OHenryTable",
+	"corpusBatchSteps": [
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "OHenryTable",
+			"corpusBatchStepId": "ParseArchive",
+			"corpusBatchStepSequenceId": 0,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseArchive",
+			"properties": {
+				"ebookLink": "https://www.gutenberg.org/files/%s/%s-h/%s-h.htm",
+				"oop_DocThumbnail": "https://www.gutenberg.org/cache/epub/%s/pg%s.cover.medium.jpg",
+				"noCache": "true"
+			},
+			"input": [
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "OHenryTable",
+					"ebookNumber": "2776",
+					"esnlc_AuthorAnnotation": "O. Henry",
+					"esnlc_DocDateAnnotation": "1902"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "OHenryTable",
+					"ebookNumber": "1595",
+					"esnlc_AuthorAnnotation": "O. Henry",
+					"esnlc_DocDateAnnotation": "1902"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "OHenryTable",
+					"ebookNumber": "2851",
+					"esnlc_AuthorAnnotation": "O. Henry",
+					"esnlc_DocDateAnnotation": "1902"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "OHenryTable",
+					"ebookNumber": "1646",
+					"esnlc_AuthorAnnotation": "O. Henry",
+					"esnlc_DocDateAnnotation": "1902"
+				}																					
+			],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "OHenryTable",
+			"corpusBatchStepId": "DownloadTOC",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "OHenryTable",
+			"corpusBatchStepId": "ParseTOC",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTOC",
+			"properties": {
+				"selector": "td > a[href]"
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "OHenryTable",
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 3,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseBodyStory",
+			"properties": {
+				"selector": "body"
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "OHenryTable",
+			"corpusBatchStepId": "CleanText",
+			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		}
+	]
+}

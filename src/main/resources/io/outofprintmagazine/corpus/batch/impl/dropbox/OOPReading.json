@@ -1,0 +1,212 @@
+{
+	"corpusId" : "submissions",
+	"corpusBatchId": "OOPReading",
+  	"scratchStorageClass" : "io.outofprintmagazine.corpus.storage.s3.S3ScratchStorage",
+  	"batchStorageClass" : "io.outofprintmagazine.corpus.storage.postgresql.PostgreSQLBatchStorage",
+	"corpusBatchSteps": [
+		{
+			"corpusBatchStepId": "ParseArchive",
+			"corpusBatchStepSequenceId": 0,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.dropbox.ParseArchive",
+			"properties": {
+				"issueNumber" : "Potential Stories ",
+				"subdirectoryName": "Stories",
+				"noCache": "true"
+			},
+			"input": [
+				{
+					"link": "//Out of Print Reading"
+				}
+			],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "DropboxDownload",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.dropbox.DropboxDownload",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.dropbox.ParseStory",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "CleanStory",
+			"corpusBatchStepSequenceId": 3,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.dropbox.CleanStory",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "CleanText",
+			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "GenerateDocID",
+			"corpusBatchStepSequenceId": 5,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "PostgreSQLTextLoader",
+			"corpusBatchStepSequenceId": 6,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLTextLoader",
+			"properties": {			
+			},
+			"input": [],
+			"output": []
+		},	
+		{
+			"corpusBatchStepId": "CoreNLP",
+			"corpusBatchStepSequenceId": 7,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLP",
+			"properties": {
+				"maxInput": 5
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "PostgreSQLCoreNLPLoader",
+			"corpusBatchStepSequenceId": 8,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPLoader",
+			"properties": {			
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "Word2VecPreprocessor",
+			"corpusBatchStepSequenceId": 9,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.word2vec.Word2VecPreprocessor",
+			"properties": {
+				"tasks" : [
+					"LemmaParagraph",
+					"LemmaPosParagraph",
+					"LemmaSentence",
+					"LemmaPosSentence",
+					"NerSentence",
+					"GenderSentence",
+					"PeopleParagraph"
+				]
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "Word2VecProcessor",
+			"corpusBatchStepSequenceId": 10,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.word2vec.Word2VecProcessor",
+			"properties": {
+				"tasks" : [
+					"LemmaParagraph",
+					"LemmaPosParagraph",
+					"LemmaSentence",
+					"LemmaPosSentence",
+					"NerSentence",
+					"GenderSentence",
+					"PeopleParagraph"
+				]
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "Word2VecCorpusProcessor",
+			"corpusBatchStepSequenceId": 11,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.word2vec.Word2VecCorpusProcessor",
+			"properties": {
+				"tasks" : [
+					"LemmaParagraph",
+					"LemmaPosParagraph",
+					"LemmaSentence",
+					"LemmaPosSentence",
+					"NerSentence",
+					"GenderSentence",
+					"PeopleParagraph"
+				]
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "CoreNLPCorpusAggregate",
+			"corpusBatchStepSequenceId": 12,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPCorpusAggregate",
+			"properties": {
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "CoreNLPZScores",
+			"corpusBatchStepSequenceId": 13,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPZScores",
+			"properties": {
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "PostreSQLCoreNLPZScoresLoader",
+			"corpusBatchStepSequenceId": 14,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPZScoresLoader",
+			"properties": {
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "CoreNLPCorpusIdf",
+			"corpusBatchStepSequenceId": 15,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPCorpusIdf",
+			"properties": {
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "CoreNLPTfidfScores",
+			"corpusBatchStepSequenceId": 16,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPTfidfScores",
+			"properties": {
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "PostreSQLCoreNLPTfidfScoresLoader",
+			"corpusBatchStepSequenceId": 17,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPTfidfScoresLoader",
+			"properties": {
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "Polly",
+			"corpusBatchStepSequenceId": 18,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.Polly",
+			"properties": {
+				"Engine": "standard",
+				"LanguageCode": "en-IN",
+				"Name": "Aditi"
+			},
+			"input": [],
+			"output": []
+		}
+	]
+}

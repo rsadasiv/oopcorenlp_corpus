@@ -1,0 +1,99 @@
+package io.outofprintmagazine.corpus.batch.impl.ebook;
+
+import java.io.BufferedReader;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+
+public class ParseTOC extends CorpusBatchStep {
+		
+	@SuppressWarnings("unused")
+	private static final Logger logger = LogManager.getLogger(ParseTOC.class);
+
+	@Override
+	protected Logger getLogger() {
+		return logger;
+	}
+		
+	public ParseTOC() {
+		super();
+	}
+	
+	@Override
+	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
+		ArrayNode retval = getMapper().createArrayNode();
+		BufferedReader reader = null;
+		try {
+			List<String> tocCandidates = new ArrayList<String>();
+			Map<String, Integer> lineRepetitions = new HashMap<String, Integer>();
+			reader = new BufferedReader(
+					new StringReader(
+							getTextDocumentFromStorage(inputStepItem)
+					)
+			);
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				line = line.trim();
+				if (line.length() > 1 && !line.contains(".") && !line.matches("^['\"\\u201C\\u201D\\u201E\\u201F\\u2033\\u2036].*")) {
+					if (
+							(getData().getProperties().get("upperCase") == null || line.toUpperCase().equals(line)) &&
+							(getData().getProperties().get("titleCase") == null || StringUtils.capitalize(line).equals(line))
+					)
+					{
+						
+						Integer lineRepetitionCount = lineRepetitions.get(line);
+						if (lineRepetitionCount == null) {
+							lineRepetitions.put(line, new Integer(1));
+						}
+						else if (lineRepetitionCount.intValue() == 1) {
+							lineRepetitions.put(line, new Integer(lineRepetitionCount.intValue()+1));
+							tocCandidates.add(line);
+						}
+						else if (lineRepetitionCount.intValue() == 2) {
+							lineRepetitions.put(line, new Integer(lineRepetitionCount.intValue()+1));
+							tocCandidates.remove(line);
+						}
+						else {
+							lineRepetitions.put(line, new Integer(lineRepetitionCount.intValue()+1));
+						}
+					}
+				}
+			}
+			String tocCandidate = null;
+			for (String toc : tocCandidates) {
+				if (tocCandidate != null) {
+					ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
+					setTitle(tocCandidate, outputStepItem);
+					outputStepItem.put(
+						"nextTitle", 
+						toc
+					);
+					retval.add(outputStepItem);
+				}
+				tocCandidate = toc;
+			}
+			if (tocCandidate != null) {
+				ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
+				setTitle(tocCandidate, outputStepItem);
+				retval.add(outputStepItem);
+			}
+			return retval;
+		}
+		finally {
+			if (reader != null) {
+				reader.close();
+			}
+		}
+	}
+}

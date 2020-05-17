@@ -1,0 +1,136 @@
+{
+	"corpusId" : "Gutenberg",
+	"corpusBatchId": "Chekhov",
+	"corpusBatchSteps": [
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Chekhov",
+			"corpusBatchStepId": "ParseArchive",
+			"corpusBatchStepSequenceId": 0,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseArchive",
+			"properties": {
+				"ebookLink": "https://www.gutenberg.org/files/%s/%s-h/%s-h.htm",
+				"oop_DocThumbnail": "https://www.gutenberg.org/cache/epub/%s/pg%s.cover.medium.jpg",
+				"noCache": "true"
+			},
+			"input": [
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13409",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13412",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},							
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13413",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13414",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},									
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13415",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},				
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13416",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13417",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13418",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13419",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				},				
+
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Chekhov",
+					"ebookNumber": "13505",
+					"esnlc_AuthorAnnotation": "Anton Chekhov",
+					"esnlc_DocDateAnnotation": "1888"
+				}																			
+			],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Checkov",
+			"corpusBatchStepId": "DownloadTOC",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Chekhov",
+			"corpusBatchStepId": "ParseTOC",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTOC",
+			"properties": {
+				"selector": "p.toc"
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Chekhov",
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 3,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseStory",
+			"properties": {
+				"selector": "p"
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Chekhov",
+			"corpusBatchStepId": "CleanText",
+			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		}
+	]
+}

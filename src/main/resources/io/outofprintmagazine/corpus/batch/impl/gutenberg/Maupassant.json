@@ -1,0 +1,142 @@
+{
+	"corpusId" : "Gutenberg",
+	"corpusBatchId": "Maupassant",
+	"corpusBatchSteps": [
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Maupassant",
+			"corpusBatchStepId": "ParseArchive",
+			"corpusBatchStepSequenceId": 0,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseArchive",
+			"properties": {
+				"ebookLink": "https://www.gutenberg.org/files/%s/%s-h/%s-h.htm",
+				"oop_DocThumbnail": "https://www.gutenberg.org/cache/epub/%s/pg%s.cover.medium.jpg",
+				"noCache": "true"
+			},
+			"input": [
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3077",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3078",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3079",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3080",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3081",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3082",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3083",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3084",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3085",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3086",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				},
+				{
+					"corpusId" : "Gutenberg",
+					"corpusBatchId": "Maupassant",
+					"ebookNumber": "3087",
+					"esnlc_AuthorAnnotation": "Guy de Maupassant",
+					"esnlc_DocDateAnnotation": "1888"
+				}
+			],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Maupassant",
+			"corpusBatchStepId": "DownloadTOC",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Maupassant",
+			"corpusBatchStepId": "ParseTOC",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTOC",
+			"properties": {
+				"selector": "p.toc"
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Maupassant",
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 3,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseStory",
+			"properties": {
+				"selector": "p"
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusId" : "Gutenberg",
+			"corpusBatchId": "Maupassant",
+			"corpusBatchStepId": "CleanText",
+			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		}
+	]
+}
