@@ -1,7 +1,22 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.s3;
 
 import java.io.IOException;
-import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +32,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.storage.BatchStorage;
+import io.outofprintmagazine.util.ParameterStore;
 
 public class S3BatchStorage implements BatchStorage {
 
@@ -31,7 +47,18 @@ public class S3BatchStorage implements BatchStorage {
 		return logger;
 	}
 	
-	public static final String defaultBucket = "oop-corpora";
+	public S3BatchStorage() {
+		super();
+		mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+		mapper.configure(com.fasterxml.jackson.core.JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
+	}
+	
+	public S3BatchStorage(ParameterStore parameterStore) {
+		this();
+		this.setParameterStore(parameterStore);
+	}
+
+	//public static final String defaultBucket = "oop-corpora";
 	
 	protected ObjectMapper getMapper() {
 		return mapper; 
@@ -42,23 +69,19 @@ public class S3BatchStorage implements BatchStorage {
 	public String getDefaultPath() {
 		return "Test";
 	}
-	private Properties properties = new Properties();
+
+	private ParameterStore parameterStore;
 	
-	public Properties getProperties() {
-		return properties;
+	public ParameterStore getParameterStore() {
+		return parameterStore;
 	}
 	
-	public S3BatchStorage() {
-		super();
-		mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-		mapper.configure(com.fasterxml.jackson.core.JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
+	@Override
+    public void setParameterStore(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
 	}
-	
-	public S3BatchStorage(Properties properties) {
-		this();
-		properties.putAll(properties);
-	}
-	
+
+		
 	@Override
 	public void createCorpus(String corpus) throws Exception {
 		//pass
@@ -70,9 +93,9 @@ public class S3BatchStorage implements BatchStorage {
 		ObjectNode json = getMapper().createObjectNode();
 		ArrayNode corporaNode = json.putArray("Corpora");
 
-		for (S3ObjectSummary objectSummary: S3Utils.getInstance().getS3Client().listObjects(
-				properties.getProperty("Bucket", defaultBucket), 
-				properties.getProperty("Path", getDefaultPath())
+		for (S3ObjectSummary objectSummary: S3Utils.getInstance(getParameterStore()).getS3Client().listObjects(
+				getParameterStore().getProperty("s3_Bucket"), 
+				getParameterStore().getProperty("s3_Path")
 			).getObjectSummaries()) {
 			if (objectSummary.getKey().endsWith("/")) {
 				corporaNode.add(objectSummary.getKey().substring(0, objectSummary.getKey().length() - 1));
@@ -81,9 +104,9 @@ public class S3BatchStorage implements BatchStorage {
 		return json;
 	}
 	
-	protected String getCorpusPath(String corpus) {
+	protected String getCorpusPath(String corpus) throws IOException {
 		String path = (
-				getProperties().getProperty("Path", getDefaultPath())
+				getParameterStore().getProperty("s3_Path")
 				+ "/"	
 				+ corpus
 		);
@@ -92,7 +115,7 @@ public class S3BatchStorage implements BatchStorage {
 		
 	}
 	
-	protected String getCorpusStagingBatchPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchPath(String corpus, String stagingBatchName) throws IOException {
 		String path = (
 				getCorpusPath(corpus) 
 				+ "/" 
@@ -102,7 +125,7 @@ public class S3BatchStorage implements BatchStorage {
 		return path;
 	}
 	
-	protected String getCorpusStagingBatchItemPath(String corpus, String stagingBatchName, String stagingBatchItemName) {
+	protected String getCorpusStagingBatchItemPath(String corpus, String stagingBatchName, String stagingBatchItemName) throws IOException {
 		String path = (
 				getCorpusPath(corpus) 
 				+ "/" 
@@ -115,7 +138,7 @@ public class S3BatchStorage implements BatchStorage {
 	}
 	
 
-	protected String getCorpusStagingBatchItemPropertiesPath(String corpus, String stagingBatchName, String stagingBatchItemName) {
+	protected String getCorpusStagingBatchItemPropertiesPath(String corpus, String stagingBatchName, String stagingBatchItemName) throws IOException {
 		return (
 				getCorpusStagingBatchItemPath(corpus, stagingBatchName, stagingBatchItemName)
 				+ "/" 
@@ -123,7 +146,7 @@ public class S3BatchStorage implements BatchStorage {
 		);
 	}	
 	
-	protected String getCorpusStagingBatchScratchPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchScratchPath(String corpus, String stagingBatchName) throws IOException {
 		String path = (
 				getCorpusStagingBatchPath(corpus, stagingBatchName) 
 				+ "/" 
@@ -142,7 +165,7 @@ public class S3BatchStorage implements BatchStorage {
 		return path;
 	}
 	
-	protected String getCorpusStagingBatchPropertiesPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchPropertiesPath(String corpus, String stagingBatchName) throws IOException {
 		return (
 				getCorpusStagingBatchPath(corpus, stagingBatchName)
 				+ "/" 
@@ -169,9 +192,9 @@ public class S3BatchStorage implements BatchStorage {
 		metadata.setContentLength(contentLength);
 		metadata.setContentType("application/json");
 		metadata.setContentEncoding("utf-8");
-		S3Utils.getInstance().getS3Client().putObject(
+		S3Utils.getInstance(getParameterStore()).getS3Client().putObject(
 				new PutObjectRequest(
-						getProperties().getProperty("Bucket", defaultBucket),
+						getParameterStore().getProperty("s3_Bucket"),
 						getCorpusStagingBatchPropertiesPath(corpus, stagingBatchName),
 						IOUtils.toInputStream(in, "UTF-8"),
 						metadata
@@ -184,8 +207,8 @@ public class S3BatchStorage implements BatchStorage {
 		ObjectNode json = getMapper().createObjectNode();
 		ArrayNode corporaNode = json.putArray("Corpora");
 
-		for (S3ObjectSummary objectSummary: S3Utils.getInstance().getS3Client().listObjects(
-				properties.getProperty("Bucket", defaultBucket), 
+		for (S3ObjectSummary objectSummary: S3Utils.getInstance(getParameterStore()).getS3Client().listObjects(
+				getParameterStore().getProperty("s3_Bucket"), 
 				getCorpusPath(corpus)
 			).getObjectSummaries()) {
 			if (objectSummary.getKey().endsWith("/")) {
@@ -198,9 +221,9 @@ public class S3BatchStorage implements BatchStorage {
 	@Override
 	public ObjectNode getStagingBatch(String corpus, String stagingBatchName) throws Exception {
 		return (ObjectNode) getMapper().readTree(
-				S3Utils.getInstance().getS3Client().getObject(
+				S3Utils.getInstance(getParameterStore()).getS3Client().getObject(
 						new GetObjectRequest(
-								getProperties().getProperty("Bucket", defaultBucket), 
+								getParameterStore().getProperty("s3_Bucket"), 
 								getCorpusStagingBatchPropertiesPath(
 										corpus, 
 										stagingBatchName

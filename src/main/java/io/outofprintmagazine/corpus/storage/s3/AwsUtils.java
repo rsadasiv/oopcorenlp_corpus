@@ -1,8 +1,24 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.s3;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,29 +28,37 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 
+import io.outofprintmagazine.util.ParameterStore;
+
 
 public class AwsUtils {
 
 	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(AwsUtils.class);
-	Properties props;
+	private Properties props;
 
-	private AwsUtils() throws IOException {
+	private AwsUtils(ParameterStore parameterStore) throws IOException {
 		super();
-		InputStream input = new FileInputStream("data/aws.properties");
-        props = new Properties();
-        props.load(input);
-        input.close();
+		//InputStream input = new FileInputStream("data/aws.properties");
+        //props = new Properties();
+        //props.load(input);
+        //input.close();
+		//props = ParameterStore.getInstance().getProperties("data", "aws.properties");
+		props = new Properties();
+		//TODO - NPE?
+		props.setProperty("access_key_id", parameterStore.getProperty("aws_access_key_id"));
+		props.setProperty("secret_key_id", parameterStore.getProperty("aws_secret_key_id"));
+		
 	}
 	
-	private static AwsUtils single_instance = null; 
-
-    public static AwsUtils getInstance() throws IOException { 
-        if (single_instance == null) {
-            single_instance = new AwsUtils(); 
+	private static Map<ParameterStore, AwsUtils> instances = new HashMap<ParameterStore, AwsUtils>();
+	
+    public static AwsUtils getInstance(ParameterStore parameterStore) throws IOException { 
+        if (instances.get(parameterStore) == null) {
+        	AwsUtils instance = new AwsUtils(parameterStore);
+            instances.put(parameterStore, instance);
         }
-
-        return single_instance; 
+        return instances.get(parameterStore); 
     }
     
     public AWSCredentials getBasicCredentials() {
@@ -44,9 +68,4 @@ public class AwsUtils {
     public Regions getRegion() {
     	return Regions.US_EAST_1;
     }
-    
-    public String getCorpusBucket() {
-    	return "oop-corpora";
-    }
-
 }

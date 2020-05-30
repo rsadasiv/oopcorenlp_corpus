@@ -1,9 +1,24 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.file;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +28,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.storage.BatchStorage;
+import io.outofprintmagazine.util.ParameterStore;
 
 
 public class FileBatchStorage implements BatchStorage {
@@ -23,29 +39,29 @@ public class FileBatchStorage implements BatchStorage {
 	
 	protected ObjectMapper mapper;
 	
-	protected String getDefaultPath() {
-		return "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_web\\WebContent\\Corpora\\Test";
-	}
-	
-	private Properties properties = new Properties();
+	//protected String getDefaultPath() {
+	//	return "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_web\\WebContent\\Corpora\\Test";
+	//}
 	
 
-	public Properties getProperties() {
-		return properties;
-	}
 	
-	public FileBatchStorage() {
+	public FileBatchStorage() throws IOException {
 		super();
 		mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 		mapper.configure(com.fasterxml.jackson.core.JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
+
 	}
 	
-	public FileBatchStorage(Properties properties) {
-		this();
-		properties.putAll(properties);
+	private ParameterStore parameterStore;
+	
+	public ParameterStore getParameterStore() {
+		return parameterStore;
 	}
-
-
+	
+	@Override
+    public void setParameterStore(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
+	}
 
 	@Override
 	public void createCorpus(String corpus) throws Exception {
@@ -60,16 +76,16 @@ public class FileBatchStorage implements BatchStorage {
 		ObjectNode json = getMapper().createObjectNode();
 		ArrayNode childNodes = json.putArray("Corpora");
 		
-		File[] directories = new File(getProperties().getProperty("Path", getDefaultPath())).listFiles(File::isDirectory);		
+		File[] directories = new File(getParameterStore().getProperty("fileCorpus_Path")).listFiles(File::isDirectory);		
 		for (int i=0;i<directories.length;i++) {
 			childNodes.add(directories[i].getName());
 		}
 		return json;
 	}
 	
-	protected String getCorpusPath(String corpus) {
+	protected String getCorpusPath(String corpus) throws IOException {
 		String path = (
-				getProperties().getProperty("Path", getDefaultPath())
+				getParameterStore().getProperty("fileCorpus_Path")
 				+ System.getProperty("file.separator", "/")	
 				+ corpus
 		);
@@ -79,7 +95,7 @@ public class FileBatchStorage implements BatchStorage {
 		
 	}
 	
-	protected String getCorpusStagingBatchPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchPath(String corpus, String stagingBatchName) throws IOException {
 		String path = (
 				getCorpusPath(corpus) 
 				+ System.getProperty("file.separator", "/") 
@@ -90,7 +106,7 @@ public class FileBatchStorage implements BatchStorage {
 		return path;
 	}
 	
-	protected String getCorpusStagingBatchItemPath(String corpus, String stagingBatchName, String stagingBatchItemName) {
+	protected String getCorpusStagingBatchItemPath(String corpus, String stagingBatchName, String stagingBatchItemName) throws IOException {
 		String path = (
 				getCorpusPath(corpus) 
 				+ System.getProperty("file.separator", "/") 
@@ -104,7 +120,7 @@ public class FileBatchStorage implements BatchStorage {
 	}
 	
 
-	protected String getCorpusStagingBatchItemPropertiesPath(String corpus, String stagingBatchName, String stagingBatchItemName) {
+	protected String getCorpusStagingBatchItemPropertiesPath(String corpus, String stagingBatchName, String stagingBatchItemName) throws IOException {
 		return (
 				getCorpusStagingBatchItemPath(corpus, stagingBatchName, stagingBatchItemName)
 				+ System.getProperty("file.separator", "/") 
@@ -112,7 +128,7 @@ public class FileBatchStorage implements BatchStorage {
 		);
 	}	
 	
-	protected String getCorpusStagingBatchScratchPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchScratchPath(String corpus, String stagingBatchName) throws IOException {
 		String path = (
 				getCorpusStagingBatchPath(corpus, stagingBatchName) 
 				+ System.getProperty("file.separator", "/") 
@@ -136,7 +152,7 @@ public class FileBatchStorage implements BatchStorage {
 		return path;
 	}
 	
-	protected String getCorpusStagingBatchPropertiesPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchPropertiesPath(String corpus, String stagingBatchName) throws IOException {
 		return (
 				getCorpusStagingBatchPath(corpus, stagingBatchName)
 				+ System.getProperty("file.separator", "/") 

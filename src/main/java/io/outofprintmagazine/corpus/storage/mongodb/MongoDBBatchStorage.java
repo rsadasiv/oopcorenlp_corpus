@@ -1,29 +1,40 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.mongodb;
 
+import static com.mongodb.client.model.Filters.eq;
+
 import java.io.IOException;
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bson.Document;
-import org.mortbay.util.ajax.JSON;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 import com.mongodb.MongoWriteException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Indexes;
-import com.mongodb.client.model.InsertOneOptions;
-import com.mongodb.client.model.UpdateOptions;
-
-import static com.mongodb.client.model.Filters.*;
 
 import io.outofprintmagazine.corpus.storage.BatchStorage;
+import io.outofprintmagazine.util.ParameterStore;
 
 
 public class MongoDBBatchStorage implements BatchStorage {
@@ -34,6 +45,15 @@ public class MongoDBBatchStorage implements BatchStorage {
 	protected Logger getLogger() {
 		return logger;
 	}
+	
+	public MongoDBBatchStorage() {
+		super();
+	}
+	
+	public MongoDBBatchStorage(ParameterStore parameterStore) {
+		this();
+		this.setParameterStore(parameterStore);
+	}
 
 	private ObjectMapper mapper = new ObjectMapper();
 	
@@ -42,20 +62,15 @@ public class MongoDBBatchStorage implements BatchStorage {
 		return mapper;
 	}
 	
-	private Properties properties = new Properties();
+	private ParameterStore parameterStore;
 	
-	
-	public Properties getProperties() {
-		return properties;
+	public ParameterStore getParameterStore() {
+		return parameterStore;
 	}
 	
-	public MongoDBBatchStorage() {
-		super();
-	}
-	
-	public MongoDBBatchStorage(Properties properties) {
-		this();
-		properties.putAll(properties);
+	@Override
+    public void setParameterStore(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
 	}
 
 	@Override
@@ -65,7 +80,7 @@ public class MongoDBBatchStorage implements BatchStorage {
 		ArrayNode corporaNode = json.putArray("Corpora");
 		MongoCursor<String> cursor = null;
         try {
-		    cursor = MongoDBUtils.getInstance().getClient().listDatabaseNames().iterator();
+		    cursor = MongoDBUtils.getInstance(parameterStore).getClient().listDatabaseNames().iterator();
 		    while(cursor.hasNext()) {
 		    	corporaNode.add(cursor.next());
 		    }
@@ -81,7 +96,7 @@ public class MongoDBBatchStorage implements BatchStorage {
 
 	@Override
 	public void createCorpus(String corpus) throws Exception {
-		MongoDatabase mongoDatabase = MongoDBUtils.getInstance().getDatabase(corpus);
+		MongoDatabase mongoDatabase = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus);
 		mongoDatabase.getCollection("staging_batches");
 		mongoDatabase.getCollection("core_nlp");
 		mongoDatabase.getCollection("oop_nlp");
@@ -104,7 +119,7 @@ public class MongoDBBatchStorage implements BatchStorage {
 	public ObjectNode listStagingBatches(String corpus) throws Exception {
 		ObjectNode json = getMapper().createObjectNode();
 		ArrayNode corporaNode = json.putArray("staging_batches");
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("staging_batches");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("staging_batches");
 		MongoCursor<Document> cursor = collection.find().iterator();
 		try {
 		    while (cursor.hasNext()) {
@@ -113,14 +128,14 @@ public class MongoDBBatchStorage implements BatchStorage {
 		    }
 		} 
 		finally {
-		    MongoDBUtils.getInstance().closeFinally(cursor);
+		    MongoDBUtils.getInstance(parameterStore).closeFinally(cursor);
 		}
 		return json;
 	}
 
 	@Override
 	public ObjectNode getStagingBatch(String corpus, String stagingBatchName) throws Exception {
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("staging_batches");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("staging_batches");
 		Document document = collection.find(eq("corpusBatchId", stagingBatchName)).first();
 		return (ObjectNode) getMapper().readTree(document.toJson());
 	}
@@ -135,7 +150,7 @@ public class MongoDBBatchStorage implements BatchStorage {
 		Document doc = Document.parse(batchContent);
 		doc.put("_id", stagingBatchName);
 		//Document doc = (Document) JSON.parse(batchContent);
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("staging_batches");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("staging_batches");
 		try {
 			collection.insertOne(doc);
 		}

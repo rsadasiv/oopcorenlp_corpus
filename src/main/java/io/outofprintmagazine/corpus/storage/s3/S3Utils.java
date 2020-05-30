@@ -1,30 +1,55 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.s3;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
+import io.outofprintmagazine.util.ParameterStore;
+
 public class S3Utils {
 
-	private S3Utils() {
+	private ParameterStore parameterStore;
+	
+	private S3Utils(ParameterStore parameterStore) {
 		super();
+		this.parameterStore = parameterStore;
 	}
 	
-	private static S3Utils single_instance = null; 
-
-    public static S3Utils getInstance() throws IOException { 
-        if (single_instance == null) 
-            single_instance = new S3Utils(); 
-  
-        return single_instance; 
+	private static Map<ParameterStore, S3Utils> instances = new HashMap<ParameterStore, S3Utils>();
+	
+    
+    public static S3Utils getInstance(ParameterStore parameterStore) throws IOException { 
+        if (instances.get(parameterStore) == null) {
+        	S3Utils instance = new S3Utils(parameterStore);
+            instances.put(parameterStore, instance);
+        }
+        return instances.get(parameterStore); 
     }
 	
-	public AmazonS3 getS3Client() throws IOException {
+	public AmazonS3 getS3Client() throws IOException, ClassNotFoundException {
 		return AmazonS3ClientBuilder.standard()
-			      .withCredentials(new AWSStaticCredentialsProvider(AwsUtils.getInstance().getBasicCredentials()))
-			      .withRegion(AwsUtils.getInstance().getRegion())
+			      .withCredentials(new AWSStaticCredentialsProvider(AwsUtils.getInstance(parameterStore).getBasicCredentials()))
+			      .withRegion(AwsUtils.getInstance(parameterStore).getRegion())
 			      .build();
 	}
 

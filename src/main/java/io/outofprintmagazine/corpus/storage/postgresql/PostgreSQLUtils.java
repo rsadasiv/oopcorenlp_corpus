@@ -1,15 +1,32 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.postgresql;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbcp2.ConnectionFactory;
 import org.apache.commons.dbcp2.DriverManagerConnectionFactory;
 import org.apache.commons.dbcp2.PoolableConnection;
@@ -20,6 +37,8 @@ import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import io.outofprintmagazine.util.ParameterStore;
+
 
 public class PostgreSQLUtils {
 
@@ -27,42 +46,32 @@ public class PostgreSQLUtils {
 	private static final Logger logger = LogManager.getLogger(PostgreSQLUtils.class);
 	private Properties props;
 
-	private PoolingDataSource<PoolableConnection> ds = null;
+	private BasicDataSource ds = null;
          
-	private PostgreSQLUtils() throws IOException, ClassNotFoundException {
+	private PostgreSQLUtils(ParameterStore parameterStore) throws IOException, ClassNotFoundException {
 		super();
-		InputStream input = new FileInputStream("data/postgresql.properties");
-        props = new Properties();
-        props.load(input);
-        input.close();
-		Class.forName("org.postgresql.Driver");
-		ConnectionFactory connectionFactory = 
-				new DriverManagerConnectionFactory(
-						String.format(
-								props.getProperty("url"),
-								props.getProperty("user"),
-								props.getProperty("pwd")
-						),
-						null
-		);
-		PoolableConnectionFactory poolableConnectionFactory = 
-				new PoolableConnectionFactory(
-						connectionFactory, 
-						null
-		);
-		ObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(poolableConnectionFactory);
-		poolableConnectionFactory.setPool(connectionPool);
-		ds = new PoolingDataSource<>(connectionPool);
-
+		ds = new BasicDataSource();
+		ds.setDriverClassName("org.postgresql.Driver");
+		ds.setUrl(parameterStore.getProperty("postgresql_url"));
+		ds.setUsername(parameterStore.getProperty("postgresql_user"));
+		ds.setPassword(parameterStore.getProperty("postgresql_pwd"));
+		ds.setInitialSize(50);
+		ds.setPoolPreparedStatements(true);
+		ds.setValidationQuery("select 1");
+		ds.setMaxIdle(30);
+		ds.setMaxWaitMillis(20000);
+		ds.setRemoveAbandonedTimeout(120);
 	}
 	
-	private static PostgreSQLUtils single_instance = null; 
-
-    public static PostgreSQLUtils getInstance() throws IOException, ClassNotFoundException { 
-        if (single_instance == null) 
-            single_instance = new PostgreSQLUtils(); 
-  
-        return single_instance; 
+	private static Map<ParameterStore, PostgreSQLUtils> instances = new HashMap<ParameterStore, PostgreSQLUtils>();
+	
+    
+    public static PostgreSQLUtils getInstance(ParameterStore parameterStore) throws IOException, ClassNotFoundException { 
+        if (instances.get(parameterStore) == null) {
+        	PostgreSQLUtils instance = new PostgreSQLUtils(parameterStore);
+            instances.put(parameterStore, instance);
+        }
+        return instances.get(parameterStore); 
     }
     
     public String getLoginRole() {

@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.postgresql;
 
 import java.math.BigDecimal;
@@ -10,7 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
+import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,6 +40,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.storage.DocumentStorage;
 import io.outofprintmagazine.nlp.pipeline.PhraseAnnotation;
+import io.outofprintmagazine.util.ParameterStore;
 
 
 public class PostgreSQLDocumentStorage implements DocumentStorage {
@@ -35,6 +52,15 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		return logger;
 	}
 	
+	public PostgreSQLDocumentStorage() {
+		super();
+	}
+	
+	public PostgreSQLDocumentStorage(ParameterStore parameterStore) {
+		this();
+		this.setParameterStore(parameterStore);
+	}
+
 	private ObjectMapper mapper = new ObjectMapper();
 	
 
@@ -42,23 +68,18 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		return mapper;
 	}
 	
-	//Path=//
-	private Properties properties = new Properties();
+	private ParameterStore parameterStore;
 	
-	public Properties getProperties() {
-		return properties;
+	public ParameterStore getParameterStore() {
+		return parameterStore;
 	}
 	
-	public PostgreSQLDocumentStorage() {
-		super();
+	@Override
+    public void setParameterStore(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
 	}
 	
-	public PostgreSQLDocumentStorage(Properties properties) {
-		this();
-		properties.putAll(properties);
-	}
-
-
+	private Pattern isNumeric = Pattern.compile("\\d+");
 
 	@Override
 	public void storeCoreNLP(String corpus, String stagingBatchName, String scratchFileName, ObjectNode in) throws Exception {
@@ -66,7 +87,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		PreparedStatement pstmt = null;
 
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "insert into core_nlp("
     		+ "document_id"
     		+ ", data"
@@ -86,8 +107,11 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 	    	pstmt.close();
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 
 	}
@@ -99,7 +123,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		ResultSet cursor = null;
 		ObjectNode retval = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "select data from core_nlp where "
     		+ "document_id = ? ";
 		    pstmt = conn.prepareStatement(sql);
@@ -112,9 +136,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(cursor);
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(cursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         } 
 	}
 
@@ -124,7 +151,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		PreparedStatement textInsert = null;
 
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "insert into documents("
     		+ "document_id"
     		+ ") "
@@ -189,7 +216,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		ResultSet cursor = null;
 		String retval = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "select data from document_texts where "
     		+ "document_id = ? ";
 		    pstmt = conn.prepareStatement(sql);
@@ -202,9 +229,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(cursor);
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(cursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }	
 	}
 
@@ -215,7 +245,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		PreparedStatement pstmt = null;
 
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "insert into pipeline_info("
     		+ "document_id"
     		+ ", data"
@@ -272,8 +302,11 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 	    	
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 	}
 
@@ -284,7 +317,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		ResultSet cursor = null;
 		ObjectNode retval = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "select data from pipeline_info where "
     		+ "document_id = ? ";
 		    pstmt = conn.prepareStatement(sql);
@@ -297,9 +330,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(cursor);
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(cursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 	}
 	
@@ -318,7 +354,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		PreparedStatement pstmt = null;
 
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "insert into oop_nlp("
     		+ "document_id"
     		+ ", data"
@@ -359,8 +395,11 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         } 
 	}
 
@@ -370,7 +409,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		PreparedStatement subscoreInsert = null;
 
         try {
-        	conn = PostgreSQLUtils.getInstance().getClient(corpus);
+        	conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 			String sql = "insert into document_scores"
 					+ " (document_id, score, score_raw, score_normalized)"
 					+ " values (?,?,?,?) "
@@ -426,7 +465,8 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 							}
 						}
 					}
-					else if (scoreObject.isBigDecimal()) {
+					//else if (scoreObject.isBigDecimal()) {
+					else {
 						BigDecimal typedScore = getMapper().convertValue(
 								scoreObject,
 								BigDecimal.class
@@ -443,9 +483,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
 	    finally {
-	    	PostgreSQLUtils.getInstance().closeFinally(scoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(subscoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(scoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(subscoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
 	    }
 	}
 
@@ -462,7 +505,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		     		"tokens"
 		     	);
         try {
-        	conn = PostgreSQLUtils.getInstance().getClient(corpus);
+        	conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 
     		autoCommit = conn.getAutoCommit();
     		conn.setAutoCommit(false);
@@ -512,8 +555,8 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 									);
 									subscoreInsert.setBigDecimal(5, phraseAnnotation.getValue());
 									subscoreInsert.setBigDecimal(6, phraseAnnotation.getValue().divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-									//subscoreInsert.executeUpdate();
-									subscoreInsert.addBatch();
+									subscoreInsert.executeUpdate();
+									//subscoreInsert.addBatch();
 								}
 							}
 							else if (scoreObject.isObject()) {
@@ -529,11 +572,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 									subscoreInsert.setString(4, subscoreName);
 									subscoreInsert.setBigDecimal(5, typedScore.get(subscoreName));
 									subscoreInsert.setBigDecimal(6, typedScore.get(subscoreName).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-									//subscoreInsert.executeUpdate();
-									subscoreInsert.addBatch();
+									subscoreInsert.executeUpdate();
+									//subscoreInsert.addBatch();
 								}
 							}
-							else if (scoreObject.isBigDecimal()) {
+							//else if (scoreObject.isBigDecimal()) {
+							else {
 								BigDecimal typedScore = getMapper().convertValue(
 										scoreObject,
 										BigDecimal.class
@@ -543,25 +587,28 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 								scoreInsert.setString(3, scoreName);
 								scoreInsert.setBigDecimal(4, typedScore);
 								scoreInsert.setBigDecimal(5, typedScore.divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-								//scoreInsert.executeUpdate();
-								scoreInsert.addBatch();
+								scoreInsert.executeUpdate();
+								//scoreInsert.addBatch();
 										
 							}
 						}
 					}
 				}
-				subscoreInsert.executeBatch();
-				scoreInsert.executeBatch();
+				//subscoreInsert.executeBatch();
+				//scoreInsert.executeBatch();
 			}
 	    	conn.commit();
         }
 
 	    finally {
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
 	    	conn.setAutoCommit(autoCommit);
-	    	PostgreSQLUtils.getInstance().closeFinally(sentenceInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(scoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(subscoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(conn);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(sentenceInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(scoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(subscoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
 	    }
 	}
 	
@@ -578,7 +625,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		     		"TokensAnnotation"
 		     	);
         try {
-        	conn = PostgreSQLUtils.getInstance().getClient(corpus);
+        	conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
     		autoCommit = conn.getAutoCommit();
     		conn.setAutoCommit(false);
 			String sql = "insert into document_sentence_tokens"
@@ -647,90 +694,74 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 									subscoreInsert.setInt(3, token.get("tokenIndex").asInt());
 									subscoreInsert.setString(4, scoreName);
 									subscoreInsert.setString(5, subscoreName);
-									subscoreInsert.setBigDecimal(6, scoreObject.get(subscoreName).decimalValue());
-									subscoreInsert.setBigDecimal(7, scoreObject.get(subscoreName).decimalValue().divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-									//subscoreInsert.executeUpdate();
-									subscoreInsert.addBatch();
+									subscoreInsert.setBigDecimal(6, new BigDecimal(scoreObject.get(subscoreName).asText()));
+									subscoreInsert.setBigDecimal(7, new BigDecimal(scoreObject.get(subscoreName).asText()).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
+									subscoreInsert.executeUpdate();
+									//subscoreInsert.addBatch();
 									syllableSubscoreInsert.setString(1, docId);
 									syllableSubscoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
 									syllableSubscoreInsert.setInt(3, token.get("tokenIndex").asInt());
 									syllableSubscoreInsert.setString(4, scoreName);
 									syllableSubscoreInsert.setString(5, subscoreName);
-									syllableSubscoreInsert.setBigDecimal(6, scoreObject.get(subscoreName).decimalValue());
-									syllableSubscoreInsert.setBigDecimal(7, scoreObject.get(subscoreName).decimalValue().divide(tokenCount, 10, RoundingMode.HALF_DOWN));
+									syllableSubscoreInsert.setBigDecimal(6, new BigDecimal(scoreObject.get(subscoreName).asText()));
+									syllableSubscoreInsert.setBigDecimal(7, new BigDecimal(scoreObject.get(subscoreName).asText()).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
 									if (!scoreName.equals("OOPSyllablesAnnotation") && token.has("OOPSyllablesAnnotation")) {
 										for (int i=0;i<token.get("OOPSyllablesAnnotation").asInt(1);i++) {
 											syllableSubscoreInsert.setInt(8,  i);
-											//syllableSubscoreInsert.executeUpdate();
-											syllableSubscoreInsert.addBatch();
+											syllableSubscoreInsert.executeUpdate();
+											//syllableSubscoreInsert.addBatch();
 										}
 									}
 								}
 							}
-							else if (scoreObject.isBigDecimal()) { 
+							else {
 								scoreInsert.setString(1, docId);
 								scoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
 								scoreInsert.setInt(3, token.get("tokenIndex").asInt());
 								scoreInsert.setString(4, scoreName);
-								scoreInsert.setBigDecimal(5, scoreObject.decimalValue());
-								scoreInsert.setBigDecimal(6, scoreObject.decimalValue().divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-								//scoreInsert.executeUpdate();
-								scoreInsert.addBatch();
-								syllableSubscoreInsert.setString(1, docId);
-								syllableSubscoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
-								syllableSubscoreInsert.setInt(3, token.get("tokenIndex").asInt());
-								syllableSubscoreInsert.setString(4, scoreName);
-								syllableSubscoreInsert.setBigDecimal(5, scoreObject.decimalValue());
-								syllableSubscoreInsert.setBigDecimal(6, scoreObject.decimalValue().divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-								if (!scoreName.equals("OOPSyllablesAnnotation") && token.has("OOPSyllablesAnnotation")) {
-									for (int i=0;i<token.get("OOPSyllablesAnnotation").asInt(1);i++) {
-										syllableSubscoreInsert.setInt(7,  i);
-										//syllableSubscoreInsert.executeUpdate();
-										syllableSubscoreInsert.addBatch();
-									}
+								BigDecimal decimalScore = new BigDecimal(scoreObject.asText());
+								if (decimalScore.compareTo(new BigDecimal(0)) == 0) {
+									decimalScore = new BigDecimal(1);
 								}
-							}
-							else if (scoreObject.isTextual()) {
-								scoreInsert.setString(1, docId);
-								scoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
-								scoreInsert.setInt(3, token.get("tokenIndex").asInt());
-								scoreInsert.setString(4, scoreName);
-								scoreInsert.setBigDecimal(5, new BigDecimal(1));
-								scoreInsert.setBigDecimal(6, new BigDecimal(1).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-								//scoreInsert.executeUpdate();
-								scoreInsert.addBatch();
-								syllableSubscoreInsert.setString(1, docId);
-								syllableSubscoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
-								syllableSubscoreInsert.setInt(3, token.get("tokenIndex").asInt());
-								syllableSubscoreInsert.setString(4, scoreName);
-								syllableSubscoreInsert.setBigDecimal(5, new BigDecimal(1));
-								syllableSubscoreInsert.setBigDecimal(6, new BigDecimal(1).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
+								scoreInsert.setBigDecimal(5, decimalScore);
+								scoreInsert.setBigDecimal(6, decimalScore.divide(tokenCount, 10, RoundingMode.HALF_DOWN));
+								scoreInsert.executeUpdate();
+								//scoreInsert.addBatch();
+								syllableScoreInsert.setString(1, docId);
+								syllableScoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
+								syllableScoreInsert.setInt(3, token.get("tokenIndex").asInt());
+								syllableScoreInsert.setString(4, scoreName);
+								syllableScoreInsert.setBigDecimal(5, new BigDecimal(scoreObject.asText()));
+								syllableScoreInsert.setBigDecimal(6, new BigDecimal(scoreObject.asText()).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
 								if (!scoreName.equals("OOPSyllablesAnnotation") && token.has("OOPSyllablesAnnotation")) {
 									for (int i=0;i<token.get("OOPSyllablesAnnotation").asInt(1);i++) {
-										syllableSubscoreInsert.setInt(7,  i);
-										//syllableSubscoreInsert.executeUpdate();
-										syllableSubscoreInsert.addBatch();
+										syllableScoreInsert.setInt(7,  i);
+										syllableScoreInsert.executeUpdate();
+										//syllableSubscoreInsert.addBatch();
 									}
 								}
 							}
 						}
 					}
-					subscoreInsert.executeBatch();
-					syllableSubscoreInsert.executeBatch();
-					scoreInsert.executeBatch();
+					//subscoreInsert.executeBatch();
+					//syllableSubscoreInsert.executeBatch();
+					//scoreInsert.executeBatch();
 				}
 	        }
 			conn.commit();
         }
 
 	    finally {
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
 	    	conn.setAutoCommit(autoCommit);
-	    	PostgreSQLUtils.getInstance().closeFinally(tokenInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(scoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(subscoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(syllableScoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(syllableSubscoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(conn);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(tokenInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(scoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(subscoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(syllableScoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(syllableSubscoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
 	    }
 	}
 	
@@ -741,7 +772,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		ResultSet cursor = null;
 		ObjectNode retval = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "select data from oop_nlp where "
     		+ "document_id = ? ";
 		    pstmt = conn.prepareStatement(sql);
@@ -754,9 +785,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(cursor);
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(cursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         } 
 	}
 
@@ -768,7 +802,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		ResultSet cursor = null;
 		ObjectNode retval = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "select data from oop_nlp_aggregates where "
     		+ "document_id = ? ";
 		    pstmt = conn.prepareStatement(sql);
@@ -781,9 +815,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(cursor);
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(cursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         } 
 	}
 
@@ -797,7 +834,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		PreparedStatement aggregateSubScoreInsert = null;
 		boolean autoCommit = true;
         try {
-        	conn = PostgreSQLUtils.getInstance().getClient(corpus);
+        	conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
         	autoCommit = conn.getAutoCommit();
         	conn.setAutoCommit(false);
 		    String sql = "insert into oop_nlp_aggregates("
@@ -860,29 +897,31 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 					else if (aggregateScore.isObject()) {
 						aggregateScoreInsert.setString(1, docId);
 						aggregateScoreInsert.setString(2, score);
-						aggregateScoreInsert.setBigDecimal(3, aggregateScore.get("scoreStats").get("score").get("raw").decimalValue());
-						aggregateScoreInsert.setBigDecimal(4, aggregateScore.get("scoreStats").get("score").get("normalized").decimalValue());
-						aggregateScoreInsert.setBigDecimal(5, aggregateScore.get("scoreStats").get("score").get("count").decimalValue());
-						aggregateScoreInsert.setBigDecimal(6, aggregateScore.get("scoreStats").get("stats").get("min").decimalValue());
-						aggregateScoreInsert.setBigDecimal(7, aggregateScore.get("scoreStats").get("stats").get("max").decimalValue());
-						aggregateScoreInsert.setBigDecimal(8, aggregateScore.get("scoreStats").get("stats").get("mean").decimalValue());
-						aggregateScoreInsert.setBigDecimal(9, aggregateScore.get("scoreStats").get("stats").get("median").decimalValue());
-						aggregateScoreInsert.setBigDecimal(10, aggregateScore.get("scoreStats").get("stats").get("stddev").decimalValue());
+						aggregateScoreInsert.setBigDecimal(3, new BigDecimal(aggregateScore.get("scoreStats").get("score").get("raw").asText()));
+						aggregateScoreInsert.setBigDecimal(4, new BigDecimal(aggregateScore.get("scoreStats").get("score").get("normalized").asText()));
+						aggregateScoreInsert.setBigDecimal(5, new BigDecimal(aggregateScore.get("scoreStats").get("score").get("count").asText()));
+						aggregateScoreInsert.setBigDecimal(6, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("min").asText()));
+						aggregateScoreInsert.setBigDecimal(7, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("max").asText()));
+						aggregateScoreInsert.setBigDecimal(8, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("mean").asText()));
+						aggregateScoreInsert.setBigDecimal(9, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("median").asText()));
+						aggregateScoreInsert.setBigDecimal(10, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("stddev").asText()));
 						aggregateScoreInsert.executeUpdate();
 						for (JsonNode subScore : ((ArrayNode)aggregateScore.get("aggregatedScores"))) {
-							aggregateSubScoreInsert.setString(1, docId);
-							aggregateSubScoreInsert.setString(2, score);
-							aggregateSubScoreInsert.setString(3, subScore.get("name").asText());
-							aggregateSubScoreInsert.setBigDecimal(4, subScore.get("score").get("raw").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(5, subScore.get("score").get("normalized").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(6, subScore.get("score").get("count").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(7, subScore.get("aggregateScore").get("rank").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(8, subScore.get("aggregateScore").get("percentage").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(9, subScore.get("aggregateScore").get("percentile").decimalValue());
-							//aggregateSubScoreInsert.executeUpdate();
-							aggregateSubScoreInsert.addBatch();
+							if (!isNumeric.matcher(subScore.get("name").asText()).matches()) {
+								aggregateSubScoreInsert.setString(1, docId);
+								aggregateSubScoreInsert.setString(2, score);
+								aggregateSubScoreInsert.setString(3, subScore.get("name").asText());
+								aggregateSubScoreInsert.setBigDecimal(4, new BigDecimal(subScore.get("score").get("raw").asText()));
+								aggregateSubScoreInsert.setBigDecimal(5, new BigDecimal(subScore.get("score").get("normalized").asText()));
+								aggregateSubScoreInsert.setBigDecimal(6, new BigDecimal(subScore.get("score").get("count").asText()));
+								aggregateSubScoreInsert.setBigDecimal(7, new BigDecimal(subScore.get("aggregateScore").get("rank").asText()));
+								aggregateSubScoreInsert.setBigDecimal(8, new BigDecimal(subScore.get("aggregateScore").get("percentage").asText()));
+								aggregateSubScoreInsert.setBigDecimal(9, new BigDecimal(subScore.get("aggregateScore").get("percentile").asText()));
+								aggregateSubScoreInsert.executeUpdate();
+								//aggregateSubScoreInsert.addBatch();
+							}
 						}
-						aggregateSubScoreInsert.executeBatch();
+						//aggregateSubScoreInsert.executeBatch();
 					}
 				}
 			}
@@ -892,10 +931,13 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 
 
 	    finally {
-	    	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-	    	PostgreSQLUtils.getInstance().closeFinally(aggregateScoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(aggregateSubScoreInsert);
-	    	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateScoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateSubScoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
 	    }
 	}
 	
@@ -917,7 +959,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		ResultSet idfSelectCursor = null;
 		int corpusSize = 0;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    corpusSizeSelect = conn.prepareStatement(corpusSizeSql);
 		    corpusSizeSelectCursor = corpusSizeSelect.executeQuery();
 		    //just throw if no record
@@ -947,11 +989,14 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(corpusSizeSelectCursor);
-        	PostgreSQLUtils.getInstance().closeFinally(corpusSizeSelect);
-        	PostgreSQLUtils.getInstance().closeFinally(idfSelectCursor);
-        	PostgreSQLUtils.getInstance().closeFinally(idfSelect);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(corpusSizeSelectCursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(corpusSizeSelect);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(idfSelectCursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(idfSelect);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
         return retval;
 		
@@ -1040,7 +1085,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		ResultSet aggregateSubScoreSelectCursor = null;
 
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    aggregateScoreSelect = conn.prepareStatement(aggregateScoreSql);
 		    aggregateScoreSelectCursor = aggregateScoreSelect.executeQuery();
 		    List<String> scoreMeasures = Arrays.asList("raw", "normalized", "count");
@@ -1119,11 +1164,14 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(aggregateScoreSelectCursor);
-        	PostgreSQLUtils.getInstance().closeFinally(aggregateScoreSelect);
-        	PostgreSQLUtils.getInstance().closeFinally(aggregateSubScoreSelectCursor);
-        	PostgreSQLUtils.getInstance().closeFinally(aggregateSubScoreSelect);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateScoreSelectCursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateScoreSelect);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateSubScoreSelectCursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateSubScoreSelect);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
         return retval;
 		
@@ -1188,7 +1236,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		boolean autoCommit = true;
 
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    autoCommit = conn.getAutoCommit();
 		    conn.setAutoCommit(false);
 			aggregateScoreInsert = conn.prepareStatement(insertScoresSql);
@@ -1203,26 +1251,28 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 						ObjectNode aggregateScore = (ObjectNode) documentAggregates.get(annotationName);
 						aggregateScoreInsert.setString(1, scratchFileName);
 						aggregateScoreInsert.setString(2, annotationName);
-						aggregateScoreInsert.setBigDecimal(3, aggregateScore.get("scoreStats").get("score").get("raw").decimalValue());
-						aggregateScoreInsert.setBigDecimal(4, aggregateScore.get("scoreStats").get("score").get("normalized").decimalValue());
-						aggregateScoreInsert.setBigDecimal(5, aggregateScore.get("scoreStats").get("score").get("count").decimalValue());
-						aggregateScoreInsert.setBigDecimal(6, aggregateScore.get("scoreStats").get("stats").get("min").decimalValue());
-						aggregateScoreInsert.setBigDecimal(7, aggregateScore.get("scoreStats").get("stats").get("max").decimalValue());
-						aggregateScoreInsert.setBigDecimal(8, aggregateScore.get("scoreStats").get("stats").get("mean").decimalValue());
-						aggregateScoreInsert.setBigDecimal(9, aggregateScore.get("scoreStats").get("stats").get("median").decimalValue());
+						aggregateScoreInsert.setBigDecimal(3, new BigDecimal(aggregateScore.get("scoreStats").get("score").get("raw").asText()));
+						aggregateScoreInsert.setBigDecimal(4, new BigDecimal(aggregateScore.get("scoreStats").get("score").get("normalized").asText()));
+						aggregateScoreInsert.setBigDecimal(5, new BigDecimal(aggregateScore.get("scoreStats").get("score").get("count").asText()));
+						aggregateScoreInsert.setBigDecimal(6, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("min").asText()));
+						aggregateScoreInsert.setBigDecimal(7, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("max").asText()));
+						aggregateScoreInsert.setBigDecimal(8, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("mean").asText()));
+						aggregateScoreInsert.setBigDecimal(9, new BigDecimal(aggregateScore.get("scoreStats").get("stats").get("median").asText()));
 						aggregateScoreInsert.executeUpdate();
 						
 						for (JsonNode subScore : ((ArrayNode)aggregateScore.get("aggregatedScores"))) {
-							aggregateSubScoreInsert.setString(1, scratchFileName);
-							aggregateSubScoreInsert.setString(2, annotationName);
-							aggregateSubScoreInsert.setString(3, subScore.get("name").asText());
-							aggregateSubScoreInsert.setBigDecimal(4, subScore.get("score").get("raw").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(5, subScore.get("score").get("normalized").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(6, subScore.get("score").get("count").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(7, subScore.get("aggregateScore").get("rank").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(8, subScore.get("aggregateScore").get("percentage").decimalValue());
-							aggregateSubScoreInsert.setBigDecimal(9, subScore.get("aggregateScore").get("percentile").decimalValue());
-							aggregateSubScoreInsert.executeUpdate();
+							if (!isNumeric.matcher(subScore.get("name").asText()).matches()) {
+								aggregateSubScoreInsert.setString(1, scratchFileName);
+								aggregateSubScoreInsert.setString(2, annotationName);
+								aggregateSubScoreInsert.setString(3, subScore.get("name").asText());
+								aggregateSubScoreInsert.setBigDecimal(4, new BigDecimal(subScore.get("score").get("raw").asText()));
+								aggregateSubScoreInsert.setBigDecimal(5, new BigDecimal(subScore.get("score").get("normalized").asText()));
+								aggregateSubScoreInsert.setBigDecimal(6, new BigDecimal(subScore.get("score").get("count").asText()));
+								aggregateSubScoreInsert.setBigDecimal(7, new BigDecimal(subScore.get("aggregateScore").get("rank").asText()));
+								aggregateSubScoreInsert.setBigDecimal(8, new BigDecimal(subScore.get("aggregateScore").get("percentage").asText()));
+								aggregateSubScoreInsert.setBigDecimal(9, new BigDecimal(subScore.get("aggregateScore").get("percentile").asText()));
+								aggregateSubScoreInsert.executeUpdate();
+							}
 						}
 					}
 				}
@@ -1232,9 +1282,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
         }
 
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(aggregateScoreInsert);
-        	PostgreSQLUtils.getInstance().closeFinally(aggregateSubScoreInsert);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateScoreInsert);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateSubScoreInsert);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 	}
 
@@ -1259,7 +1312,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		PreparedStatement aggregateSubScoreInsert = null;
 
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 			aggregateSubScoreInsert = conn.prepareStatement(insertSubScoresSql);
 			ObjectNode documentAggregates = in;
 			
@@ -1273,7 +1326,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 							aggregateSubScoreInsert.setString(1, scratchFileName);
 							aggregateSubScoreInsert.setString(2, annotationName);
 							aggregateSubScoreInsert.setString(3, aggregatedScore.get("name").asText());
-							aggregateSubScoreInsert.setBigDecimal(4, aggregatedScore.get("tfidf").decimalValue());
+							aggregateSubScoreInsert.setBigDecimal(4, new BigDecimal(aggregatedScore.get("tfidf").asText()));
 							aggregateSubScoreInsert.executeUpdate();
 						}
 					}
@@ -1281,9 +1334,124 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 			}
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(aggregateSubScoreInsert);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateSubScoreInsert);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
+	}
+
+	@Override
+	public ObjectNode getCorpusMyersBriggsAggregateScores(String corpus) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet cursor = null;
+		String sql = "SELECT subscore, avg(subscore_normalized) as subscore_normalized_avg " 
+				+ "FROM submissions.document_aggregate_subscores " 
+				+ "where score = 'OOPMyersBriggsAnnotation' " 
+				+ "group by subscore";
+		ObjectNode retval = getMapper().createObjectNode();
+        try {
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
+			pstmt = conn.prepareStatement(sql);
+			cursor = pstmt.executeQuery();
+			while (cursor.next()) {
+				retval.put(cursor.getString("subscore"), cursor.getBigDecimal("subscore_normalized_avg"));
+			}
+        }
+        finally {
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(cursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
+        }
+        return retval;
+	}
+
+	@Override
+	public void storeOOPMyersBriggsScores(String corpus, String stagingBatchName, String scratchFileName, ObjectNode in) throws Exception {
+		String insertSubScoresSql = "insert into document_aggregate_subscores_myers_briggs "
+				+ "("
+				+ "document_id"
+				+ ", score"
+				+ ", subscore"
+				+ ", subscore_myers_briggs"
+				+ ")"
+				+ " values "
+				+ "("
+				+ "?"
+				+ ", ?"
+				+ ", ?"
+				+ ", ?"
+				+ ")"
+				+ "ON CONFLICT DO NOTHING";
+		
+		String insertActorSubScoresSql = "insert into document_actor_aggregate_subscores_myers_briggs "
+				+ "("
+				+ "document_id"
+				+ ", actor"
+				+ ", score"
+				+ ", subscore"
+				+ ", subscore_myers_briggs"
+				+ ")"
+				+ " values "
+				+ "("
+				+ "?"
+				+ ", ?"
+				+ ", ?"
+				+ ", ?"
+				+ ", ?"
+				+ ")"
+				+ "ON CONFLICT DO NOTHING";		
+		Connection conn = null;
+		PreparedStatement aggregateSubScoreInsert = null;
+		PreparedStatement actorSubScoreInsert = null;
+
+        try {
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
+			aggregateSubScoreInsert = conn.prepareStatement(insertSubScoresSql);
+			actorSubScoreInsert = conn.prepareStatement(insertActorSubScoresSql);
+			ObjectNode documentAggregates = in;
+			//insert documentAggregates.get("OOPMyersBriggs")
+			//insert documentAggregates.get("OOPActorsAnnotation")
+
+			String annotationName = "OOPMyersBriggsAnnotation";
+			Iterator<String> subscoreNameIter = documentAggregates.get(annotationName).fieldNames();
+			while (subscoreNameIter.hasNext()) {
+				String subscoreName = subscoreNameIter.next();
+				aggregateSubScoreInsert.setString(1, scratchFileName);
+				aggregateSubScoreInsert.setString(2, annotationName);
+				aggregateSubScoreInsert.setString(3, subscoreName);
+				aggregateSubScoreInsert.setBigDecimal(4, new BigDecimal(documentAggregates.get(annotationName).get(subscoreName).asText()));
+				aggregateSubScoreInsert.executeUpdate();
+			}
+
+			Iterator<String> actorNameIter = documentAggregates.get("OOPActorsAnnotation").fieldNames();
+			while (actorNameIter.hasNext()) {
+				String actorName = actorNameIter.next();
+				Iterator<String> actorSubscoreNameIter = documentAggregates.get("OOPActorsAnnotation").get(actorName).get("oopmyersBriggs").fieldNames();
+				while (actorSubscoreNameIter.hasNext()) {
+					String actorSubscoreName = actorSubscoreNameIter.next();
+					actorSubScoreInsert.setString(1, scratchFileName);
+					actorSubScoreInsert.setString(2, actorName);
+					actorSubScoreInsert.setString(3, annotationName);
+					actorSubScoreInsert.setString(4, actorSubscoreName);
+					actorSubScoreInsert.setBigDecimal(5, new BigDecimal(documentAggregates.get("OOPActorsAnnotation").get(actorName).get("oopmyersBriggs").get(actorSubscoreName).asText()));
+					actorSubScoreInsert.executeUpdate();
+				}
+			}
+        }
+        finally {
+        	if (!conn.getAutoCommit()) {
+        		conn.commit();
+        	}
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(aggregateSubScoreInsert);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(actorSubScoreInsert);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
+        }		
 	}
 
 }

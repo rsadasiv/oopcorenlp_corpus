@@ -1,30 +1,44 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatch;
-import io.outofprintmagazine.corpus.batch.db.CorpusBatchModel;
-import io.outofprintmagazine.corpus.storage.CorpusStorage;
 import io.outofprintmagazine.corpus.storage.ScratchStorage;
-import io.outofprintmagazine.corpus.storage.file.FileCorpora;
 import io.outofprintmagazine.corpus.storage.file.FileScratchStorage;
 import io.outofprintmagazine.corpus.storage.postgresql.PostgreSQLBatchStorage;
 import io.outofprintmagazine.corpus.storage.s3.S3BatchStorage;
+import io.outofprintmagazine.corpus.util.ParameterStorePropertiesFile;
 
 public class App
 {
@@ -230,12 +244,15 @@ public class App
     	boolean pass = false;
     	String msg = "Dropbox Template success";
     	try {
-    		PostgreSQLBatchStorage pg = new PostgreSQLBatchStorage();
+    		ParameterStorePropertiesFile parameterStore = new ParameterStorePropertiesFile("data", "oopcorenlp.properties");
+    		
+    		PostgreSQLBatchStorage pg = new PostgreSQLBatchStorage(parameterStore);
     		pg.createCorpus("submissions");
     		CorpusBatch batch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/dropbox/OOPReading.json");
+    		//CorpusBatch batch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/dropbox/BatchProperties.json");
     		batch.run();
     		pass = true;
-        	S3BatchStorage storage = new S3BatchStorage();
+        	S3BatchStorage storage = new S3BatchStorage(parameterStore);
         	ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         	storage.storeStagingBatchJson("submissions", "OOPReading", mapper.valueToTree(batch.getData()));
         	pg.storeStagingBatchJson("submissions", "OOPReading", mapper.valueToTree(batch.getData()));

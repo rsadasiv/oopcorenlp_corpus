@@ -12,14 +12,18 @@
         <appender-ref ref="CONSOLE"/>
     </logger>
     
-    <Logger name="org.apache.fontbox.ttf" level="info" additivity="false">
-      <AppenderRef ref="Console"/>
-    </Logger>
+    <logger name="org.apache.fontbox.ttf" level="error" additivity="false">
+      <appender-ref ref="CONSOLE"/>
+    </logger>
     
-    <Logger name="org.mongodb.driver" level="error" additivity="false">
-      <AppenderRef ref="Console"/>
-    </Logger>
-
+    <logger name="org.mongodb.driver" level="error" additivity="false">
+      <appender-ref ref="CONSOLE"/>
+    </logger>
+    
+    <logger name="edu.stanford.nlp.quoteattribution.Sieves.MSSieves" level="error" additivity="false">
+      <appender-ref ref="CONSOLE"/>
+    </logger>
+    
     <root level="info">
         <appender-ref ref="CONSOLE"/>
     </root>

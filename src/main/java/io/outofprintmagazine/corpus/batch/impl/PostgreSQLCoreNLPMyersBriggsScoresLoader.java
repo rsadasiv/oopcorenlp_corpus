@@ -14,52 +14,53 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package io.outofprintmagazine.corpus.batch.impl.dna;
+package io.outofprintmagazine.corpus.batch.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jsoup.nodes.Document;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.CorpusBatchStepTask;
+import io.outofprintmagazine.corpus.batch.ThreadedCorpusBatchStepTask;
+import io.outofprintmagazine.corpus.storage.DocumentStorage;
+import io.outofprintmagazine.corpus.storage.postgresql.PostgreSQLDocumentStorage;
 
+public class PostgreSQLCoreNLPMyersBriggsScoresLoader extends ThreadedCorpusBatchStepTask implements CorpusBatchStepTask {
 
-public class ParseStory extends CorpusBatchStep {
+	private static final Logger logger = LogManager.getLogger(PostgreSQLCoreNLPMyersBriggsScoresLoader.class);
 	
-	@SuppressWarnings("unused")
-	private static final Logger logger = LogManager.getLogger(ParseStory.class);
+	private DocumentStorage loader = null;
+	
+	public PostgreSQLCoreNLPMyersBriggsScoresLoader() {
+		super();
+	}
 
 	@Override
 	protected Logger getLogger() {
 		return logger;
 	}
-	
-	public ParseStory() {
-		super();
-	}
-	
+
 	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
+		if (loader == null) {
+			loader = new PostgreSQLDocumentStorage(getParameterStore());
+		}
 		ArrayNode retval = getMapper().createArrayNode();
-		Document doc = getJsoupDocumentFromStorage(inputStepItem);
 		ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-		setAuthor(doc, outputStepItem);
-		setDate(doc, outputStepItem);
-		setTitle(doc, outputStepItem);
-		setThumbnail(doc, outputStepItem);
-		
-		setStorageLink(
-				getStorage().storeScratchFileString(
-						getData().getCorpusId(), 
-						getOutputScratchFilePathFromInput(inputStepItem, "txt"),
-						getText(doc).toString().trim()
-					),
-				outputStepItem
+
+		loader.storeOOPMyersBriggsScores(
+				getData().getCorpusId(),
+				getData().getCorpusBatchId(),
+				getDocID(inputStepItem),
+				(ObjectNode) getJsonNodeFromStorage(inputStepItem, "oopNLPMyersBriggsScoresStorage")
 		);
 		
+
+		outputStepItem.put("PostgreSQLCoreNLPMyersBriggsScoresLoader", "true");
 		retval.add(outputStepItem);
 		return retval;
 	}
+	
 }

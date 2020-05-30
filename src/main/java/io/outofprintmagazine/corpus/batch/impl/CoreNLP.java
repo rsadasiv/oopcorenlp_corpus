@@ -1,12 +1,32 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.batch.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -26,11 +46,19 @@ public class CoreNLP extends CorpusBatchStep {
 	private Analyzer ta = null;
 	
 	public CoreNLP() {
-		ta = new Analyzer();
+		super();
 	}
 	
 	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
+		if (ta == null) {
+			List<String> customAnnotators = new ArrayList<>();
+			Iterator<JsonNode> customAnnotatorsIter = ((ArrayNode) getData().getProperties().get("customAnnotators")).elements();
+			while (customAnnotatorsIter.hasNext()){
+			    customAnnotators.add(customAnnotatorsIter.next().asText());
+			}
+			ta = new Analyzer(getParameterStore(), customAnnotators);
+		}
 		ArrayNode retval = getMapper().createArrayNode();
 		try {
 			String doc = getTextDocumentFromStorage(inputStepItem);
@@ -51,6 +79,7 @@ public class CoreNLP extends CorpusBatchStep {
 			metadata.put(CoreAnnotations.DocTitleAnnotation.class.getName(), getTitle(inputStepItem));
 			metadata.put(CoreAnnotations.DocSourceTypeAnnotation.class.getName(), getLink(inputStepItem));
 			
+			//this should read the list of custom annotators from the properties
 			Map<String,ObjectNode> json = ta.analyze(metadata, doc);
 						
 			outputStepItem.put(

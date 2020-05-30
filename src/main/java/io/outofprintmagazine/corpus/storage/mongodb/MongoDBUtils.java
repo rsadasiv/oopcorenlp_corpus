@@ -1,8 +1,24 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.mongodb;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +30,8 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
+import io.outofprintmagazine.util.ParameterStore;
+
 
 public class MongoDBUtils {
 
@@ -22,21 +40,28 @@ public class MongoDBUtils {
 	Properties props;
 	private MongoClient client = null;
 
-	private MongoDBUtils() throws IOException {
+	private MongoDBUtils(ParameterStore parameterStore) throws IOException {
 		super();
-		InputStream input = new FileInputStream("data/mongodb.properties");
-        props = new Properties();
-        props.load(input);
-        input.close();
+		//InputStream input = new FileInputStream("data/mongodb.properties");
+        //props = new Properties();
+        //props.load(input);
+        //input.close();
+		//props = ParameterStore.getInstance().getProperties("data", "mongodb.properties");
+		props = new Properties();
+		props.setProperty("url", parameterStore.getProperty("mongodb_url"));
+		props.setProperty("user", parameterStore.getProperty("mongodb_user"));
+		props.setProperty("pwd", parameterStore.getProperty("mongodb_pwd"));
 	}
 	
-	private static MongoDBUtils single_instance = null; 
-
-    public static MongoDBUtils getInstance() throws IOException { 
-        if (single_instance == null) 
-            single_instance = new MongoDBUtils(); 
-  
-        return single_instance; 
+	private static Map<ParameterStore, MongoDBUtils> instances = new HashMap<ParameterStore, MongoDBUtils>();
+	
+	    
+    public static MongoDBUtils getInstance(ParameterStore parameterStore) throws IOException { 
+        if (instances.get(parameterStore) == null) {
+        	MongoDBUtils instance = new MongoDBUtils(parameterStore);
+            instances.put(parameterStore, instance);
+        }
+        return instances.get(parameterStore); 
     }
     
     public MongoClient getClient() throws RuntimeException {

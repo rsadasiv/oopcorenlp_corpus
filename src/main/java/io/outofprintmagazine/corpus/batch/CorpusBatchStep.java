@@ -1,8 +1,23 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.batch;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -28,10 +43,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import edu.stanford.nlp.ling.CoreLabel;
 import io.outofprintmagazine.corpus.batch.db.CorpusBatchStepModel;
 import io.outofprintmagazine.corpus.storage.ScratchStorage;
 import io.outofprintmagazine.corpus.storage.s3.S3ScratchStorage;
+import io.outofprintmagazine.corpus.util.ParameterStorePropertiesFile;
+import io.outofprintmagazine.util.ParameterStore;
 
 public abstract class CorpusBatchStep {
 	
@@ -80,13 +96,29 @@ public abstract class CorpusBatchStep {
 		return mapper;
 	}
 	
-	private ScratchStorage storage = new S3ScratchStorage();
+	private ScratchStorage storage = null;
+	
+	private ParameterStore parameterStore = null;
+	
+	protected ParameterStore getParameterStore() throws IOException {
+		if (parameterStore == null) {
+			parameterStore = new ParameterStorePropertiesFile("data", "oopcorenlp.properties");
+		}
+		return parameterStore;
+	}
+	
+	public void setParameterStore(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
+	}
 	
 	public void setStorage(ScratchStorage storage) {
 		this.storage = storage;
 	}
 		
-	protected ScratchStorage getStorage() {
+	protected ScratchStorage getStorage() throws IOException {
+		if (storage == null) {
+			storage = new S3ScratchStorage();
+		}
 		return storage;
 	}
 	
@@ -214,9 +246,12 @@ public abstract class CorpusBatchStep {
 	}
 	
 	protected String getAuthor(ObjectNode outputStepItem) {
-		return outputStepItem.get(
-				"esnlc_AuthorAnnotation"
-		).asText();
+		if (outputStepItem.has("esnlc_AuthorAnnotation")) {
+			return outputStepItem.get("esnlc_AuthorAnnotation").asText();
+		}
+		else {
+			return "Anonymous";
+		}
 	}
 	
 	protected void setAuthor(String author, ObjectNode outputStepItem) {
@@ -416,11 +451,7 @@ public abstract class CorpusBatchStep {
 	public String getOutputScratchFilePath(String fileName) throws Exception {
 		return getStorage().getScratchFilePath(
 				getData().getCorpusBatchId(),
-				String.format(
-						"%s-%s",
-						getData().getCorpusBatchStepSequenceId().toString(), 
-						getData().getCorpusBatchStepId()
-				),
+				getData().getCorpusBatchStepId(),
 				fileName
 		);
 	}
@@ -428,11 +459,7 @@ public abstract class CorpusBatchStep {
 	public String getOutputScratchFilePath(String fileName, String extension) throws Exception {
 		return getStorage().getScratchFilePath(
 				getData().getCorpusBatchId(),
-				String.format(
-						"%s-%s",
-						getData().getCorpusBatchStepSequenceId().toString(), 
-						getData().getCorpusBatchStepId()
-				),
+				getData().getCorpusBatchStepId(),
 				String.format("%s.%s",
 						fileName, 
 						extension

@@ -14,52 +14,64 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package io.outofprintmagazine.corpus.batch.impl.dna;
+package io.outofprintmagazine.corpus.batch.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jsoup.nodes.Document;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.CorpusBatchStepTask;
+import io.outofprintmagazine.corpus.batch.ThreadedCorpusBatchStepTask;
+import io.outofprintmagazine.corpus.storage.DocumentStorage;
+import io.outofprintmagazine.corpus.storage.postgresql.PostgreSQLDocumentStorage;
 
-
-public class ParseStory extends CorpusBatchStep {
+public class PostgreSQLCoreNLPCorpusAggregate extends CorpusBatchStep {
 	
-	@SuppressWarnings("unused")
-	private static final Logger logger = LogManager.getLogger(ParseStory.class);
+	private static final Logger logger = LogManager.getLogger(PostgreSQLCoreNLPCorpusAggregate.class);
 
 	@Override
 	protected Logger getLogger() {
 		return logger;
 	}
 	
-	public ParseStory() {
+	private DocumentStorage loader = null;
+	private String scratchFilePath = null;
+	
+
+	
+	public PostgreSQLCoreNLPCorpusAggregate() {
 		super();
 	}
 	
 	@Override
-	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
+	public ArrayNode runOne(ObjectNode input) throws Exception {
+		if (loader == null) {
+			loader = new PostgreSQLDocumentStorage(getParameterStore());
+		}
+		if (scratchFilePath == null) {
+			scratchFilePath = getStorage().storeScratchFileObject(
+					getData().getCorpusId(),
+					getOutputScratchFilePath("CorpusAggregateScores", "json"),
+					loader.getCorpusAggregateScores(getData().getCorpusId())
+			);
+		}
 		ArrayNode retval = getMapper().createArrayNode();
-		Document doc = getJsoupDocumentFromStorage(inputStepItem);
-		ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-		setAuthor(doc, outputStepItem);
-		setDate(doc, outputStepItem);
-		setTitle(doc, outputStepItem);
-		setThumbnail(doc, outputStepItem);
-		
-		setStorageLink(
-				getStorage().storeScratchFileString(
-						getData().getCorpusId(), 
-						getOutputScratchFilePathFromInput(inputStepItem, "txt"),
-						getText(doc).toString().trim()
-					),
-				outputStepItem
+		ObjectNode outputStepItem = copyInputToOutput(input);
+		outputStepItem.put(
+				"oopNLPCorpusAggregateScoresStorage",
+				scratchFilePath
 		);
 		
 		retval.add(outputStepItem);
 		return retval;
 	}
+		
+	@Override
+	public void configure(ObjectNode properties) {
+		getData().setProperties(properties);
+	}
+
 }

@@ -14887,5 +14887,5 @@
 			"output": []
 		}
 	],
-  "batchStorageClass" : "io.outofprintmagazine.corpus.storage.postgresql.PostgreSQLBatchStorage"
+  "batchStorageClass" : "io.outofprintmagazine.corpus.storage.mongodb.MongoDBBatchStorage"
 }

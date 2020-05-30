@@ -1,8 +1,23 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.mongodb;
 
-import static com.mongodb.client.model.Filters.*;
-
-import java.util.Properties;
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.eq;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +29,7 @@ import com.mongodb.MongoWriteException;
 import com.mongodb.client.MongoCollection;
 
 import io.outofprintmagazine.corpus.storage.DocumentStorage;
+import io.outofprintmagazine.util.ParameterStore;
 
 public class MongoDBDocumentStorage implements DocumentStorage {
 	
@@ -23,28 +39,31 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 	protected Logger getLogger() {
 		return logger;
 	}
-
-	private ObjectMapper mapper = new ObjectMapper();
-	
-
-	protected ObjectMapper getMapper() {
-		return mapper;
-	}
-	
-	private Properties properties = new Properties();
-	
-	
-	public Properties getProperties() {
-		return properties;
-	}
 	
 	public MongoDBDocumentStorage() {
 		super();
 	}
 	
-	public MongoDBDocumentStorage(Properties properties) {
+	public MongoDBDocumentStorage(ParameterStore parameterStore) {
 		this();
-		properties.putAll(properties);
+		this.setParameterStore(parameterStore);
+	}
+	
+	private ObjectMapper mapper = new ObjectMapper();
+	
+	protected ObjectMapper getMapper() {
+		return mapper;
+	}
+	
+	private ParameterStore parameterStore;
+	
+	public ParameterStore getParameterStore() {
+		return parameterStore;
+	}
+	
+	@Override
+    public void setParameterStore(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
 	}
 
 	@Override
@@ -53,7 +72,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 		doc.put("_id", scratchFileName);
 		doc.put("corpus_batch_id", stagingBatchName);
 		doc.put("document_id", scratchFileName);
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("core_nlp");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("core_nlp");
 		try {
 			collection.insertOne(doc);
 		}
@@ -65,7 +84,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 
 	@Override
 	public ObjectNode getCoreNLP(String corpus, String stagingBatchName, String scratchFileName) throws Exception {
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("core_nlp");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("core_nlp");
 		Document document = collection.find(and(eq("corpusBatchId", stagingBatchName), eq("document_id", scratchFileName))).first();
 		return (ObjectNode) getMapper().readTree(document.toJson());
 	}
@@ -76,7 +95,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 		doc.put("_id", scratchFileName);
 		doc.put("corpus_batch_id", stagingBatchName);
 		doc.put("document_id", scratchFileName);
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("oop_nlp");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("oop_nlp");
 		try {
 			collection.insertOne(doc);
 		}
@@ -88,7 +107,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 
 	@Override
 	public ObjectNode getOOPNLP(String corpus, String stagingBatchName, String scratchFileName) throws Exception {
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("oop_nlp");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("oop_nlp");
 		Document document = collection.find(and(eq("corpusBatchId", stagingBatchName), eq("document_id", scratchFileName))).first();
 		return (ObjectNode) getMapper().readTree(document.toJson());
 	}
@@ -100,7 +119,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 		doc.put("corpus_batch_id", stagingBatchName);
 		doc.put("document_id", scratchFileName);
 		doc.put("data", in);
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("document_texts");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("document_texts");
 		try {
 			collection.insertOne(doc);
 		}
@@ -112,7 +131,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 
 	@Override
 	public String getAsciiText(String corpus, String stagingBatchName, String scratchFileName) throws Exception {
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("document_texts");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("document_texts");
 		Document document = collection.find(and(eq("corpusBatchId", stagingBatchName), eq("document_id", scratchFileName))).first();
 		return document.getString("data");
 	}
@@ -123,7 +142,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 		doc.put("_id", scratchFileName);
 		doc.put("corpus_batch_id", stagingBatchName);
 		doc.put("document_id", scratchFileName);
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("pipeline_info");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("pipeline_info");
 		try {
 			collection.insertOne(doc);
 		}
@@ -135,7 +154,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 	
 	@Override
 	public ObjectNode getPipelineInfo(String corpus, String stagingBatchName, String scratchFileName) throws Exception {
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("pipeline_info");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("pipeline_info");
 		Document document = collection.find(and(eq("corpusBatchId", stagingBatchName), eq("document_id", scratchFileName))).first();
 		return (ObjectNode) getMapper().readTree(document.toJson());
 	}
@@ -147,7 +166,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 		doc.put("_id", scratchFileName);
 		doc.put("corpus_batch_id", stagingBatchName);
 		doc.put("document_id", scratchFileName);
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("oop_nlp_aggregates");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("oop_nlp_aggregates");
 		try {
 			collection.insertOne(doc);
 		}
@@ -161,7 +180,7 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 	@Override
 	public ObjectNode getOOPAggregates(String corpus, String stagingBatchName, String scratchFileName)
 			throws Exception {
-		MongoCollection<Document> collection = MongoDBUtils.getInstance().getDatabase(corpus).getCollection("oop_nlp_aggregates");
+		MongoCollection<Document> collection = MongoDBUtils.getInstance(parameterStore).getDatabase(corpus).getCollection("oop_nlp_aggregates");
 		Document document = collection.find(and(eq("corpusBatchId", stagingBatchName), eq("document_id", scratchFileName))).first();
 		return (ObjectNode) getMapper().readTree(document.toJson());
 	}
@@ -186,6 +205,19 @@ public class MongoDBDocumentStorage implements DocumentStorage {
 
 	@Override
 	public void storeOOPTfidfScores(String corpus, String stagingBatchName, String scratchFileName, ObjectNode in)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ObjectNode getCorpusMyersBriggsAggregateScores(String corpus) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void storeOOPMyersBriggsScores(String corpus, String stagingBatchName, String scratchFileName, ObjectNode in)
 			throws Exception {
 		// TODO Auto-generated method stub
 		

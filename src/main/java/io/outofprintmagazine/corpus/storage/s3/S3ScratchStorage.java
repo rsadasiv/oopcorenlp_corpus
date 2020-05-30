@@ -1,16 +1,33 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.s3;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Properties;
 import java.util.regex.Pattern;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
@@ -21,6 +38,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.storage.ScratchStorage;
+import io.outofprintmagazine.util.ParameterStore;
 
 public class S3ScratchStorage implements ScratchStorage {
 
@@ -35,7 +53,16 @@ public class S3ScratchStorage implements ScratchStorage {
 		return logger;
 	}
 	
-	private String defaultBucket = "oop-corpora";
+	public S3ScratchStorage() {
+		super();
+		mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+		mapper.configure(com.fasterxml.jackson.core.JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
+	}
+	
+	public S3ScratchStorage(ParameterStore parameterStore) {
+		this();
+		this.setParameterStore(parameterStore);
+	}
 	
 	protected ObjectMapper getMapper() {
 		return mapper; 
@@ -43,29 +70,22 @@ public class S3ScratchStorage implements ScratchStorage {
 	
 	protected ObjectMapper mapper;
 	
-	protected String getDefaultPath() {
-		return "Test";
-	}
-	private Properties properties = new Properties();
+	private ParameterStore parameterStore;
 	
-	public Properties getProperties() {
-		return properties;
+	public ParameterStore getParameterStore() {
+		return parameterStore;
 	}
 	
-	public S3ScratchStorage() {
-		super();
-		mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-		mapper.configure(com.fasterxml.jackson.core.JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
+	@Override
+    public void setParameterStore(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
 	}
+
 	
-	public S3ScratchStorage(Properties properties) {
-		this();
-		properties.putAll(properties);
-	}
 	
-	protected String getCorpusPath(String corpus) {
+	protected String getCorpusPath(String corpus) throws IOException {
 		String path = (
-				getProperties().getProperty("Path", getDefaultPath())
+				getParameterStore().getProperty("s3_Path")
 				+ "/"	
 				+ corpus
 		);
@@ -74,7 +94,7 @@ public class S3ScratchStorage implements ScratchStorage {
 		
 	}
 	
-	protected String getCorpusStagingBatchPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchPath(String corpus, String stagingBatchName) throws IOException {
 		String path = (
 				getCorpusPath(corpus) 
 				+ "/" 
@@ -84,7 +104,7 @@ public class S3ScratchStorage implements ScratchStorage {
 		return path;
 	}
 	
-	protected String getCorpusStagingBatchItemPath(String corpus, String stagingBatchName, String stagingBatchItemName) {
+	protected String getCorpusStagingBatchItemPath(String corpus, String stagingBatchName, String stagingBatchItemName) throws IOException {
 		String path = (
 				getCorpusPath(corpus) 
 				+ "/" 
@@ -97,7 +117,7 @@ public class S3ScratchStorage implements ScratchStorage {
 	}
 	
 
-	protected String getCorpusStagingBatchItemPropertiesPath(String corpus, String stagingBatchName, String stagingBatchItemName) {
+	protected String getCorpusStagingBatchItemPropertiesPath(String corpus, String stagingBatchName, String stagingBatchItemName) throws IOException {
 		return (
 				getCorpusStagingBatchItemPath(corpus, stagingBatchName, stagingBatchItemName)
 				+ "/" 
@@ -105,7 +125,7 @@ public class S3ScratchStorage implements ScratchStorage {
 		);
 	}	
 	
-	protected String getCorpusStagingBatchScratchPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchScratchPath(String corpus, String stagingBatchName) throws IOException {
 		String path = (
 				getCorpusStagingBatchPath(corpus, stagingBatchName) 
 				+ "/" 
@@ -124,7 +144,7 @@ public class S3ScratchStorage implements ScratchStorage {
 		return path;
 	}
 	
-	protected String getCorpusStagingBatchPropertiesPath(String corpus, String stagingBatchName) {
+	protected String getCorpusStagingBatchPropertiesPath(String corpus, String stagingBatchName) throws IOException {
 		return (
 				getCorpusStagingBatchPath(corpus, stagingBatchName)
 				+ "/" 
@@ -156,9 +176,9 @@ public class S3ScratchStorage implements ScratchStorage {
 		metadata.setContentLength(contentLength);
 		//metadata.setContentType(properties.get("mimeType").asText("application/json"));
 		metadata.setContentEncoding("utf-8");
-		S3Utils.getInstance().getS3Client().putObject(
+		S3Utils.getInstance(getParameterStore()).getS3Client().putObject(
 				new PutObjectRequest(
-						getProperties().getProperty("Bucket", defaultBucket),
+						getParameterStore().getProperty("s3_Bucket"),
 						getCorpusStagingBatchScratchFilePath(
 								corpus, 
 								scratchFileName
@@ -185,9 +205,9 @@ public class S3ScratchStorage implements ScratchStorage {
 			in.close();
 			fout.flush();
 
-			S3Utils.getInstance().getS3Client().putObject(
+			S3Utils.getInstance(getParameterStore()).getS3Client().putObject(
 					new PutObjectRequest(
-							getProperties().getProperty("Bucket", defaultBucket),
+							getParameterStore().getProperty("s3_Bucket"),
 							getCorpusStagingBatchScratchFilePath(
 									corpus, 
 									scratchFileName
@@ -232,27 +252,54 @@ public class S3ScratchStorage implements ScratchStorage {
 
 	@Override
 	public InputStream getScratchFileStream(String corpus, String scratchFileName) throws Exception {
-		return S3Utils.getInstance().getS3Client().getObject(
-				new GetObjectRequest(
-						getProperties().getProperty("Bucket", defaultBucket), 
-						getCorpusStagingBatchScratchFilePath(corpus, scratchFileName)
-				)
-		).getObjectContent();
+		try {
+			return S3Utils.getInstance(getParameterStore()).getS3Client().getObject(
+					new GetObjectRequest(
+							getParameterStore().getProperty("s3_Bucket"), 
+							getCorpusStagingBatchScratchFilePath(corpus, scratchFileName)
+					)
+			).getObjectContent();
+		}
+		catch (AmazonS3Exception s3e) {
+			getLogger().error(s3e);
+			Thread.sleep(1000);
+			return S3Utils.getInstance(getParameterStore()).getS3Client().getObject(
+					new GetObjectRequest(
+							getParameterStore().getProperty("s3_Bucket"), 
+							getCorpusStagingBatchScratchFilePath(corpus, scratchFileName)
+					)
+			).getObjectContent();
+		}
 
 	}
 
 	@Override
 	public String getScratchFileString(String corpus, String scratchFileName) throws Exception {
-		getLogger().debug(String.format("s3:get %s %s", corpus, scratchFileName));
-		return IOUtils.toString(
-				S3Utils.getInstance().getS3Client().getObject(
-						new GetObjectRequest(
-								getProperties().getProperty("Bucket", defaultBucket), 
-								getCorpusStagingBatchScratchFilePath(corpus, scratchFileName)
-						)
-				).getObjectContent(),
-				"utf-8"
-		);
+		//getLogger().debug(String.format("s3:get %s %s", corpus, scratchFileName));
+		try {
+			return IOUtils.toString(
+					S3Utils.getInstance(getParameterStore()).getS3Client().getObject(
+							new GetObjectRequest(
+									getParameterStore().getProperty("s3_Bucket"), 
+									getCorpusStagingBatchScratchFilePath(corpus, scratchFileName)
+							)
+					).getObjectContent(),
+					"utf-8"
+			);
+		}
+		catch (AmazonS3Exception s3e) {
+			getLogger().error(s3e);
+			Thread.sleep(1000);
+			return IOUtils.toString(
+					S3Utils.getInstance(getParameterStore()).getS3Client().getObject(
+							new GetObjectRequest(
+									getParameterStore().getProperty("s3_Bucket"), 
+									getCorpusStagingBatchScratchFilePath(corpus, scratchFileName)
+							)
+					).getObjectContent(),
+					"utf-8"
+			);
+		}
 	}
 	
 	@Override

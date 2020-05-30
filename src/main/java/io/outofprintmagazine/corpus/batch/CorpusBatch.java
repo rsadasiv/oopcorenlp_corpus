@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.batch;
 
 import java.io.IOException;
@@ -16,6 +32,7 @@ import io.outofprintmagazine.corpus.batch.db.CorpusBatchModel;
 import io.outofprintmagazine.corpus.batch.db.CorpusBatchStepModel;
 import io.outofprintmagazine.corpus.storage.BatchStorage;
 import io.outofprintmagazine.corpus.storage.ScratchStorage;
+import io.outofprintmagazine.util.ParameterStore;
 
 
 public class CorpusBatch {
@@ -38,9 +55,10 @@ public class CorpusBatch {
 	
 	private ScratchStorage scratchStorage = null;
 	
-	public ScratchStorage getScratchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public ScratchStorage getScratchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		if (scratchStorage == null) {
 			scratchStorage = (ScratchStorage) Class.forName(getData().getScratchStorageClass()).newInstance();
+			scratchStorage.setParameterStore(getParameterStore());
 		}
 		return scratchStorage;
 	}
@@ -51,15 +69,30 @@ public class CorpusBatch {
 	
 	private BatchStorage batchStorage = null;
 	
-	public BatchStorage getBatchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public BatchStorage getBatchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		if (batchStorage == null) {
 			batchStorage = (BatchStorage) Class.forName(getData().getBatchStorageClass()).newInstance();
+			batchStorage.setParameterStore(getParameterStore());
 		}
 		return batchStorage;
 	}
 	
 	public void setBatchStorage(BatchStorage batchStorage) {
 		this.batchStorage = batchStorage;
+	}
+	
+	private ParameterStore parameterStore = null;
+	
+	public ParameterStore getParameterStore() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException  {
+		if (parameterStore == null) {
+			parameterStore = (ParameterStore) Class.forName(getData().getParameterStoreClass()).newInstance();
+			parameterStore.init(getData().getProperties());
+		}
+		return parameterStore;
+	}
+	
+	public void setBatchStorage(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
 	}
 	
 	public static CorpusBatch buildFromTemplate(String templateLocation) throws IOException {
@@ -127,6 +160,7 @@ public class CorpusBatch {
     		currentBatchStep = (CorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).newInstance();
     		currentBatchStep.setData(corpusBatchStepModel);
     		currentBatchStep.setStorage(getScratchStorage());
+    		currentBatchStep.setParameterStore(getParameterStore());
     		currentBatchStep.getData().setCorpusId(getData().getCorpusId());
     		currentBatchStep.getData().setCorpusBatchId(getData().getCorpusBatchId());
     		if (previousBatchStep != null) {

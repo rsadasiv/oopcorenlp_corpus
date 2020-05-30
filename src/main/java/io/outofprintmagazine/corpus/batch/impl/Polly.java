@@ -1,6 +1,23 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.batch.impl;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +35,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 import io.outofprintmagazine.corpus.storage.s3.AwsUtils;
-import io.outofprintmagazine.corpus.storage.s3.S3BatchStorage;
 
 public class Polly extends CorpusBatchStep {
 
@@ -31,18 +47,21 @@ public class Polly extends CorpusBatchStep {
 	}
 	private AmazonPolly polly;
 	private Voice voice;
-	private String defaultPath = "";
-	private String defaultBucket;
+	//private String defaultPath = "";
+	//private String defaultBucket;
+	private Properties properties = new Properties();
 	
 	public Polly() throws IOException {
 		super();
 		polly = AmazonPollyClientBuilder.standard()
-			      .withCredentials(new AWSStaticCredentialsProvider(AwsUtils.getInstance().getBasicCredentials()))
-			      .withRegion(AwsUtils.getInstance().getRegion())
+			      .withCredentials(new AWSStaticCredentialsProvider(AwsUtils.getInstance(getParameterStore()).getBasicCredentials()))
+			      .withRegion(AwsUtils.getInstance(getParameterStore()).getRegion())
 			      .build();
-		S3BatchStorage b = new S3BatchStorage();
-		defaultPath = b.getDefaultPath() + "/";
-		defaultBucket = S3BatchStorage.defaultBucket;
+		properties.setProperty("Bucket", getParameterStore().getProperty("s3_Bucket"));
+		properties.setProperty("Path", getParameterStore().getProperty("s3_Path"));
+		//S3BatchStorage b = new S3BatchStorage();
+		//defaultPath = b.getDefaultPath() + "/";
+		//defaultBucket = S3BatchStorage.defaultBucket;
 	}
 
 	@Override
@@ -74,15 +93,15 @@ public class Polly extends CorpusBatchStep {
 						.withLanguageCode(getData().getProperties().get("LanguageCode").asText("en-IN"))
 						.withVoiceId(voice.getId())
 						.withOutputFormat("mp3")
-						.withOutputS3BucketName(defaultBucket)
+						.withOutputS3BucketName(properties.getProperty("Bucket"))
 						.withOutputS3KeyPrefix(
-								defaultPath
+								properties.getProperty("Path") + "/"
 								+ 
 								getData().getCorpusId() 
 								+ "/" 
 								+ getData().getCorpusBatchId()
 								+ "/"
-								+ getData().getCorpusBatchStepSequenceId() + "-" + getData().getCorpusBatchStepId()
+								+ getData().getCorpusBatchStepId()
 								+ "/"
 								+ getDocID(outputStepItem)
 						)

@@ -258,3 +258,22 @@ document_id varchar(50)
 , primary key (document_id, score, subscore)
 , foreign key (document_id) references documents(document_id) ON DELETE CASCADE
 );
+
+create table if not exists document_aggregate_subscores_myers_briggs (
+document_id varchar(50)
+, score varchar(50) references scores(score)
+, subscore varchar(500)
+, subscore_myers_briggs numeric
+, primary key (document_id, score, subscore)
+, foreign key (document_id) references documents(document_id) ON DELETE CASCADE
+);
+
+create table if not exists document_actor_aggregate_subscores_myers_briggs (
+document_id varchar(50)
+, actor varchar(500)
+, score varchar(50) references scores(score)
+, subscore varchar(500)
+, subscore_myers_briggs numeric
+, primary key (document_id, actor, score, subscore)
+, foreign key (document_id) references documents(document_id) ON DELETE CASCADE
+);

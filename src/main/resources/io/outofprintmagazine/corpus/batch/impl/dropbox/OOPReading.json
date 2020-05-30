@@ -3,6 +3,11 @@
 	"corpusBatchId": "OOPReading",
   	"scratchStorageClass" : "io.outofprintmagazine.corpus.storage.s3.S3ScratchStorage",
   	"batchStorageClass" : "io.outofprintmagazine.corpus.storage.postgresql.PostgreSQLBatchStorage",
+  	"parameterStoreClass" : "io.outofprintmagazine.corpus.util.ParameterStorePropertiesFile",
+  	"properties" : {
+  		"propertiesFilePath": "data",
+  		"propertiesFileName": "oopcorenlp.properties"
+  	},
 	"corpusBatchSteps": [
 		{
 			"corpusBatchStepId": "ParseArchive",
@@ -74,7 +79,78 @@
 			"corpusBatchStepSequenceId": 7,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLP",
 			"properties": {
-				"maxInput": 5
+				"customAnnotators": [
+					"io.outofprintmagazine.nlp.pipeline.annotators.BiberAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.CoreNlpParagraphAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.CoreNlpGenderAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.GenderAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PronounAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.count.CharCountAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.count.ParagraphCountAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.count.SentenceCountAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.count.SyllableCountAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.count.TokenCountAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.count.WordCountAnnotator"	    		
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.CoreNlpSentimentAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.VaderSentimentAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.VerbTenseAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PunctuationMarkAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.AdjectivesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PointlessAdjectivesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.AdjectiveCategoriesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.AdverbsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PointlessAdverbsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.AdverbCategoriesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PossessivesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PrepositionCategoriesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PrepositionsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.VerbsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.ActionlessVerbsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.NounsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.TopicsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.SVOAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.NonAffirmativeAnnotator"	    		
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.simile.LikeAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.simile.AsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.ColorsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.FlavorsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.VerblessSentencesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.WordlessWordsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.WordnetGlossAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PerfecttenseAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.UncommonWordsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.CommonWordsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.FunctionWordsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.AngliciseAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.AmericanizeAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.VerbGroupsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.VerbnetGroupsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.NounGroupsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.TemporalNGramsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.interrogative.WhoAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.interrogative.WhatAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.interrogative.WhenAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.interrogative.WhereAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.interrogative.WhyAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.interrogative.HowAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.LocationsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.PeopleAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.MyersBriggsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.BiberDimensionsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.DatesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.conditional.IfAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.conditional.BecauseAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.QuotesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.WordsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.FleschKincaidAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.VerbHypernymsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.NounHypernymsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.WikipediaGlossAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.WikipediaPageviewTopicsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.WikipediaCategoriesAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.ActorsAnnotator"
+		    		, "io.outofprintmagazine.nlp.pipeline.annotators.SettingsAnnotator"
+				]
 			},
 			"input": [],
 			"output": []
@@ -82,70 +158,19 @@
 		{
 			"corpusBatchStepId": "PostgreSQLCoreNLPLoader",
 			"corpusBatchStepSequenceId": 8,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPLoader",
-			"properties": {			
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ThreadedCorpusBatchStep",
+			"properties": {
+				"taskClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPLoader",
+				"maxThreads": 50
 			},
 			"input": [],
 			"output": []
 		},
+
 		{
-			"corpusBatchStepId": "Word2VecPreprocessor",
+			"corpusBatchStepId": "PostgreSQLCoreNLPCorpusAggregate",
 			"corpusBatchStepSequenceId": 9,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.word2vec.Word2VecPreprocessor",
-			"properties": {
-				"tasks" : [
-					"LemmaParagraph",
-					"LemmaPosParagraph",
-					"LemmaSentence",
-					"LemmaPosSentence",
-					"NerSentence",
-					"GenderSentence",
-					"PeopleParagraph"
-				]
-			},
-			"input": [],
-			"output": []
-		},
-		{
-			"corpusBatchStepId": "Word2VecProcessor",
-			"corpusBatchStepSequenceId": 10,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.word2vec.Word2VecProcessor",
-			"properties": {
-				"tasks" : [
-					"LemmaParagraph",
-					"LemmaPosParagraph",
-					"LemmaSentence",
-					"LemmaPosSentence",
-					"NerSentence",
-					"GenderSentence",
-					"PeopleParagraph"
-				]
-			},
-			"input": [],
-			"output": []
-		},
-		{
-			"corpusBatchStepId": "Word2VecCorpusProcessor",
-			"corpusBatchStepSequenceId": 11,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.word2vec.Word2VecCorpusProcessor",
-			"properties": {
-				"tasks" : [
-					"LemmaParagraph",
-					"LemmaPosParagraph",
-					"LemmaSentence",
-					"LemmaPosSentence",
-					"NerSentence",
-					"GenderSentence",
-					"PeopleParagraph"
-				]
-			},
-			"input": [],
-			"output": []
-		},
-		{
-			"corpusBatchStepId": "CoreNLPCorpusAggregate",
-			"corpusBatchStepSequenceId": 12,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPCorpusAggregate",
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPCorpusAggregate",
 			"properties": {
 			},
 			"input": [],
@@ -153,7 +178,7 @@
 		},
 		{
 			"corpusBatchStepId": "CoreNLPZScores",
-			"corpusBatchStepSequenceId": 13,
+			"corpusBatchStepSequenceId": 10,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPZScores",
 			"properties": {
 			},
@@ -162,17 +187,19 @@
 		},
 		{
 			"corpusBatchStepId": "PostreSQLCoreNLPZScoresLoader",
-			"corpusBatchStepSequenceId": 14,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPZScoresLoader",
+			"corpusBatchStepSequenceId": 11,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ThreadedCorpusBatchStep",
 			"properties": {
+				"taskClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPZScoresLoader",
+				"maxThreads": 50
 			},
 			"input": [],
 			"output": []
 		},
 		{
-			"corpusBatchStepId": "CoreNLPCorpusIdf",
-			"corpusBatchStepSequenceId": 15,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPCorpusIdf",
+			"corpusBatchStepId": "PostgreSQLCoreNLPCorpusIdf",
+			"corpusBatchStepSequenceId": 12,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPCorpusIdf",
 			"properties": {
 			},
 			"input": [],
@@ -180,7 +207,7 @@
 		},
 		{
 			"corpusBatchStepId": "CoreNLPTfidfScores",
-			"corpusBatchStepSequenceId": 16,
+			"corpusBatchStepSequenceId": 13,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPTfidfScores",
 			"properties": {
 			},
@@ -189,13 +216,44 @@
 		},
 		{
 			"corpusBatchStepId": "PostreSQLCoreNLPTfidfScoresLoader",
-			"corpusBatchStepSequenceId": 17,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPTfidfScoresLoader",
+			"corpusBatchStepSequenceId": 14,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ThreadedCorpusBatchStep",
+			"properties": {
+				"taskClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPTfidfScoresLoader",
+				"maxThreads": 50
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "PostgreSQLCoreNLPCorpusMyersBriggsAggregate",
+			"corpusBatchStepSequenceId": 15,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPCorpusMyersBriggsAggregate",
 			"properties": {
 			},
 			"input": [],
 			"output": []
 		},
+		{
+			"corpusBatchStepId": "CoreNLPMyersBriggsScores",
+			"corpusBatchStepSequenceId": 16,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CoreNLPMyersBriggsScores",
+			"properties": {
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "PostreSQLCoreNLPMyersBriggsScoresLoader",
+			"corpusBatchStepSequenceId": 17,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ThreadedCorpusBatchStep",
+			"properties": {
+				"taskClass": "io.outofprintmagazine.corpus.batch.impl.PostgreSQLCoreNLPMyersBriggsScoresLoader",
+				"maxThreads": 50
+			},
+			"input": [],
+			"output": []
+		},					
 		{
 			"corpusBatchStepId": "Polly",
 			"corpusBatchStepSequenceId": 18,

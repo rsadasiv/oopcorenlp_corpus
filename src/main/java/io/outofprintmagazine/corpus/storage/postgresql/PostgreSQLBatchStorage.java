@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright (C) 2020 Ram Sadasiv
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package io.outofprintmagazine.corpus.storage.postgresql;
 
 import java.sql.Connection;
@@ -6,7 +22,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -22,6 +37,7 @@ import io.outofprintmagazine.corpus.batch.CorpusBatch;
 import io.outofprintmagazine.corpus.batch.db.CorpusBatchModel;
 import io.outofprintmagazine.corpus.batch.db.CorpusBatchStepModel;
 import io.outofprintmagazine.corpus.storage.BatchStorage;
+import io.outofprintmagazine.util.ParameterStore;
 
 
 public class PostgreSQLBatchStorage implements BatchStorage {
@@ -33,6 +49,15 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		return logger;
 	}
 
+	public PostgreSQLBatchStorage() {
+		super();
+	}
+	
+	public PostgreSQLBatchStorage(ParameterStore parameterStore) {
+		this();
+		this.setParameterStore(parameterStore);
+	}
+	
 	private ObjectMapper mapper = new ObjectMapper();
 	
 
@@ -40,21 +65,19 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		return mapper;
 	}
 	
-	//Path=//
-	private Properties properties = new Properties();
+	private ParameterStore parameterStore;
 	
-	public Properties getProperties() {
-		return properties;
+	public ParameterStore getParameterStore() {
+		return parameterStore;
 	}
 	
-	public PostgreSQLBatchStorage() {
-		super();
+	@Override
+    public void setParameterStore(ParameterStore parameterStore) {
+		this.parameterStore = parameterStore;
 	}
 	
-	public PostgreSQLBatchStorage(Properties properties) {
-		this();
-		properties.putAll(properties);
-	}
+
+
 
 	@Override
 	public ObjectNode listCorpora() throws Exception {
@@ -64,7 +87,7 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		PreparedStatement pstmt = null;
 		ResultSet cursor = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient();
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient();
 		    String sql = "SELECT schema_name FROM information_schema.schemata where schema_name not in ('pg_catalog', 'information_schema', 'public')"; 
 		    pstmt = conn.prepareStatement(sql);
 		    cursor = pstmt.executeQuery();
@@ -73,9 +96,9 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		    }
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(cursor);
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(cursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 		return json;
 	}
@@ -85,7 +108,7 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		Connection conn = null;
 		Statement stmt = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient();
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient();
 //		    String sql = "create schema %s if not exists authorization %s";
 //		    stmt = conn.createStatement();
 //		    stmt.execute(String.format(sql, corpus, PostgreSQLUtils.getInstance().getLoginRole()));
@@ -126,8 +149,8 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		    stmt.close();
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(stmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(stmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 	}
 
@@ -137,7 +160,7 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "insert into staging_batches(corpus_batch_id, name, description, json_data) values (?, ?, ?, ?) ON CONFLICT DO NOTHING";
 		    pstmt = conn.prepareStatement(sql);
 		    pstmt.setString(1, stagingBatchName);
@@ -151,8 +174,8 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		    pstmt.close();
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 	}
 	
@@ -165,7 +188,7 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		PreparedStatement batchItemsInputInsert = null;
 		PreparedStatement batchItemsOutputInsert = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "insert into staging_batch_items("
     		+ "corpus_batch_id"
     		+ ", corpus_batch_step_id"
@@ -274,10 +297,10 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		    batchItemsInsert.close();
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsOutputInsert);
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsInputInsert);
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsInsert);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsOutputInsert);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsInputInsert);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsInsert);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 	}
 	
@@ -299,7 +322,7 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		PreparedStatement pstmt = null;
 		ResultSet cursor = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient();
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient();
 		    String sql = "SELECT corpus_batch_id from staging_batches order by corpus_batch_id"; 
 		    pstmt = conn.prepareStatement(sql);
 		    cursor = pstmt.executeQuery();
@@ -308,9 +331,9 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		    }
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(cursor);
-        	PostgreSQLUtils.getInstance().closeFinally(pstmt);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(cursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(pstmt);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
 		return json;
 	}
@@ -336,7 +359,7 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		ResultSet batchItemsInputCursor = null;
 		ResultSet batchItemsOutputCursor = null;
         try {
-		    conn = PostgreSQLUtils.getInstance().getClient(corpus);
+		    conn = PostgreSQLUtils.getInstance(getParameterStore()).getClient(corpus);
 		    String sql = "select "
 		    		+ "corpus_batch_id"
 		    		+ ", corpus_batch_step_id"
@@ -432,13 +455,13 @@ public class PostgreSQLBatchStorage implements BatchStorage {
 		    batchItemsSelect.close();
         }
         finally {
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsOutputCursor);
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsInputCursor);
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsOutputSelect);
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsInputSelect);
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsCursor);
-        	PostgreSQLUtils.getInstance().closeFinally(batchItemsSelect);
-        	PostgreSQLUtils.getInstance().closeFinally(conn);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsOutputCursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsInputCursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsOutputSelect);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsInputSelect);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsCursor);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(batchItemsSelect);
+        	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
         }
         return retval;
 	}
