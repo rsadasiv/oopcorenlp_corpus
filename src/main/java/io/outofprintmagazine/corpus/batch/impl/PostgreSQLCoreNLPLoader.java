@@ -50,38 +50,43 @@ public class PostgreSQLCoreNLPLoader extends ThreadedCorpusBatchStepTask impleme
 		}
 		ArrayNode retval = getMapper().createArrayNode();
 		ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-
-		loader.storeCoreNLP(
-				getData().getCorpusId(),
-				getData().getCorpusBatchId(),
-				getDocID(inputStepItem),
-				(ObjectNode) getJsonNodeFromStorage(inputStepItem, "coreNLPStorage")
-		);
-		
-		loader.storePipelineInfo(
-				getData().getCorpusId(),
-				getData().getCorpusBatchId(),
-				getDocID(inputStepItem),
-				(ObjectNode) getJsonNodeFromStorage(inputStepItem, "pipelineStorage")
-		);
-
-		loader.storeOOPNLP(
-				getData().getCorpusId(),
-				getData().getCorpusBatchId(),
-				getDocID(inputStepItem),
-				(ObjectNode) getJsonNodeFromStorage(inputStepItem, "oopNLPStorage")
-		);
-		
-		loader.storeOOPAggregates(
-				getData().getCorpusId(),
-				getData().getCorpusBatchId(),
-				getDocID(inputStepItem),
-				(ObjectNode) getJsonNodeFromStorage(inputStepItem, "oopNLPAggregatesStorage")
-		);
-		
-
-		outputStepItem.put("PostgreSQLCoreNLPLoader", "true");
-		retval.add(outputStepItem);
+		try {
+			loader.storeCoreNLP(
+					getData().getCorpusId(),
+					getData().getCorpusBatchId(),
+					getDocID(inputStepItem),
+					(ObjectNode) getJsonNodeFromStorage(inputStepItem, "coreNLPStorage")
+			);
+			
+			loader.storePipelineInfo(
+					getData().getCorpusId(),
+					getData().getCorpusBatchId(),
+					getDocID(inputStepItem),
+					(ObjectNode) getJsonNodeFromStorage(inputStepItem, "pipelineStorage")
+			);
+	
+			loader.storeOOPNLP(
+					getData().getCorpusId(),
+					getData().getCorpusBatchId(),
+					getDocID(inputStepItem),
+					(ObjectNode) getJsonNodeFromStorage(inputStepItem, "oopNLPStorage")
+			);
+			
+			loader.storeOOPAggregates(
+					getData().getCorpusId(),
+					getData().getCorpusBatchId(),
+					getDocID(inputStepItem),
+					(ObjectNode) getJsonNodeFromStorage(inputStepItem, "oopNLPAggregatesStorage")
+			);
+			
+	
+			outputStepItem.put("PostgreSQLCoreNLPLoader", "true");
+			retval.add(outputStepItem);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			getLogger().error(e);
+		}
 		return retval;
 	}
 	

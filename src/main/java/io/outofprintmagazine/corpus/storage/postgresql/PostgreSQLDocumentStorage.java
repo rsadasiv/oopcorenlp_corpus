@@ -715,30 +715,37 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 								}
 							}
 							else {
-								scoreInsert.setString(1, docId);
-								scoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
-								scoreInsert.setInt(3, token.get("tokenIndex").asInt());
-								scoreInsert.setString(4, scoreName);
-								BigDecimal decimalScore = new BigDecimal(scoreObject.asText());
-								if (decimalScore.compareTo(new BigDecimal(0)) == 0) {
-									decimalScore = new BigDecimal(1);
-								}
-								scoreInsert.setBigDecimal(5, decimalScore);
-								scoreInsert.setBigDecimal(6, decimalScore.divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-								scoreInsert.executeUpdate();
-								//scoreInsert.addBatch();
-								syllableScoreInsert.setString(1, docId);
-								syllableScoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
-								syllableScoreInsert.setInt(3, token.get("tokenIndex").asInt());
-								syllableScoreInsert.setString(4, scoreName);
-								syllableScoreInsert.setBigDecimal(5, new BigDecimal(scoreObject.asText()));
-								syllableScoreInsert.setBigDecimal(6, new BigDecimal(scoreObject.asText()).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-								if (!scoreName.equals("OOPSyllablesAnnotation") && token.has("OOPSyllablesAnnotation")) {
-									for (int i=0;i<token.get("OOPSyllablesAnnotation").asInt(1);i++) {
-										syllableScoreInsert.setInt(7,  i);
-										syllableScoreInsert.executeUpdate();
-										//syllableSubscoreInsert.addBatch();
+								try {
+									BigDecimal decimalScore = new BigDecimal(scoreObject.asText());
+									if (decimalScore.compareTo(new BigDecimal(0)) == 0) {
+										decimalScore = new BigDecimal(1);
 									}
+									scoreInsert.setString(1, docId);
+									scoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
+									scoreInsert.setInt(3, token.get("tokenIndex").asInt());
+									scoreInsert.setString(4, scoreName);
+	
+	
+									scoreInsert.setBigDecimal(5, decimalScore);
+									scoreInsert.setBigDecimal(6, decimalScore.divide(tokenCount, 10, RoundingMode.HALF_DOWN));
+									scoreInsert.executeUpdate();
+									//scoreInsert.addBatch();
+									syllableScoreInsert.setString(1, docId);
+									syllableScoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
+									syllableScoreInsert.setInt(3, token.get("tokenIndex").asInt());
+									syllableScoreInsert.setString(4, scoreName);
+									syllableScoreInsert.setBigDecimal(5, new BigDecimal(scoreObject.asText()));
+									syllableScoreInsert.setBigDecimal(6, new BigDecimal(scoreObject.asText()).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
+									if (!scoreName.equals("OOPSyllablesAnnotation") && token.has("OOPSyllablesAnnotation")) {
+										for (int i=0;i<token.get("OOPSyllablesAnnotation").asInt(1);i++) {
+											syllableScoreInsert.setInt(7,  i);
+											syllableScoreInsert.executeUpdate();
+											//syllableSubscoreInsert.addBatch();
+										}
+									}
+								}
+								catch (NumberFormatException nfe) {
+									getLogger().debug("NFE: " + scoreName);
 								}
 							}
 						}

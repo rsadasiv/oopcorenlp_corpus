@@ -248,8 +248,8 @@ public class App
     		
     		PostgreSQLBatchStorage pg = new PostgreSQLBatchStorage(parameterStore);
     		pg.createCorpus("submissions");
-    		CorpusBatch batch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/dropbox/OOPReading.json");
-    		//CorpusBatch batch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/dropbox/BatchProperties.json");
+    		//CorpusBatch batch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/dropbox/OOPReading.json");
+    		CorpusBatch batch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/dropbox/BatchProperties.json");
     		batch.run();
     		pass = true;
         	S3BatchStorage storage = new S3BatchStorage(parameterStore);
