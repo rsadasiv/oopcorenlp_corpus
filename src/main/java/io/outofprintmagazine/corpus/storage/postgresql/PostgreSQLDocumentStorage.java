@@ -618,8 +618,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 		PreparedStatement tokenInsert = null;
 		PreparedStatement scoreInsert = null;
 		PreparedStatement subscoreInsert = null;
-		PreparedStatement syllableScoreInsert = null;
-		PreparedStatement syllableSubscoreInsert = null;
+		PreparedStatement scoreLabelInsert = null;
 		List<String> metadata = Arrays.asList(
 		     		"tokenIndex",
 		     		"TokensAnnotation"
@@ -653,16 +652,12 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 					+ " values (?,?,?,?,?,?,?) "
 		    		+ "ON CONFLICT DO NOTHING";
 			subscoreInsert = conn.prepareStatement(sql);
-			sql = "insert into document_sentence_token_syllable_scores"
-					+ " (document_id, sentence_id, token_id, score, score_raw, score_normalized, syllable_id)"
-					+ " values (?,?,?,?,?,?,?) "
+			sql = "insert into document_sentence_token_labels"
+					+ " (document_id, sentence_id, token_id, score, label)"
+					+ " values (?,?,?,?,?) "
 		    		+ "ON CONFLICT DO NOTHING";
-			syllableScoreInsert = conn.prepareStatement(sql);
-			sql = "insert into document_sentence_token_syllable_subscores"
-					+ " (document_id, sentence_id, token_id, score, subscore, subscore_raw, subscore_normalized, syllable_id)"
-					+ " values (?,?,?,?,?,?,?,?) "
-		    		+ "ON CONFLICT DO NOTHING";
-			syllableSubscoreInsert = conn.prepareStatement(sql);
+			scoreLabelInsert = conn.prepareStatement(sql);
+
 			BigDecimal tokenCount = new BigDecimal(in.get("OOPWordCountAnnotation").asInt());
 			for (JsonNode sentence : in.get("sentences")) {
 				for (JsonNode token : sentence.get("tokens")) {
@@ -697,21 +692,6 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 									subscoreInsert.setBigDecimal(6, new BigDecimal(scoreObject.get(subscoreName).asText()));
 									subscoreInsert.setBigDecimal(7, new BigDecimal(scoreObject.get(subscoreName).asText()).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
 									subscoreInsert.executeUpdate();
-									//subscoreInsert.addBatch();
-									syllableSubscoreInsert.setString(1, docId);
-									syllableSubscoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
-									syllableSubscoreInsert.setInt(3, token.get("tokenIndex").asInt());
-									syllableSubscoreInsert.setString(4, scoreName);
-									syllableSubscoreInsert.setString(5, subscoreName);
-									syllableSubscoreInsert.setBigDecimal(6, new BigDecimal(scoreObject.get(subscoreName).asText()));
-									syllableSubscoreInsert.setBigDecimal(7, new BigDecimal(scoreObject.get(subscoreName).asText()).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-									if (!scoreName.equals("OOPSyllablesAnnotation") && token.has("OOPSyllablesAnnotation")) {
-										for (int i=0;i<token.get("OOPSyllablesAnnotation").asInt(1);i++) {
-											syllableSubscoreInsert.setInt(8,  i);
-											syllableSubscoreInsert.executeUpdate();
-											//syllableSubscoreInsert.addBatch();
-										}
-									}
 								}
 							}
 							else {
@@ -729,23 +709,14 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 									scoreInsert.setBigDecimal(5, decimalScore);
 									scoreInsert.setBigDecimal(6, decimalScore.divide(tokenCount, 10, RoundingMode.HALF_DOWN));
 									scoreInsert.executeUpdate();
-									//scoreInsert.addBatch();
-									syllableScoreInsert.setString(1, docId);
-									syllableScoreInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
-									syllableScoreInsert.setInt(3, token.get("tokenIndex").asInt());
-									syllableScoreInsert.setString(4, scoreName);
-									syllableScoreInsert.setBigDecimal(5, new BigDecimal(scoreObject.asText()));
-									syllableScoreInsert.setBigDecimal(6, new BigDecimal(scoreObject.asText()).divide(tokenCount, 10, RoundingMode.HALF_DOWN));
-									if (!scoreName.equals("OOPSyllablesAnnotation") && token.has("OOPSyllablesAnnotation")) {
-										for (int i=0;i<token.get("OOPSyllablesAnnotation").asInt(1);i++) {
-											syllableScoreInsert.setInt(7,  i);
-											syllableScoreInsert.executeUpdate();
-											//syllableSubscoreInsert.addBatch();
-										}
-									}
 								}
 								catch (NumberFormatException nfe) {
-									getLogger().debug("NFE: " + scoreName);
+									scoreLabelInsert.setString(1, docId);
+									scoreLabelInsert.setInt(2, sentence.get("SentenceIndexAnnotation").asInt());
+									scoreLabelInsert.setInt(3, token.get("tokenIndex").asInt());
+									scoreLabelInsert.setString(4, scoreName);
+									scoreLabelInsert.setString(5, scoreObject.asText());
+									scoreLabelInsert.executeUpdate();
 								}
 							}
 						}
@@ -766,8 +737,7 @@ public class PostgreSQLDocumentStorage implements DocumentStorage {
 	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(tokenInsert);
 	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(scoreInsert);
 	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(subscoreInsert);
-	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(syllableScoreInsert);
-	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(syllableSubscoreInsert);
+	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(scoreLabelInsert);
 	    	PostgreSQLUtils.getInstance(getParameterStore()).closeFinally(conn);
 	    }
 	}

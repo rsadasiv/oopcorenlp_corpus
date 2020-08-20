@@ -155,40 +155,51 @@ public class FileScratchStorage implements ScratchStorage {
 	/* (non-Javadoc)
 	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#storeScratchFile(java.lang.String, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.node.ObjectNode, java.lang.String)
 	 */
-	//TODO try/finally
 	@Override
 	public String storeScratchFileString(String corpus, String scratchFilePath, String in) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus, scratchFilePath));
-        FileOutputStream fout = new FileOutputStream(f);
-        fout.write(in.getBytes());
-        fout.flush();
-        fout.close();
+        FileOutputStream fout = null;
+        try {
+        	fout = new FileOutputStream(f);
+	        fout.write(in.getBytes("utf-8"));
+	        fout.flush();
+
+        }
+        finally {
+        	if (fout != null) {
+    	        fout.close();
+        	}
+        }
         return scratchFilePath;
 	}
 	
 	/* (non-Javadoc)
 	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#storeScratchFileStream(java.lang.String, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.node.ObjectNode, java.io.InputStream)
 	 */
-	//TODO try/finally
 	@Override
 	public String storeScratchFileStream(String corpus, String scratchFilePath, InputStream in) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus,  scratchFilePath));
-        FileOutputStream fout = new FileOutputStream(f);
-        IOUtils.copy(in,fout);
-        in.close();
-        fout.flush();
-        fout.close();
+        FileOutputStream fout = null;
+        try {
+        	fout = new FileOutputStream(f);
+	        IOUtils.copy(in,fout);
+	        fout.flush();
+        }
+        finally {
+        	in.close();
+        	if (fout != null) {
+    	        fout.close();
+        	}
+        }
         return scratchFilePath;
 
 	}
 	
-	//TODO try/finally
 	@Override
 	public String storeScratchFileObject(String corpus, String scratchFilePath, ObjectNode in) throws Exception {
 		return storeJsonFile(corpus, scratchFilePath, in);
 	}
 	
-
 	public String storeJsonFile(String corpus, String scratchFilePath, ObjectNode in) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus, scratchFilePath));
         getMapper().writeValue(f, in);
@@ -201,14 +212,22 @@ public class FileScratchStorage implements ScratchStorage {
 	
 	public String storeJsonFileStream(String corpus, String scratchFileName, InputStream in) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus, scratchFileName));
-        FileOutputStream fout = new FileOutputStream(f);
-        IOUtils.copy(in,fout);
-        in.close();
-        fout.flush();
-        fout.close();
+        FileOutputStream fout = null;
+        try {
+        	fout = new FileOutputStream(f);
+	        IOUtils.copy(in,fout);
+	        fout.flush();
+        }
+        finally {
+	        in.close();
+	        if (fout != null) {
+		        fout.close();
+	        }
+        }
         return scratchFileName;
 	}
 	
+	//TODO - close stream
 	/* (non-Javadoc)
 	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#getScratchFileStream(java.lang.String, java.lang.String, java.lang.String)
 	 */
@@ -229,12 +248,6 @@ public class FileScratchStorage implements ScratchStorage {
 	    		"utf-8"
 	    );
 	}
-	
-	@Override
-	public ObjectNode getScratchFileProperties(String corpus, String scratchFileName) throws Exception {
-		return null;
-	}
-
 
 	@Override
 	public String getFileNameFromPath(String scratchFilePath) {
@@ -248,7 +261,7 @@ public class FileScratchStorage implements ScratchStorage {
 		if (idx < 1) {
 			idx = scratchFileName.length();
 		}   
-		return scratchFileName.substring(0, idx-1);
+		return scratchFileName.substring(0, idx);
 	}
 
 

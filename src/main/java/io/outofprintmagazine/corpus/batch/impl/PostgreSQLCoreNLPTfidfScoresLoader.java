@@ -37,8 +37,8 @@ public class PostgreSQLCoreNLPTfidfScoresLoader extends ThreadedCorpusBatchStepT
 		super();
 	}
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 

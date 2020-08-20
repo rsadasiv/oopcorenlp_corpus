@@ -27,17 +27,17 @@ import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 
 public class GenerateDocID extends CorpusBatchStep {
 
-	public GenerateDocID() {
-		super();
-	}
-
 	private static final Logger logger = LogManager.getLogger(GenerateDocID.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 
+	public GenerateDocID() {
+		super();
+	}
+	
 	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
 		ArrayNode retval = getMapper().createArrayNode();

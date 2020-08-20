@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="oopcorenlp_corpus">
+	<body>
+	    <menu name="Overview">
+	      <item name="Audience" href="audience.html" collapse="true" />   
+	      <item name="Developers" href="developers.html" collapse="true">
+	      	<item name="Overview" href="developers-overview.html" />
+	      	<item name="Dependencies" href="developers-dependencies.html" />
+	      	<item name="Compliation" href="developers-compilation.html" />
+	      	<item name="Testing" href="developers-testing.html" />
+	      	<item name="Packaging" href="developers-packaging.html" />
+	      	<item name="Project Documentation" href="developers-documentation.html" />      	
+	      </item>      	    	
+	    </menu>		
+		<menu ref="reports" />
+	</body>
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+		<version>1.9</version>
+	</skin>
+	<custom>
+	    <fluidoSkin>
+			<gitHub>
+				<projectId>rsadasiv/oopcorenlp_corpus</projectId>
+				<ribbonOrientation>right</ribbonOrientation>
+				<ribbonColor>black</ribbonColor>
+			</gitHub>
+			<twitter>
+	        	<user>CheerfullySynt1</user>
+	        	<showUser>true</showUser>
+	        	<showFollowers>false</showFollowers>
+	      	</twitter>
+      		<!-- a href="https://twitter.com/CheerfullySynt1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @CheerfullySynt1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+      	
+	    </fluidoSkin>
+	</custom>
+</project>

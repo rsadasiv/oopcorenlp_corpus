@@ -1,50 +1,146 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>io.outofprintmagazine</groupId>
-	<artifactId>corpus</artifactId>
-	<version>0.9.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<artifactId>oopcorenlp_corpus</artifactId>
+	<version>1.0</version>
+	<name>OOP Corpus</name>
+	<description>Build corpora for OOP Core NLP analysis and indexing</description>
+	<url>https://beta.outofprintmagazine.io</url>
 
-	<name>corpus</name>
-	<url>http://maven.apache.org</url>
-
+	<licenses>
+		<license>
+			<name>GPL-3.0-or-later</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
+		</license>
+	</licenses>
+	<organization>
+	    <name>Out Of Print Magazine</name>
+	    <url>http://beta.outofprintmagazine.io</url>
+	</organization>
+	<developers>
+		<developer>
+      		<id>rsadasiv</id>
+      		<name>Ram Sadasiv</name>
+      		<email>io.outofprintmagazine@gmail.com</email>
+		</developer>
+	</developers>
+	<scm>
+		<url>https://github.com/rsadasiv/oopcorenlp_corpus.git</url>
+	</scm>
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/rsadasiv/oopcorenlp_corpus.git/</url>
+	</issueManagement>
+	
 	<properties>
+		<oopcorenlp.version>1.0</oopcorenlp.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.jupiter.version>5.6.0</junit.jupiter.version>
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<java.release.version>11</java.release.version>
+		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+		<maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
+		<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+		<jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
+		<junit.jupiter.version>5.6.2</junit.jupiter.version>
+				
+		<maven-site-plugin.version>3.9.1</maven-site-plugin.version>
+		<maven-fluido-skin.version>1.9</maven-fluido-skin.version>
+		<maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>		
+		<doxia-site-renderer.version>1.9.2</doxia-site-renderer.version>
+		<doxiaVersion>1.9.1</doxiaVersion>
+    	<doxiaSitetoolsVersion>1.9.2</doxiaSitetoolsVersion>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-1.2-api -->
+		<log4j.version>2.13.3</log4j.version>
+		
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<slf4j-api.version>1.7.30</slf4j-api.version>
+		
+		<!-- https://mvnrepository.com/artifact/edu.stanford.nlp/stanford-corenlp -->
+		<stanford-corenlp.version>4.0.0</stanford-corenlp.version>
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-properties -->
+		<jackson.version>2.11.0</jackson.version>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<httpclient.version>4.5.12</httpclient.version>
+		
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<jsoup.version>1.13.1</jsoup.version>	
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
+		<commons-text.version>1.8</commons-text.version>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<commons-lang3.version>3.9</commons-lang3.version>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<commons-io.version>2.6</commons-io.version>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+		<commons-dbcp2.version>2.7.0</commons-dbcp2.version>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+		<commons-pool2.version>2.8.0</commons-pool2.version>
+
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
+		<aws-java-sdk.version>1.11.710</aws-java-sdk.version>
+
+		<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+		<mongo-java-driver.version>3.12.1</mongo-java-driver.version>
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<postgresql.version>42.2.9</postgresql.version>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tika/tika-parsers -->
+		<tika-parsers.version>1.24.1</tika-parsers.version>
+
+		<!-- https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core -->
+	    <twitter4j-core.version>4.0.7</twitter4j-core.version>
+
+		<!-- https://mvnrepository.com/artifact/com.dropbox.core/dropbox-core-sdk -->
+		<dropbox-core-sdk.version>3.1.5</dropbox-core-sdk.version>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
+		<pdfbox.version>2.0.19</pdfbox.version>
+
+		
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.12.0</version>
+			<version>${log4j.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>2.12.0</version>
+			<version>${log4j.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-1.2-api -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-1.2-api</artifactId>
-			<version>2.12.0</version>
+			<version>${log4j.version}</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.30</version>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>${slf4j-api.version}</version>
 		</dependency>
-
-
+		
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
@@ -52,115 +148,101 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.univocity/univocity-parsers -->
 		<dependency>
-			<groupId>com.univocity</groupId>
-			<artifactId>univocity-parsers</artifactId>
-			<version>2.8.2</version>
+		    <groupId>org.jacoco</groupId>
+		    <artifactId>jacoco-maven-plugin</artifactId>
+		    <version>${jacoco-maven-plugin.version}</version>
+		    <scope>test</scope>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.10.3</version>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.10.3</version>
+			<version>${jackson.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-properties -->
 		<dependency>
 		    <groupId>com.fasterxml.jackson.dataformat</groupId>
 		    <artifactId>jackson-dataformat-properties</artifactId>
-		    <version>2.10.3</version>
+		    <version>${jackson.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
-			<version>1.11.710</version>
+			<version>${aws-java-sdk.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
-			<version>3.12.1</version>
+			<version>${mongo-java-driver.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.9</version>
+			<version>${postgresql.version}</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-dbcp2</artifactId>
-		    <version>2.7.0</version>
+		    <version>${commons-dbcp2.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-pool2</artifactId>
-		    <version>2.8.0</version>
+		    <version>${commons-pool2.version}</version>
 		</dependency>
 		
-		
-
-
-		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.11</version>
+			<version>${httpclient.version}</version>
 		</dependency>
 		
 		<dependency>
 		  <groupId>org.apache.httpcomponents</groupId>
 		  <artifactId>httpclient-cache</artifactId>
-		  <version>4.5.11</version>
+		  <version>${httpclient.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.tika</groupId>
 			<artifactId>tika-parsers</artifactId>
-			<version>1.22</version>
+			<version>${tika-parsers.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.12.1</version>
+			<version>${jsoup.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-text</artifactId>
-			<version>1.8</version>
+			<version>${commons-text.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.9</version>
+			<version>${commons-lang3.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.6</version>
+			<version>${commons-io.version}</version>
 		</dependency>
 
 
@@ -193,33 +275,31 @@
 		<dependency>
 			<groupId>edu.stanford.nlp</groupId>
 			<artifactId>stanford-corenlp</artifactId>
-			<version>4.0.0</version>
+			<version>${stanford-corenlp.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core -->
 		<dependency>
 		    <groupId>org.twitter4j</groupId>
 		    <artifactId>twitter4j-core</artifactId>
-		    <version>4.0.7</version>
+		    <version>${twitter4j-core.version}</version>
 		</dependency>
 
 		<dependency>
 		    <groupId>com.dropbox.core</groupId>
 		    <artifactId>dropbox-core-sdk</artifactId>
-		    <version>3.1.3</version>
+		    <version>${dropbox-core-sdk.version}</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
 		<dependency>
 		    <groupId>org.apache.pdfbox</groupId>
 		    <artifactId>pdfbox</artifactId>
-		    <version>2.0.19</version>
+		    <version>${pdfbox.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.outofprintmagazine</groupId>
 			<artifactId>oopcorenlp</artifactId>
-			<version>0.9.1-SNAPSHOT</version>
+			<version>${oopcorenlp.version}</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
@@ -236,6 +316,51 @@
 		    <version>8.1.1</version>
 		</dependency>
 
+	    <!-- Doxia -->
+	    <dependency>
+	      <groupId>org.apache.maven.doxia</groupId>
+	      <artifactId>doxia-sink-api</artifactId>
+	      <version>${doxiaVersion}</version>
+	      <scope>test</scope>
+	    </dependency>
+	
+	    <dependency>
+	      <groupId>org.apache.maven.doxia</groupId>
+	      <artifactId>doxia-core</artifactId>
+	      <version>${doxiaVersion}</version>
+	      <scope>test</scope>
+	    </dependency>
+	    
+	    <dependency>
+	      <groupId>org.apache.maven.doxia</groupId>
+	      <artifactId>doxia-module-xhtml</artifactId>
+	      <version>${doxiaVersion}</version>
+	      <scope>test</scope>
+	    </dependency>
+
+	
+	    <!-- Doxia Sitetools -->
+	    <dependency>
+	      <groupId>org.apache.maven.doxia</groupId>
+	      <artifactId>doxia-decoration-model</artifactId>
+	      <version>${doxiaSitetoolsVersion}</version>
+	      <scope>test</scope>
+	    </dependency>
+	
+	    <dependency>
+	      <groupId>org.apache.maven.doxia</groupId>
+	      <artifactId>doxia-site-renderer</artifactId>
+	      <version>${doxiaSitetoolsVersion}</version>
+	      <scope>test</scope>
+	    </dependency>
+	
+	    <dependency>
+	      <groupId>org.apache.maven.doxia</groupId>
+	      <artifactId>doxia-integration-tools</artifactId>
+	      <version>${doxiaSitetoolsVersion}</version>
+	      <scope>test</scope>
+	    </dependency>	
+
 	</dependencies>
 	
 	<build>
@@ -243,69 +368,103 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<!-- <release>${java.release.version}</release> -->
+				    <source>${java.version}</source>
+				    <target>${java.version}</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>3.0.0-M4</version>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+            		<argLine>@{argLine} -Xms8096m -Xmx10120m</argLine>
+        		</configuration>
 				<executions>
 					<execution>
 						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
+							<goal>test</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.2.3</version>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven-failsafe-plugin.version}</version>
+				<configuration>
+            		<argLine>@{argLine} -Xms8096m -Xmx10120m</argLine>
+        		</configuration>
 				<executions>
 					<execution>
-						<phase>package</phase>
 						<goals>
-							<goal>shade</goal>
+							<goal>verify</goal>
+							<goal>integration-test</goal>							
 						</goals>
-						<configuration>
-							<filters>
-								<filter>
-									<artifact>junit:junit</artifact>
-									<includes>
-										<include>junit/framework/**</include>
-										<include>org/junit/**</include>
-									</includes>
-									<excludes>
-										<exclude>org/junit/experimental/**</exclude>
-										<exclude>org/junit/runners/**</exclude>
-									</excludes>
-								</filter>
-								<filter>
-									<artifact>*:*</artifact>
-									<excludes>
-										<exclude>META-INF/*.SF</exclude>
-										<exclude>META-INF/*.DSA</exclude>
-										<exclude>META-INF/*.RSA</exclude>
-									</excludes>
-								</filter>
-							</filters>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>io.outofprintmagazine.corpus.App</mainClass>
-								</transformer>
-							</transformers>
-						</configuration>
 					</execution>
+				</executions>
+			</plugin>						
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<!-- attached to Maven test phase -->
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<!-- attached to Maven integration-test phase -->
+					<execution>
+						<id>report-integration</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>					
 				</executions>
 			</plugin>
 
+	      	<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven-jar-plugin.version}</version>
+				<configuration>
+				  <excludes>
+					<exclude>**/log4j2.xml</exclude>
+					<exclude>**/logback.xml</exclude>
+					<exclude>**/simplelogger.properties</exclude>
+				  </excludes>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${maven-site-plugin.version}</version>
+				<dependencies>
+					<dependency>
+            			<groupId>org.apache.maven.skins</groupId>
+            			<artifactId>maven-fluido-skin</artifactId>
+            			<version>${maven-fluido-skin.version}</version>
+          			</dependency>
+					<dependency>
+					    <groupId>org.apache.maven.doxia</groupId>
+					    <artifactId>doxia-site-renderer</artifactId>
+					    <version>${doxia-site-renderer.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 
 	</build>
@@ -314,17 +473,53 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>3.0.0-M4</version>
-				<reportSets>
-					<reportSet>
-						<id>integration-tests</id>
-						<reports>
-							<report>failsafe-report-only</report>
-						</reports>
-					</reportSet>
-				</reportSets>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${maven-project-info-reports-plugin.version}</version>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+		        <reportSets>
+		          <reportSet>
+		            <reports>
+						<report>javadoc-no-fork</report>
+						<report>test-javadoc-no-fork</report>
+		            </reports>
+		          </reportSet>
+		         </reportSets>				
+	      	</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+			    <reportSets>
+			        <reportSet>
+			            <reports>
+			                <report>report-only</report>
+			            </reports>			            
+			        </reportSet>
+					<reportSet>
+					      <id>integration-tests</id>
+					      <reports>
+					        <report>failsafe-report-only</report>
+					      </reports>
+					</reportSet>			        
+			    </reportSets>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-maven-plugin.version}</version>
+			    <reportSets>
+			        <reportSet>
+			            <reports>
+			                <report>report</report>
+			            </reports>
+			        </reportSet>
+			    </reportSets>
+			</plugin>			
 		</plugins>
 	</reporting>	
 </project>

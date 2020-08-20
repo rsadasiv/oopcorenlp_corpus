@@ -30,16 +30,22 @@ import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 
 public class ParseTOC extends CorpusBatchStep {
 	
-	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(ParseTOC.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 		
 	public ParseTOC() {
 		super();
+	}
+	
+	@Override
+	public ObjectNode getDefaultProperties() {
+		ObjectNode properties = getMapper().createObjectNode();
+		properties.put("selector", "p.toc");
+		return properties;
 	}
 	
 	@Override

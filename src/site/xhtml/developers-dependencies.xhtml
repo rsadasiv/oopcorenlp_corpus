@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Developer's Guide - Dependencies</title>
+	</head>
+	<body>
+		<h4>Dependencies</h4>
+		<p>oopcorenlp_corpus is direct dependency on <a href="../oopcorenlp/index.html">oopcorenlp</a>, and thus has a transitive dependency on <a href="https://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a>.</p>
+		<p>oopcorenlp_corpus also depends on a great many <a href="dependencies.html">external java libraries</a>. These dependencies are specified in pom.xml and are managed by maven.</p>
+		<p>All java dependencies are available from maven central: https://search.maven.org/. Please respect the licensing on any 3rd party libraries.</p>
+		<p>There are several important non-java dependencies, mostly related to storage and indexing. 
+		The corpus batch steps create scratch files and requires an unstructured storage engine to store these objects.
+		oopcorenlp_corpus provides two implementations of this functionality: file system and Amazon S3. If you choose the S3 storage engine you will need an AWS account and a bucket. 
+		The corpus batch itself requires a storage engine to store this state. oopcorenlp_corpus provides four implementations of this functionality: file system, Amazon S3, PostgreSQL, and MongoDB. 
+		The corpus batch steps that run after the oopcorenlp step require a structured storage engine to store the analysis data. oopcorenlp_corpus provides two implementations of this functionality: PostgreSQL and MongoDB. 
+		</p>
+		<p>For automated build scripts, visit <a href="../oopcorenlp_ci/index.html">oopcorenlp_ci</a>.</p>
+		<p>Please respect the terms of service and copyright of any third parties.</p>
+	</body>
+</html>

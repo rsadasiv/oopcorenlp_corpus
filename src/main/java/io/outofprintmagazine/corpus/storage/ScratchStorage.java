@@ -41,7 +41,5 @@ public interface ScratchStorage {
 	String getScratchFileString(String corpus, String scratchFilePath) throws Exception;
 	
 	InputStream getScratchFileStream(String corpus, String scratchFilePath) throws Exception;
-
-	ObjectNode getScratchFileProperties(String corpus, String scratchFilePath) throws Exception;
 	
 }

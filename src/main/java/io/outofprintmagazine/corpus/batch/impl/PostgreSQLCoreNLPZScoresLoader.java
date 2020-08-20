@@ -37,8 +37,8 @@ public class PostgreSQLCoreNLPZScoresLoader extends ThreadedCorpusBatchStepTask 
 		super();
 	}
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 

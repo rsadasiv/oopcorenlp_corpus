@@ -38,8 +38,8 @@ public class PostgreSQLCoreNLPLoader extends ThreadedCorpusBatchStepTask impleme
 		super();
 	}
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 

@@ -18,6 +18,7 @@ package io.outofprintmagazine.corpus.batch.impl;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.Header;
@@ -47,22 +48,19 @@ public class HttpDownload extends CorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(HttpDownload.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
-	
+
 	public HttpDownload() {
 		super();
 	}
 	
 	@Override
-	public void configure(ObjectNode properties) {
-		getData().setProperties(properties);
-	}
-	
-	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
+		int sleepBackoff = ThreadLocalRandom.current().nextInt(10000, 20000);
+		Thread.sleep(sleepBackoff);
 		ArrayNode retval = getMapper().createArrayNode();
 		ObjectNode outputStepItem = getMapper().createObjectNode();
 		ObjectReader objectReader = getMapper().readerForUpdating(outputStepItem);
@@ -125,8 +123,11 @@ public class HttpDownload extends CorpusBatchStep {
 		String responseBody = null;
         CloseableHttpClient httpclient = getHttpClient();
         try {
+        	HttpGet http = new HttpGet(url);
+            http.setHeader("user-agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1");
+            http.setHeader("accept-language", "en-US;q=0.9,en;q=0.8");
             responseBody = httpclient.execute(
-            		new HttpGet(url),
+            		http, 
             		new PropertiesResponseHandler(properties)
             );
         }

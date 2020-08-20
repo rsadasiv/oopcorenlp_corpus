@@ -1,11 +1,20 @@
 package io.outofprintmagazine.corpus.batch;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public abstract class ThreadedCorpusBatchStepTask extends CorpusBatchStep implements CorpusBatchStepTask {
+	
+	@SuppressWarnings("unused")
+	private static final Logger logger = LogManager.getLogger(ThreadedCorpusBatchStepTask.class);
+
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
+		return logger;
+	}
 	
 	protected ObjectNode input = null;
 	protected ArrayNode output = null;

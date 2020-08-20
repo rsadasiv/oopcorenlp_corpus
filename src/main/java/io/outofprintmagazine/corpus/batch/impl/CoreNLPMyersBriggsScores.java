@@ -32,8 +32,8 @@ public class CoreNLPMyersBriggsScores extends CorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(CoreNLPMyersBriggsScores.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 	
@@ -93,11 +93,4 @@ public class CoreNLPMyersBriggsScores extends CorpusBatchStep {
 			}
 		}
 	}
-	
-	
-	@Override
-	public void configure(ObjectNode properties) {
-		getData().setProperties(properties);
-	}
-
 }

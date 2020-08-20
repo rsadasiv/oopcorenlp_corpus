@@ -32,8 +32,8 @@ public class CoreNLPTfidfScores extends CorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(CoreNLPTfidfScores.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 	
@@ -99,11 +99,4 @@ public class CoreNLPTfidfScores extends CorpusBatchStep {
 			}
 		}
 	}
-	
-	
-	@Override
-	public void configure(ObjectNode properties) {
-		getData().setProperties(properties);
-	}
-
 }

@@ -20,8 +20,8 @@ public class ThreadedCorpusBatchStep extends CorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(ThreadedCorpusBatchStep.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 

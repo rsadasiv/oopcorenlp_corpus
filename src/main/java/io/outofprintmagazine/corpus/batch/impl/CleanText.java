@@ -36,8 +36,8 @@ public class CleanText extends CorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(CleanText.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 	
@@ -88,12 +88,6 @@ public class CleanText extends CorpusBatchStep {
 		retval.add(outputStepItem);
 		return retval;
 	}
-	
-	@Override
-	public void configure(ObjectNode properties) {
-		getData().setProperties(properties);
-	}
-	
 
 	private String processPlainUnicode(String input) throws IOException {
 		StringBuffer output = new StringBuffer();

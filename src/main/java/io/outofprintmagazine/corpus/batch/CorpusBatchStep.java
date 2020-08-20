@@ -22,11 +22,14 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.UUID;
 
 import javax.activation.MimetypesFileTypeMap;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.tika.mime.MimeType;
 import org.apache.tika.mime.MimeTypeException;
@@ -46,12 +49,18 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.outofprintmagazine.corpus.batch.db.CorpusBatchStepModel;
 import io.outofprintmagazine.corpus.storage.ScratchStorage;
 import io.outofprintmagazine.corpus.storage.s3.S3ScratchStorage;
-import io.outofprintmagazine.corpus.util.ParameterStorePropertiesFile;
 import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.util.ParameterStorePropertiesFile;
 
 public abstract class CorpusBatchStep {
 	
-	protected abstract Logger getLogger();
+	@SuppressWarnings("unused")
+	private static final Logger logger = LogManager.getLogger(CorpusBatchStep.class);
+
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
+		return logger;
+	}
 	
 	protected List<String> dictionaryPOS = Arrays.asList(
 			"CC",
@@ -134,6 +143,26 @@ public abstract class CorpusBatchStep {
 
 	public void setData(CorpusBatchStepModel data) {
 		this.data = data;
+		if (data.getProperties() != null) {
+			this.data.setProperties(data.getProperties().deepCopy());
+		}
+		else {
+			this.data.setProperties(getMapper().createObjectNode());
+		}
+		ObjectNode defaultProperties = getDefaultProperties();
+		if (defaultProperties != null) {
+			Iterator<Entry<String,JsonNode>> defaultPropsIter = defaultProperties.fields();
+			while (defaultPropsIter.hasNext()) {
+				Entry<String,JsonNode> defaultProp = defaultPropsIter.next();
+				if (!this.data.getProperties().hasNonNull(defaultProp.getKey())) {
+					this.data.getProperties().set(defaultProp.getKey(), defaultProp.getValue());
+				}
+			}
+		}
+	}
+	
+	public ObjectNode getDefaultProperties() {
+		return null;
 	}
 	
 	protected void copyInputToOutput(ObjectNode inputStepItem, ObjectNode outputStepItem) throws IOException {
@@ -205,11 +234,7 @@ public abstract class CorpusBatchStep {
 	}
 	
 	public abstract ArrayNode runOne(ObjectNode input) throws Exception;
-	
-	public void configure(ObjectNode properties) {
-		getData().setProperties(properties);
-	}
-	
+		
 //	protected String getText(Document doc) {
 //		StringBuffer buf = new StringBuffer();
 //		Elements paragraphs = doc.select(getData().getProperties().get("oop_Text").asText());

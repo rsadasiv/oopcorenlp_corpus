@@ -37,8 +37,8 @@ public class PostgreSQLCoreNLPMyersBriggsScoresLoader extends ThreadedCorpusBatc
 		super();
 	}
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 

@@ -141,6 +141,17 @@ document_id varchar(50)
 references document_sentence_tokens(document_id, sentence_id, token_id) ON DELETE CASCADE
 );
 
+create table if not exists document_sentence_token_labels (
+document_id varchar(50)
+, sentence_id numeric
+, token_id numeric
+, score varchar(50) references scores(score)
+, label varchar(500)
+, primary key (document_id, sentence_id, token_id, score)
+, foreign key (document_id, sentence_id, token_id) 
+references document_sentence_tokens(document_id, sentence_id, token_id) ON DELETE CASCADE
+);
+
 create table if not exists document_sentence_token_subscores (
 document_id varchar(50)
 , sentence_id numeric
@@ -154,32 +165,6 @@ document_id varchar(50)
 references document_sentence_tokens(document_id, sentence_id, token_id) ON DELETE CASCADE
 );
 
-create table if not exists document_sentence_token_syllable_scores (
-document_id varchar(50)
-, sentence_id numeric
-, token_id numeric
-, syllable_id numeric 
-, score varchar(50) references scores(score)
-, score_raw numeric
-, score_normalized numeric
-, primary key (document_id, sentence_id, token_id, syllable_id, score)
-, foreign key (document_id, sentence_id, token_id) 
-references document_sentence_tokens(document_id, sentence_id, token_id) ON DELETE CASCADE
-);
-
-create table if not exists document_sentence_token_syllable_subscores (
-document_id varchar(50)
-, sentence_id numeric
-, token_id numeric
-, syllable_id numeric
-, score varchar(50) references scores(score)
-, subscore varchar(500)
-, subscore_raw numeric
-, subscore_normalized numeric
-, primary key (document_id, sentence_id, token_id, syllable_id, score, subscore)
-, foreign key (document_id, sentence_id, token_id) 
-references document_sentence_tokens(document_id, sentence_id, token_id) ON DELETE CASCADE
-);
 
 create table if not exists document_aggregate_scores (
 document_id varchar(50)

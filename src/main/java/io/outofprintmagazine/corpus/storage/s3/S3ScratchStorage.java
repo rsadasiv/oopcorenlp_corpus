@@ -301,11 +301,6 @@ public class S3ScratchStorage implements ScratchStorage {
 			);
 		}
 	}
-	
-	@Override
-	public ObjectNode getScratchFileProperties(String corpus,  String scratchFileName) throws Exception {
-		return null;
-	}
 
 	@Override
 	public String getFileNameFromPath(String scratchFilePath) {

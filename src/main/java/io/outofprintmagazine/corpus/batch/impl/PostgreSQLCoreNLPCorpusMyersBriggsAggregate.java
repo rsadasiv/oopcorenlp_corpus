@@ -30,8 +30,8 @@ public class PostgreSQLCoreNLPCorpusMyersBriggsAggregate extends CorpusBatchStep
 	
 	private static final Logger logger = LogManager.getLogger(PostgreSQLCoreNLPCorpusMyersBriggsAggregate.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 	
@@ -64,10 +64,4 @@ public class PostgreSQLCoreNLPCorpusMyersBriggsAggregate extends CorpusBatchStep
 		retval.add(outputStepItem);
 		return retval;
 	}
-		
-	@Override
-	public void configure(ObjectNode properties) {
-		getData().setProperties(properties);
-	}
-
 }

@@ -34,16 +34,22 @@ import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 
 public class ParseStory extends CorpusBatchStep {
 	
-	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(ParseStory.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 		
 	public ParseStory() {
 		super();
+	}
+	
+	@Override
+	public ObjectNode getDefaultProperties() {
+		ObjectNode properties = getMapper().createObjectNode();
+		properties.put("selector", "p");
+		return properties;
 	}
 	
 	@Override
@@ -70,9 +76,9 @@ public class ParseStory extends CorpusBatchStep {
 				try {
 					setStorageLink(
 							getStorage().storeScratchFileString(
-								inputStepItem.get("corpusId").asText(), 
+								getData().getCorpusId(), 
 								getOutputScratchFilePath(
-										inputStepItem.get("stagingLinkStorage").get("objectName").asText() + "_" + inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
+										inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
 										"txt"
 								),
 								buf.toString().trim()
@@ -83,10 +89,10 @@ public class ParseStory extends CorpusBatchStep {
 				catch (IOException ioe) {
 					setStorageLink(
 							getStorage().storeScratchFileString(
-								inputStepItem.get("corpusId").asText(), 
+								getData().getCorpusId(), 
 								getOutputScratchFilePath(
 										DigestUtils.md5Hex(
-												inputStepItem.get("stagingLinkStorage").get("objectName").asText() + "_" + inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
+												inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
 										),
 										"txt"
 								),
@@ -112,7 +118,7 @@ public class ParseStory extends CorpusBatchStep {
 						getStorage().storeScratchFileString(
 							inputStepItem.get("corpusId").asText(), 
 							getOutputScratchFilePath(
-									inputStepItem.get("stagingLinkStorage").get("objectName").asText() + "_" + inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
+									inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
 									"txt"
 							),
 							buf.toString().trim()
@@ -126,7 +132,7 @@ public class ParseStory extends CorpusBatchStep {
 							inputStepItem.get("corpusId").asText(), 
 							getOutputScratchFilePath(
 									DigestUtils.md5Hex(
-											inputStepItem.get("stagingLinkStorage").get("objectName").asText() + "_" + inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
+											inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
 									),
 									"txt"
 							),

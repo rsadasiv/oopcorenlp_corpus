@@ -35,8 +35,8 @@ public class CoreNLPZScores extends CorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(CoreNLPZScores.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 	
@@ -173,10 +173,4 @@ public class CoreNLPZScores extends CorpusBatchStep {
 		getLogger().debug("score: " + score,  "subscore: " + subscore + " was null");
 		return null;
 	}
-	
-	@Override
-	public void configure(ObjectNode properties) {
-		getData().setProperties(properties);
-	}
-
 }

@@ -34,11 +34,10 @@ import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 
 public class ParseBodyStory extends CorpusBatchStep {
 	
-	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(ParseBodyStory.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 		

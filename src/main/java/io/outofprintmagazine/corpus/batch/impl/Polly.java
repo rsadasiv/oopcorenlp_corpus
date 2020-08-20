@@ -38,13 +38,13 @@ import io.outofprintmagazine.corpus.storage.s3.AwsUtils;
 
 public class Polly extends CorpusBatchStep {
 
-	
-	private static final Logger logger = LogManager.getLogger(CoreNLP.class);
+	private static final Logger logger = LogManager.getLogger(Polly.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
+	
 	private AmazonPolly polly;
 	private Voice voice;
 	//private String defaultPath = "";

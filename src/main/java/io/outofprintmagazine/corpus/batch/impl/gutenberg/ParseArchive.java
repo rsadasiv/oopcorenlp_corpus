@@ -29,11 +29,10 @@ import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 
 public class ParseArchive extends CorpusBatchStep {
 	
-	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(ParseArchive.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 		

@@ -36,8 +36,8 @@ public class MongoDBCoreNLPLoader extends CorpusBatchStep {
 		super();
 	}
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 

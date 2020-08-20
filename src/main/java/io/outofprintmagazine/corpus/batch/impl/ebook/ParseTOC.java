@@ -33,12 +33,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 
 public class ParseTOC extends CorpusBatchStep {
-		
-	@SuppressWarnings("unused")
+
 	private static final Logger logger = LogManager.getLogger(ParseTOC.class);
 
-	@Override
-	protected Logger getLogger() {
+	@SuppressWarnings("unused")
+	private Logger getLogger() {
 		return logger;
 	}
 		
