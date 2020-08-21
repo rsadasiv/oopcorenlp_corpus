@@ -18,11 +18,11 @@ package io.outofprintmagazine.corpus.storage;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.util.IParameterStore;
 
-public interface DocumentStorage {
+public interface IDocumentStorage {
 	
-    void setParameterStore(ParameterStore parameterStore);
+    void setParameterStore(IParameterStore parameterStore);
 
 	void storeCoreNLP(String corpus, String stagingBatchName, String scratchFileName, ObjectNode in) throws Exception;
 	

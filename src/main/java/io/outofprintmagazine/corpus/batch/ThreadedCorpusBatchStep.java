@@ -1,4 +1,4 @@
-package io.outofprintmagazine.corpus.batch.impl;
+package io.outofprintmagazine.corpus.batch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,11 +12,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
-import io.outofprintmagazine.corpus.batch.ThreadedCorpusBatchStepTask;
 
-
-public class ThreadedCorpusBatchStep extends CorpusBatchStep {
+public class ThreadedCorpusBatchStep extends CorpusBatchStep implements ICorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(ThreadedCorpusBatchStep.class);
 
@@ -47,7 +44,7 @@ public class ThreadedCorpusBatchStep extends CorpusBatchStep {
 		taskClass = getData().getProperties().get("taskClass").asText();
 		push(input);
 		execute();
-		return pull(input);
+		return pop(input);
 	}
 
 	protected void execute() {
@@ -113,7 +110,7 @@ public class ThreadedCorpusBatchStep extends CorpusBatchStep {
 
 	}
 	
-	public ArrayNode pull(ArrayNode input) {
+	public ArrayNode pop(ArrayNode input) {
 		for (JsonNode inputItem : input) {
 			if (tasks.get((ObjectNode)inputItem) != null) {
 				try {

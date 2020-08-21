@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public abstract class ThreadedCorpusBatchStepTask extends CorpusBatchStep implements CorpusBatchStepTask {
+public abstract class ThreadedCorpusBatchStepTask extends CorpusBatchStep implements ICorpusBatchStepTask {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(ThreadedCorpusBatchStepTask.class);

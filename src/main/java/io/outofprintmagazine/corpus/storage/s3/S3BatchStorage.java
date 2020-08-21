@@ -31,10 +31,10 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.corpus.storage.BatchStorage;
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.corpus.storage.IBatchStorage;
+import io.outofprintmagazine.util.IParameterStore;
 
-public class S3BatchStorage implements BatchStorage {
+public class S3BatchStorage implements IBatchStorage {
 
 	//extends FileCorpora
 	//Path=//
@@ -53,7 +53,7 @@ public class S3BatchStorage implements BatchStorage {
 		mapper.configure(com.fasterxml.jackson.core.JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
 	}
 	
-	public S3BatchStorage(ParameterStore parameterStore) {
+	public S3BatchStorage(IParameterStore parameterStore) {
 		this();
 		this.setParameterStore(parameterStore);
 	}
@@ -70,14 +70,14 @@ public class S3BatchStorage implements BatchStorage {
 		return "Test";
 	}
 
-	private ParameterStore parameterStore;
+	private IParameterStore parameterStore;
 	
-	public ParameterStore getParameterStore() {
+	public IParameterStore getParameterStore() {
 		return parameterStore;
 	}
 	
 	@Override
-    public void setParameterStore(ParameterStore parameterStore) {
+    public void setParameterStore(IParameterStore parameterStore) {
 		this.parameterStore = parameterStore;
 	}
 

@@ -37,10 +37,10 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.corpus.storage.ScratchStorage;
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.corpus.storage.IScratchStorage;
+import io.outofprintmagazine.util.IParameterStore;
 
-public class S3ScratchStorage implements ScratchStorage {
+public class S3ScratchStorage implements IScratchStorage {
 
 	//extends FileCorpora
 	//Path=//
@@ -59,7 +59,7 @@ public class S3ScratchStorage implements ScratchStorage {
 		mapper.configure(com.fasterxml.jackson.core.JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
 	}
 	
-	public S3ScratchStorage(ParameterStore parameterStore) {
+	public S3ScratchStorage(IParameterStore parameterStore) {
 		this();
 		this.setParameterStore(parameterStore);
 	}
@@ -70,14 +70,14 @@ public class S3ScratchStorage implements ScratchStorage {
 	
 	protected ObjectMapper mapper;
 	
-	private ParameterStore parameterStore;
+	private IParameterStore parameterStore;
 	
-	public ParameterStore getParameterStore() {
+	public IParameterStore getParameterStore() {
 		return parameterStore;
 	}
 	
 	@Override
-    public void setParameterStore(ParameterStore parameterStore) {
+    public void setParameterStore(IParameterStore parameterStore) {
 		this.parameterStore = parameterStore;
 	}
 

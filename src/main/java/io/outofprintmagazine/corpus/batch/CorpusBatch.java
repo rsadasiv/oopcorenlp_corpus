@@ -28,11 +28,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import io.outofprintmagazine.corpus.batch.db.CorpusBatchModel;
-import io.outofprintmagazine.corpus.batch.db.CorpusBatchStepModel;
-import io.outofprintmagazine.corpus.storage.BatchStorage;
-import io.outofprintmagazine.corpus.storage.ScratchStorage;
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.corpus.batch.model.CorpusBatchModel;
+import io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel;
+import io.outofprintmagazine.corpus.storage.IBatchStorage;
+import io.outofprintmagazine.corpus.storage.IScratchStorage;
+import io.outofprintmagazine.util.IParameterStore;
 
 
 public class CorpusBatch {
@@ -53,45 +53,45 @@ public class CorpusBatch {
 		this.data = data;
 	}
 	
-	private ScratchStorage scratchStorage = null;
+	private IScratchStorage scratchStorage = null;
 	
-	public ScratchStorage getScratchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+	public IScratchStorage getScratchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		if (scratchStorage == null) {
-			scratchStorage = (ScratchStorage) Class.forName(getData().getScratchStorageClass()).newInstance();
+			scratchStorage = (IScratchStorage) Class.forName(getData().getScratchStorageClass()).newInstance();
 			scratchStorage.setParameterStore(getParameterStore());
 		}
 		return scratchStorage;
 	}
 	
-	public void setScratchStorage(ScratchStorage storage) {
+	public void setScratchStorage(IScratchStorage storage) {
 		this.scratchStorage = storage;
 	}
 	
-	private BatchStorage batchStorage = null;
+	private IBatchStorage batchStorage = null;
 	
-	public BatchStorage getBatchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+	public IBatchStorage getBatchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		if (batchStorage == null) {
-			batchStorage = (BatchStorage) Class.forName(getData().getBatchStorageClass()).newInstance();
+			batchStorage = (IBatchStorage) Class.forName(getData().getBatchStorageClass()).newInstance();
 			batchStorage.setParameterStore(getParameterStore());
 		}
 		return batchStorage;
 	}
 	
-	public void setBatchStorage(BatchStorage batchStorage) {
+	public void setBatchStorage(IBatchStorage batchStorage) {
 		this.batchStorage = batchStorage;
 	}
 	
-	private ParameterStore parameterStore = null;
+	private IParameterStore parameterStore = null;
 	
-	public ParameterStore getParameterStore() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException  {
+	public IParameterStore getParameterStore() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException  {
 		if (parameterStore == null) {
-			parameterStore = (ParameterStore) Class.forName(getData().getParameterStoreClass()).newInstance();
+			parameterStore = (IParameterStore) Class.forName(getData().getParameterStoreClass()).newInstance();
 			parameterStore.init(getData().getProperties());
 		}
 		return parameterStore;
 	}
 	
-	public void setBatchStorage(ParameterStore parameterStore) {
+	public void setBatchStorage(IParameterStore parameterStore) {
 		this.parameterStore = parameterStore;
 	}
 	
@@ -112,7 +112,7 @@ public class CorpusBatch {
 	}
 	
 	public static CorpusBatch buildFromStagingBatch(String corpusName, String batchName, String batchStorageClass) throws Exception {
-    	BatchStorage batchStorage = (BatchStorage) Class.forName(batchStorageClass).newInstance();
+    	IBatchStorage batchStorage = (IBatchStorage) Class.forName(batchStorageClass).newInstance();
     	CorpusBatch corpusBatch = new CorpusBatch();
     	corpusBatch.setBatchStorage(batchStorage);
     	ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
@@ -153,11 +153,11 @@ public class CorpusBatch {
 		List<CorpusBatchStepModel> sortedSteps = new ArrayList<CorpusBatchStepModel>(getData().getCorpusBatchSteps());
 		Collections.sort(sortedSteps);
 		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-		CorpusBatchStep previousBatchStep = null;
-		CorpusBatchStep currentBatchStep = null;
+		ICorpusBatchStep previousBatchStep = null;
+		ICorpusBatchStep currentBatchStep = null;
     	for (CorpusBatchStepModel corpusBatchStepModel : sortedSteps) {
     		previousBatchStep = currentBatchStep;
-    		currentBatchStep = (CorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).newInstance();
+    		currentBatchStep = (ICorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).newInstance();
     		currentBatchStep.setData(corpusBatchStepModel);
     		currentBatchStep.setStorage(getScratchStorage());
     		currentBatchStep.setParameterStore(getParameterStore());
@@ -179,11 +179,11 @@ public class CorpusBatch {
 		List<CorpusBatchStepModel> sortedSteps = new ArrayList<CorpusBatchStepModel>(getData().getCorpusBatchSteps());
 		Collections.sort(sortedSteps);
 		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-		CorpusBatchStep previousBatchStep = null;
-		CorpusBatchStep currentBatchStep = null;
+		ICorpusBatchStep previousBatchStep = null;
+		ICorpusBatchStep currentBatchStep = null;
     	for (CorpusBatchStepModel corpusBatchStepModel : sortedSteps) {
     		previousBatchStep = currentBatchStep;
-    		currentBatchStep = (CorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).newInstance();
+    		currentBatchStep = (ICorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).newInstance();
     		currentBatchStep.setData(corpusBatchStepModel);
     		if (corpusBatchStepModel.getCorpusBatchStepId().equals(stepId)) {
 	    		if (previousBatchStep != null) {

@@ -20,11 +20,11 @@ import java.io.InputStream;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.util.IParameterStore;
 
-public interface ScratchStorage {
+public interface IScratchStorage {
 	
-    void setParameterStore(ParameterStore parameterStore);
+    void setParameterStore(IParameterStore parameterStore);
 
 	String getFileNameFromPath(String scratchFilePath);
 	

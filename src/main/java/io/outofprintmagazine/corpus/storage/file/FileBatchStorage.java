@@ -27,11 +27,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.corpus.storage.BatchStorage;
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.corpus.storage.IBatchStorage;
+import io.outofprintmagazine.util.IParameterStore;
 
 
-public class FileBatchStorage implements BatchStorage {
+public class FileBatchStorage implements IBatchStorage {
 
 	protected ObjectMapper getMapper() {
 		return mapper; 
@@ -52,14 +52,14 @@ public class FileBatchStorage implements BatchStorage {
 
 	}
 	
-	private ParameterStore parameterStore;
+	private IParameterStore parameterStore;
 	
-	public ParameterStore getParameterStore() {
+	public IParameterStore getParameterStore() {
 		return parameterStore;
 	}
 	
 	@Override
-    public void setParameterStore(ParameterStore parameterStore) {
+    public void setParameterStore(IParameterStore parameterStore) {
 		this.parameterStore = parameterStore;
 	}
 

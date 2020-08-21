@@ -24,21 +24,21 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.util.IParameterStore;
 
 public class S3Utils {
 
-	private ParameterStore parameterStore;
+	private IParameterStore parameterStore;
 	
-	private S3Utils(ParameterStore parameterStore) {
+	private S3Utils(IParameterStore parameterStore) {
 		super();
 		this.parameterStore = parameterStore;
 	}
 	
-	private static Map<ParameterStore, S3Utils> instances = new HashMap<ParameterStore, S3Utils>();
+	private static Map<IParameterStore, S3Utils> instances = new HashMap<IParameterStore, S3Utils>();
 	
     
-    public static S3Utils getInstance(ParameterStore parameterStore) throws IOException { 
+    public static S3Utils getInstance(IParameterStore parameterStore) throws IOException { 
         if (instances.get(parameterStore) == null) {
         	S3Utils instance = new S3Utils(parameterStore);
             instances.put(parameterStore, instance);

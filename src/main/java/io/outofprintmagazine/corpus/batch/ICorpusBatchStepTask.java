@@ -19,18 +19,18 @@ package io.outofprintmagazine.corpus.batch;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.corpus.batch.db.CorpusBatchStepModel;
-import io.outofprintmagazine.corpus.storage.ScratchStorage;
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel;
+import io.outofprintmagazine.corpus.storage.IScratchStorage;
+import io.outofprintmagazine.util.IParameterStore;
 
-public interface CorpusBatchStepTask extends Runnable {
+public interface ICorpusBatchStepTask extends Runnable {
 	
 	public void setInput(ObjectNode outputStepItem) throws Exception;
 	public ArrayNode getOutput();
 	
 	public void setData(CorpusBatchStepModel data);
-	public void setStorage(ScratchStorage storage);
-	public void setParameterStore(ParameterStore parameterStore);
+	public void setStorage(IScratchStorage storage);
+	public void setParameterStore(IParameterStore parameterStore);
 	public CorpusBatchStepModel getData();
 
 }

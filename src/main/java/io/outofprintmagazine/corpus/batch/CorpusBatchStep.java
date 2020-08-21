@@ -46,13 +46,13 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.corpus.batch.db.CorpusBatchStepModel;
-import io.outofprintmagazine.corpus.storage.ScratchStorage;
+import io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel;
+import io.outofprintmagazine.corpus.storage.IScratchStorage;
 import io.outofprintmagazine.corpus.storage.s3.S3ScratchStorage;
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.util.IParameterStore;
 import io.outofprintmagazine.util.ParameterStorePropertiesFile;
 
-public abstract class CorpusBatchStep {
+public abstract class CorpusBatchStep implements ICorpusBatchStep {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(CorpusBatchStep.class);
@@ -105,26 +105,34 @@ public abstract class CorpusBatchStep {
 		return mapper;
 	}
 	
-	private ScratchStorage storage = null;
+	private IScratchStorage storage = null;
 	
-	private ParameterStore parameterStore = null;
+	private IParameterStore parameterStore = null;
 	
-	protected ParameterStore getParameterStore() throws IOException {
+	protected IParameterStore getParameterStore() throws IOException {
 		if (parameterStore == null) {
 			parameterStore = new ParameterStorePropertiesFile("data", "oopcorenlp.properties");
 		}
 		return parameterStore;
 	}
 	
-	public void setParameterStore(ParameterStore parameterStore) {
+	/* (non-Javadoc)
+	 * @see io.outofprintmagazine.corpus.batch.ICorpusBatchStep#setParameterStore(io.outofprintmagazine.util.IParameterStore)
+	 */
+	@Override
+	public void setParameterStore(IParameterStore parameterStore) {
 		this.parameterStore = parameterStore;
 	}
 	
-	public void setStorage(ScratchStorage storage) {
+	/* (non-Javadoc)
+	 * @see io.outofprintmagazine.corpus.batch.ICorpusBatchStep#setStorage(io.outofprintmagazine.corpus.storage.IScratchStorage)
+	 */
+	@Override
+	public void setStorage(IScratchStorage storage) {
 		this.storage = storage;
 	}
 		
-	protected ScratchStorage getStorage() throws IOException {
+	protected IScratchStorage getStorage() throws IOException {
 		if (storage == null) {
 			storage = new S3ScratchStorage();
 		}
@@ -137,10 +145,18 @@ public abstract class CorpusBatchStep {
 		return fmt;
 	}
 	
+	/* (non-Javadoc)
+	 * @see io.outofprintmagazine.corpus.batch.ICorpusBatchStep#getData()
+	 */
+	@Override
 	public CorpusBatchStepModel getData() {
 		return data;
 	}
 
+	/* (non-Javadoc)
+	 * @see io.outofprintmagazine.corpus.batch.ICorpusBatchStep#setData(io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel)
+	 */
+	@Override
 	public void setData(CorpusBatchStepModel data) {
 		this.data = data;
 		if (data.getProperties() != null) {
@@ -161,6 +177,10 @@ public abstract class CorpusBatchStep {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see io.outofprintmagazine.corpus.batch.ICorpusBatchStep#getDefaultProperties()
+	 */
+	@Override
 	public ObjectNode getDefaultProperties() {
 		return null;
 	}
@@ -187,6 +207,10 @@ public abstract class CorpusBatchStep {
 	 * return getOutput()
 	 */
 	
+	/* (non-Javadoc)
+	 * @see io.outofprintmagazine.corpus.batch.ICorpusBatchStep#run(com.fasterxml.jackson.databind.node.ArrayNode)
+	 */
+	@Override
 	public ArrayNode run(ArrayNode input) {
 		int count = 0;
 		for (JsonNode inputItem : input) {
@@ -233,6 +257,10 @@ public abstract class CorpusBatchStep {
 		return getData().getOutput();
 	}
 	
+	/* (non-Javadoc)
+	 * @see io.outofprintmagazine.corpus.batch.ICorpusBatchStep#runOne(com.fasterxml.jackson.databind.node.ObjectNode)
+	 */
+	@Override
 	public abstract ArrayNode runOne(ObjectNode input) throws Exception;
 		
 //	protected String getText(Document doc) {
@@ -453,7 +481,7 @@ public abstract class CorpusBatchStep {
 //		);
 //	}
 	
-	public String getOutputScratchFilePathFromInput(ObjectNode inputStepItem, String extension) throws Exception {
+	protected String getOutputScratchFilePathFromInput(ObjectNode inputStepItem, String extension) throws Exception {
 		String fileName = UUID.randomUUID().toString();
 		if (inputStepItem.has("esnlc_DocIDAnnotation")) {
 			fileName = inputStepItem.get("esnlc_DocIDAnnotation").asText();
@@ -473,7 +501,7 @@ public abstract class CorpusBatchStep {
 		
 	}
 	
-	public String getOutputScratchFilePath(String fileName) throws Exception {
+	protected String getOutputScratchFilePath(String fileName) throws Exception {
 		return getStorage().getScratchFilePath(
 				getData().getCorpusBatchId(),
 				getData().getCorpusBatchStepId(),
@@ -481,7 +509,7 @@ public abstract class CorpusBatchStep {
 		);
 	}
 	
-	public String getOutputScratchFilePath(String fileName, String extension) throws Exception {
+	protected String getOutputScratchFilePath(String fileName, String extension) throws Exception {
 		return getStorage().getScratchFilePath(
 				getData().getCorpusBatchId(),
 				getData().getCorpusBatchStepId(),

@@ -29,11 +29,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import io.outofprintmagazine.corpus.storage.ScratchStorage;
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.corpus.storage.IScratchStorage;
+import io.outofprintmagazine.util.IParameterStore;
 
 
-public class FileScratchStorage implements ScratchStorage {
+public class FileScratchStorage implements IScratchStorage {
 	//implements CorpusStorage {
 
 	protected ObjectMapper getMapper() {
@@ -46,14 +46,14 @@ public class FileScratchStorage implements ScratchStorage {
 	//	return "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_web\\WebContent\\Corpora\\Test";
 	//}
 	
-	private ParameterStore parameterStore;
+	private IParameterStore parameterStore;
 	
-	public ParameterStore getParameterStore() {
+	public IParameterStore getParameterStore() {
 		return parameterStore;
 	}
 	
 	@Override
-    public void setParameterStore(ParameterStore parameterStore) {
+    public void setParameterStore(IParameterStore parameterStore) {
 		this.parameterStore = parameterStore;
 	}
 	

@@ -51,6 +51,8 @@ public class ParseTOC extends CorpusBatchStep {
 		BufferedReader reader = null;
 		try {
 			List<String> tocCandidates = new ArrayList<String>();
+			//Story titles make up an entire lines in ALL CAPS or Title Case
+			//If there is a TOC, story titles will appear twice
 			Map<String, Integer> lineRepetitions = new HashMap<String, Integer>();
 			reader = new BufferedReader(
 					new StringReader(
@@ -60,13 +62,8 @@ public class ParseTOC extends CorpusBatchStep {
 			String line = null;
 			while ((line = reader.readLine()) != null) {
 				line = line.trim();
-				if (line.length() > 1 && !line.contains(".") && !line.matches("^['\"\\u201C\\u201D\\u201E\\u201F\\u2033\\u2036].*")) {
-					if (
-							(getData().getProperties().get("upperCase") == null || line.toUpperCase().equals(line)) &&
-							(getData().getProperties().get("titleCase") == null || StringUtils.capitalize(line).equals(line))
-					)
-					{
-						
+				if (line.length() > 1 && !line.contains(".") && !line.matches("^.*\\p{Punct}$") && !line.matches("^['\"\\u201C\\u201D\\u201E\\u201F\\u2033\\u2036].*")) {
+					if (line.toUpperCase().equals(line) || StringUtils.capitalize(line).equals(line)) {
 						Integer lineRepetitionCount = lineRepetitions.get(line);
 						if (lineRepetitionCount == null) {
 							lineRepetitions.put(line, new Integer(1));
@@ -85,6 +82,38 @@ public class ParseTOC extends CorpusBatchStep {
 					}
 				}
 			}
+			reader.close();
+
+			//If there is no TOC, story titles will appear once
+			if (tocCandidates.size() < 2) {
+				tocCandidates.clear();
+				lineRepetitions = new HashMap<String, Integer>();
+				reader = new BufferedReader(
+						new StringReader(
+								getTextDocumentFromStorage(inputStepItem)
+						)
+				);
+				line = null;
+				while ((line = reader.readLine()) != null) {
+					line = line.trim();
+					if (line.length() > 1 && !line.contains(".") && !line.matches("^.*\\p{Punct}$") && !line.matches("^['\"\\u201C\\u201D\\u201E\\u201F\\u2033\\u2036].*")) {
+						if (line.toUpperCase().equals(line) || StringUtils.capitalize(line).equals(line)) {
+							Integer lineRepetitionCount = lineRepetitions.get(line);
+							if (lineRepetitionCount == null) {
+								lineRepetitions.put(line, new Integer(1));
+								tocCandidates.add(line);
+							}
+							else if (lineRepetitionCount.intValue() == 1) {
+								lineRepetitions.put(line, new Integer(lineRepetitionCount.intValue()+1));
+								tocCandidates.remove(line);
+							}
+						}
+					}
+				}
+			}
+
+			
+			
 			String tocCandidate = null;
 			for (String toc : tocCandidates) {
 				if (tocCandidate != null) {

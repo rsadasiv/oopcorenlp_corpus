@@ -28,7 +28,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 
-import io.outofprintmagazine.util.ParameterStore;
+import io.outofprintmagazine.util.IParameterStore;
 
 
 public class AwsUtils {
@@ -37,13 +37,13 @@ public class AwsUtils {
 	private static final Logger logger = LogManager.getLogger(AwsUtils.class);
 	private Properties props;
 
-	private AwsUtils(ParameterStore parameterStore) throws IOException {
+	private AwsUtils(IParameterStore parameterStore) throws IOException {
 		super();
 		//InputStream input = new FileInputStream("data/aws.properties");
         //props = new Properties();
         //props.load(input);
         //input.close();
-		//props = ParameterStore.getInstance().getProperties("data", "aws.properties");
+		//props = IParameterStore.getInstance().getProperties("data", "aws.properties");
 		props = new Properties();
 		//TODO - NPE?
 		props.setProperty("access_key_id", parameterStore.getProperty("aws_access_key_id"));
@@ -51,9 +51,9 @@ public class AwsUtils {
 		
 	}
 	
-	private static Map<ParameterStore, AwsUtils> instances = new HashMap<ParameterStore, AwsUtils>();
+	private static Map<IParameterStore, AwsUtils> instances = new HashMap<IParameterStore, AwsUtils>();
 	
-    public static AwsUtils getInstance(ParameterStore parameterStore) throws IOException { 
+    public static AwsUtils getInstance(IParameterStore parameterStore) throws IOException { 
         if (instances.get(parameterStore) == null) {
         	AwsUtils instance = new AwsUtils(parameterStore);
             instances.put(parameterStore, instance);

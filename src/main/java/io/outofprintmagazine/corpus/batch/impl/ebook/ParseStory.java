@@ -19,6 +19,8 @@ package io.outofprintmagazine.corpus.batch.impl.ebook;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.LogManager;
@@ -52,10 +54,31 @@ public class ParseStory extends CorpusBatchStep {
 						getTextDocumentFromStorage(inputStepItem)
 				)
 			);
-			boolean seenToc = false;
-			boolean inStory = false;
+			//If there is a TOC, story titles will appear twice
+			//If there is no TOC, start reading as soon as you encounter the title
+
+			List<String> tocCandidates = new ArrayList<String>();
 			StringBuffer buf = new StringBuffer();
 			String line = null;
+			while ((line = reader.readLine()) != null) {
+				line = line.trim();
+				if (line.equals(inputStepItem.get("esnlc_DocTitleAnnotation").asText())) {
+					tocCandidates.add(line);
+				}
+			}
+			
+			boolean seenToc = (tocCandidates.size() == 1);
+			
+			reader.close();
+			reader = new BufferedReader(
+				new StringReader(
+						getTextDocumentFromStorage(inputStepItem)
+				)
+			);
+			
+			boolean inStory = false;
+			buf = new StringBuffer();
+			line = null;
 			while ((line = reader.readLine()) != null) {
 				line = line.trim();
 				if (line.equals(inputStepItem.get("esnlc_DocTitleAnnotation").asText())) {
@@ -69,9 +92,9 @@ public class ParseStory extends CorpusBatchStep {
 					try {
 						setStorageLink(
 								getStorage().storeScratchFileString(
-									inputStepItem.get("corpusId").asText(), 
+									getData().getCorpusId(), 
 									getOutputScratchFilePath(
-											inputStepItem.get("stagingLinkStorage").get("objectName").asText() + "_" + inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
+											inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
 											"txt"
 									),
 									buf.toString().trim()
@@ -82,10 +105,10 @@ public class ParseStory extends CorpusBatchStep {
 					catch (IOException ioe) {
 						setStorageLink(
 								getStorage().storeScratchFileString(
-									inputStepItem.get("corpusId").asText(), 
+									getData().getCorpusId(), 
 									getOutputScratchFilePath(
 											DigestUtils.md5Hex(
-													inputStepItem.get("stagingLinkStorage").get("objectName").asText() + "_" + inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
+													inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
 											),
 											"txt"
 									),
@@ -109,9 +132,9 @@ public class ParseStory extends CorpusBatchStep {
 				try {
 					setStorageLink(
 							getStorage().storeScratchFileString(
-								inputStepItem.get("corpusId").asText(), 
+								getData().getCorpusId(), 
 								getOutputScratchFilePath(
-										inputStepItem.get("stagingLinkStorage").get("objectName").asText() + "_" + inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
+										inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
 										"txt"
 								),
 								buf.toString().trim()
@@ -122,10 +145,10 @@ public class ParseStory extends CorpusBatchStep {
 				catch (IOException ioe) {
 					setStorageLink(
 							getStorage().storeScratchFileString(
-								inputStepItem.get("corpusId").asText(), 
+								getData().getCorpusId(), 
 								getOutputScratchFilePath(
 										DigestUtils.md5Hex(
-												inputStepItem.get("stagingLinkStorage").get("objectName").asText() + "_" + inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
+												inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
 										),
 										"txt"
 								),
