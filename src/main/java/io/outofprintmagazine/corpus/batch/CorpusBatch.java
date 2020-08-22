@@ -39,6 +39,10 @@ public class CorpusBatch {
 	
 	private static final Logger logger = LogManager.getLogger(CorpusBatch.class);
 	
+	private Logger getLogger() {
+		return logger;
+	}
+	
 	public CorpusBatch() {
 		super();
 	}
@@ -151,6 +155,7 @@ public class CorpusBatch {
 	
 	public void run() throws Exception {
 		List<CorpusBatchStepModel> sortedSteps = new ArrayList<CorpusBatchStepModel>(getData().getCorpusBatchSteps());
+		getLogger().debug(sortedSteps.size());
 		Collections.sort(sortedSteps);
 		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 		ICorpusBatchStep previousBatchStep = null;
@@ -163,8 +168,8 @@ public class CorpusBatch {
     		currentBatchStep.setParameterStore(getParameterStore());
     		currentBatchStep.getData().setCorpusId(getData().getCorpusId());
     		currentBatchStep.getData().setCorpusBatchId(getData().getCorpusBatchId());
+    		getLogger().debug(getData().getCorpusId() + " " + getData().getCorpusBatchId() + " " + currentBatchStep.getData().getCorpusBatchStepId());
     		if (previousBatchStep != null) {
-    			logger.debug(getData().getCorpusId() + " " + getData().getCorpusBatchId() + " " + currentBatchStep.getData().getCorpusBatchStepId());
     	    	currentBatchStep.run(previousBatchStep.getData().getOutput());
     		}
     		else {

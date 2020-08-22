@@ -1,0 +1,85 @@
+{
+	"corpusId" : "EBook",
+	"corpusBatchId": "Wodehouse",
+  	"scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
+  	"batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage",
+  	"parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile",
+  	"properties" : {
+  		"propertiesFilePath": "../Staging_IT",
+  		"propertiesFileName": "oopcorenlp.properties"
+  	},	
+	"corpusBatchSteps": [
+		{
+			"corpusBatchStepId": "ImportDirectory",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
+			"properties": {
+				"noCache": "true",
+				"directory": "../Staging_IT",
+				"fileSuffix": "Wodehouse.txt"
+			},
+			"input": [],
+			"output": []
+		},		
+		{
+			"corpusBatchStepId": "ParseTOC",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ebook.ParseTOC",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "FilterTOC",
+			"corpusBatchStepSequenceId": 3,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.FilterOutput",
+			"properties": {
+				"filters" : [
+					{"esnlc_DocTitleAnnotation" : "Extricating Young Gussie"},
+					{"esnlc_DocTitleAnnotation" : "Leave It to Jeeves"},
+					{"esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard"},
+					{"esnlc_DocTitleAnnotation" : "Jeeves Takes Charge"},
+					{"esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg"},
+					{"esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest"},
+					{"esnlc_DocTitleAnnotation" : "Jeeves in the Springtime"},
+					{"esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer"},
+					{"esnlc_DocTitleAnnotation" : "Scoring Off Jeeves"},
+					{"esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch"},
+					{"esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril"},
+					{"esnlc_DocTitleAnnotation" : "Comrade Bingo"},
+					{"esnlc_DocTitleAnnotation" : "The Great Sermon Handicap"},
+					{"esnlc_DocTitleAnnotation" : "The Purity of the Turf"},
+					{"esnlc_DocTitleAnnotation" : "The Metropolitan Touch"},
+					{"esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace"},
+					{"esnlc_DocTitleAnnotation" : "Bingo and the Little Woman"}
+				]
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ebook.ParseStory",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "CleanText",
+			"corpusBatchStepSequenceId": 5,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "GenerateDocID",
+			"corpusBatchStepSequenceId": 6,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
+			"properties": {},
+			"input": [],
+			"output": []
+		}
+	]
+}

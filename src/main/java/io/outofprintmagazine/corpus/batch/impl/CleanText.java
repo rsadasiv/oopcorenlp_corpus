@@ -31,8 +31,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import edu.stanford.nlp.util.StringUtils;
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 
-public class CleanText extends CorpusBatchStep {
+public class CleanText extends CorpusBatchStep implements ICorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(CleanText.class);
 

@@ -37,9 +37,10 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 import io.outofprintmagazine.corpus.storage.s3.AwsUtils;
 
-public class TomcatExport extends CorpusBatchStep {
+public class TomcatExport extends CorpusBatchStep implements ICorpusBatchStep {
 
 	private static final Logger logger = LogManager.getLogger(TomcatExport.class);
 

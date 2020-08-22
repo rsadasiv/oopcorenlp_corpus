@@ -43,8 +43,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 
-public class HttpDownload extends CorpusBatchStep {
+public class HttpDownload extends CorpusBatchStep implements ICorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(HttpDownload.class);
 
@@ -59,19 +60,20 @@ public class HttpDownload extends CorpusBatchStep {
 	
 	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
-		int sleepBackoff = ThreadLocalRandom.current().nextInt(10000, 20000);
+		int sleepBackoff = ThreadLocalRandom.current().nextInt(1000, 2000);
 		Thread.sleep(sleepBackoff);
 		ArrayNode retval = getMapper().createArrayNode();
 		ObjectNode outputStepItem = getMapper().createObjectNode();
 		ObjectReader objectReader = getMapper().readerForUpdating(outputStepItem);
 		objectReader.readValue(inputStepItem);
 		ObjectNode storageProperties = getMapper().createObjectNode();
-
-			String linkContent = httpDownload(
-					inputStepItem.get("link").asText(), 
-					storageProperties
-			);
-			
+		getLogger().info(inputStepItem.get("link").asText());
+		String linkContent = httpDownload(
+				inputStepItem.get("link").asText(), 
+				storageProperties
+		);
+		
+		if (storageProperties.has("Last-Modified")) {
 			setDate(
 					storageProperties.get("Last-Modified").asText(
 						getDateFormat().format(
@@ -80,43 +82,44 @@ public class HttpDownload extends CorpusBatchStep {
 					), 
 					outputStepItem
 			);
+		}
 
-			try {
-				setStorageLink(
+		try {
+			setStorageLink(
+				getStorage().storeScratchFileString(
+					getData().getCorpusId(),
+					getOutputScratchFilePathFromInput(
+							inputStepItem,
+							getExtensionFromMimeType(storageProperties.get("mimeType").asText("html"))
+					),
+					linkContent
+				),
+				outputStepItem
+			);
+		}
+		catch (IOException ioe) {
+			setStorageLink(
 					getStorage().storeScratchFileString(
 						getData().getCorpusId(),
-						getOutputScratchFilePathFromInput(
-								inputStepItem,
-								getExtensionFromMimeType(storageProperties.get("mimeType").asText("html"))
+						getStorage().getScratchFilePath(
+								getData().getCorpusBatchId(),
+								String.format(
+										"%s-%s",
+										getData().getCorpusBatchStepSequenceId().toString(), 
+										getData().getCorpusBatchStepId()
+								),
+								String.format("%s.%s",
+										DigestUtils.md5Hex(inputStepItem.get("link").asText()).toUpperCase(), 
+										"html"
+								)
 						),
 						linkContent
 					),
 					outputStepItem
 				);
-			}
-			catch (IOException ioe) {
-				setStorageLink(
-						getStorage().storeScratchFileString(
-							getData().getCorpusId(),
-							getStorage().getScratchFilePath(
-									getData().getCorpusBatchId(),
-									String.format(
-											"%s-%s",
-											getData().getCorpusBatchStepSequenceId().toString(), 
-											getData().getCorpusBatchStepId()
-									),
-									String.format("%s.%s",
-											DigestUtils.md5Hex(inputStepItem.get("link").asText()).toUpperCase(), 
-											"html"
-									)
-							),
-							linkContent
-						),
-						outputStepItem
-					);
-			}
-			retval.add(outputStepItem);
-			return retval;
+		}
+		retval.add(outputStepItem);
+		return retval;
 	}
 	
 	protected String httpDownload(String url, ObjectNode properties) throws IOException {

@@ -31,8 +31,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 
-public class ParseTOC extends CorpusBatchStep {
+public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
 
 	private static final Logger logger = LogManager.getLogger(ParseTOC.class);
 

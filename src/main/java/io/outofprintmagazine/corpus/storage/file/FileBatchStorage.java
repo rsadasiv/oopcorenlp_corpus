@@ -30,7 +30,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.outofprintmagazine.corpus.storage.IBatchStorage;
 import io.outofprintmagazine.util.IParameterStore;
 
-
 public class FileBatchStorage implements IBatchStorage {
 
 	protected ObjectMapper getMapper() {
@@ -38,12 +37,6 @@ public class FileBatchStorage implements IBatchStorage {
 	}
 	
 	protected ObjectMapper mapper;
-	
-	//protected String getDefaultPath() {
-	//	return "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_web\\WebContent\\Corpora\\Test";
-	//}
-	
-
 	
 	public FileBatchStorage() throws IOException {
 		super();
@@ -68,9 +61,6 @@ public class FileBatchStorage implements IBatchStorage {
 		//pass
 	}
 	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#listCorpora()
-	 */
 	@Override
 	public ObjectNode listCorpora() throws Exception {
 		ObjectNode json = getMapper().createObjectNode();
@@ -159,11 +149,7 @@ public class FileBatchStorage implements IBatchStorage {
 				+ "BatchProperties.json"
 		);
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#storeStagingBatchJson(java.lang.String, java.lang.String, com.fasterxml.jackson.databind.node.ObjectNode)
-	 */
+		
 	@Override
 	public void storeStagingBatchJson(String corpus, String stagingBatchName, ObjectNode properties) throws Exception {
 		ObjectWriter writer = getMapper().writer(new DefaultPrettyPrinter());
@@ -178,21 +164,22 @@ public class FileBatchStorage implements IBatchStorage {
 		);
 	}
 	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#storeStagingBatchString(java.lang.String, java.lang.String, java.lang.String)
-	 */
 	@Override
 	public void storeStagingBatchString(String corpus, String stagingBatchName, String batchContent) throws Exception {
         File f = new File(getCorpusStagingBatchPropertiesPath(corpus, stagingBatchName));
-        FileOutputStream fout = new FileOutputStream(f);
-        fout.write(batchContent.getBytes());
-        fout.flush();
-        fout.close();
+        FileOutputStream fout = null;
+        try {
+        	fout = new FileOutputStream(f);
+        	fout.write(batchContent.getBytes());
+        	fout.flush();
+        }
+        finally {
+        	if (fout != null) {
+        		fout.close();
+        	}
+        }
 	}
 	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#listStagingBatches(java.lang.String)
-	 */
 	@Override
 	public ObjectNode listStagingBatches(String corpus) throws Exception {
 		ObjectNode json = getMapper().createObjectNode();
@@ -205,9 +192,6 @@ public class FileBatchStorage implements IBatchStorage {
 		return json;
 	}
 	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#getStagingBatch(java.lang.String, java.lang.String)
-	 */
 	@Override
 	public ObjectNode getStagingBatch(String corpus, String stagingBatchName) throws Exception {
 		return (ObjectNode) getMapper().readTree(
@@ -220,7 +204,6 @@ public class FileBatchStorage implements IBatchStorage {
 		);
 	}
 	
-
 	public void storeStagingBatchItem(String corpus, String stagingBatchName, String stagingBatchItemName, ObjectNode properties) throws Exception {
 		ObjectWriter writer = getMapper().writer(new DefaultPrettyPrinter());
 		writer.writeValue(

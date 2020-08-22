@@ -249,7 +249,6 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 					}
 				}
 				catch (Throwable t) {
-					t.printStackTrace();
 					getLogger().error(t);
 				}
 			}

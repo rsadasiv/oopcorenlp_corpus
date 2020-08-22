@@ -30,9 +30,10 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 
 
-public class ParseStory extends CorpusBatchStep {
+public class ParseStory extends CorpusBatchStep implements ICorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(ParseStory.class);
 
@@ -78,7 +79,7 @@ public class ParseStory extends CorpusBatchStep {
 							getStorage().storeScratchFileString(
 								getData().getCorpusId(), 
 								getOutputScratchFilePath(
-										inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
+										getTitle(inputStepItem), 
 										"txt"
 								),
 								buf.toString().trim()
@@ -92,7 +93,7 @@ public class ParseStory extends CorpusBatchStep {
 								getData().getCorpusId(), 
 								getOutputScratchFilePath(
 										DigestUtils.md5Hex(
-												inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
+												getTitle(inputStepItem) 
 										),
 										"txt"
 								),
@@ -116,9 +117,9 @@ public class ParseStory extends CorpusBatchStep {
 			try {
 				setStorageLink(
 						getStorage().storeScratchFileString(
-							inputStepItem.get("corpusId").asText(), 
+							getData().getCorpusId(), 
 							getOutputScratchFilePath(
-									inputStepItem.get("esnlc_DocTitleAnnotation").asText(), 
+									getTitle(inputStepItem), 
 									"txt"
 							),
 							buf.toString().trim()
@@ -129,10 +130,10 @@ public class ParseStory extends CorpusBatchStep {
 			catch (IOException ioe) {
 				setStorageLink(
 						getStorage().storeScratchFileString(
-							inputStepItem.get("corpusId").asText(), 
+							getData().getCorpusId(), 
 							getOutputScratchFilePath(
 									DigestUtils.md5Hex(
-											inputStepItem.get("esnlc_DocTitleAnnotation").asText() 
+											getTitle(inputStepItem) 
 									),
 									"txt"
 							),

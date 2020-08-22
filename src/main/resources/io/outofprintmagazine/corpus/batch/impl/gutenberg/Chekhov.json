@@ -1,133 +1,54 @@
 {
 	"corpusId" : "Gutenberg",
 	"corpusBatchId": "Chekhov",
+  	"scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
+  	"batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage",
+  	"parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile",
+  	"properties" : {
+  		"propertiesFilePath": "../Staging_IT",
+  		"propertiesFileName": "oopcorenlp.properties"
+  	},	
 	"corpusBatchSteps": [
 		{
-			"corpusId" : "Gutenberg",
-			"corpusBatchId": "Chekhov",
-			"corpusBatchStepId": "ParseArchive",
-			"corpusBatchStepSequenceId": 0,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseArchive",
-			"properties": {
-				"ebookLink": "https://www.gutenberg.org/files/%s/%s-h/%s-h.htm",
-				"oop_DocThumbnail": "https://www.gutenberg.org/cache/epub/%s/pg%s.cover.medium.jpg",
-				"noCache": "true"
-			},
-			"input": [
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13409",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13412",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},							
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13413",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13414",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},									
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13415",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},				
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13416",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13417",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13418",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13419",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				},				
-
-				{
-					"corpusId" : "Gutenberg",
-					"corpusBatchId": "Chekhov",
-					"ebookNumber": "13505",
-					"esnlc_AuthorAnnotation": "Anton Chekhov",
-					"esnlc_DocDateAnnotation": "1888"
-				}																			
-			],
-			"output": []
-		},
-		{
-			"corpusId" : "Gutenberg",
-			"corpusBatchId": "Checkov",
-			"corpusBatchStepId": "DownloadTOC",
+			"corpusBatchStepId": "ImportDirectory",
 			"corpusBatchStepSequenceId": 1,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
+			"properties": {
+				"noCache": "true",
+				"directory": "../Staging_IT",
+				"fileSuffix": "Chekhov.html"
+			},
+			"input": [],
+			"output": []
+		},		
+		{
+			"corpusBatchStepId": "ParseTableTOC",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTableTOC",
 			"properties": {},
 			"input": [],
 			"output": []
 		},
 		{
-			"corpusId" : "Gutenberg",
-			"corpusBatchId": "Chekhov",
-			"corpusBatchStepId": "ParseTOC",
-			"corpusBatchStepSequenceId": 2,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTOC",
-			"properties": {
-				"selector": "p.toc"
-			},
-			"input": [],
-			"output": []
-		},
-		{
-			"corpusId" : "Gutenberg",
-			"corpusBatchId": "Chekhov",
-			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepId": "ParseBodyStory",
 			"corpusBatchStepSequenceId": 3,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseStory",
-			"properties": {
-				"selector": "p"
-			},
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseBodyStory",
+			"properties": {},
 			"input": [],
 			"output": []
 		},
 		{
-			"corpusId" : "Gutenberg",
-			"corpusBatchId": "Chekhov",
 			"corpusBatchStepId": "CleanText",
 			"corpusBatchStepSequenceId": 4,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "GenerateDocID",
+			"corpusBatchStepSequenceId": 5,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
 			"properties": {},
 			"input": [],
 			"output": []

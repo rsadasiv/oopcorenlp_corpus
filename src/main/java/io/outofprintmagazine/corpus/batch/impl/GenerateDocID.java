@@ -24,8 +24,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 
-public class GenerateDocID extends CorpusBatchStep {
+public class GenerateDocID extends CorpusBatchStep implements ICorpusBatchStep {
 
 	private static final Logger logger = LogManager.getLogger(GenerateDocID.class);
 

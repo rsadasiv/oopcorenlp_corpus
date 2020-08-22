@@ -29,23 +29,23 @@ import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 
 
-public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
+public class ParseTableTOC extends CorpusBatchStep implements ICorpusBatchStep {
 	
-	private static final Logger logger = LogManager.getLogger(ParseTOC.class);
+	private static final Logger logger = LogManager.getLogger(ParseTableTOC.class);
 
 	@SuppressWarnings("unused")
 	private Logger getLogger() {
 		return logger;
 	}
 		
-	public ParseTOC() {
+	public ParseTableTOC() {
 		super();
 	}
 	
 	@Override
 	public ObjectNode getDefaultProperties() {
 		ObjectNode properties = getMapper().createObjectNode();
-		properties.put("selector", "p.toc");
+		properties.put("selector", "td > a[href]");
 		return properties;
 	}
 	

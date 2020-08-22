@@ -30,9 +30,10 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 
 
-public class ParseBodyStory extends CorpusBatchStep {
+public class ParseBodyStory extends CorpusBatchStep implements ICorpusBatchStep {
 	
 	private static final Logger logger = LogManager.getLogger(ParseBodyStory.class);
 
@@ -46,7 +47,15 @@ public class ParseBodyStory extends CorpusBatchStep {
 	}
 	
 	@Override
+	public ObjectNode getDefaultProperties() {
+		ObjectNode properties = getMapper().createObjectNode();
+		properties.put("selector", "body");
+		return properties;
+	}
+	
+	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
+
 		ArrayNode retval = getMapper().createArrayNode();
 		ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
 		String rawHtml = getTextDocumentFromStorage(inputStepItem);
@@ -62,8 +71,9 @@ public class ParseBodyStory extends CorpusBatchStep {
 		).children();
 
 		for (Element paragraph : paragraphs) {
-			if (paragraph.selectFirst(getText(inputStepItem)) != null) {
+			if (paragraph.selectFirst(inputStepItem.get("oop_Text").asText()) != null) {
 				inStory = true;
+
 			}	
 			else if (inStory && inputStepItem.get("oop_TextNext").asText().length() > 0 && paragraph.selectFirst(inputStepItem.get("oop_TextNext").asText()) != null) {
 				try {
@@ -71,7 +81,7 @@ public class ParseBodyStory extends CorpusBatchStep {
 							getStorage().storeScratchFileString(
 								getData().getCorpusId(), 
 								getOutputScratchFilePath(
-										getStorageLink(inputStepItem) + "_" + getTitle(inputStepItem), 
+										getTitle(inputStepItem), 
 										"txt"
 								),
 								buf.toString().trim()
@@ -82,10 +92,10 @@ public class ParseBodyStory extends CorpusBatchStep {
 				catch (IOException ioe) {
 					setStorageLink(
 							getStorage().storeScratchFileString(
-								inputStepItem.get("corpusId").asText(), 
+								getData().getCorpusId(), 
 								getOutputScratchFilePath(
 										DigestUtils.md5Hex(
-												getStorageLink(inputStepItem) + "_" + getTitle(inputStepItem) 
+												getTitle(inputStepItem) 
 										),
 										"txt"
 								),
@@ -94,6 +104,7 @@ public class ParseBodyStory extends CorpusBatchStep {
 							outputStepItem
 					);
 				}
+
 				retval.add(outputStepItem);
 				inStory = false;
 				break;
@@ -112,9 +123,9 @@ public class ParseBodyStory extends CorpusBatchStep {
 			try {
 				setStorageLink(
 						getStorage().storeScratchFileString(
-							inputStepItem.get("corpusId").asText(), 
+							getData().getCorpusId(), 
 							getOutputScratchFilePath(
-									getStorageLink(inputStepItem) + "_" + getTitle(inputStepItem), 
+									getTitle(inputStepItem), 
 									"txt"
 							),
 							buf.toString().trim()
@@ -125,10 +136,10 @@ public class ParseBodyStory extends CorpusBatchStep {
 			catch (IOException ioe) {
 				setStorageLink(
 						getStorage().storeScratchFileString(
-							inputStepItem.get("corpusId").asText(), 
+							getData().getCorpusId(), 
 							getOutputScratchFilePath(
 									DigestUtils.md5Hex(
-											getStorageLink(inputStepItem) + "_" + getTitle(inputStepItem) 
+											getTitle(inputStepItem) 
 									),
 									"txt"
 							),

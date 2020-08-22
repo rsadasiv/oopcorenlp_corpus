@@ -32,12 +32,13 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 import io.outofprintmagazine.nlp.Analyzer;
 import io.outofprintmagazine.nlp.pipeline.OOPAnnotations.OOPThumbnailAnnotation;
 
-public class CoreNLP extends CorpusBatchStep {
+public class Analyze extends CorpusBatchStep implements ICorpusBatchStep {
 	
-	private static final Logger logger = LogManager.getLogger(CoreNLP.class);
+	private static final Logger logger = LogManager.getLogger(Analyze.class);
 
 	@SuppressWarnings("unused")
 	private Logger getLogger() {
@@ -124,7 +125,7 @@ public class CoreNLP extends CorpusBatchStep {
 	
 	private Analyzer ta = null;
 	
-	public CoreNLP() {
+	public Analyze() {
 		super();
 	}
 	

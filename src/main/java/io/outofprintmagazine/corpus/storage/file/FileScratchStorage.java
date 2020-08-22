@@ -32,19 +32,14 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.outofprintmagazine.corpus.storage.IScratchStorage;
 import io.outofprintmagazine.util.IParameterStore;
 
-
 public class FileScratchStorage implements IScratchStorage {
-	//implements CorpusStorage {
+
 
 	protected ObjectMapper getMapper() {
 		return mapper; 
 	}
 	
 	protected ObjectMapper mapper;
-	
-	//protected String getDefaultPath() {
-	//	return "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_web\\WebContent\\Corpora\\Test";
-	//}
 	
 	private IParameterStore parameterStore;
 	
@@ -151,10 +146,6 @@ public class FileScratchStorage implements IScratchStorage {
 		);
 	}
 	
-	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#storeScratchFile(java.lang.String, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.node.ObjectNode, java.lang.String)
-	 */
 	@Override
 	public String storeScratchFileString(String corpus, String scratchFilePath, String in) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus, scratchFilePath));
@@ -173,9 +164,6 @@ public class FileScratchStorage implements IScratchStorage {
         return scratchFilePath;
 	}
 	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#storeScratchFileStream(java.lang.String, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.node.ObjectNode, java.io.InputStream)
-	 */
 	@Override
 	public String storeScratchFileStream(String corpus, String scratchFilePath, InputStream in) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus,  scratchFilePath));
@@ -206,10 +194,6 @@ public class FileScratchStorage implements IScratchStorage {
         return scratchFilePath;
 	}
 	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#storeScratchFileStream(java.lang.String, java.lang.String, java.lang.String, com.fasterxml.jackson.databind.node.ObjectNode, java.io.InputStream)
-	 */
-	
 	public String storeJsonFileStream(String corpus, String scratchFileName, InputStream in) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus, scratchFileName));
         FileOutputStream fout = null;
@@ -227,10 +211,6 @@ public class FileScratchStorage implements IScratchStorage {
         return scratchFileName;
 	}
 	
-	//TODO - close stream
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#getScratchFileStream(java.lang.String, java.lang.String, java.lang.String)
-	 */
 	@Override
 	public InputStream getScratchFileStream(String corpus, String scratchFileName) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus, scratchFileName));
@@ -238,9 +218,6 @@ public class FileScratchStorage implements IScratchStorage {
         return fin;
 	}
 	
-	/* (non-Javadoc)
-	 * @see io.outofprintmagazine.corpus.storage.CorpusStorage#getScratchFileString(java.lang.String, java.lang.String, java.lang.String)
-	 */
 	@Override
 	public String getScratchFileString(String corpus, String scratchFileName) throws Exception {	
 	    return IOUtils.toString(
@@ -263,7 +240,4 @@ public class FileScratchStorage implements IScratchStorage {
 		}   
 		return scratchFileName.substring(0, idx);
 	}
-
-
-
 }

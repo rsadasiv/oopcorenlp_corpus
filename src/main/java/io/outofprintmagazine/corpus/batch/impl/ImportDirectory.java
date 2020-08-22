@@ -34,8 +34,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
+import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
 
-public class ImportDirectory extends CorpusBatchStep {
+public class ImportDirectory extends CorpusBatchStep implements ICorpusBatchStep {
 
 	private static final Logger logger = LogManager.getLogger(ImportDirectory.class);
 
@@ -62,7 +63,7 @@ public class ImportDirectory extends CorpusBatchStep {
 			try {
 		    	ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 		    	ObjectNode inputStepItem = mapper.createObjectNode();
-		    	setLink(f.getCanonicalPath(), inputStepItem);
+		    	inputStepItem.put("stagingLocation", f.getCanonicalPath());
 				File properties = new File(
 						f.getCanonicalPath()
 						+
@@ -111,18 +112,22 @@ public class ImportDirectory extends CorpusBatchStep {
 	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
 		ArrayNode retval = getMapper().createArrayNode();
-		File f = new File(getLink(inputStepItem));
+		ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
+		File f = new File(outputStepItem.get("stagingLocation").asText());
         FileInputStream fout = null;
         try {
         	fout = new FileInputStream(f);
 			setStorageLink(
 					getStorage().storeScratchFileStream(
-						getData().getCorpusId(), 
-						f.getName(),
+						getData().getCorpusId(),
+						getOutputScratchFilePath(
+								f.getName()
+						),
 						fout
 					),
-					inputStepItem
+					outputStepItem
 			);
+			retval.add(outputStepItem);
         }
         catch (Exception e) {
         	if (fout != null) {

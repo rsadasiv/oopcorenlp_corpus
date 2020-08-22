@@ -1,6 +1,6 @@
 {
-	"corpusId" : "Gutenberg",
-	"corpusBatchId": "Maupassant",
+	"corpusId" : "Wikisource",
+	"corpusBatchId": "OHenry",
   	"scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
   	"batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage",
   	"parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile",
@@ -10,36 +10,46 @@
   	},	
 	"corpusBatchSteps": [
 		{
-			"corpusBatchStepId": "ImportDirectory",
+			"corpusBatchStepId": "DownloadTOC",
 			"corpusBatchStepSequenceId": 1,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
 			"properties": {
-				"noCache": "true",
-				"directory": "../Staging_IT",
-				"fileSuffix": "Maupassant.html"
+				"noCache": "true"
 			},
-			"input": [],
+			"input": [
+				{
+					"link": "https://en.wikisource.org/wiki/The_Four_Million"
+				}				
+			],
 			"output": []
-		},		
+		},
 		{
-			"corpusBatchStepId": "ParseTableTOC",
+			"corpusBatchStepId": "ParseTOC",
 			"corpusBatchStepSequenceId": 2,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTOC",
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.wikisource.ParseTOC",
 			"properties": {},
 			"input": [],
 			"output": []
 		},
 		{
-			"corpusBatchStepId": "ParseBodyStory",
+			"corpusBatchStepId": "DownloadStory",
 			"corpusBatchStepSequenceId": 3,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseStory",
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
+			"properties": {},
+			"input": [],
+			"output": []
+		},		
+		{
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.wikisource.ParseStory",
 			"properties": {},
 			"input": [],
 			"output": []
 		},
 		{
 			"corpusBatchStepId": "CleanText",
-			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepSequenceId": 5,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
 			"properties": {},
 			"input": [],
@@ -47,7 +57,7 @@
 		},
 		{
 			"corpusBatchStepId": "GenerateDocID",
-			"corpusBatchStepSequenceId": 5,
+			"corpusBatchStepSequenceId": 6,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
 			"properties": {},
 			"input": [],
