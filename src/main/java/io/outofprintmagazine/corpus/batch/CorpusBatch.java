@@ -16,6 +16,7 @@
  ******************************************************************************/
 package io.outofprintmagazine.corpus.batch;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -123,6 +124,18 @@ public class CorpusBatch {
     	corpusBatch.setData(
     			mapper.treeToValue(
     					batchStorage.getStagingBatch(corpusName, batchName), 
+    					CorpusBatchModel.class
+    			)
+    	);
+    	return corpusBatch;
+	}
+	
+	public static CorpusBatch buildFromFile(String corpusName, String fileName) throws Exception {
+    	CorpusBatch corpusBatch = new CorpusBatch();
+    	ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+    	corpusBatch.setData(
+    			mapper.readValue(
+    					new File(fileName), 
     					CorpusBatchModel.class
     			)
     	);
