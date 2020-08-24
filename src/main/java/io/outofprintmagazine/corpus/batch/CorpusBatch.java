@@ -130,7 +130,7 @@ public class CorpusBatch {
     	return corpusBatch;
 	}
 	
-	public static CorpusBatch buildFromFile(String corpusName, String fileName) throws Exception {
+	public static CorpusBatch buildFromFile(String fileName) throws Exception {
     	CorpusBatch corpusBatch = new CorpusBatch();
     	ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     	corpusBatch.setData(
