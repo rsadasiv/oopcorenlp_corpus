@@ -60,6 +60,12 @@ public class CorpusIT {
 		return parameterStore;
 	}
 	
+	List<String> skipFieldValues = Arrays.asList(
+			"esnlc_DocDateAnnotation",
+			"stagingLinkStorage",
+			"stagingLocation"
+	);
+	
 	@BeforeAll
 	private static void init() throws Exception {
 		try {
@@ -236,13 +242,6 @@ public class CorpusIT {
 			ohenryBatchGoldSource = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/wikisource/OHenryBatch.json").getData();
 		}
 	}
-	    
-
-	
-	List<String> skipFieldValues = Arrays.asList(
-			"esnlc_DocDateAnnotation",
-			"stagingLinkStorage"
-	);
 	
 	private void testInputContents(CorpusBatchStepModel gold, CorpusBatchStepModel candidate) {
 		for (int i=0;i<gold.getInput().size() && i<candidate.getInput().size();i++) {
