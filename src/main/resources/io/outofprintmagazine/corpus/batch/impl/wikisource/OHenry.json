@@ -11,7 +11,7 @@
 	"corpusBatchSteps": [
 		{
 			"corpusBatchStepId": "DownloadTOC",
-			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepSequenceId": 0,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
 			"properties": {
 				"noCache": "true"
@@ -25,7 +25,7 @@
 		},
 		{
 			"corpusBatchStepId": "ParseTOC",
-			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepSequenceId": 1,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.wikisource.ParseTOC",
 			"properties": {},
 			"input": [],
@@ -33,7 +33,7 @@
 		},
 		{
 			"corpusBatchStepId": "DownloadStory",
-			"corpusBatchStepSequenceId": 3,
+			"corpusBatchStepSequenceId": 2,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
 			"properties": {},
 			"input": [],
@@ -41,7 +41,7 @@
 		},		
 		{
 			"corpusBatchStepId": "ParseStory",
-			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepSequenceId": 3,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.wikisource.ParseStory",
 			"properties": {},
 			"input": [],
@@ -49,7 +49,7 @@
 		},
 		{
 			"corpusBatchStepId": "CleanText",
-			"corpusBatchStepSequenceId": 5,
+			"corpusBatchStepSequenceId": 4,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
 			"properties": {},
 			"input": [],
@@ -57,7 +57,7 @@
 		},
 		{
 			"corpusBatchStepId": "GenerateDocID",
-			"corpusBatchStepSequenceId": 6,
+			"corpusBatchStepSequenceId": 5,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
 			"properties": {},
 			"input": [],

@@ -114,7 +114,7 @@ public class FileBatchStorage implements IBatchStorage {
 		return (
 				getCorpusStagingBatchItemPath(corpus, stagingBatchName, stagingBatchItemName)
 				+ System.getProperty("file.separator", "/") 
-				+ "BatchItemProperties.json"
+				+ stagingBatchItemName + "BatchItem.json"
 		);
 	}	
 	
@@ -146,7 +146,7 @@ public class FileBatchStorage implements IBatchStorage {
 		return (
 				getCorpusStagingBatchPath(corpus, stagingBatchName)
 				+ System.getProperty("file.separator", "/") 
-				+ "BatchProperties.json"
+				+ stagingBatchName + "Batch.json"
 		);
 	}
 		

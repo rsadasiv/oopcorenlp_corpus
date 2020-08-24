@@ -40,44 +40,25 @@ public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
 	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
 		ArrayNode retval = getMapper().createArrayNode();
-		Document doc = Jsoup.parse(
-				getStorage().getScratchFileStream(
-						getData().getCorpusId(),
-						getStorageLink(inputStepItem)
-				), 
-				"utf-8",
-				inputStepItem.get("link").asText()
-		);
+		Document doc = getJsoupDocumentFromStorage(inputStepItem);
 		
 		Elements links = doc.select(getData().getProperties().get("selector").asText());
 		for (Element element : links) {
-			if (element.attr("href").startsWith("/wiki")) {
+			if (
+					element.hasAttr("href")
+					&& element.attr("href").startsWith("/wiki")
+					&& !element.attr("href").startsWith("/wiki/Author")
+					&& !element.attr("href").startsWith("/wiki/Special")
+				) {
 				ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
 				setAuthor(doc, outputStepItem);
 				setDate(doc, outputStepItem);
 				outputStepItem.remove("stagingLinkStorage");
 				setLink("https://en.wikisource.org" + element.attr("href"), outputStepItem);
-				setTitle(element.ownText(), outputStepItem);
+
 				retval.add(outputStepItem);
 			}
 		}
 		return retval;
 	}
-	
-	@Override
-	protected String getAuthor(Document doc) {
-		return 
-				doc.select(
-					getData().getProperties().get("esnlc_AuthorAnnotation").asText()
-				).text();
-	}
-	
-	@Override
-	protected String getDate(Document doc) {
-		return 
-				doc.selectFirst(
-						getData().getProperties().get("esnlc_DocDateAnnotation").asText()
-				).ownText();
-	}
-
 }

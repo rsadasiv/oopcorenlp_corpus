@@ -18,7 +18,9 @@ package io.outofprintmagazine.corpus.batch;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -37,6 +39,7 @@ import org.apache.tika.mime.MimeTypes;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -46,9 +49,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import edu.stanford.nlp.util.StringUtils;
 import io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel;
 import io.outofprintmagazine.corpus.storage.IScratchStorage;
 import io.outofprintmagazine.corpus.storage.s3.S3ScratchStorage;
+import io.outofprintmagazine.nlp.utils.TextUtils;
 import io.outofprintmagazine.util.IParameterStore;
 import io.outofprintmagazine.util.ParameterStorePropertiesFile;
 
@@ -277,7 +282,7 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 		StringBuffer buf = new StringBuffer();
 		Elements paragraphs = element.select(getData().getProperties().get("oop_Text").asText());
 		for (Element paragraph : paragraphs) {
-			buf.append(paragraph.wholeText().trim());
+			buf.append(Parser.unescapeEntities(paragraph.wholeText(), false).trim());
 			buf.append('\n');
 			buf.append('\n');
 		}
@@ -290,11 +295,31 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 		).asText();
 	}
 	
+	protected String getTextWithSelector(Element element, String selector) {
+		try {
+			return
+					StringUtils.toAscii(
+							StringUtils.normalize(
+									Parser.unescapeEntities(
+											element.select(
+													selector
+											).text(),
+											true
+									).trim()
+							)
+					);
+		}
+		catch (Exception e) {
+			getLogger().error(e);
+		}
+		return "";		
+	}
+	
 	protected String getAuthor(Document doc) {
-		return 
-				doc.select(
-					getData().getProperties().get("esnlc_AuthorAnnotation").asText()
-				).attr("content");
+		return getTextWithSelector(
+				doc,
+				getData().getProperties().get("esnlc_AuthorAnnotation").asText()
+		);
 	}
 	
 	protected String getAuthor(ObjectNode outputStepItem) {
@@ -318,10 +343,10 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 	}
 	
 	protected String getTitle(Document doc) {
-		return
-				doc.select(
-						getData().getProperties().get("esnlc_DocTitleAnnotation").asText()
-				).text();
+		return getTextWithSelector(
+				doc,
+				getData().getProperties().get("esnlc_DocTitleAnnotation").asText()
+		);
 	}
 	
 	protected String getTitle(ObjectNode outputStepItem) {
@@ -342,10 +367,10 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 	}
 	
 	protected String getThumbnail(Document doc) {
-		return 
-				doc.select(
-						getData().getProperties().get("oop_DocThumbnail").asText()
-				).attr("content");
+		return getTextWithSelector(
+				doc,
+				getData().getProperties().get("oop_DocThumbnail").asText()
+		);
 	}
 	
 	protected void setThumbnail(String thumbnail, ObjectNode outputStepItem) {
@@ -361,9 +386,9 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 	
 	protected String getDate(Document doc) {
 		return 
-				doc.select(
+				doc.selectFirst(
 						getData().getProperties().get("esnlc_DocDateAnnotation").asText()
-				).attr("content");
+				).ownText();
 	}
 	
 	protected String getDate(ObjectNode outputStepItem) {
@@ -422,19 +447,37 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 //		//"Sun, 16 Feb 2020 23:17:38 GMT"
 //		storageProperties.put("Content-Type", "text/plain");
 //		storageProperties.put("mimeType", "text/plain");
-//		storageProperties.put("charset",  "UTF-8");
+//		storageProperties.put("charset",  StandardCharsets.UTF_8.name());
 //		storageProperties.put("Date", fmt.format(new Date(System.currentTimeMillis())));
 //		
 //		return storageProperties;
 //	}
 	
 	protected Document getJsoupDocumentFromStorage(ObjectNode inputStepItem) throws Exception {
+		InputStream in = null;
+		try {
+			in = getStorage().getScratchFileStream(
+					getData().getCorpusId(),
+					getStorageLink(inputStepItem)
+			);
+
+			return Jsoup.parse(
+					in, 
+					StandardCharsets.UTF_8.name(),
+					inputStepItem.get("link").asText()
+			);
+		}
+		finally {
+			if (in != null) {
+				in.close();
+				in = null;
+			}
+		}
+	}
+	
+	protected Document getJsoupDocumentFromStorageNormalized(ObjectNode inputStepItem) throws Exception {
 		return Jsoup.parse(
-				getStorage().getScratchFileStream(
-						getData().getCorpusId(),
-						getStorageLink(inputStepItem)
-				), 
-				"utf-8",
+				getTextDocumentFromStorage(inputStepItem).replace("<br/>", "</p><p>"),
 				inputStepItem.get("link").asText()
 		);
 	}
@@ -494,7 +537,7 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 					);
 		}
 		else if (inputStepItem.has("link")) {
-			fileName = URLEncoder.encode(inputStepItem.get("link").asText(), "utf-8");
+			fileName = URLEncoder.encode(inputStepItem.get("link").asText(), StandardCharsets.UTF_8.name());
 		}
 		return getOutputScratchFilePath(fileName, extension);
 		

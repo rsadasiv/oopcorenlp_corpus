@@ -59,7 +59,7 @@ public class ParseTableTOC extends CorpusBatchStep implements ICorpusBatchStep {
 			if (element.selectFirst("a") != null) {
 				if (lastElement != null) {
 					ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-					setTitle(lastElement.wholeText().trim(), outputStepItem);
+					setTitle(lastElement.text().trim(), outputStepItem);
 					outputStepItem.put(
 						"oop_Text", 
 						"a[name="+lastElement.selectFirst("a").attr("href").substring(1)+"]"
@@ -75,7 +75,7 @@ public class ParseTableTOC extends CorpusBatchStep implements ICorpusBatchStep {
 		}
 		if (lastElement != null) {
 			ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-			setTitle(lastElement.wholeText().trim(), outputStepItem);
+			setTitle(lastElement.text().trim(), outputStepItem);
 			outputStepItem.put(
 				"oop_Text", 
 				"a[name="+lastElement.selectFirst("a").attr("href").substring(1)+"]"

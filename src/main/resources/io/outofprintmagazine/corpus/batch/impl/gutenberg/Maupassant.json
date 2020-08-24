@@ -11,7 +11,7 @@
 	"corpusBatchSteps": [
 		{
 			"corpusBatchStepId": "ImportDirectory",
-			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepSequenceId": 0,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
 			"properties": {
 				"noCache": "true",
@@ -22,16 +22,16 @@
 			"output": []
 		},		
 		{
-			"corpusBatchStepId": "ParseTableTOC",
-			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepId": "ParseTOC",
+			"corpusBatchStepSequenceId": 1,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTOC",
 			"properties": {},
 			"input": [],
 			"output": []
 		},
 		{
-			"corpusBatchStepId": "ParseBodyStory",
-			"corpusBatchStepSequenceId": 3,
+			"corpusBatchStepId": "ParseStory",
+			"corpusBatchStepSequenceId": 2,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseStory",
 			"properties": {},
 			"input": [],
@@ -39,7 +39,7 @@
 		},
 		{
 			"corpusBatchStepId": "CleanText",
-			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepSequenceId": 3,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
 			"properties": {},
 			"input": [],
@@ -47,7 +47,7 @@
 		},
 		{
 			"corpusBatchStepId": "GenerateDocID",
-			"corpusBatchStepSequenceId": 5,
+			"corpusBatchStepSequenceId": 4,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
 			"properties": {},
 			"input": [],

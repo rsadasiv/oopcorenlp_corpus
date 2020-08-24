@@ -24,6 +24,8 @@ public class ParseStory extends CorpusBatchStep implements ICorpusBatchStep {
 	public ObjectNode getDefaultProperties() {
 		ObjectNode properties = getMapper().createObjectNode();
 		properties.put("oop_Text", "div.mw-parser-output p");
+		properties.put("esnlc_AuthorAnnotation", "div.gen_header_title #header_author_text");
+		properties.put("esnlc_DocTitleAnnotation", "div.gen_header_title #header_title_text");
 		return properties;
 	}
 	
@@ -37,7 +39,8 @@ public class ParseStory extends CorpusBatchStep implements ICorpusBatchStep {
 		ArrayNode retval = getMapper().createArrayNode();
 		Document doc = getJsoupDocumentFromStorage(inputStepItem);
 		ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-		
+		setTitle(doc, outputStepItem);
+		setAuthor(doc, outputStepItem);
 		setStorageLink(
 				getStorage().storeScratchFileString(
 						getData().getCorpusId(), 
@@ -50,6 +53,5 @@ public class ParseStory extends CorpusBatchStep implements ICorpusBatchStep {
 		retval.add(outputStepItem);
 		return retval;
 	}
-
-
+	
 }

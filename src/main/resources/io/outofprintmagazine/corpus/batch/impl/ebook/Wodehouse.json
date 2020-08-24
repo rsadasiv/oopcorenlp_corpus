@@ -11,7 +11,7 @@
 	"corpusBatchSteps": [
 		{
 			"corpusBatchStepId": "ImportDirectory",
-			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepSequenceId": 0,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
 			"properties": {
 				"noCache": "true",
@@ -22,36 +22,79 @@
 			"output": []
 		},		
 		{
-			"corpusBatchStepId": "ParseTOC",
-			"corpusBatchStepSequenceId": 2,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ebook.ParseTOC",
-			"properties": {},
-			"input": [],
-			"output": []
-		},
-		{
-			"corpusBatchStepId": "FilterTOC",
-			"corpusBatchStepSequenceId": 3,
-			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.FilterOutput",
+			"corpusBatchStepId": "GenerateTOC",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.Stamper",
 			"properties": {
-				"filters" : [
-					{"esnlc_DocTitleAnnotation" : "Extricating Young Gussie"},
-					{"esnlc_DocTitleAnnotation" : "Leave It to Jeeves"},
-					{"esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard"},
-					{"esnlc_DocTitleAnnotation" : "Jeeves Takes Charge"},
-					{"esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg"},
-					{"esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest"},
-					{"esnlc_DocTitleAnnotation" : "Jeeves in the Springtime"},
-					{"esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer"},
-					{"esnlc_DocTitleAnnotation" : "Scoring Off Jeeves"},
-					{"esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch"},
-					{"esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril"},
-					{"esnlc_DocTitleAnnotation" : "Comrade Bingo"},
-					{"esnlc_DocTitleAnnotation" : "The Great Sermon Handicap"},
-					{"esnlc_DocTitleAnnotation" : "The Purity of the Turf"},
-					{"esnlc_DocTitleAnnotation" : "The Metropolitan Touch"},
-					{"esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace"},
-					{"esnlc_DocTitleAnnotation" : "Bingo and the Little Woman"}
+				"stamps" : [
+					{
+						"esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+						"nextTitle": "Leave It to Jeeves"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+						"nextTitle": "The Aunt and the Sluggard"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+						"nextTitle" : "Jeeves Takes Charge"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+						"nextTitle" : "Jeeves and the Hard-Boiled Egg"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+						"nextTitle" : "Jeeves and the Unbidden Guest"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+						"nextTitle" : "Jeeves in the Springtime"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+						"nextTitle" : "Aunt Agatha Makes a Bloomer"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+						"nextTitle" : "Scoring Off Jeeves"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+						"nextTitle" : "Sir Roderick Comes to Lunch"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+						"nextTitle" : "Jeeves and the Chump Cyril"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+						"nextTitle" : "Comrade Bingo"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Comrade Bingo",
+						"nextTitle" : "The Great Sermon Handicap"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+						"nextTitle" : "The Purity of the Turf"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+						"nextTitle" : "The Metropolitan Touch"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+						"nextTitle" : "The Delayed Exit of Claude and Eustace"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+						"nextTitle" : "Bingo and the Little Woman"
+					},
+					{
+						"esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+						"nextTitle" : "Jeeves Stories"
+					}
 				]
 			},
 			"input": [],
@@ -59,7 +102,7 @@
 		},
 		{
 			"corpusBatchStepId": "ParseStory",
-			"corpusBatchStepSequenceId": 4,
+			"corpusBatchStepSequenceId": 2,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ebook.ParseStory",
 			"properties": {},
 			"input": [],
@@ -67,7 +110,7 @@
 		},
 		{
 			"corpusBatchStepId": "CleanText",
-			"corpusBatchStepSequenceId": 5,
+			"corpusBatchStepSequenceId": 3,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
 			"properties": {},
 			"input": [],
@@ -75,7 +118,7 @@
 		},
 		{
 			"corpusBatchStepId": "GenerateDocID",
-			"corpusBatchStepSequenceId": 6,
+			"corpusBatchStepSequenceId": 4,
 			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
 			"properties": {},
 			"input": [],

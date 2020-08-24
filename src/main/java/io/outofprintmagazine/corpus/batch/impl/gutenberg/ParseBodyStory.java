@@ -24,6 +24,7 @@ import org.apache.logging.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -58,12 +59,8 @@ public class ParseBodyStory extends CorpusBatchStep implements ICorpusBatchStep 
 
 		ArrayNode retval = getMapper().createArrayNode();
 		ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-		String rawHtml = getTextDocumentFromStorage(inputStepItem);
-		rawHtml = rawHtml.replace("<br/>", "</p><p>");
-		Document doc = Jsoup.parse(
-				rawHtml,
-				getLink(inputStepItem)
-		);
+		Document doc = getJsoupDocumentFromStorageNormalized(inputStepItem);
+
 		boolean inStory = false;
 		StringBuffer buf = new StringBuffer();
 		Elements paragraphs = doc.selectFirst(
@@ -111,7 +108,7 @@ public class ParseBodyStory extends CorpusBatchStep implements ICorpusBatchStep 
 			}
 			else if (inStory) {
 				if (paragraph.tagName().equalsIgnoreCase("p")) {
-					buf.append(paragraph.text().trim());
+					buf.append(Parser.unescapeEntities(paragraph.text().trim(), false));
 					buf.append('\n');
 					buf.append('\n');
 				}

@@ -17,6 +17,7 @@
 package io.outofprintmagazine.corpus.batch.impl;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -59,9 +60,20 @@ public class HttpDownload extends CorpusBatchStep implements ICorpusBatchStep {
 	}
 	
 	@Override
+	public ObjectNode getDefaultProperties() {
+		ObjectNode properties = getMapper().createObjectNode();
+		properties.put("user-agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1");
+		properties.put("accept-language", "en-US;q=0.9,en;q=0.8");
+		properties.put("sleepMillis", "1000");
+		properties.put("backoffSeconds", "10");
+		
+		return properties;
+	}
+	
+	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
-		int sleepBackoff = ThreadLocalRandom.current().nextInt(1000, 2000);
-		Thread.sleep(sleepBackoff);
+		int sleepMillis = getData().getProperties().get("sleepMillis").asInt();
+		Thread.sleep(ThreadLocalRandom.current().nextInt(sleepMillis, sleepMillis*2));
 		ArrayNode retval = getMapper().createArrayNode();
 		ObjectNode outputStepItem = getMapper().createObjectNode();
 		ObjectReader objectReader = getMapper().readerForUpdating(outputStepItem);
@@ -127,8 +139,8 @@ public class HttpDownload extends CorpusBatchStep implements ICorpusBatchStep {
         CloseableHttpClient httpclient = getHttpClient();
         try {
         	HttpGet http = new HttpGet(url);
-            http.setHeader("user-agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1");
-            http.setHeader("accept-language", "en-US;q=0.9,en;q=0.8");
+            http.setHeader("user-agent", getData().getProperties().get("user-agent").asText());
+            http.setHeader("accept-language",  getData().getProperties().get("accept-language").asText());
             responseBody = httpclient.execute(
             		http, 
             		new PropertiesResponseHandler(properties)
@@ -152,7 +164,7 @@ public class HttpDownload extends CorpusBatchStep implements ICorpusBatchStep {
                 			}
 
                 			public long getRetryInterval() {
-                				return 10;
+                				return getData().getProperties().get("backoffSeconds").asLong();
                 			}
                 		})
                 .setRedirectStrategy(new LaxRedirectStrategy())
@@ -198,9 +210,9 @@ public class HttpDownload extends CorpusBatchStep implements ICorpusBatchStep {
                 	properties.put("charset", contentType.getCharset().name());
                 }
                 else {
-                	properties.put("charset", "UTF-8");
+                	properties.put("charset", StandardCharsets.UTF_8.name());
                 }
-                return EntityUtils.toString(entity, properties.get("charset").asText("UTF-8"));
+                return EntityUtils.toString(entity, properties.get("charset").asText(StandardCharsets.UTF_8.name()));
             } 
             else {
                 throw new ClientProtocolException("Unexpected response status: " + status);

@@ -17,6 +17,7 @@
 package io.outofprintmagazine.corpus.storage.s3;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -142,7 +143,7 @@ public class S3BatchStorage implements IBatchStorage {
 		return (
 				getCorpusStagingBatchItemPath(corpus, stagingBatchName, stagingBatchItemName)
 				+ "/" 
-				+ "BatchItemProperties.json"
+				+ stagingBatchItemName + "BatchItem.json"
 		);
 	}	
 	
@@ -169,7 +170,7 @@ public class S3BatchStorage implements IBatchStorage {
 		return (
 				getCorpusStagingBatchPath(corpus, stagingBatchName)
 				+ "/" 
-				+ "BatchProperties.json"
+				+ stagingBatchName + "Batch.json"
 		);
 	}
 	
@@ -187,16 +188,16 @@ public class S3BatchStorage implements IBatchStorage {
 	 */
 	@Override
 	public void storeStagingBatchString(String corpus, String stagingBatchName, String in) throws Exception {
-        Long contentLength = Long.valueOf(in.getBytes("utf-8").length);
+        Long contentLength = Long.valueOf(in.getBytes(StandardCharsets.UTF_8.name()).length);
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentLength(contentLength);
 		metadata.setContentType("application/json");
-		metadata.setContentEncoding("utf-8");
+		metadata.setContentEncoding(StandardCharsets.UTF_8.name());
 		S3Utils.getInstance(getParameterStore()).getS3Client().putObject(
 				new PutObjectRequest(
 						getParameterStore().getProperty("s3_Bucket"),
 						getCorpusStagingBatchPropertiesPath(corpus, stagingBatchName),
-						IOUtils.toInputStream(in, "UTF-8"),
+						IOUtils.toInputStream(in, StandardCharsets.UTF_8.name()),
 						metadata
 				)
 		);		

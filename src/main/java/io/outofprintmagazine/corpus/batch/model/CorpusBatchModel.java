@@ -19,6 +19,7 @@ package io.outofprintmagazine.corpus.batch.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class CorpusBatchModel implements Serializable {
@@ -31,6 +32,8 @@ public class CorpusBatchModel implements Serializable {
 	
 	public CorpusBatchModel() {
 		super();
+		ObjectMapper mapper = new ObjectMapper();
+		Properties = mapper.createObjectNode();
 	}
 	
 	private String CorpusId;

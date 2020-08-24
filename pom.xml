@@ -14,36 +14,13 @@
 		<version>1.0</version>
 	</parent>
 	
-	<properties>
-		
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
-		<commons-text.version>1.8</commons-text.version>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-		<commons-lang3.version>3.9</commons-lang3.version>
-
-		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-		<commons-io.version>2.7</commons-io.version>
-
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
-		<aws-java-sdk.version>1.11.710</aws-java-sdk.version>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.tika/tika-parsers -->
-		<tika-parsers.version>1.24.1</tika-parsers.version>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
-		<pdfbox.version>2.0.19</pdfbox.version>
-
-		
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>io.outofprintmagazine</groupId>
 			<artifactId>oopcorenlp</artifactId>
 			<version>${oopcorenlp.version}</version>
 		</dependency>
-		
+				
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
@@ -60,12 +37,6 @@
 		  <groupId>org.apache.httpcomponents</groupId>
 		  <artifactId>httpclient-cache</artifactId>
 		  <version>${httpclient.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.tika</groupId>
-			<artifactId>tika-parsers</artifactId>
-			<version>${tika-parsers.version}</version>
 		</dependency>
 
 		<dependency>
@@ -93,25 +64,23 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-parsers</artifactId>
+			<version>${tika-parsers.version}</version>
+		</dependency>
+				
+		<dependency>
+		    <groupId>org.xerial</groupId>
+		    <artifactId>sqlite-jdbc</artifactId>
+		    <version>${sqlite-jdbc.version}</version>
+		</dependency>		
+		
+		<dependency>
 		    <groupId>org.apache.pdfbox</groupId>
 		    <artifactId>pdfbox</artifactId>
 		    <version>${pdfbox.version}</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
-		<dependency>
-		    <groupId>org.apache.lucene</groupId>
-		    <artifactId>lucene-core</artifactId>
-		    <version>8.1.1</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common -->
-		<dependency>
-		    <groupId>org.apache.lucene</groupId>
-		    <artifactId>lucene-analyzers-common</artifactId>
-		    <version>8.1.1</version>
-		</dependency>
-
 	</dependencies>
 	
 	<build>

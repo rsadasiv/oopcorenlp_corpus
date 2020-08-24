@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -171,11 +172,11 @@ public class S3ScratchStorage implements IScratchStorage {
 	}
 	
 	protected String storeScratchFileObject(String corpus, String scratchFileName, String in) throws Exception {
-        Long contentLength = Long.valueOf(in.getBytes("utf-8").length);
+        Long contentLength = Long.valueOf(in.getBytes(StandardCharsets.UTF_8.name()).length);
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentLength(contentLength);
 		//metadata.setContentType(properties.get("mimeType").asText("application/json"));
-		metadata.setContentEncoding("utf-8");
+		metadata.setContentEncoding(StandardCharsets.UTF_8.name());
 		S3Utils.getInstance(getParameterStore()).getS3Client().putObject(
 				new PutObjectRequest(
 						getParameterStore().getProperty("s3_Bucket"),
@@ -183,7 +184,7 @@ public class S3ScratchStorage implements IScratchStorage {
 								corpus, 
 								scratchFileName
 						),
-						IOUtils.toInputStream(in, "UTF-8"),
+						IOUtils.toInputStream(in, StandardCharsets.UTF_8.name()),
 						metadata
 				)
 		);
@@ -246,7 +247,7 @@ public class S3ScratchStorage implements IScratchStorage {
 
 	
 	public String storeJsonFileStream(String corpus, String scratchFileName, InputStream in) throws Exception {
-		return storeScratchFileObject(corpus, scratchFileName, IOUtils.toString(in, "utf-8"));
+		return storeScratchFileObject(corpus, scratchFileName, IOUtils.toString(in, StandardCharsets.UTF_8.name()));
 		//return storeScratchFileProperties(corpus, stagingBatchName, scratchFileName, properties);
 	}
 
@@ -284,7 +285,7 @@ public class S3ScratchStorage implements IScratchStorage {
 									getCorpusStagingBatchScratchFilePath(corpus, scratchFileName)
 							)
 					).getObjectContent(),
-					"utf-8"
+					StandardCharsets.UTF_8.name()
 			);
 		}
 		catch (AmazonS3Exception s3e) {
@@ -297,7 +298,7 @@ public class S3ScratchStorage implements IScratchStorage {
 									getCorpusStagingBatchScratchFilePath(corpus, scratchFileName)
 							)
 					).getObjectContent(),
-					"utf-8"
+					StandardCharsets.UTF_8.name()
 			);
 		}
 	}

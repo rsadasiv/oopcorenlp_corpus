@@ -21,6 +21,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
@@ -152,7 +153,7 @@ public class FileScratchStorage implements IScratchStorage {
         FileOutputStream fout = null;
         try {
         	fout = new FileOutputStream(f);
-	        fout.write(in.getBytes("utf-8"));
+	        fout.write(in.getBytes(StandardCharsets.UTF_8.name()));
 	        fout.flush();
 
         }
@@ -185,31 +186,11 @@ public class FileScratchStorage implements IScratchStorage {
 	
 	@Override
 	public String storeScratchFileObject(String corpus, String scratchFilePath, ObjectNode in) throws Exception {
-		return storeJsonFile(corpus, scratchFilePath, in);
-	}
-	
-	public String storeJsonFile(String corpus, String scratchFilePath, ObjectNode in) throws Exception {
         File f = new File(getCorpusStagingBatchScratchFilePath(corpus, scratchFilePath));
         getMapper().writeValue(f, in);
         return scratchFilePath;
 	}
 	
-	public String storeJsonFileStream(String corpus, String scratchFileName, InputStream in) throws Exception {
-        File f = new File(getCorpusStagingBatchScratchFilePath(corpus, scratchFileName));
-        FileOutputStream fout = null;
-        try {
-        	fout = new FileOutputStream(f);
-	        IOUtils.copy(in,fout);
-	        fout.flush();
-        }
-        finally {
-	        in.close();
-	        if (fout != null) {
-		        fout.close();
-	        }
-        }
-        return scratchFileName;
-	}
 	
 	@Override
 	public InputStream getScratchFileStream(String corpus, String scratchFileName) throws Exception {
@@ -222,7 +203,7 @@ public class FileScratchStorage implements IScratchStorage {
 	public String getScratchFileString(String corpus, String scratchFileName) throws Exception {	
 	    return IOUtils.toString(
 	    		getScratchFileStream(corpus, scratchFileName),
-	    		"utf-8"
+	    		StandardCharsets.UTF_8.name()
 	    );
 	}
 

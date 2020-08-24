@@ -20,13 +20,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import edu.stanford.nlp.util.StringUtils;
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
+import io.outofprintmagazine.nlp.utils.TextUtils;
 
 
 public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
@@ -59,7 +62,17 @@ public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
 			if (element.selectFirst("a") != null) {
 				if (lastElement != null) {
 					ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-					setTitle(lastElement.wholeText().trim(), outputStepItem);
+					setTitle(
+							StringUtils.toAscii(
+									StringUtils.normalize(
+										Parser.unescapeEntities(
+												lastElement.text(),
+												false
+										).trim()
+									)
+							), 
+							outputStepItem
+					);
 					outputStepItem.put(
 						"oop_Text", 
 						"a[name="+lastElement.selectFirst("a").attr("href").substring(1)+"]"
@@ -75,7 +88,17 @@ public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
 		}
 		if (lastElement != null) {
 			ObjectNode outputStepItem = copyInputToOutput(inputStepItem);
-			setTitle(lastElement.wholeText().trim(), outputStepItem);
+			setTitle(
+					StringUtils.toAscii(
+							StringUtils.normalize(
+								Parser.unescapeEntities(
+										lastElement.text(),
+										false
+								).trim()
+							)
+					), 
+					outputStepItem
+			);
 			outputStepItem.put(
 				"oop_Text", 
 				"a[name="+lastElement.selectFirst("a").attr("href").substring(1)+"]"
