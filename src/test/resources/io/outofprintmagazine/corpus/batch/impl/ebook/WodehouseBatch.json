@@ -1,0 +1,970 @@
+{
+  "properties" : {
+    "propertiesFilePath" : "../Staging_IT",
+    "propertiesFileName" : "oopcorenlp.properties"
+  },
+  "corpusId" : "EBook",
+  "corpusBatchId" : "Wodehouse",
+  "batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage",
+  "scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
+  "parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile",
+  "corpusBatchSteps" : [ {
+    "properties" : {
+      "noCache" : "true",
+      "directory" : "../Staging_IT",
+      "fileSuffix" : "Wodehouse.txt"
+    },
+    "input" : [ ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves Stories",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt"
+    } ],
+    "corpusId" : "EBook",
+    "corpusBatchId" : "Wodehouse",
+    "corpusBatchStepSequenceId" : 1,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
+    "corpusBatchStepId" : "ImportDirectory"
+  }, {
+    "properties" : {
+      "stamps" : [ {
+        "esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+        "nextTitle" : "Leave It to Jeeves"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+        "nextTitle" : "The Aunt and the Sluggard"
+      }, {
+        "esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+        "nextTitle" : "Jeeves Takes Charge"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+        "nextTitle" : "Jeeves and the Hard-Boiled Egg"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+        "nextTitle" : "Jeeves and the Unbidden Guest"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+        "nextTitle" : "Jeeves in the Springtime"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+        "nextTitle" : "Aunt Agatha Makes a Bloomer"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+        "nextTitle" : "Scoring Off Jeeves"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+        "nextTitle" : "Sir Roderick Comes to Lunch"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+        "nextTitle" : "Jeeves and the Chump Cyril"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+        "nextTitle" : "Comrade Bingo"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Comrade Bingo",
+        "nextTitle" : "The Great Sermon Handicap"
+      }, {
+        "esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+        "nextTitle" : "The Purity of the Turf"
+      }, {
+        "esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+        "nextTitle" : "The Metropolitan Touch"
+      }, {
+        "esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+        "nextTitle" : "The Delayed Exit of Claude and Eustace"
+      }, {
+        "esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+        "nextTitle" : "Bingo and the Little Woman"
+      }, {
+        "esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+        "nextTitle" : "Jeeves Stories"
+      } ]
+    },
+    "input" : [ ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Leave It to Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Aunt and the Sluggard"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves Takes Charge"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves and the Hard-Boiled Egg"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves and the Unbidden Guest"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves in the Springtime"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Aunt Agatha Makes a Bloomer"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Scoring Off Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Sir Roderick Comes to Lunch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves and the Chump Cyril"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Comrade Bingo"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Comrade Bingo",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Great Sermon Handicap"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Purity of the Turf"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Metropolitan Touch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Delayed Exit of Claude and Eustace"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Bingo and the Little Woman"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves Stories"
+    } ],
+    "corpusId" : "EBook",
+    "corpusBatchId" : "Wodehouse",
+    "corpusBatchStepSequenceId" : 2,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.Stamper",
+    "corpusBatchStepId" : "GenerateTOC"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Leave It to Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Aunt and the Sluggard"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves Takes Charge"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves and the Hard-Boiled Egg"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves and the Unbidden Guest"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves in the Springtime"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Aunt Agatha Makes a Bloomer"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Scoring Off Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Sir Roderick Comes to Lunch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves and the Chump Cyril"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Comrade Bingo"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Comrade Bingo",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Great Sermon Handicap"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Purity of the Turf"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Metropolitan Touch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "The Delayed Exit of Claude and Eustace"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Bingo and the Little Woman"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ImportDirectory\\Wodehouse.txt",
+      "nextTitle" : "Jeeves Stories"
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Extricating Young Gussie.txt",
+      "nextTitle" : "Leave It to Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Leave It to Jeeves.txt",
+      "nextTitle" : "The Aunt and the Sluggard"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Aunt and the Sluggard.txt",
+      "nextTitle" : "Jeeves Takes Charge"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves Takes Charge.txt",
+      "nextTitle" : "Jeeves and the Hard-Boiled Egg"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves and the Hard-Boiled Egg.txt",
+      "nextTitle" : "Jeeves and the Unbidden Guest"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves and the Unbidden Guest.txt",
+      "nextTitle" : "Jeeves in the Springtime"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves in the Springtime.txt",
+      "nextTitle" : "Aunt Agatha Makes a Bloomer"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Aunt Agatha Makes a Bloomer.txt",
+      "nextTitle" : "Scoring Off Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Scoring Off Jeeves.txt",
+      "nextTitle" : "Sir Roderick Comes to Lunch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Sir Roderick Comes to Lunch.txt",
+      "nextTitle" : "Jeeves and the Chump Cyril"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves and the Chump Cyril.txt",
+      "nextTitle" : "Comrade Bingo"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Comrade Bingo",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Comrade Bingo.txt",
+      "nextTitle" : "The Great Sermon Handicap"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Great Sermon Handicap.txt",
+      "nextTitle" : "The Purity of the Turf"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Purity of the Turf.txt",
+      "nextTitle" : "The Metropolitan Touch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Metropolitan Touch.txt",
+      "nextTitle" : "The Delayed Exit of Claude and Eustace"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Delayed Exit of Claude and Eustace.txt",
+      "nextTitle" : "Bingo and the Little Woman"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Bingo and the Little Woman.txt",
+      "nextTitle" : "Jeeves Stories"
+    } ],
+    "corpusId" : "EBook",
+    "corpusBatchId" : "Wodehouse",
+    "corpusBatchStepSequenceId" : 3,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.ebook.ParseStory",
+    "corpusBatchStepId" : "ParseStory"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Extricating Young Gussie.txt",
+      "nextTitle" : "Leave It to Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Leave It to Jeeves.txt",
+      "nextTitle" : "The Aunt and the Sluggard"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Aunt and the Sluggard.txt",
+      "nextTitle" : "Jeeves Takes Charge"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves Takes Charge.txt",
+      "nextTitle" : "Jeeves and the Hard-Boiled Egg"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves and the Hard-Boiled Egg.txt",
+      "nextTitle" : "Jeeves and the Unbidden Guest"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves and the Unbidden Guest.txt",
+      "nextTitle" : "Jeeves in the Springtime"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves in the Springtime.txt",
+      "nextTitle" : "Aunt Agatha Makes a Bloomer"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Aunt Agatha Makes a Bloomer.txt",
+      "nextTitle" : "Scoring Off Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Scoring Off Jeeves.txt",
+      "nextTitle" : "Sir Roderick Comes to Lunch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Sir Roderick Comes to Lunch.txt",
+      "nextTitle" : "Jeeves and the Chump Cyril"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Jeeves and the Chump Cyril.txt",
+      "nextTitle" : "Comrade Bingo"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Comrade Bingo",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Comrade Bingo.txt",
+      "nextTitle" : "The Great Sermon Handicap"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Great Sermon Handicap.txt",
+      "nextTitle" : "The Purity of the Turf"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Purity of the Turf.txt",
+      "nextTitle" : "The Metropolitan Touch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Metropolitan Touch.txt",
+      "nextTitle" : "The Delayed Exit of Claude and Eustace"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\The Delayed Exit of Claude and Eustace.txt",
+      "nextTitle" : "Bingo and the Little Woman"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\ParseStory\\Bingo and the Little Woman.txt",
+      "nextTitle" : "Jeeves Stories"
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Extricating Young Gussie.txt",
+      "nextTitle" : "Leave It to Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Leave It to Jeeves.txt",
+      "nextTitle" : "The Aunt and the Sluggard"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Aunt and the Sluggard.txt",
+      "nextTitle" : "Jeeves Takes Charge"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves Takes Charge.txt",
+      "nextTitle" : "Jeeves and the Hard-Boiled Egg"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Hard-Boiled Egg.txt",
+      "nextTitle" : "Jeeves and the Unbidden Guest"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Unbidden Guest.txt",
+      "nextTitle" : "Jeeves in the Springtime"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves in the Springtime.txt",
+      "nextTitle" : "Aunt Agatha Makes a Bloomer"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Aunt Agatha Makes a Bloomer.txt",
+      "nextTitle" : "Scoring Off Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Scoring Off Jeeves.txt",
+      "nextTitle" : "Sir Roderick Comes to Lunch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Sir Roderick Comes to Lunch.txt",
+      "nextTitle" : "Jeeves and the Chump Cyril"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Chump Cyril.txt",
+      "nextTitle" : "Comrade Bingo"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Comrade Bingo",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Comrade Bingo.txt",
+      "nextTitle" : "The Great Sermon Handicap"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Great Sermon Handicap.txt",
+      "nextTitle" : "The Purity of the Turf"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Purity of the Turf.txt",
+      "nextTitle" : "The Metropolitan Touch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Metropolitan Touch.txt",
+      "nextTitle" : "The Delayed Exit of Claude and Eustace"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Delayed Exit of Claude and Eustace.txt",
+      "nextTitle" : "Bingo and the Little Woman"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Bingo and the Little Woman.txt",
+      "nextTitle" : "Jeeves Stories"
+    } ],
+    "corpusId" : "EBook",
+    "corpusBatchId" : "Wodehouse",
+    "corpusBatchStepSequenceId" : 4,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.CleanText",
+    "corpusBatchStepId" : "CleanText"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Extricating Young Gussie.txt",
+      "nextTitle" : "Leave It to Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Leave It to Jeeves.txt",
+      "nextTitle" : "The Aunt and the Sluggard"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Aunt and the Sluggard.txt",
+      "nextTitle" : "Jeeves Takes Charge"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves Takes Charge.txt",
+      "nextTitle" : "Jeeves and the Hard-Boiled Egg"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Hard-Boiled Egg.txt",
+      "nextTitle" : "Jeeves and the Unbidden Guest"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Unbidden Guest.txt",
+      "nextTitle" : "Jeeves in the Springtime"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves in the Springtime.txt",
+      "nextTitle" : "Aunt Agatha Makes a Bloomer"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Aunt Agatha Makes a Bloomer.txt",
+      "nextTitle" : "Scoring Off Jeeves"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Scoring Off Jeeves.txt",
+      "nextTitle" : "Sir Roderick Comes to Lunch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Sir Roderick Comes to Lunch.txt",
+      "nextTitle" : "Jeeves and the Chump Cyril"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Chump Cyril.txt",
+      "nextTitle" : "Comrade Bingo"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Comrade Bingo",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Comrade Bingo.txt",
+      "nextTitle" : "The Great Sermon Handicap"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Great Sermon Handicap.txt",
+      "nextTitle" : "The Purity of the Turf"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Purity of the Turf.txt",
+      "nextTitle" : "The Metropolitan Touch"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Metropolitan Touch.txt",
+      "nextTitle" : "The Delayed Exit of Claude and Eustace"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Delayed Exit of Claude and Eustace.txt",
+      "nextTitle" : "Bingo and the Little Woman"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Bingo and the Little Woman.txt",
+      "nextTitle" : "Jeeves Stories"
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Extricating Young Gussie",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Extricating Young Gussie.txt",
+      "nextTitle" : "Leave It to Jeeves",
+      "esnlc_DocIDAnnotation" : "24898d12cccd01cb05500c5d1d4fb85d"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Leave It to Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Leave It to Jeeves.txt",
+      "nextTitle" : "The Aunt and the Sluggard",
+      "esnlc_DocIDAnnotation" : "0fedebb69258f10cbaf23f68a0b7e52a"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Aunt and the Sluggard",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Aunt and the Sluggard.txt",
+      "nextTitle" : "Jeeves Takes Charge",
+      "esnlc_DocIDAnnotation" : "2011ebd1d3d15b9e69b5d2c516a8fcfb"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves Takes Charge",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves Takes Charge.txt",
+      "nextTitle" : "Jeeves and the Hard-Boiled Egg",
+      "esnlc_DocIDAnnotation" : "011d1e1618005dfaa2b22b0866773718"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Hard-Boiled Egg",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Hard-Boiled Egg.txt",
+      "nextTitle" : "Jeeves and the Unbidden Guest",
+      "esnlc_DocIDAnnotation" : "4a8ea82edc4c321974cf9db9d74eb131"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Unbidden Guest",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Unbidden Guest.txt",
+      "nextTitle" : "Jeeves in the Springtime",
+      "esnlc_DocIDAnnotation" : "7322dce73f32cda9b9ea1d36341f2633"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves in the Springtime",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves in the Springtime.txt",
+      "nextTitle" : "Aunt Agatha Makes a Bloomer",
+      "esnlc_DocIDAnnotation" : "cb9976168ceff700c5914ccae3ebc9eb"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Aunt Agatha Makes a Bloomer",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Aunt Agatha Makes a Bloomer.txt",
+      "nextTitle" : "Scoring Off Jeeves",
+      "esnlc_DocIDAnnotation" : "6f16d2f32cacdf29923c5a76e2337fd6"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Scoring Off Jeeves",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Scoring Off Jeeves.txt",
+      "nextTitle" : "Sir Roderick Comes to Lunch",
+      "esnlc_DocIDAnnotation" : "255bf1d7019b007468a955d17c42bec2"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Sir Roderick Comes to Lunch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Sir Roderick Comes to Lunch.txt",
+      "nextTitle" : "Jeeves and the Chump Cyril",
+      "esnlc_DocIDAnnotation" : "072c7ed903e70460cc4831b01cad3040"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Jeeves and the Chump Cyril",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Jeeves and the Chump Cyril.txt",
+      "nextTitle" : "Comrade Bingo",
+      "esnlc_DocIDAnnotation" : "0b4760978d7b4d2c512aaf517f0f19e9"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Comrade Bingo",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Comrade Bingo.txt",
+      "nextTitle" : "The Great Sermon Handicap",
+      "esnlc_DocIDAnnotation" : "54d6f701daf5beeb2df4e35ea8f2caf3"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Great Sermon Handicap",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Great Sermon Handicap.txt",
+      "nextTitle" : "The Purity of the Turf",
+      "esnlc_DocIDAnnotation" : "c497b2247bff19e541bd89c533b004b2"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Purity of the Turf",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Purity of the Turf.txt",
+      "nextTitle" : "The Metropolitan Touch",
+      "esnlc_DocIDAnnotation" : "3992da86aa134bb674858d521a0cfe22"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Metropolitan Touch",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Metropolitan Touch.txt",
+      "nextTitle" : "The Delayed Exit of Claude and Eustace",
+      "esnlc_DocIDAnnotation" : "4c116193b6fa9a5967e55464a6af866d"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "The Delayed Exit of Claude and Eustace",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\The Delayed Exit of Claude and Eustace.txt",
+      "nextTitle" : "Bingo and the Little Woman",
+      "esnlc_DocIDAnnotation" : "fcb20b65cade33c3d542ea0e4f672d6a"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Wodehouse.txt",
+      "esnlc_DocTitleAnnotation" : "Bingo and the Little Woman",
+      "esnlc_DocDateAnnotation" : "1922",
+      "esnlc_AuthorAnnotation" : "P.G. Wodehouse",
+      "stagingLinkStorage" : "Wodehouse\\CleanText\\Bingo and the Little Woman.txt",
+      "nextTitle" : "Jeeves Stories",
+      "esnlc_DocIDAnnotation" : "1df6a87db4f0d4fe6b8cc2a1af991d50"
+    } ],
+    "corpusId" : "EBook",
+    "corpusBatchId" : "Wodehouse",
+    "corpusBatchStepSequenceId" : 5,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
+    "corpusBatchStepId" : "GenerateDocID"
+  } ]
+}

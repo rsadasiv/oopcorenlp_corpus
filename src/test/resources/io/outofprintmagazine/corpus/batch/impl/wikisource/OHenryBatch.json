@@ -1,0 +1,1321 @@
+{
+  "properties" : {
+    "propertiesFilePath" : "../Staging_IT",
+    "propertiesFileName" : "oopcorenlp.properties"
+  },
+  "corpusBatchSteps" : [ {
+    "properties" : {
+      "noCache" : "true",
+      "user-agent" : "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1",
+      "accept-language" : "en-US;q=0.9,en;q=0.8",
+      "sleepMillis" : "1000",
+      "backoffSeconds" : "10"
+    },
+    "input" : [ {
+      "link" : "https://en.wikisource.org/wiki/The_Four_Million"
+    } ],
+    "output" : [ {
+      "link" : "https://en.wikisource.org/wiki/The_Four_Million",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:34:54 GMT",
+      "stagingLinkStorage" : "OHenry\\DownloadTOC\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Four_Million..html"
+    } ],
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
+    "corpusBatchStepId" : "DownloadTOC",
+    "corpusBatchStepSequenceId" : 1,
+    "corpusId" : "Wikisource",
+    "corpusBatchId" : "OHenry"
+  }, {
+    "properties" : {
+      "esnlc_AuthorAnnotation" : "div.gen_header_title #header_author_text",
+      "esnlc_DocDateAnnotation" : "div.gen_header_title",
+      "esnlc_DocTitleAnnotation" : "div.gen_header_title #header_title_text",
+      "selector" : "div.mw-parser-output a"
+    },
+    "input" : [ {
+      "link" : "https://en.wikisource.org/wiki/The_Four_Million",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:34:54 GMT",
+      "stagingLinkStorage" : "OHenry\\DownloadTOC\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Four_Million..html"
+    } ],
+    "output" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    } ],
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.wikisource.ParseTOC",
+    "corpusBatchStepId" : "ParseTOC",
+    "corpusBatchStepSequenceId" : 2,
+    "corpusId" : "Wikisource",
+    "corpusBatchId" : "OHenry"
+  }, {
+    "properties" : {
+      "user-agent" : "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1",
+      "accept-language" : "en-US;q=0.9,en;q=0.8",
+      "sleepMillis" : "1000",
+      "backoffSeconds" : "10"
+    },
+    "input" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "(1906)",
+      "esnlc_AuthorAnnotation" : "O. Henry"
+    } ],
+    "output" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:08:42 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FTobin%2527s_Palm..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "Thu, 20 Aug 2020 01:49:10 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Gift_of_the_Magi..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:50:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Cosmopolite_in_a_Caf%25C3%25A9..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:49:04 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBetween_Rounds..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:02 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Skylight_Room..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:03 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Service_of_Love..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:11 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Coming-Out_of_Maggie..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:12 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMan_About_Town..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 09:38:37 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Cop_and_the_Anthem..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:14 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Adjustment_of_Nature..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 03:05:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMemoirs_of_a_Yellow_Dog..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:18 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Love-Philtre_of_Ikey_Schoenstein..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 19:40:41 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMammon_and_the_Archer..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSpringtime_%25C3%25A0_la_Carte..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:51:00 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Green_Door..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:09:05 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FFrom_the_Cabby%2527s_Seat..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:26 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Unfinished_Story..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:28 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Caliph%2C_Cupid_and_the_Clock..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:31 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSisters_of_the_Golden_Circle..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:35:24 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Romance_of_a_Busy_Broker..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:34 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAfter_Twenty_Years..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 17:12:16 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FLost_on_Dress_Parade..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:38 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBy_Courier..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:40 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Furnished_Room..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Brief_D%25C3%25A9but_of_Tildy..html"
+    } ],
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.HttpDownload",
+    "corpusBatchStepId" : "DownloadStory",
+    "corpusBatchStepSequenceId" : 3,
+    "corpusId" : "Wikisource",
+    "corpusBatchId" : "OHenry"
+  }, {
+    "properties" : {
+      "oop_Text" : "div.mw-parser-output p",
+      "esnlc_AuthorAnnotation" : "div.gen_header_title #header_author_text",
+      "esnlc_DocTitleAnnotation" : "div.gen_header_title #header_title_text"
+    },
+    "input" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:08:42 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FTobin%2527s_Palm..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "Thu, 20 Aug 2020 01:49:10 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Gift_of_the_Magi..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:50:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Cosmopolite_in_a_Caf%25C3%25A9..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:49:04 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBetween_Rounds..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:02 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Skylight_Room..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:03 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Service_of_Love..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:11 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Coming-Out_of_Maggie..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:12 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMan_About_Town..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 09:38:37 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Cop_and_the_Anthem..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:14 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Adjustment_of_Nature..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 03:05:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMemoirs_of_a_Yellow_Dog..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:18 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Love-Philtre_of_Ikey_Schoenstein..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 19:40:41 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMammon_and_the_Archer..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSpringtime_%25C3%25A0_la_Carte..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:51:00 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Green_Door..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:09:05 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FFrom_the_Cabby%2527s_Seat..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:26 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Unfinished_Story..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:28 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Caliph%2C_Cupid_and_the_Clock..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:31 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSisters_of_the_Golden_Circle..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:35:24 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Romance_of_a_Busy_Broker..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:34 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAfter_Twenty_Years..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 17:12:16 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FLost_on_Dress_Parade..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:38 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBy_Courier..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:40 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Furnished_Room..html"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\DownloadStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Brief_D%25C3%25A9but_of_Tildy..html"
+    } ],
+    "output" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:08:42 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FTobin%2527s_Palm..txt",
+      "esnlc_DocTitleAnnotation" : "Tobin's Palm"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "Thu, 20 Aug 2020 01:49:10 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Gift_of_the_Magi..txt",
+      "esnlc_DocTitleAnnotation" : "The Gift of the Magi"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:50:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Cosmopolite_in_a_Caf%25C3%25A9..txt",
+      "esnlc_DocTitleAnnotation" : "A Cosmopolite in a Cafe"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:49:04 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBetween_Rounds..txt",
+      "esnlc_DocTitleAnnotation" : "Between Rounds"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:02 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Skylight_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Skylight Room"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:03 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Service_of_Love..txt",
+      "esnlc_DocTitleAnnotation" : "A Service of Love"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:11 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Coming-Out_of_Maggie..txt",
+      "esnlc_DocTitleAnnotation" : "The Coming-Out of Maggie"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:12 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMan_About_Town..txt",
+      "esnlc_DocTitleAnnotation" : "Man About Town"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 09:38:37 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Cop_and_the_Anthem..txt",
+      "esnlc_DocTitleAnnotation" : "The Cop and the Anthem"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:14 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Adjustment_of_Nature..txt",
+      "esnlc_DocTitleAnnotation" : "An Adjustment of Nature"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 03:05:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMemoirs_of_a_Yellow_Dog..txt",
+      "esnlc_DocTitleAnnotation" : "Memoirs of a Yellow Dog"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:18 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Love-Philtre_of_Ikey_Schoenstein..txt",
+      "esnlc_DocTitleAnnotation" : "The Love-Philtre of Ikey Schoenstein"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 19:40:41 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMammon_and_the_Archer..txt",
+      "esnlc_DocTitleAnnotation" : "Mammon and the Archer"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSpringtime_%25C3%25A0_la_Carte..txt",
+      "esnlc_DocTitleAnnotation" : "Springtime a la Carte"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:51:00 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Green_Door..txt",
+      "esnlc_DocTitleAnnotation" : "The Green Door"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:09:05 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FFrom_the_Cabby%2527s_Seat..txt",
+      "esnlc_DocTitleAnnotation" : "From the Cabby's Seat"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:26 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Unfinished_Story..txt",
+      "esnlc_DocTitleAnnotation" : "An Unfinished Story"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:28 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Caliph%2C_Cupid_and_the_Clock..txt",
+      "esnlc_DocTitleAnnotation" : "The Caliph, Cupid and the Clock"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:31 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSisters_of_the_Golden_Circle..txt",
+      "esnlc_DocTitleAnnotation" : "Sisters of the Golden Circle"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:35:24 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Romance_of_a_Busy_Broker..txt",
+      "esnlc_DocTitleAnnotation" : "The Romance of a Busy Broker"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:34 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAfter_Twenty_Years..txt",
+      "esnlc_DocTitleAnnotation" : "After Twenty Years"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 17:12:16 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FLost_on_Dress_Parade..txt",
+      "esnlc_DocTitleAnnotation" : "Lost on Dress Parade"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:38 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBy_Courier..txt",
+      "esnlc_DocTitleAnnotation" : "By Courier"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:40 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Furnished_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Furnished Room"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Brief_D%25C3%25A9but_of_Tildy..txt",
+      "esnlc_DocTitleAnnotation" : "The Brief Debut of Tildy"
+    } ],
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.wikisource.ParseStory",
+    "corpusBatchStepId" : "ParseStory",
+    "corpusBatchStepSequenceId" : 4,
+    "corpusId" : "Wikisource",
+    "corpusBatchId" : "OHenry"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:08:42 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FTobin%2527s_Palm..txt",
+      "esnlc_DocTitleAnnotation" : "Tobin's Palm"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "Thu, 20 Aug 2020 01:49:10 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Gift_of_the_Magi..txt",
+      "esnlc_DocTitleAnnotation" : "The Gift of the Magi"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:50:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Cosmopolite_in_a_Caf%25C3%25A9..txt",
+      "esnlc_DocTitleAnnotation" : "A Cosmopolite in a Cafe"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:49:04 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBetween_Rounds..txt",
+      "esnlc_DocTitleAnnotation" : "Between Rounds"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:02 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Skylight_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Skylight Room"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:03 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Service_of_Love..txt",
+      "esnlc_DocTitleAnnotation" : "A Service of Love"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:11 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Coming-Out_of_Maggie..txt",
+      "esnlc_DocTitleAnnotation" : "The Coming-Out of Maggie"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:12 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMan_About_Town..txt",
+      "esnlc_DocTitleAnnotation" : "Man About Town"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 09:38:37 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Cop_and_the_Anthem..txt",
+      "esnlc_DocTitleAnnotation" : "The Cop and the Anthem"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:14 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Adjustment_of_Nature..txt",
+      "esnlc_DocTitleAnnotation" : "An Adjustment of Nature"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 03:05:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMemoirs_of_a_Yellow_Dog..txt",
+      "esnlc_DocTitleAnnotation" : "Memoirs of a Yellow Dog"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:18 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Love-Philtre_of_Ikey_Schoenstein..txt",
+      "esnlc_DocTitleAnnotation" : "The Love-Philtre of Ikey Schoenstein"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 19:40:41 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMammon_and_the_Archer..txt",
+      "esnlc_DocTitleAnnotation" : "Mammon and the Archer"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSpringtime_%25C3%25A0_la_Carte..txt",
+      "esnlc_DocTitleAnnotation" : "Springtime a la Carte"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:51:00 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Green_Door..txt",
+      "esnlc_DocTitleAnnotation" : "The Green Door"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:09:05 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FFrom_the_Cabby%2527s_Seat..txt",
+      "esnlc_DocTitleAnnotation" : "From the Cabby's Seat"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:26 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Unfinished_Story..txt",
+      "esnlc_DocTitleAnnotation" : "An Unfinished Story"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:28 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Caliph%2C_Cupid_and_the_Clock..txt",
+      "esnlc_DocTitleAnnotation" : "The Caliph, Cupid and the Clock"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:31 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSisters_of_the_Golden_Circle..txt",
+      "esnlc_DocTitleAnnotation" : "Sisters of the Golden Circle"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:35:24 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Romance_of_a_Busy_Broker..txt",
+      "esnlc_DocTitleAnnotation" : "The Romance of a Busy Broker"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:34 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAfter_Twenty_Years..txt",
+      "esnlc_DocTitleAnnotation" : "After Twenty Years"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 17:12:16 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FLost_on_Dress_Parade..txt",
+      "esnlc_DocTitleAnnotation" : "Lost on Dress Parade"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:38 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBy_Courier..txt",
+      "esnlc_DocTitleAnnotation" : "By Courier"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:40 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Furnished_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Furnished Room"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\ParseStory\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Brief_D%25C3%25A9but_of_Tildy..txt",
+      "esnlc_DocTitleAnnotation" : "The Brief Debut of Tildy"
+    } ],
+    "output" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:08:42 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FTobin%2527s_Palm..txt",
+      "esnlc_DocTitleAnnotation" : "Tobin's Palm"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "Thu, 20 Aug 2020 01:49:10 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Gift_of_the_Magi..txt",
+      "esnlc_DocTitleAnnotation" : "The Gift of the Magi"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:50:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Cosmopolite_in_a_Caf%25C3%25A9..txt",
+      "esnlc_DocTitleAnnotation" : "A Cosmopolite in a Cafe"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:49:04 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBetween_Rounds..txt",
+      "esnlc_DocTitleAnnotation" : "Between Rounds"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:02 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Skylight_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Skylight Room"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:03 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Service_of_Love..txt",
+      "esnlc_DocTitleAnnotation" : "A Service of Love"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:11 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Coming-Out_of_Maggie..txt",
+      "esnlc_DocTitleAnnotation" : "The Coming-Out of Maggie"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:12 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMan_About_Town..txt",
+      "esnlc_DocTitleAnnotation" : "Man About Town"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 09:38:37 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Cop_and_the_Anthem..txt",
+      "esnlc_DocTitleAnnotation" : "The Cop and the Anthem"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:14 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Adjustment_of_Nature..txt",
+      "esnlc_DocTitleAnnotation" : "An Adjustment of Nature"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 03:05:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMemoirs_of_a_Yellow_Dog..txt",
+      "esnlc_DocTitleAnnotation" : "Memoirs of a Yellow Dog"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:18 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Love-Philtre_of_Ikey_Schoenstein..txt",
+      "esnlc_DocTitleAnnotation" : "The Love-Philtre of Ikey Schoenstein"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 19:40:41 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMammon_and_the_Archer..txt",
+      "esnlc_DocTitleAnnotation" : "Mammon and the Archer"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSpringtime_%25C3%25A0_la_Carte..txt",
+      "esnlc_DocTitleAnnotation" : "Springtime a la Carte"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:51:00 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Green_Door..txt",
+      "esnlc_DocTitleAnnotation" : "The Green Door"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:09:05 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FFrom_the_Cabby%2527s_Seat..txt",
+      "esnlc_DocTitleAnnotation" : "From the Cabby's Seat"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:26 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Unfinished_Story..txt",
+      "esnlc_DocTitleAnnotation" : "An Unfinished Story"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:28 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Caliph%2C_Cupid_and_the_Clock..txt",
+      "esnlc_DocTitleAnnotation" : "The Caliph, Cupid and the Clock"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:31 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSisters_of_the_Golden_Circle..txt",
+      "esnlc_DocTitleAnnotation" : "Sisters of the Golden Circle"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:35:24 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Romance_of_a_Busy_Broker..txt",
+      "esnlc_DocTitleAnnotation" : "The Romance of a Busy Broker"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:34 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAfter_Twenty_Years..txt",
+      "esnlc_DocTitleAnnotation" : "After Twenty Years"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 17:12:16 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FLost_on_Dress_Parade..txt",
+      "esnlc_DocTitleAnnotation" : "Lost on Dress Parade"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:38 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBy_Courier..txt",
+      "esnlc_DocTitleAnnotation" : "By Courier"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:40 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Furnished_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Furnished Room"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Brief_D%25C3%25A9but_of_Tildy..txt",
+      "esnlc_DocTitleAnnotation" : "The Brief Debut of Tildy"
+    } ],
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.CleanText",
+    "corpusBatchStepId" : "CleanText",
+    "corpusBatchStepSequenceId" : 5,
+    "corpusId" : "Wikisource",
+    "corpusBatchId" : "OHenry"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:08:42 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FTobin%2527s_Palm..txt",
+      "esnlc_DocTitleAnnotation" : "Tobin's Palm"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "Thu, 20 Aug 2020 01:49:10 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Gift_of_the_Magi..txt",
+      "esnlc_DocTitleAnnotation" : "The Gift of the Magi"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:50:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Cosmopolite_in_a_Caf%25C3%25A9..txt",
+      "esnlc_DocTitleAnnotation" : "A Cosmopolite in a Cafe"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:49:04 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBetween_Rounds..txt",
+      "esnlc_DocTitleAnnotation" : "Between Rounds"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:02 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Skylight_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Skylight Room"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:03 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Service_of_Love..txt",
+      "esnlc_DocTitleAnnotation" : "A Service of Love"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:11 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Coming-Out_of_Maggie..txt",
+      "esnlc_DocTitleAnnotation" : "The Coming-Out of Maggie"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:12 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMan_About_Town..txt",
+      "esnlc_DocTitleAnnotation" : "Man About Town"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 09:38:37 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Cop_and_the_Anthem..txt",
+      "esnlc_DocTitleAnnotation" : "The Cop and the Anthem"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:14 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Adjustment_of_Nature..txt",
+      "esnlc_DocTitleAnnotation" : "An Adjustment of Nature"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 03:05:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMemoirs_of_a_Yellow_Dog..txt",
+      "esnlc_DocTitleAnnotation" : "Memoirs of a Yellow Dog"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:18 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Love-Philtre_of_Ikey_Schoenstein..txt",
+      "esnlc_DocTitleAnnotation" : "The Love-Philtre of Ikey Schoenstein"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 19:40:41 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMammon_and_the_Archer..txt",
+      "esnlc_DocTitleAnnotation" : "Mammon and the Archer"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSpringtime_%25C3%25A0_la_Carte..txt",
+      "esnlc_DocTitleAnnotation" : "Springtime a la Carte"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:51:00 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Green_Door..txt",
+      "esnlc_DocTitleAnnotation" : "The Green Door"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:09:05 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FFrom_the_Cabby%2527s_Seat..txt",
+      "esnlc_DocTitleAnnotation" : "From the Cabby's Seat"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:26 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Unfinished_Story..txt",
+      "esnlc_DocTitleAnnotation" : "An Unfinished Story"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:28 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Caliph%2C_Cupid_and_the_Clock..txt",
+      "esnlc_DocTitleAnnotation" : "The Caliph, Cupid and the Clock"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:31 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSisters_of_the_Golden_Circle..txt",
+      "esnlc_DocTitleAnnotation" : "Sisters of the Golden Circle"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:35:24 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Romance_of_a_Busy_Broker..txt",
+      "esnlc_DocTitleAnnotation" : "The Romance of a Busy Broker"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:34 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAfter_Twenty_Years..txt",
+      "esnlc_DocTitleAnnotation" : "After Twenty Years"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 17:12:16 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FLost_on_Dress_Parade..txt",
+      "esnlc_DocTitleAnnotation" : "Lost on Dress Parade"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:38 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBy_Courier..txt",
+      "esnlc_DocTitleAnnotation" : "By Courier"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:40 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Furnished_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Furnished Room"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Brief_D%25C3%25A9but_of_Tildy..txt",
+      "esnlc_DocTitleAnnotation" : "The Brief Debut of Tildy"
+    } ],
+    "output" : [ {
+      "link" : "https://en.wikisource.org/wiki/Tobin%27s_Palm",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:08:42 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FTobin%2527s_Palm..txt",
+      "esnlc_DocTitleAnnotation" : "Tobin's Palm",
+      "esnlc_DocIDAnnotation" : "4ef9d4225a8570a7d3c979da6fda99bd"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Gift_of_the_Magi",
+      "esnlc_DocDateAnnotation" : "Thu, 20 Aug 2020 01:49:10 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Gift_of_the_Magi..txt",
+      "esnlc_DocTitleAnnotation" : "The Gift of the Magi",
+      "esnlc_DocIDAnnotation" : "8ecbba1ae9a7155ff95574877ff4e9bb"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Cosmopolite_in_a_Caf%C3%A9",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:50:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Cosmopolite_in_a_Caf%25C3%25A9..txt",
+      "esnlc_DocTitleAnnotation" : "A Cosmopolite in a Cafe",
+      "esnlc_DocIDAnnotation" : "e472c279b96a4192c69c425c4cc9eda5"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Between_Rounds",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:49:04 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBetween_Rounds..txt",
+      "esnlc_DocTitleAnnotation" : "Between Rounds",
+      "esnlc_DocIDAnnotation" : "32440c127c2a11bc258266f5ed348c72"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Skylight_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:02 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Skylight_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Skylight Room",
+      "esnlc_DocIDAnnotation" : "70fd5370b5b488fb426a74d4c0f87d62"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/A_Service_of_Love",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:52:03 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FA_Service_of_Love..txt",
+      "esnlc_DocTitleAnnotation" : "A Service of Love",
+      "esnlc_DocIDAnnotation" : "07ecb1c12a490df67093a1b7041f882a"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Coming-Out_of_Maggie",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:11 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Coming-Out_of_Maggie..txt",
+      "esnlc_DocTitleAnnotation" : "The Coming-Out of Maggie",
+      "esnlc_DocIDAnnotation" : "9cfdd2dfeaed772174aa49e2216084e0"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Man_About_Town",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:12 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMan_About_Town..txt",
+      "esnlc_DocTitleAnnotation" : "Man About Town",
+      "esnlc_DocIDAnnotation" : "3b20a7794195bcb63ee6537d373441fe"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Cop_and_the_Anthem",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 09:38:37 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Cop_and_the_Anthem..txt",
+      "esnlc_DocTitleAnnotation" : "The Cop and the Anthem",
+      "esnlc_DocIDAnnotation" : "1a46dc57e4a0c99940b06f06139db692"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Adjustment_of_Nature",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:14 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Adjustment_of_Nature..txt",
+      "esnlc_DocTitleAnnotation" : "An Adjustment of Nature",
+      "esnlc_DocIDAnnotation" : "a99207d515f46960ccef4079ad602e20"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Memoirs_of_a_Yellow_Dog",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 03:05:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMemoirs_of_a_Yellow_Dog..txt",
+      "esnlc_DocTitleAnnotation" : "Memoirs of a Yellow Dog",
+      "esnlc_DocIDAnnotation" : "f91e07e11bead4145c2722fbfe3a123f"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Love-Philtre_of_Ikey_Schoenstein",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:18 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Love-Philtre_of_Ikey_Schoenstein..txt",
+      "esnlc_DocTitleAnnotation" : "The Love-Philtre of Ikey Schoenstein",
+      "esnlc_DocIDAnnotation" : "ae66713ec2ac52a507dfae6a6f836946"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Mammon_and_the_Archer",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 19:40:41 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FMammon_and_the_Archer..txt",
+      "esnlc_DocTitleAnnotation" : "Mammon and the Archer",
+      "esnlc_DocIDAnnotation" : "6092a8d9a6ab7dd1d18b831c6f909ae5"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Springtime_%C3%A0_la_Carte",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:22 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSpringtime_%25C3%25A0_la_Carte..txt",
+      "esnlc_DocTitleAnnotation" : "Springtime a la Carte",
+      "esnlc_DocIDAnnotation" : "627fb9845ed8d74ff4389fd643913084"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Green_Door",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:51:00 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Green_Door..txt",
+      "esnlc_DocTitleAnnotation" : "The Green Door",
+      "esnlc_DocIDAnnotation" : "d4611f851b464235e92128a9a3b9b071"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/From_the_Cabby%27s_Seat",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 03:09:05 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FFrom_the_Cabby%2527s_Seat..txt",
+      "esnlc_DocTitleAnnotation" : "From the Cabby's Seat",
+      "esnlc_DocIDAnnotation" : "02a334ae377d67a7b53bfd10f512c368"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/An_Unfinished_Story",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:26 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAn_Unfinished_Story..txt",
+      "esnlc_DocTitleAnnotation" : "An Unfinished Story",
+      "esnlc_DocIDAnnotation" : "1950b1dbfc790e04ffb0f3cd71c647be"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Caliph,_Cupid_and_the_Clock",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:28 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Caliph%2C_Cupid_and_the_Clock..txt",
+      "esnlc_DocTitleAnnotation" : "The Caliph, Cupid and the Clock",
+      "esnlc_DocIDAnnotation" : "bb2c9ff40e329b648c531ae61af4d95f"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Sisters_of_the_Golden_Circle",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:31 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FSisters_of_the_Golden_Circle..txt",
+      "esnlc_DocTitleAnnotation" : "Sisters of the Golden Circle",
+      "esnlc_DocIDAnnotation" : "ef85a89b81e3ad2008f04ecebe48224e"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Romance_of_a_Busy_Broker",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 02:35:24 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Romance_of_a_Busy_Broker..txt",
+      "esnlc_DocTitleAnnotation" : "The Romance of a Busy Broker",
+      "esnlc_DocIDAnnotation" : "c35fd801b60738d9b2e3defcd81e94c7"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/After_Twenty_Years",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:34 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FAfter_Twenty_Years..txt",
+      "esnlc_DocTitleAnnotation" : "After Twenty Years",
+      "esnlc_DocIDAnnotation" : "367922a1007e0565b66513dd9cc0fd33"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/Lost_on_Dress_Parade",
+      "esnlc_DocDateAnnotation" : "Sun, 09 Aug 2020 17:12:16 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FLost_on_Dress_Parade..txt",
+      "esnlc_DocTitleAnnotation" : "Lost on Dress Parade",
+      "esnlc_DocIDAnnotation" : "687c2a1aba9641b6d47df19d258fa153"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/By_Courier",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:38 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FBy_Courier..txt",
+      "esnlc_DocTitleAnnotation" : "By Courier",
+      "esnlc_DocIDAnnotation" : "9adebf5b3935a8d8c9951f66e992ce08"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Furnished_Room",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:40 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Furnished_Room..txt",
+      "esnlc_DocTitleAnnotation" : "The Furnished Room",
+      "esnlc_DocIDAnnotation" : "01dce38ccc59384efa3f9eb32f0b14da"
+    }, {
+      "link" : "https://en.wikisource.org/wiki/The_Brief_D%C3%A9but_of_Tildy",
+      "esnlc_DocDateAnnotation" : "Sat, 08 Aug 2020 02:53:43 GMT",
+      "esnlc_AuthorAnnotation" : "O. Henry",
+      "stagingLinkStorage" : "OHenry\\CleanText\\https%3A%2F%2Fen.wikisource.org%2Fwiki%2FThe_Brief_D%25C3%25A9but_of_Tildy..txt",
+      "esnlc_DocTitleAnnotation" : "The Brief Debut of Tildy",
+      "esnlc_DocIDAnnotation" : "7c3be371cc0e80f1901ca3fd51668186"
+    } ],
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
+    "corpusBatchStepId" : "GenerateDocID",
+    "corpusBatchStepSequenceId" : 6,
+    "corpusId" : "Wikisource",
+    "corpusBatchId" : "OHenry"
+  } ],
+  "corpusId" : "Wikisource",
+  "corpusBatchId" : "OHenry",
+  "batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage",
+  "scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
+  "parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile"
+}

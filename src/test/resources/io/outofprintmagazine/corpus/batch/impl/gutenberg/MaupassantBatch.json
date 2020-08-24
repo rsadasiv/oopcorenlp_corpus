@@ -1,0 +1,1167 @@
+{
+  "properties" : {
+    "propertiesFilePath" : "../Staging_IT",
+    "propertiesFileName" : "oopcorenlp.properties"
+  },
+  "corpusBatchSteps" : [ {
+    "properties" : {
+      "noCache" : "true",
+      "directory" : "../Staging_IT",
+      "fileSuffix" : "Maupassant.html"
+    },
+    "input" : [ ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "Original Short Stories, Volume 4 (of 13)",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html"
+    } ],
+    "corpusBatchStepId" : "ImportDirectory",
+    "corpusBatchStepSequenceId" : 1,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Maupassant"
+  }, {
+    "properties" : {
+      "selector" : "p.toc"
+    },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "Original Short Stories, Volume 4 (of 13)",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html"
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MORIBUND",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0001]",
+      "oop_TextNext" : "a[name=link2H_4_0002]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE GAMEKEEPER",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0002]",
+      "oop_TextNext" : "a[name=link2H_4_0003]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE STORY OF A FARM GIRL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0003]",
+      "oop_TextNext" : "a[name=link2H_PART1]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART I",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART1]",
+      "oop_TextNext" : "a[name=link2H_PART2]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART II",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART2]",
+      "oop_TextNext" : "a[name=link2H_PART3]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART III",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART3]",
+      "oop_TextNext" : "a[name=link2H_PART4]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART IV",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART4]",
+      "oop_TextNext" : "a[name=link2H_PART5]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART V",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART5]",
+      "oop_TextNext" : "a[name=link2H_4_0009]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRECK",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0009]",
+      "oop_TextNext" : "a[name=link2H_4_0010]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THEODULE SABOT'S CONFESSION",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0010]",
+      "oop_TextNext" : "a[name=link2H_4_0011]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRONG HOUSE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0011]",
+      "oop_TextNext" : "a[name=link2H_4_0012]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE DIAMOND NECKLACE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0012]",
+      "oop_TextNext" : "a[name=link2H_4_0013]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MARQUIS DE FUMEROL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0013]",
+      "oop_TextNext" : "a[name=link2H_4_0014]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE TRIP OF LE HORLA",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0014]",
+      "oop_TextNext" : "a[name=link2H_4_0015]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "FAREWELL!",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0015]",
+      "oop_TextNext" : "a[name=link2H_4_0016]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WOLF",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0016]",
+      "oop_TextNext" : "a[name=link2H_4_0017]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE INN",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0017]",
+      "oop_TextNext" : ""
+    } ],
+    "corpusBatchStepId" : "ParseTOC",
+    "corpusBatchStepSequenceId" : 2,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTOC",
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Maupassant"
+  }, {
+    "properties" : {
+      "selector" : "p"
+    },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MORIBUND",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0001]",
+      "oop_TextNext" : "a[name=link2H_4_0002]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE GAMEKEEPER",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0002]",
+      "oop_TextNext" : "a[name=link2H_4_0003]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE STORY OF A FARM GIRL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0003]",
+      "oop_TextNext" : "a[name=link2H_PART1]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART I",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART1]",
+      "oop_TextNext" : "a[name=link2H_PART2]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART II",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART2]",
+      "oop_TextNext" : "a[name=link2H_PART3]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART III",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART3]",
+      "oop_TextNext" : "a[name=link2H_PART4]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART IV",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART4]",
+      "oop_TextNext" : "a[name=link2H_PART5]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART V",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_PART5]",
+      "oop_TextNext" : "a[name=link2H_4_0009]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRECK",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0009]",
+      "oop_TextNext" : "a[name=link2H_4_0010]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THEODULE SABOT'S CONFESSION",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0010]",
+      "oop_TextNext" : "a[name=link2H_4_0011]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRONG HOUSE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0011]",
+      "oop_TextNext" : "a[name=link2H_4_0012]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE DIAMOND NECKLACE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0012]",
+      "oop_TextNext" : "a[name=link2H_4_0013]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MARQUIS DE FUMEROL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0013]",
+      "oop_TextNext" : "a[name=link2H_4_0014]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE TRIP OF LE HORLA",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0014]",
+      "oop_TextNext" : "a[name=link2H_4_0015]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "FAREWELL!",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0015]",
+      "oop_TextNext" : "a[name=link2H_4_0016]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WOLF",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0016]",
+      "oop_TextNext" : "a[name=link2H_4_0017]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE INN",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ImportDirectory\\Maupassant.html",
+      "oop_Text" : "a[name=link2H_4_0017]",
+      "oop_TextNext" : ""
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MORIBUND",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE MORIBUND.txt",
+      "oop_Text" : "a[name=link2H_4_0001]",
+      "oop_TextNext" : "a[name=link2H_4_0002]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE GAMEKEEPER",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE GAMEKEEPER.txt",
+      "oop_Text" : "a[name=link2H_4_0002]",
+      "oop_TextNext" : "a[name=link2H_4_0003]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE STORY OF A FARM GIRL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE STORY OF A FARM GIRL.txt",
+      "oop_Text" : "a[name=link2H_4_0003]",
+      "oop_TextNext" : "a[name=link2H_PART1]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART I",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART I.txt",
+      "oop_Text" : "a[name=link2H_PART1]",
+      "oop_TextNext" : "a[name=link2H_PART2]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART II",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART II.txt",
+      "oop_Text" : "a[name=link2H_PART2]",
+      "oop_TextNext" : "a[name=link2H_PART3]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART III",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART III.txt",
+      "oop_Text" : "a[name=link2H_PART3]",
+      "oop_TextNext" : "a[name=link2H_PART4]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART IV",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART IV.txt",
+      "oop_Text" : "a[name=link2H_PART4]",
+      "oop_TextNext" : "a[name=link2H_PART5]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART V",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART V.txt",
+      "oop_Text" : "a[name=link2H_PART5]",
+      "oop_TextNext" : "a[name=link2H_4_0009]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRECK",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE WRECK.txt",
+      "oop_Text" : "a[name=link2H_4_0009]",
+      "oop_TextNext" : "a[name=link2H_4_0010]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THEODULE SABOT'S CONFESSION",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THEODULE SABOT'S CONFESSION.txt",
+      "oop_Text" : "a[name=link2H_4_0010]",
+      "oop_TextNext" : "a[name=link2H_4_0011]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRONG HOUSE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE WRONG HOUSE.txt",
+      "oop_Text" : "a[name=link2H_4_0011]",
+      "oop_TextNext" : "a[name=link2H_4_0012]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE DIAMOND NECKLACE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE DIAMOND NECKLACE.txt",
+      "oop_Text" : "a[name=link2H_4_0012]",
+      "oop_TextNext" : "a[name=link2H_4_0013]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MARQUIS DE FUMEROL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE MARQUIS DE FUMEROL.txt",
+      "oop_Text" : "a[name=link2H_4_0013]",
+      "oop_TextNext" : "a[name=link2H_4_0014]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE TRIP OF LE HORLA",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE TRIP OF LE HORLA.txt",
+      "oop_Text" : "a[name=link2H_4_0014]",
+      "oop_TextNext" : "a[name=link2H_4_0015]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "FAREWELL!",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\FAREWELL!.txt",
+      "oop_Text" : "a[name=link2H_4_0015]",
+      "oop_TextNext" : "a[name=link2H_4_0016]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WOLF",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE WOLF.txt",
+      "oop_Text" : "a[name=link2H_4_0016]",
+      "oop_TextNext" : "a[name=link2H_4_0017]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE INN",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE INN.txt",
+      "oop_Text" : "a[name=link2H_4_0017]",
+      "oop_TextNext" : ""
+    } ],
+    "corpusBatchStepId" : "ParseStory",
+    "corpusBatchStepSequenceId" : 3,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseStory",
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Maupassant"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MORIBUND",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE MORIBUND.txt",
+      "oop_Text" : "a[name=link2H_4_0001]",
+      "oop_TextNext" : "a[name=link2H_4_0002]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE GAMEKEEPER",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE GAMEKEEPER.txt",
+      "oop_Text" : "a[name=link2H_4_0002]",
+      "oop_TextNext" : "a[name=link2H_4_0003]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE STORY OF A FARM GIRL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE STORY OF A FARM GIRL.txt",
+      "oop_Text" : "a[name=link2H_4_0003]",
+      "oop_TextNext" : "a[name=link2H_PART1]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART I",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART I.txt",
+      "oop_Text" : "a[name=link2H_PART1]",
+      "oop_TextNext" : "a[name=link2H_PART2]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART II",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART II.txt",
+      "oop_Text" : "a[name=link2H_PART2]",
+      "oop_TextNext" : "a[name=link2H_PART3]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART III",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART III.txt",
+      "oop_Text" : "a[name=link2H_PART3]",
+      "oop_TextNext" : "a[name=link2H_PART4]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART IV",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART IV.txt",
+      "oop_Text" : "a[name=link2H_PART4]",
+      "oop_TextNext" : "a[name=link2H_PART5]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART V",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\PART V.txt",
+      "oop_Text" : "a[name=link2H_PART5]",
+      "oop_TextNext" : "a[name=link2H_4_0009]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRECK",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE WRECK.txt",
+      "oop_Text" : "a[name=link2H_4_0009]",
+      "oop_TextNext" : "a[name=link2H_4_0010]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THEODULE SABOT'S CONFESSION",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THEODULE SABOT'S CONFESSION.txt",
+      "oop_Text" : "a[name=link2H_4_0010]",
+      "oop_TextNext" : "a[name=link2H_4_0011]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRONG HOUSE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE WRONG HOUSE.txt",
+      "oop_Text" : "a[name=link2H_4_0011]",
+      "oop_TextNext" : "a[name=link2H_4_0012]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE DIAMOND NECKLACE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE DIAMOND NECKLACE.txt",
+      "oop_Text" : "a[name=link2H_4_0012]",
+      "oop_TextNext" : "a[name=link2H_4_0013]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MARQUIS DE FUMEROL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE MARQUIS DE FUMEROL.txt",
+      "oop_Text" : "a[name=link2H_4_0013]",
+      "oop_TextNext" : "a[name=link2H_4_0014]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE TRIP OF LE HORLA",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE TRIP OF LE HORLA.txt",
+      "oop_Text" : "a[name=link2H_4_0014]",
+      "oop_TextNext" : "a[name=link2H_4_0015]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "FAREWELL!",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\FAREWELL!.txt",
+      "oop_Text" : "a[name=link2H_4_0015]",
+      "oop_TextNext" : "a[name=link2H_4_0016]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WOLF",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE WOLF.txt",
+      "oop_Text" : "a[name=link2H_4_0016]",
+      "oop_TextNext" : "a[name=link2H_4_0017]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE INN",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\ParseStory\\THE INN.txt",
+      "oop_Text" : "a[name=link2H_4_0017]",
+      "oop_TextNext" : ""
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MORIBUND",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE MORIBUND.txt",
+      "oop_Text" : "a[name=link2H_4_0001]",
+      "oop_TextNext" : "a[name=link2H_4_0002]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE GAMEKEEPER",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE GAMEKEEPER.txt",
+      "oop_Text" : "a[name=link2H_4_0002]",
+      "oop_TextNext" : "a[name=link2H_4_0003]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE STORY OF A FARM GIRL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE STORY OF A FARM GIRL.txt",
+      "oop_Text" : "a[name=link2H_4_0003]",
+      "oop_TextNext" : "a[name=link2H_PART1]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART I",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART I.txt",
+      "oop_Text" : "a[name=link2H_PART1]",
+      "oop_TextNext" : "a[name=link2H_PART2]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART II",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART II.txt",
+      "oop_Text" : "a[name=link2H_PART2]",
+      "oop_TextNext" : "a[name=link2H_PART3]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART III",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART III.txt",
+      "oop_Text" : "a[name=link2H_PART3]",
+      "oop_TextNext" : "a[name=link2H_PART4]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART IV",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART IV.txt",
+      "oop_Text" : "a[name=link2H_PART4]",
+      "oop_TextNext" : "a[name=link2H_PART5]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART V",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART V.txt",
+      "oop_Text" : "a[name=link2H_PART5]",
+      "oop_TextNext" : "a[name=link2H_4_0009]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRECK",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WRECK.txt",
+      "oop_Text" : "a[name=link2H_4_0009]",
+      "oop_TextNext" : "a[name=link2H_4_0010]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THEODULE SABOT'S CONFESSION",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THEODULE SABOT'S CONFESSION.txt",
+      "oop_Text" : "a[name=link2H_4_0010]",
+      "oop_TextNext" : "a[name=link2H_4_0011]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRONG HOUSE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WRONG HOUSE.txt",
+      "oop_Text" : "a[name=link2H_4_0011]",
+      "oop_TextNext" : "a[name=link2H_4_0012]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE DIAMOND NECKLACE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE DIAMOND NECKLACE.txt",
+      "oop_Text" : "a[name=link2H_4_0012]",
+      "oop_TextNext" : "a[name=link2H_4_0013]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MARQUIS DE FUMEROL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE MARQUIS DE FUMEROL.txt",
+      "oop_Text" : "a[name=link2H_4_0013]",
+      "oop_TextNext" : "a[name=link2H_4_0014]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE TRIP OF LE HORLA",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE TRIP OF LE HORLA.txt",
+      "oop_Text" : "a[name=link2H_4_0014]",
+      "oop_TextNext" : "a[name=link2H_4_0015]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "FAREWELL!",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\FAREWELL!.txt",
+      "oop_Text" : "a[name=link2H_4_0015]",
+      "oop_TextNext" : "a[name=link2H_4_0016]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WOLF",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WOLF.txt",
+      "oop_Text" : "a[name=link2H_4_0016]",
+      "oop_TextNext" : "a[name=link2H_4_0017]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE INN",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE INN.txt",
+      "oop_Text" : "a[name=link2H_4_0017]",
+      "oop_TextNext" : ""
+    } ],
+    "corpusBatchStepId" : "CleanText",
+    "corpusBatchStepSequenceId" : 4,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.CleanText",
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Maupassant"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MORIBUND",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE MORIBUND.txt",
+      "oop_Text" : "a[name=link2H_4_0001]",
+      "oop_TextNext" : "a[name=link2H_4_0002]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE GAMEKEEPER",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE GAMEKEEPER.txt",
+      "oop_Text" : "a[name=link2H_4_0002]",
+      "oop_TextNext" : "a[name=link2H_4_0003]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE STORY OF A FARM GIRL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE STORY OF A FARM GIRL.txt",
+      "oop_Text" : "a[name=link2H_4_0003]",
+      "oop_TextNext" : "a[name=link2H_PART1]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART I",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART I.txt",
+      "oop_Text" : "a[name=link2H_PART1]",
+      "oop_TextNext" : "a[name=link2H_PART2]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART II",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART II.txt",
+      "oop_Text" : "a[name=link2H_PART2]",
+      "oop_TextNext" : "a[name=link2H_PART3]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART III",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART III.txt",
+      "oop_Text" : "a[name=link2H_PART3]",
+      "oop_TextNext" : "a[name=link2H_PART4]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART IV",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART IV.txt",
+      "oop_Text" : "a[name=link2H_PART4]",
+      "oop_TextNext" : "a[name=link2H_PART5]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART V",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART V.txt",
+      "oop_Text" : "a[name=link2H_PART5]",
+      "oop_TextNext" : "a[name=link2H_4_0009]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRECK",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WRECK.txt",
+      "oop_Text" : "a[name=link2H_4_0009]",
+      "oop_TextNext" : "a[name=link2H_4_0010]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THEODULE SABOT'S CONFESSION",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THEODULE SABOT'S CONFESSION.txt",
+      "oop_Text" : "a[name=link2H_4_0010]",
+      "oop_TextNext" : "a[name=link2H_4_0011]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRONG HOUSE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WRONG HOUSE.txt",
+      "oop_Text" : "a[name=link2H_4_0011]",
+      "oop_TextNext" : "a[name=link2H_4_0012]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE DIAMOND NECKLACE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE DIAMOND NECKLACE.txt",
+      "oop_Text" : "a[name=link2H_4_0012]",
+      "oop_TextNext" : "a[name=link2H_4_0013]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MARQUIS DE FUMEROL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE MARQUIS DE FUMEROL.txt",
+      "oop_Text" : "a[name=link2H_4_0013]",
+      "oop_TextNext" : "a[name=link2H_4_0014]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE TRIP OF LE HORLA",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE TRIP OF LE HORLA.txt",
+      "oop_Text" : "a[name=link2H_4_0014]",
+      "oop_TextNext" : "a[name=link2H_4_0015]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "FAREWELL!",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\FAREWELL!.txt",
+      "oop_Text" : "a[name=link2H_4_0015]",
+      "oop_TextNext" : "a[name=link2H_4_0016]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WOLF",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WOLF.txt",
+      "oop_Text" : "a[name=link2H_4_0016]",
+      "oop_TextNext" : "a[name=link2H_4_0017]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE INN",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE INN.txt",
+      "oop_Text" : "a[name=link2H_4_0017]",
+      "oop_TextNext" : ""
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MORIBUND",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE MORIBUND.txt",
+      "oop_Text" : "a[name=link2H_4_0001]",
+      "oop_TextNext" : "a[name=link2H_4_0002]",
+      "esnlc_DocIDAnnotation" : "910e1da401ee6119e760c507c1bf1a34"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE GAMEKEEPER",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE GAMEKEEPER.txt",
+      "oop_Text" : "a[name=link2H_4_0002]",
+      "oop_TextNext" : "a[name=link2H_4_0003]",
+      "esnlc_DocIDAnnotation" : "f624b915cf4270ba7eaa690e92cc134c"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE STORY OF A FARM GIRL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE STORY OF A FARM GIRL.txt",
+      "oop_Text" : "a[name=link2H_4_0003]",
+      "oop_TextNext" : "a[name=link2H_PART1]",
+      "esnlc_DocIDAnnotation" : "d41d8cd98f00b204e9800998ecf8427e"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART I",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART I.txt",
+      "oop_Text" : "a[name=link2H_PART1]",
+      "oop_TextNext" : "a[name=link2H_PART2]",
+      "esnlc_DocIDAnnotation" : "9d5953320613e8f606fb29d23b42bb95"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART II",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART II.txt",
+      "oop_Text" : "a[name=link2H_PART2]",
+      "oop_TextNext" : "a[name=link2H_PART3]",
+      "esnlc_DocIDAnnotation" : "c665fb891b2fee68e21ef5fc3e18835b"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART III",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART III.txt",
+      "oop_Text" : "a[name=link2H_PART3]",
+      "oop_TextNext" : "a[name=link2H_PART4]",
+      "esnlc_DocIDAnnotation" : "9a322f4a6b2b9c8840f7a955a6c53362"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART IV",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART IV.txt",
+      "oop_Text" : "a[name=link2H_PART4]",
+      "oop_TextNext" : "a[name=link2H_PART5]",
+      "esnlc_DocIDAnnotation" : "3c3d728550b8b620c620a4c6bee94df2"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "PART V",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\PART V.txt",
+      "oop_Text" : "a[name=link2H_PART5]",
+      "oop_TextNext" : "a[name=link2H_4_0009]",
+      "esnlc_DocIDAnnotation" : "1ce036ccb49ba0651d68cf6a06540a8e"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRECK",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WRECK.txt",
+      "oop_Text" : "a[name=link2H_4_0009]",
+      "oop_TextNext" : "a[name=link2H_4_0010]",
+      "esnlc_DocIDAnnotation" : "d19180f5f48a9716d9ca48c9b1855178"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THEODULE SABOT'S CONFESSION",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THEODULE SABOT'S CONFESSION.txt",
+      "oop_Text" : "a[name=link2H_4_0010]",
+      "oop_TextNext" : "a[name=link2H_4_0011]",
+      "esnlc_DocIDAnnotation" : "e1f42e11f00c41fdf9b3ba0d3606c2d8"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WRONG HOUSE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WRONG HOUSE.txt",
+      "oop_Text" : "a[name=link2H_4_0011]",
+      "oop_TextNext" : "a[name=link2H_4_0012]",
+      "esnlc_DocIDAnnotation" : "2dd76c7a082276103d1843a49d97547f"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE DIAMOND NECKLACE",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE DIAMOND NECKLACE.txt",
+      "oop_Text" : "a[name=link2H_4_0012]",
+      "oop_TextNext" : "a[name=link2H_4_0013]",
+      "esnlc_DocIDAnnotation" : "701138362f9f4770a467af46d07170fc"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE MARQUIS DE FUMEROL",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE MARQUIS DE FUMEROL.txt",
+      "oop_Text" : "a[name=link2H_4_0013]",
+      "oop_TextNext" : "a[name=link2H_4_0014]",
+      "esnlc_DocIDAnnotation" : "60cac626df48732d007798f16eff0e68"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE TRIP OF LE HORLA",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE TRIP OF LE HORLA.txt",
+      "oop_Text" : "a[name=link2H_4_0014]",
+      "oop_TextNext" : "a[name=link2H_4_0015]",
+      "esnlc_DocIDAnnotation" : "4df5e5e6104b9421513a7a7bce788326"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "FAREWELL!",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\FAREWELL!.txt",
+      "oop_Text" : "a[name=link2H_4_0015]",
+      "oop_TextNext" : "a[name=link2H_4_0016]",
+      "esnlc_DocIDAnnotation" : "2a36968884100c3fc37cdd87ed9e46e7"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE WOLF",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE WOLF.txt",
+      "oop_Text" : "a[name=link2H_4_0016]",
+      "oop_TextNext" : "a[name=link2H_4_0017]",
+      "esnlc_DocIDAnnotation" : "8e54704a2202d47bc4703e54a8d3d85c"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Maupassant.html",
+      "esnlc_DocTitleAnnotation" : "THE INN",
+      "esnlc_DocDateAnnotation" : "1884",
+      "link" : "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm",
+      "esnlc_AuthorAnnotation" : "Guy de Maupassant",
+      "stagingLinkStorage" : "Maupassant\\CleanText\\THE INN.txt",
+      "oop_Text" : "a[name=link2H_4_0017]",
+      "oop_TextNext" : "",
+      "esnlc_DocIDAnnotation" : "63db673b23a4ead2bf2b4ec865e0487c"
+    } ],
+    "corpusBatchStepId" : "GenerateDocID",
+    "corpusBatchStepSequenceId" : 5,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Maupassant"
+  } ],
+  "corpusId" : "Gutenberg",
+  "corpusBatchId" : "Maupassant",
+  "scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
+  "parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile",
+  "batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage"
+}

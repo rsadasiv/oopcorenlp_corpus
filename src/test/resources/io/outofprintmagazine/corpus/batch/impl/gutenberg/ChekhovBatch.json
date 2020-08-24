@@ -1,0 +1,655 @@
+{
+  "properties" : {
+    "propertiesFilePath" : "../Staging_IT",
+    "propertiesFileName" : "oopcorenlp.properties"
+  },
+  "corpusId" : "Gutenberg",
+  "corpusBatchId" : "Chekhov",
+  "batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage",
+  "scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
+  "parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile",
+  "corpusBatchSteps" : [ {
+    "properties" : {
+      "noCache" : "true",
+      "directory" : "../Staging_IT",
+      "fileSuffix" : "Chekhov.html"
+    },
+    "input" : [ ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html"
+    } ],
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Chekhov",
+    "corpusBatchStepSequenceId" : 1,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
+    "corpusBatchStepId" : "ImportDirectory"
+  }, {
+    "properties" : {
+      "selector" : "td > a[href]"
+    },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html"
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=THE_LADY_WITH_THE_DOG]",
+      "oop_TextNext" : "a[name=A_DOCTORS_VISIT]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "A DOCTOR'S VISIT",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=A_DOCTORS_VISIT]",
+      "oop_TextNext" : "a[name=AN_UPHEAVAL]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN UPHEAVAL",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=AN_UPHEAVAL]",
+      "oop_TextNext" : "a[name=IONITCH]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "IONITCH",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=IONITCH]",
+      "oop_TextNext" : "a[name=THE_HEAD_OF_THE_FAMILY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HEAD OF THE FAMILY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=THE_HEAD_OF_THE_FAMILY]",
+      "oop_TextNext" : "a[name=THE_BLACK_MONK]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE BLACK MONK",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=THE_BLACK_MONK]",
+      "oop_TextNext" : "a[name=VOLODYA]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "VOLODYA",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=VOLODYA]",
+      "oop_TextNext" : "a[name=AN_ANONYMOUS_STORY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN ANONYMOUS STORY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=AN_ANONYMOUS_STORY]",
+      "oop_TextNext" : "a[name=THE_HUSBAND]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HUSBAND",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=THE_HUSBAND]",
+      "oop_TextNext" : ""
+    } ],
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Chekhov",
+    "corpusBatchStepSequenceId" : 2,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseTableTOC",
+    "corpusBatchStepId" : "ParseTableTOC"
+  }, {
+    "properties" : {
+      "selector" : "body"
+    },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=THE_LADY_WITH_THE_DOG]",
+      "oop_TextNext" : "a[name=A_DOCTORS_VISIT]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "A DOCTOR'S VISIT",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=A_DOCTORS_VISIT]",
+      "oop_TextNext" : "a[name=AN_UPHEAVAL]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN UPHEAVAL",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=AN_UPHEAVAL]",
+      "oop_TextNext" : "a[name=IONITCH]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "IONITCH",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=IONITCH]",
+      "oop_TextNext" : "a[name=THE_HEAD_OF_THE_FAMILY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HEAD OF THE FAMILY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=THE_HEAD_OF_THE_FAMILY]",
+      "oop_TextNext" : "a[name=THE_BLACK_MONK]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE BLACK MONK",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=THE_BLACK_MONK]",
+      "oop_TextNext" : "a[name=VOLODYA]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "VOLODYA",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=VOLODYA]",
+      "oop_TextNext" : "a[name=AN_ANONYMOUS_STORY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN ANONYMOUS STORY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=AN_ANONYMOUS_STORY]",
+      "oop_TextNext" : "a[name=THE_HUSBAND]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HUSBAND",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ImportDirectory\\Chekhov.html",
+      "oop_Text" : "a[name=THE_HUSBAND]",
+      "oop_TextNext" : ""
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\THE LADY WITH THE DOG.txt",
+      "oop_Text" : "a[name=THE_LADY_WITH_THE_DOG]",
+      "oop_TextNext" : "a[name=A_DOCTORS_VISIT]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "A DOCTOR'S VISIT",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\A DOCTOR'S VISIT.txt",
+      "oop_Text" : "a[name=A_DOCTORS_VISIT]",
+      "oop_TextNext" : "a[name=AN_UPHEAVAL]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN UPHEAVAL",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\AN UPHEAVAL.txt",
+      "oop_Text" : "a[name=AN_UPHEAVAL]",
+      "oop_TextNext" : "a[name=IONITCH]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "IONITCH",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\IONITCH.txt",
+      "oop_Text" : "a[name=IONITCH]",
+      "oop_TextNext" : "a[name=THE_HEAD_OF_THE_FAMILY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HEAD OF THE FAMILY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\THE HEAD OF THE FAMILY.txt",
+      "oop_Text" : "a[name=THE_HEAD_OF_THE_FAMILY]",
+      "oop_TextNext" : "a[name=THE_BLACK_MONK]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE BLACK MONK",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\THE BLACK MONK.txt",
+      "oop_Text" : "a[name=THE_BLACK_MONK]",
+      "oop_TextNext" : "a[name=VOLODYA]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "VOLODYA",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\VOLODYA.txt",
+      "oop_Text" : "a[name=VOLODYA]",
+      "oop_TextNext" : "a[name=AN_ANONYMOUS_STORY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN ANONYMOUS STORY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\AN ANONYMOUS STORY.txt",
+      "oop_Text" : "a[name=AN_ANONYMOUS_STORY]",
+      "oop_TextNext" : "a[name=THE_HUSBAND]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HUSBAND",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\THE HUSBAND.txt",
+      "oop_Text" : "a[name=THE_HUSBAND]",
+      "oop_TextNext" : ""
+    } ],
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Chekhov",
+    "corpusBatchStepSequenceId" : 3,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.gutenberg.ParseBodyStory",
+    "corpusBatchStepId" : "ParseBodyStory"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\THE LADY WITH THE DOG.txt",
+      "oop_Text" : "a[name=THE_LADY_WITH_THE_DOG]",
+      "oop_TextNext" : "a[name=A_DOCTORS_VISIT]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "A DOCTOR'S VISIT",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\A DOCTOR'S VISIT.txt",
+      "oop_Text" : "a[name=A_DOCTORS_VISIT]",
+      "oop_TextNext" : "a[name=AN_UPHEAVAL]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN UPHEAVAL",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\AN UPHEAVAL.txt",
+      "oop_Text" : "a[name=AN_UPHEAVAL]",
+      "oop_TextNext" : "a[name=IONITCH]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "IONITCH",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\IONITCH.txt",
+      "oop_Text" : "a[name=IONITCH]",
+      "oop_TextNext" : "a[name=THE_HEAD_OF_THE_FAMILY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HEAD OF THE FAMILY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\THE HEAD OF THE FAMILY.txt",
+      "oop_Text" : "a[name=THE_HEAD_OF_THE_FAMILY]",
+      "oop_TextNext" : "a[name=THE_BLACK_MONK]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE BLACK MONK",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\THE BLACK MONK.txt",
+      "oop_Text" : "a[name=THE_BLACK_MONK]",
+      "oop_TextNext" : "a[name=VOLODYA]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "VOLODYA",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\VOLODYA.txt",
+      "oop_Text" : "a[name=VOLODYA]",
+      "oop_TextNext" : "a[name=AN_ANONYMOUS_STORY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN ANONYMOUS STORY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\AN ANONYMOUS STORY.txt",
+      "oop_Text" : "a[name=AN_ANONYMOUS_STORY]",
+      "oop_TextNext" : "a[name=THE_HUSBAND]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HUSBAND",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\ParseBodyStory\\THE HUSBAND.txt",
+      "oop_Text" : "a[name=THE_HUSBAND]",
+      "oop_TextNext" : ""
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE LADY WITH THE DOG.txt",
+      "oop_Text" : "a[name=THE_LADY_WITH_THE_DOG]",
+      "oop_TextNext" : "a[name=A_DOCTORS_VISIT]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "A DOCTOR'S VISIT",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\A DOCTOR'S VISIT.txt",
+      "oop_Text" : "a[name=A_DOCTORS_VISIT]",
+      "oop_TextNext" : "a[name=AN_UPHEAVAL]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN UPHEAVAL",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\AN UPHEAVAL.txt",
+      "oop_Text" : "a[name=AN_UPHEAVAL]",
+      "oop_TextNext" : "a[name=IONITCH]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "IONITCH",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\IONITCH.txt",
+      "oop_Text" : "a[name=IONITCH]",
+      "oop_TextNext" : "a[name=THE_HEAD_OF_THE_FAMILY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HEAD OF THE FAMILY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE HEAD OF THE FAMILY.txt",
+      "oop_Text" : "a[name=THE_HEAD_OF_THE_FAMILY]",
+      "oop_TextNext" : "a[name=THE_BLACK_MONK]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE BLACK MONK",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE BLACK MONK.txt",
+      "oop_Text" : "a[name=THE_BLACK_MONK]",
+      "oop_TextNext" : "a[name=VOLODYA]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "VOLODYA",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\VOLODYA.txt",
+      "oop_Text" : "a[name=VOLODYA]",
+      "oop_TextNext" : "a[name=AN_ANONYMOUS_STORY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN ANONYMOUS STORY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\AN ANONYMOUS STORY.txt",
+      "oop_Text" : "a[name=AN_ANONYMOUS_STORY]",
+      "oop_TextNext" : "a[name=THE_HUSBAND]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HUSBAND",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE HUSBAND.txt",
+      "oop_Text" : "a[name=THE_HUSBAND]",
+      "oop_TextNext" : ""
+    } ],
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Chekhov",
+    "corpusBatchStepSequenceId" : 4,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.CleanText",
+    "corpusBatchStepId" : "CleanText"
+  }, {
+    "properties" : { },
+    "input" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE LADY WITH THE DOG.txt",
+      "oop_Text" : "a[name=THE_LADY_WITH_THE_DOG]",
+      "oop_TextNext" : "a[name=A_DOCTORS_VISIT]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "A DOCTOR'S VISIT",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\A DOCTOR'S VISIT.txt",
+      "oop_Text" : "a[name=A_DOCTORS_VISIT]",
+      "oop_TextNext" : "a[name=AN_UPHEAVAL]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN UPHEAVAL",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\AN UPHEAVAL.txt",
+      "oop_Text" : "a[name=AN_UPHEAVAL]",
+      "oop_TextNext" : "a[name=IONITCH]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "IONITCH",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\IONITCH.txt",
+      "oop_Text" : "a[name=IONITCH]",
+      "oop_TextNext" : "a[name=THE_HEAD_OF_THE_FAMILY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HEAD OF THE FAMILY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE HEAD OF THE FAMILY.txt",
+      "oop_Text" : "a[name=THE_HEAD_OF_THE_FAMILY]",
+      "oop_TextNext" : "a[name=THE_BLACK_MONK]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE BLACK MONK",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE BLACK MONK.txt",
+      "oop_Text" : "a[name=THE_BLACK_MONK]",
+      "oop_TextNext" : "a[name=VOLODYA]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "VOLODYA",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\VOLODYA.txt",
+      "oop_Text" : "a[name=VOLODYA]",
+      "oop_TextNext" : "a[name=AN_ANONYMOUS_STORY]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN ANONYMOUS STORY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\AN ANONYMOUS STORY.txt",
+      "oop_Text" : "a[name=AN_ANONYMOUS_STORY]",
+      "oop_TextNext" : "a[name=THE_HUSBAND]"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HUSBAND",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE HUSBAND.txt",
+      "oop_Text" : "a[name=THE_HUSBAND]",
+      "oop_TextNext" : ""
+    } ],
+    "output" : [ {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE LADY WITH THE DOG",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE LADY WITH THE DOG.txt",
+      "oop_Text" : "a[name=THE_LADY_WITH_THE_DOG]",
+      "oop_TextNext" : "a[name=A_DOCTORS_VISIT]",
+      "esnlc_DocIDAnnotation" : "8edb626fcea2c10050aee09284092a5f"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "A DOCTOR'S VISIT",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\A DOCTOR'S VISIT.txt",
+      "oop_Text" : "a[name=A_DOCTORS_VISIT]",
+      "oop_TextNext" : "a[name=AN_UPHEAVAL]",
+      "esnlc_DocIDAnnotation" : "44ffe8809544dfa7ba331724f9f37226"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN UPHEAVAL",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\AN UPHEAVAL.txt",
+      "oop_Text" : "a[name=AN_UPHEAVAL]",
+      "oop_TextNext" : "a[name=IONITCH]",
+      "esnlc_DocIDAnnotation" : "4d77143b0d76e857408ff6c5135dde02"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "IONITCH",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\IONITCH.txt",
+      "oop_Text" : "a[name=IONITCH]",
+      "oop_TextNext" : "a[name=THE_HEAD_OF_THE_FAMILY]",
+      "esnlc_DocIDAnnotation" : "6d647f99bb18fe471bbf24edc7b961c5"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HEAD OF THE FAMILY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE HEAD OF THE FAMILY.txt",
+      "oop_Text" : "a[name=THE_HEAD_OF_THE_FAMILY]",
+      "oop_TextNext" : "a[name=THE_BLACK_MONK]",
+      "esnlc_DocIDAnnotation" : "7a0d4422d8a53401037dca0927f213e3"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE BLACK MONK",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE BLACK MONK.txt",
+      "oop_Text" : "a[name=THE_BLACK_MONK]",
+      "oop_TextNext" : "a[name=VOLODYA]",
+      "esnlc_DocIDAnnotation" : "b92014f3f0b15c300a04b1a99c7ceaab"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "VOLODYA",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\VOLODYA.txt",
+      "oop_Text" : "a[name=VOLODYA]",
+      "oop_TextNext" : "a[name=AN_ANONYMOUS_STORY]",
+      "esnlc_DocIDAnnotation" : "949f6e648b913d01f10933cf0c07bdd5"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "AN ANONYMOUS STORY",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\AN ANONYMOUS STORY.txt",
+      "oop_Text" : "a[name=AN_ANONYMOUS_STORY]",
+      "oop_TextNext" : "a[name=THE_HUSBAND]",
+      "esnlc_DocIDAnnotation" : "1be3807ff557cec70dda85ec0ed561d6"
+    }, {
+      "stagingLocation" : "C:\\Users\\rsada\\eclipse-workspace\\oopcorenlp_corpus\\Staging_IT\\Chekhov.html",
+      "esnlc_DocTitleAnnotation" : "THE HUSBAND",
+      "esnlc_DocDateAnnotation" : "1922",
+      "link" : "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm",
+      "esnlc_AuthorAnnotation" : "Anton Chekhov",
+      "stagingLinkStorage" : "Chekhov\\CleanText\\THE HUSBAND.txt",
+      "oop_Text" : "a[name=THE_HUSBAND]",
+      "oop_TextNext" : "",
+      "esnlc_DocIDAnnotation" : "2d9b6161c6c8e1001ea23ec45b33b347"
+    } ],
+    "corpusId" : "Gutenberg",
+    "corpusBatchId" : "Chekhov",
+    "corpusBatchStepSequenceId" : 5,
+    "corpusBatchStepClass" : "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
+    "corpusBatchStepId" : "GenerateDocID"
+  } ]
+}
