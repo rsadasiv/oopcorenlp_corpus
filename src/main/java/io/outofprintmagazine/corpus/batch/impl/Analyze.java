@@ -161,6 +161,11 @@ public class Analyze extends CorpusBatchStep implements ICorpusBatchStep {
 			if (inputStepItem.has("oop_DocThumbnail")) {
 				metadata.put(OOPThumbnailAnnotation.class.getSimpleName(), inputStepItem.get("oop_DocThumbnail").asText("blank.png"));
 			}
+			Iterator<String> fieldNamesIter = outputStepItem.fieldNames();
+			while (fieldNamesIter.hasNext()) {
+				String fieldName = fieldNamesIter.next();
+				metadata.put(fieldName, outputStepItem.get(fieldName).asText());
+			}
 			//this should read the list of custom annotators from the properties
 			Map<String,ObjectNode> json = ta.analyze(metadata, doc);
 
@@ -168,7 +173,7 @@ public class Analyze extends CorpusBatchStep implements ICorpusBatchStep {
 					"oopNLPTextStorage",
 					getStorage().storeScratchFileString(
 						getData().getCorpusId(),
-						getOutputScratchFilePath("TEXT_" + getDocID(inputStepItem), "txt"),
+						getOutputScratchFilePath("TXT_" + getDocID(inputStepItem), "txt"),
 						doc
 					)
 				);

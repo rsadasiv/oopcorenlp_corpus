@@ -64,6 +64,7 @@ public class ImportDirectory extends CorpusBatchStep implements ICorpusBatchStep
 		    	ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 		    	ObjectNode inputStepItem = mapper.createObjectNode();
 		    	inputStepItem.put("stagingLocation", f.getCanonicalPath());
+		    	setLink(f.getName(), inputStepItem);
 				File properties = new File(
 						f.getCanonicalPath()
 						+
