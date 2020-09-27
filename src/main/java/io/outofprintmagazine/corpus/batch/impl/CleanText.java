@@ -58,6 +58,8 @@ public class CleanText extends CorpusBatchStep implements ICorpusBatchStep {
 	Pattern endLine = Pattern.compile("\\u2019$");
 	Pattern endWord = Pattern.compile("(\\S)\\u2019\\s");
 	Pattern endSentence = Pattern.compile("\\u2019(\\.)");
+	Pattern britishQuoteQuestion = Pattern.compile("\\?\"");
+	Pattern britishQuotePeriod = Pattern.compile("\\.\"");	
 	
 	public CleanText() {
 		// TODO Auto-generated constructor stub
@@ -101,6 +103,8 @@ public class CleanText extends CorpusBatchStep implements ICorpusBatchStep {
 				line = endLine.matcher(line).replaceAll("\"");
 				line = endWord.matcher(line).replaceAll("$1\" ");
 				line = endSentence.matcher(line).replaceAll("\"$1");
+				line = britishQuoteQuestion.matcher(line).replaceAll("\"?");
+				line = britishQuotePeriod.matcher(line).replaceAll("\".");
 				line = StringUtils.toAscii(StringUtils.normalize(line));
 				output.append(line);
 				output.append('\n');
