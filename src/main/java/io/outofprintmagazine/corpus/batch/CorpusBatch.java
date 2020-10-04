@@ -188,9 +188,10 @@ public class CorpusBatch {
     		else {
     			currentBatchStep.run(currentBatchStep.getData().getInput().deepCopy());
     		}
+    		getBatchStorage().storeStagingBatchString(getData().getCorpusId(), getData().getCorpusBatchId(), mapper.writeValueAsString(getData()));
     	}
-    	
-    	getBatchStorage().storeStagingBatchString(getData().getCorpusId(), getData().getCorpusBatchId(), mapper.writeValueAsString(getData()));
+    	//save incrementally
+    	//getBatchStorage().storeStagingBatchString(getData().getCorpusId(), getData().getCorpusBatchId(), mapper.writeValueAsString(getData()));
 	}
 	
 	public void runStep(String stepId) throws Exception {
