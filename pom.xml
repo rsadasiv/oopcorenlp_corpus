@@ -24,11 +24,26 @@
 			<version>${oopcorenlp.version}</version>
 		</dependency>
 				
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.amazonaws</groupId> -->
+<!-- 			<artifactId>aws-java-sdk</artifactId> -->
+<!-- 			<version>${aws-java-sdk.version}</version> -->
+<!-- 		</dependency> -->
+		
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
 		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk</artifactId>
-			<version>${aws-java-sdk.version}</version>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-s3</artifactId>
+		    <version>${aws-java-sdk.version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-polly -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-polly</artifactId>
+		    <version>${aws-java-sdk.version}</version>
+		</dependency>
+		
 		
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -90,6 +105,23 @@
 		    <version>${h2.version}</version>
 		</dependency>
 
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-core</artifactId>
+            <version>${dl4j-master.version}</version>
+        </dependency>
+        
+		<dependency>
+		    <groupId>org.deeplearning4j</groupId>
+		    <artifactId>deeplearning4j-nlp</artifactId>
+		    <version>${dl4j-master.version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-native</artifactId>
+            <version>${dl4j-master.version}</version>
+        </dependency>
 		
 	</dependencies>
 	

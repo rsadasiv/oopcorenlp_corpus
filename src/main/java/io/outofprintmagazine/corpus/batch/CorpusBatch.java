@@ -174,7 +174,7 @@ public class CorpusBatch {
 		ICorpusBatchStep previousBatchStep = null;
 		ICorpusBatchStep currentBatchStep = null;
     	for (CorpusBatchStepModel corpusBatchStepModel : sortedSteps) {
-    		previousBatchStep = currentBatchStep;
+
     		currentBatchStep = (ICorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).newInstance();
     		currentBatchStep.setData(corpusBatchStepModel);
     		currentBatchStep.setStorage(getScratchStorage());
@@ -189,6 +189,7 @@ public class CorpusBatch {
     			currentBatchStep.run(currentBatchStep.getData().getInput().deepCopy());
     		}
     		getBatchStorage().storeStagingBatchString(getData().getCorpusId(), getData().getCorpusBatchId(), mapper.writeValueAsString(getData()));
+    		previousBatchStep = currentBatchStep;
     	}
     	//save incrementally
     	//getBatchStorage().storeStagingBatchString(getData().getCorpusId(), getData().getCorpusBatchId(), mapper.writeValueAsString(getData()));

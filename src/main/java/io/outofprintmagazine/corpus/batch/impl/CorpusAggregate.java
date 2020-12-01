@@ -55,7 +55,7 @@ public class CorpusAggregate extends CorpusBatchStep implements ICorpusBatchStep
 	}
 	
 	public CorpusAggregate() {
-		super();
+		super();				
 	}
 	
 	private Pattern isNumeric = Pattern.compile("\\d+");
@@ -68,9 +68,8 @@ public class CorpusAggregate extends CorpusBatchStep implements ICorpusBatchStep
 		catch (Exception e) {
 			getLogger().error(e);
 		}
-		
 		ArrayNode retval = super.run(input);
-		
+
 		try {
 			String storageLocation = getStorage().storeScratchFileObject(
 					getData().getCorpusId(),

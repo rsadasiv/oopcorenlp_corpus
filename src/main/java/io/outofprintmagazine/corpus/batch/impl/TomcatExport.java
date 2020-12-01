@@ -19,26 +19,16 @@ package io.outofprintmagazine.corpus.batch.impl;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.services.polly.AmazonPolly;
-import com.amazonaws.services.polly.AmazonPollyClientBuilder;
-import com.amazonaws.services.polly.model.DescribeVoicesRequest;
-import com.amazonaws.services.polly.model.DescribeVoicesResult;
-import com.amazonaws.services.polly.model.StartSpeechSynthesisTaskRequest;
-import com.amazonaws.services.polly.model.StartSpeechSynthesisTaskResult;
-import com.amazonaws.services.polly.model.Voice;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
-import io.outofprintmagazine.corpus.storage.s3.AwsUtils;
 
 public class TomcatExport extends CorpusBatchStep implements ICorpusBatchStep {
 

@@ -27,7 +27,7 @@ io.outofprintmagazine.nlp.pipeline.annotators.ActionlessVerbsAnnotator
 io.outofprintmagazine.nlp.pipeline.annotators.NounsAnnotator
 io.outofprintmagazine.nlp.pipeline.annotators.TopicsAnnotator
 io.outofprintmagazine.nlp.pipeline.annotators.SVOAnnotator
-io.outofprintmagazine.nlp.pipeline.annotators.NonAffirmativeAnnotator	    		
+io.outofprintmagazine.nlp.pipeline.annotators.NonAffirmativeAnnotator
 io.outofprintmagazine.nlp.pipeline.annotators.simile.LikeAnnotator
 io.outofprintmagazine.nlp.pipeline.annotators.simile.AsAnnotator
 io.outofprintmagazine.nlp.pipeline.annotators.ColorsAnnotator

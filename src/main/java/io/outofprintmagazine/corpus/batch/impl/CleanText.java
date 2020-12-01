@@ -18,7 +18,6 @@ package io.outofprintmagazine.corpus.batch.impl;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Date;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
@@ -73,12 +72,12 @@ public class CleanText extends CorpusBatchStep implements ICorpusBatchStep {
 		ObjectNode outputStepItem = getMapper().createObjectNode();
 		ObjectReader objectReader = getMapper().readerForUpdating(outputStepItem);
 		objectReader.readValue(inputStepItem);
-		ObjectNode storageProperties = getMapper().createObjectNode();
-		//"Sun, 16 Feb 2020 23:17:38 GMT"
-		storageProperties.put("Content-Type", "text/plain");
-		storageProperties.put("mimeType", "text/plain");
-		storageProperties.put("charset",  "us-ascii");
-		storageProperties.put("Date", getDateFormat().format(new Date(System.currentTimeMillis())));
+//		ObjectNode storageProperties = getMapper().createObjectNode();
+//		//"Sun, 16 Feb 2020 23:17:38 GMT"
+//		storageProperties.put("Content-Type", "text/plain");
+//		storageProperties.put("mimeType", "text/plain");
+//		storageProperties.put("charset",  "us-ascii");
+//		storageProperties.put("Date", getDateFormat().format(new Date(System.currentTimeMillis())));
 
 		setStorageLink(
 				getStorage().storeScratchFileString(

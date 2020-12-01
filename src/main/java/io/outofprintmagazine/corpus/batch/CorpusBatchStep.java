@@ -42,6 +42,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
+import com.fasterxml.jackson.core.JsonGenerator.Feature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -104,7 +105,7 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 	
 	private CorpusBatchStepModel data;
 	
-	private ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+	private ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).configure(Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
 	
 	protected ObjectMapper getMapper() {
 		return mapper;
@@ -225,24 +226,21 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 			count++;
 			boolean foundInputItem = false;
 
-			if (!(getData().getProperties().has("noCache") && getData().getProperties().get("noCache").asBoolean())) {
-				for (JsonNode existingInputItem : getData().getInput()) {
-					if (existingInputItem.equals(inputItem)) {
-						foundInputItem = true;
-						break;
-					}
+			for (JsonNode existingInputItem : getData().getInput()) {
+				if (existingInputItem.equals(inputItem)) {
+					foundInputItem = true;
+					break;
 				}
 			}
+			
 			if (!foundInputItem) {
+				getData().getInput().add(inputItem);
 				try {
 					ArrayNode generatedOutput = runOne((ObjectNode)inputItem);
-					if (!(getData().getProperties().has("noCache") && getData().getProperties().get("noCache").asBoolean())) {
-						getData().getInput().add(inputItem);
-					}
 					
 					for (JsonNode generatedOutputItem : generatedOutput) {
 						boolean foundOutputItem = false;
-						for (JsonNode existingOutputItem : getData().getInput()) {
+						for (JsonNode existingOutputItem : getData().getOutput()) {
 							if (existingOutputItem.equals(generatedOutputItem)) {
 								foundOutputItem = true;
 								break;
