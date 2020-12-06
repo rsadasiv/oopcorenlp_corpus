@@ -161,6 +161,7 @@
 				<version>${maven-failsafe-plugin.version}</version>
 				<configuration>
             		<argLine>@{argLine} -Xms8096m -Xmx10120m  --illegal-access=permit</argLine>
+					<forkCount>0</forkCount>
         		</configuration>
 				<executions>
 					<execution>
