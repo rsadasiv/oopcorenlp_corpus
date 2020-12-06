@@ -11,28 +11,25 @@
 		<artifactId>oopcorenlp_parent</artifactId>
 		<version>1.0</version>
 	</parent>
-	
+
 	<properties>
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<h2.version>1.4.200</h2.version>
-		<java.version>1.8</java.version>
-		<jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>io.outofprintmagazine</groupId>
 			<artifactId>oopcorenlp</artifactId>
 			<version>${oopcorenlp.version}</version>
-			<scope>test</scope>
 		</dependency>
-				
+
 <!-- 		<dependency> -->
 <!-- 			<groupId>com.amazonaws</groupId> -->
 <!-- 			<artifactId>aws-java-sdk</artifactId> -->
 <!-- 			<version>${aws-java-sdk.version}</version> -->
 <!-- 		</dependency> -->
-		
+
 		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
 		<dependency>
 		    <groupId>com.amazonaws</groupId>
@@ -46,14 +43,14 @@
 		    <artifactId>aws-java-sdk-polly</artifactId>
 		    <version>${aws-java-sdk.version}</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${httpclient.version}</version>
 		</dependency>
-		
+
 		<dependency>
 		  <groupId>org.apache.httpcomponents</groupId>
 		  <artifactId>httpclient-cache</artifactId>
@@ -83,19 +80,19 @@
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.tika</groupId>
 			<artifactId>tika-parsers</artifactId>
 			<version>${tika-parsers.version}</version>
 		</dependency>
-				
+
 		<dependency>
 		    <groupId>org.xerial</groupId>
 		    <artifactId>sqlite-jdbc</artifactId>
 		    <version>${sqlite-jdbc.version}</version>
-		</dependency>		
-		
+		</dependency>
+
 		<dependency>
 		    <groupId>org.apache.pdfbox</groupId>
 		    <artifactId>pdfbox</artifactId>
@@ -113,7 +110,7 @@
             <artifactId>deeplearning4j-core</artifactId>
             <version>${dl4j-master.version}</version>
         </dependency>
-        
+
 		<dependency>
 		    <groupId>org.deeplearning4j</groupId>
 		    <artifactId>deeplearning4j-nlp</artifactId>
@@ -125,9 +122,9 @@
             <artifactId>nd4j-native</artifactId>
             <version>${dl4j-master.version}</version>
         </dependency>
-		
+
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -139,7 +136,7 @@
 				    <source>${java.version}</source>
 				    <target>${java.version}</target>
 				</configuration>
-			</plugin>				
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -167,11 +164,11 @@
 					<execution>
 						<goals>
 							<goal>verify</goal>
-							<goal>integration-test</goal>							
+							<goal>integration-test</goal>
 						</goals>
 					</execution>
 				</executions>
-			</plugin>						
+			</plugin>
 
 	      	<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -185,7 +182,7 @@
 				  </excludes>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 
 	</build>
