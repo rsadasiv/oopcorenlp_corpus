@@ -18,6 +18,7 @@ package io.outofprintmagazine.corpus.batch;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -60,9 +61,9 @@ public class CorpusBatch {
 	
 	private IScratchStorage scratchStorage = null;
 	
-	public IScratchStorage getScratchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+	public IScratchStorage getScratchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		if (scratchStorage == null) {
-			scratchStorage = (IScratchStorage) Class.forName(getData().getScratchStorageClass()).newInstance();
+			scratchStorage = (IScratchStorage) Class.forName(getData().getScratchStorageClass()).getConstructor().newInstance();
 			scratchStorage.setParameterStore(getParameterStore());
 		}
 		return scratchStorage;
@@ -74,9 +75,9 @@ public class CorpusBatch {
 	
 	private IBatchStorage batchStorage = null;
 	
-	public IBatchStorage getBatchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+	public IBatchStorage getBatchStorage() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		if (batchStorage == null) {
-			batchStorage = (IBatchStorage) Class.forName(getData().getBatchStorageClass()).newInstance();
+			batchStorage = (IBatchStorage) Class.forName(getData().getBatchStorageClass()).getConstructor().newInstance();
 			batchStorage.setParameterStore(getParameterStore());
 		}
 		return batchStorage;
@@ -88,9 +89,9 @@ public class CorpusBatch {
 	
 	private IParameterStore parameterStore = null;
 	
-	public IParameterStore getParameterStore() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException  {
+	public IParameterStore getParameterStore() throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
 		if (parameterStore == null) {
-			parameterStore = (IParameterStore) Class.forName(getData().getParameterStoreClass()).newInstance();
+			parameterStore = (IParameterStore) Class.forName(getData().getParameterStoreClass()).getConstructor().newInstance();
 			parameterStore.init(getData().getProperties());
 		}
 		return parameterStore;
@@ -117,7 +118,7 @@ public class CorpusBatch {
 	}
 	
 	public static CorpusBatch buildFromStagingBatch(String corpusName, String batchName, String batchStorageClass) throws Exception {
-    	IBatchStorage batchStorage = (IBatchStorage) Class.forName(batchStorageClass).newInstance();
+    	IBatchStorage batchStorage = (IBatchStorage) Class.forName(batchStorageClass).getConstructor().newInstance();
     	CorpusBatch corpusBatch = new CorpusBatch();
     	corpusBatch.setBatchStorage(batchStorage);
     	ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
@@ -175,7 +176,7 @@ public class CorpusBatch {
 		ICorpusBatchStep currentBatchStep = null;
     	for (CorpusBatchStepModel corpusBatchStepModel : sortedSteps) {
 
-    		currentBatchStep = (ICorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).newInstance();
+    		currentBatchStep = (ICorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).getConstructor().newInstance();
     		currentBatchStep.setData(corpusBatchStepModel);
     		currentBatchStep.setStorage(getScratchStorage());
     		currentBatchStep.setParameterStore(getParameterStore());
@@ -203,7 +204,7 @@ public class CorpusBatch {
 		ICorpusBatchStep currentBatchStep = null;
     	for (CorpusBatchStepModel corpusBatchStepModel : sortedSteps) {
     		previousBatchStep = currentBatchStep;
-    		currentBatchStep = (ICorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).newInstance();
+    		currentBatchStep = (ICorpusBatchStep) Class.forName(corpusBatchStepModel.getCorpusBatchStepClass()).getConstructor().newInstance();
     		currentBatchStep.setData(corpusBatchStepModel);
     		if (corpusBatchStepModel.getCorpusBatchStepId().equals(stepId)) {
 	    		if (previousBatchStep != null) {

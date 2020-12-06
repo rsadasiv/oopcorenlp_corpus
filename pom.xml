@@ -15,6 +15,8 @@
 	<properties>
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<h2.version>1.4.200</h2.version>
+		<java.version>1.8</java.version>
+		<jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
 	</properties>
 	
 	<dependencies>
@@ -22,6 +24,7 @@
 			<groupId>io.outofprintmagazine</groupId>
 			<artifactId>oopcorenlp</artifactId>
 			<version>${oopcorenlp.version}</version>
+			<scope>test</scope>
 		</dependency>
 				
 <!-- 		<dependency> -->
@@ -129,10 +132,20 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+<!-- 					<release>${java.release.version}</release> -->
+				    <source>${java.version}</source>
+				    <target>${java.version}</target>
+				</configuration>
+			</plugin>				
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
-            		<argLine>@{argLine} -Xms8096m -Xmx10120m</argLine>
+            		<argLine>@{argLine} -Xms8096m -Xmx10120m  --illegal-access=permit</argLine>
         		</configuration>
 				<executions>
 					<execution>
@@ -147,7 +160,7 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${maven-failsafe-plugin.version}</version>
 				<configuration>
-            		<argLine>@{argLine} -Xms8096m -Xmx10120m</argLine>
+            		<argLine>@{argLine} -Xms8096m -Xmx10120m  --illegal-access=permit</argLine>
         		</configuration>
 				<executions>
 					<execution>

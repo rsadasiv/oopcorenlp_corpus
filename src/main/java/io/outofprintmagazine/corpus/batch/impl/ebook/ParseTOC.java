@@ -67,18 +67,18 @@ public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
 					if (line.toUpperCase().equals(line) || StringUtils.capitalize(line).equals(line)) {
 						Integer lineRepetitionCount = lineRepetitions.get(line);
 						if (lineRepetitionCount == null) {
-							lineRepetitions.put(line, new Integer(1));
+							lineRepetitions.put(line, Integer.valueOf(1));
 						}
 						else if (lineRepetitionCount.intValue() == 1) {
-							lineRepetitions.put(line, new Integer(lineRepetitionCount.intValue()+1));
+							lineRepetitions.put(line, Integer.valueOf(lineRepetitionCount.intValue()+1));
 							tocCandidates.add(line);
 						}
 						else if (lineRepetitionCount.intValue() == 2) {
-							lineRepetitions.put(line, new Integer(lineRepetitionCount.intValue()+1));
+							lineRepetitions.put(line, Integer.valueOf(lineRepetitionCount.intValue()+1));
 							tocCandidates.remove(line);
 						}
 						else {
-							lineRepetitions.put(line, new Integer(lineRepetitionCount.intValue()+1));
+							lineRepetitions.put(line, Integer.valueOf(lineRepetitionCount.intValue()+1));
 						}
 					}
 				}
@@ -101,11 +101,11 @@ public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
 						if (line.toUpperCase().equals(line) || StringUtils.capitalize(line).equals(line)) {
 							Integer lineRepetitionCount = lineRepetitions.get(line);
 							if (lineRepetitionCount == null) {
-								lineRepetitions.put(line, new Integer(1));
+								lineRepetitions.put(line, Integer.valueOf(1));
 								tocCandidates.add(line);
 							}
 							else if (lineRepetitionCount.intValue() == 1) {
-								lineRepetitions.put(line, new Integer(lineRepetitionCount.intValue()+1));
+								lineRepetitions.put(line, Integer.valueOf(lineRepetitionCount.intValue()+1));
 								tocCandidates.remove(line);
 							}
 						}

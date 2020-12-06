@@ -225,11 +225,12 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 			}
 			count++;
 			boolean foundInputItem = false;
-
-			for (JsonNode existingInputItem : getData().getInput()) {
-				if (existingInputItem.equals(inputItem)) {
-					foundInputItem = true;
-					break;
+			if (!(getData().getProperties().has("noCache") && getData().getProperties().get("noCache").asBoolean())) {
+				for (JsonNode existingInputItem : getData().getInput()) {
+					if (existingInputItem.equals(inputItem)) {
+						foundInputItem = true;
+						break;
+					}
 				}
 			}
 			

@@ -119,7 +119,7 @@ public class CorpusBatchStep_Test {
 		corpusBatchStepModel.setCorpusId("Test");
 		corpusBatchStepModel.setCorpusBatchId("Batch");
 		corpusBatchStepModel.setCorpusBatchStepId("CleanText");
-		corpusBatchStepModel.setCorpusBatchStepSequenceId(new Integer(0));
+		corpusBatchStepModel.setCorpusBatchStepSequenceId(Integer.valueOf(0));
 
 		String uncleanText = "\u201CNow is the time for all good men to come to the aid of their party.\u201D";
 		String cleanText = "\"Now is the time for all good men to come to the aid of their party.\"";
@@ -203,7 +203,7 @@ public class CorpusBatchStep_Test {
 		corpusBatchStepModel.setCorpusId("Test");
 		corpusBatchStepModel.setCorpusBatchId("Batch");
 		corpusBatchStepModel.setCorpusBatchStepId("GenerateDocID");
-		corpusBatchStepModel.setCorpusBatchStepSequenceId(new Integer(0));
+		corpusBatchStepModel.setCorpusBatchStepSequenceId(Integer.valueOf(0));
 
 
 		ObjectNode inputNode = mapper.createObjectNode();
@@ -243,7 +243,7 @@ public class CorpusBatchStep_Test {
 		corpusBatchStepModel.setCorpusId("Ebook");
 		corpusBatchStepModel.setCorpusBatchId("Wodehouse");
 		corpusBatchStepModel.setCorpusBatchStepId("ParseTOC");
-		corpusBatchStepModel.setCorpusBatchStepSequenceId(new Integer(0));
+		corpusBatchStepModel.setCorpusBatchStepSequenceId(Integer.valueOf(0));
 
 
 		ObjectNode inputNode = mapper.createObjectNode();
@@ -280,7 +280,7 @@ public class CorpusBatchStep_Test {
 		corpusBatchStepModel.setCorpusId("Ebook");
 		corpusBatchStepModel.setCorpusBatchId("Wodehouse");
 		corpusBatchStepModel.setCorpusBatchStepId("ParseStory");
-		corpusBatchStepModel.setCorpusBatchStepSequenceId(new Integer(0));
+		corpusBatchStepModel.setCorpusBatchStepSequenceId(Integer.valueOf(0));
 
 		ObjectNode inputNode = mapper.createObjectNode();
 		inputNode.put(
@@ -323,7 +323,7 @@ public class CorpusBatchStep_Test {
 		corpusBatchStepModel.setCorpusId("Gutenberg");
 		corpusBatchStepModel.setCorpusBatchId("Chekhov");
 		corpusBatchStepModel.setCorpusBatchStepId("ParseTableTOC");
-		corpusBatchStepModel.setCorpusBatchStepSequenceId(new Integer(0));
+		corpusBatchStepModel.setCorpusBatchStepSequenceId(Integer.valueOf(0));
 
 
 		ObjectNode inputNode = mapper.createObjectNode();
@@ -360,7 +360,7 @@ public class CorpusBatchStep_Test {
 		corpusBatchStepModel.setCorpusId("Gutenberg");
 		corpusBatchStepModel.setCorpusBatchId("Chekhov");
 		corpusBatchStepModel.setCorpusBatchStepId("ParseBodyStory");
-		corpusBatchStepModel.setCorpusBatchStepSequenceId(new Integer(0));
+		corpusBatchStepModel.setCorpusBatchStepSequenceId(Integer.valueOf(0));
 
 		ObjectNode inputNode = mapper.createObjectNode();
 		inputNode.put("link", "https://www.gutenberg.org/files/13415/13415-h/13415-h.htm");
@@ -410,7 +410,7 @@ public class CorpusBatchStep_Test {
 		corpusBatchStepModel.setCorpusId("Gutenberg");
 		corpusBatchStepModel.setCorpusBatchId("Maupassant");
 		corpusBatchStepModel.setCorpusBatchStepId("ParseTOC");
-		corpusBatchStepModel.setCorpusBatchStepSequenceId(new Integer(0));
+		corpusBatchStepModel.setCorpusBatchStepSequenceId(Integer.valueOf(0));
 
 
 		ObjectNode inputNode = mapper.createObjectNode();
@@ -449,7 +449,7 @@ public class CorpusBatchStep_Test {
 		corpusBatchStepModel.setCorpusId("Gutenberg");
 		corpusBatchStepModel.setCorpusBatchId("Maupassant");
 		corpusBatchStepModel.setCorpusBatchStepId("ParseStory");
-		corpusBatchStepModel.setCorpusBatchStepSequenceId(new Integer(0));
+		corpusBatchStepModel.setCorpusBatchStepSequenceId(Integer.valueOf(0));
 
 		ObjectNode inputNode = mapper.createObjectNode();
 		inputNode.put("link", "https://www.gutenberg.org/files/3080/3080-h/3080-h.htm");

@@ -862,5 +862,19 @@ public class CorpusIT {
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(4);
 		//testOutputContents(gold, candidate);
 	}
+	
+	public static void main(String[] argv) throws Exception {
+		init();
+		CorpusIT me = new CorpusIT();
+		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(0);
+		System.out.println("gold");
+		System.out.println(mapper.writeValueAsString(gold));
+		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(0);
+		System.out.println("candidate");
+		System.out.println(mapper.writeValueAsString(candidate));
+		//me.ohenryDownloadTOCInputSizeIT_Test();
+		//me.ohenryDownloadTOCOutputSizeIT_Test();
+	}
 
 }

@@ -72,6 +72,7 @@ public class HttpDownload extends CorpusBatchStep implements ICorpusBatchStep {
 	
 	@Override
 	public ArrayNode runOne(ObjectNode inputStepItem) throws Exception {
+		System.out.println("HttpDownload runOne");
 		int sleepMillis = getData().getProperties().get("sleepMillis").asInt();
 		Thread.sleep(ThreadLocalRandom.current().nextInt(sleepMillis, sleepMillis*2));
 		ArrayNode retval = getMapper().createArrayNode();

@@ -91,7 +91,7 @@ public class ThreadedCorpusBatchStep extends CorpusBatchStep implements ICorpusB
 						getData().getInput().add(inputItem);
 					}
 					//getLogger().debug("pushing: " + getDocID((ObjectNode)(inputItem)));
-					Object task = Class.forName(taskClass).newInstance();
+					Object task = Class.forName(taskClass).getConstructor().newInstance();
 					ThreadedCorpusBatchStepTask currentBatchStep = (ThreadedCorpusBatchStepTask) task;
 					currentBatchStep.setData(getData());
 					currentBatchStep.setStorage(getStorage());
