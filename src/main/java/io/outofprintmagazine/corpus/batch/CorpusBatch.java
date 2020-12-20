@@ -183,9 +183,16 @@ public class CorpusBatch {
 		CorpusBatchStepModel word2vecStep = new CorpusBatchStepModel();
 		word2vecStep.setCorpusBatchId(getData().getCorpusBatchId());
 		word2vecStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
-		word2vecStep.setCorpusBatchStepId("Word2Vec");
-		word2vecStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.BuildWord2VecModels");
+		word2vecStep.setCorpusBatchStepId("DocumentWord2Vec");
+		word2vecStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.DocumentWord2Vec");
 		getData().getCorpusBatchSteps().add(word2vecStep);
+		
+		CorpusBatchStepModel corpusWord2vecStep = new CorpusBatchStepModel();
+		corpusWord2vecStep.setCorpusBatchId(getData().getCorpusBatchId());
+		corpusWord2vecStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
+		corpusWord2vecStep.setCorpusBatchStepId("CorpusWord2Vec");
+		corpusWord2vecStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.CorpusWord2Vec");
+		getData().getCorpusBatchSteps().add(corpusWord2vecStep);
 	}
 	
 	public static CorpusBatch buildFromStagingBatch(String corpusName, String batchName) throws Exception {
