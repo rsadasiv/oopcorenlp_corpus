@@ -157,8 +157,11 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${maven-failsafe-plugin.version}</version>
 				<configuration>
+					<!-- Xms Xms do not seem to be passed through for java 11. -->
+					<!-- export MAVEN_OPTS="-Xmx12g" -->
             		<argLine>@{argLine} -Xms8096m -Xmx10120m  --illegal-access=permit</argLine>
-					<forkCount>0</forkCount>
+            		<!-- failsafe plugin forked booter is f**ked -->
+ 					<forkCount>0</forkCount>
         		</configuration>
 				<executions>
 					<execution>

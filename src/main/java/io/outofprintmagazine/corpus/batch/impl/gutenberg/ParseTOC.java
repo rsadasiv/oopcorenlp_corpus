@@ -29,7 +29,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import edu.stanford.nlp.util.StringUtils;
 import io.outofprintmagazine.corpus.batch.CorpusBatchStep;
 import io.outofprintmagazine.corpus.batch.ICorpusBatchStep;
-import io.outofprintmagazine.nlp.utils.TextUtils;
 
 
 public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {

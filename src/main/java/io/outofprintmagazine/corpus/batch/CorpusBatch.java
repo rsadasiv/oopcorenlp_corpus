@@ -18,17 +18,21 @@ package io.outofprintmagazine.corpus.batch;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import io.outofprintmagazine.corpus.batch.model.CorpusBatchModel;
 import io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel;
@@ -111,6 +115,77 @@ public class CorpusBatch {
     			)
     	);
     	return corpusBatch;
+	}
+	
+	private List<String> readStreamToList(InputStream in) throws IOException {
+		try {
+			List<String> allLines = IOUtils.readLines(
+					in,
+					StandardCharsets.UTF_8.name()
+			);
+			List<String> retval = new ArrayList<String>();
+			for (String line : allLines) {
+				if (!line.startsWith("#") && !line.startsWith("/")) {
+					retval.add(line);
+				}
+			}
+			return retval;
+		}
+		finally {
+			in.close();
+		}
+	}
+	
+	public void appendAnalyzeStep() throws IOException {
+		CorpusBatchStepModel analyzeStep = new CorpusBatchStepModel();
+		analyzeStep.setCorpusBatchId(getData().getCorpusBatchId());
+		analyzeStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
+		analyzeStep.setCorpusBatchStepId("Analyze");
+		analyzeStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.Analyze");
+		ArrayNode customAnnotators = analyzeStep.getProperties().arrayNode();
+		List<String> customAnnotatorList = readStreamToList(this.getClass().getClassLoader().getResourceAsStream("io/outofprintmagazine/util/annotators.txt"));
+		for (String customAnnotator : customAnnotatorList) {
+			customAnnotators.add(customAnnotator);
+		}
+		analyzeStep.getProperties().set("customAnnotators", customAnnotators);
+		getData().getCorpusBatchSteps().add(analyzeStep);
+	}
+	
+	public void appendAggregateStep() throws IOException {
+		CorpusBatchStepModel aggregateStep = new CorpusBatchStepModel();
+		aggregateStep.setCorpusBatchId(getData().getCorpusBatchId());
+		aggregateStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
+		aggregateStep.setCorpusBatchStepId("CorpusAggregate");
+		aggregateStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.CorpusAggregate");
+		getData().getCorpusBatchSteps().add(aggregateStep);
+
+		CorpusBatchStepModel aggregateIdfStep = new CorpusBatchStepModel();
+		aggregateIdfStep.setCorpusBatchId(getData().getCorpusBatchId());
+		aggregateIdfStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
+		aggregateIdfStep.setCorpusBatchStepId("CoreNLPTfidf");
+		aggregateIdfStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.CoreNLPTfidfScores");
+		getData().getCorpusBatchSteps().add(aggregateIdfStep);		
+
+		CorpusBatchStepModel aggregateZStep = new CorpusBatchStepModel();
+		aggregateZStep.setCorpusBatchId(getData().getCorpusBatchId());
+		aggregateZStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
+		aggregateZStep.setCorpusBatchStepId("CoreNLPZ");
+		aggregateZStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.CoreNLPZScores");
+		getData().getCorpusBatchSteps().add(aggregateZStep);	
+
+		CorpusBatchStepModel aggregateMBStep = new CorpusBatchStepModel();
+		aggregateMBStep.setCorpusBatchId(getData().getCorpusBatchId());
+		aggregateMBStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
+		aggregateMBStep.setCorpusBatchStepId("CoreNLPMB");
+		aggregateMBStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.CoreNLPMyersBriggsScores");
+		getData().getCorpusBatchSteps().add(aggregateMBStep);		
+		
+		CorpusBatchStepModel word2vecStep = new CorpusBatchStepModel();
+		word2vecStep.setCorpusBatchId(getData().getCorpusBatchId());
+		word2vecStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
+		word2vecStep.setCorpusBatchStepId("Word2Vec");
+		word2vecStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.BuildWord2VecModels");
+		getData().getCorpusBatchSteps().add(word2vecStep);
 	}
 	
 	public static CorpusBatch buildFromStagingBatch(String corpusName, String batchName) throws Exception {

@@ -15,7 +15,9 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,8 +30,13 @@ import io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel;
 import io.outofprintmagazine.util.IParameterStore;
 import io.outofprintmagazine.util.ParameterStoreLocal;
 
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 public class CorpusIT {
 	
+	
+	
+	private static JsonNode sampleAggregate = null;
+	private static JsonNode sampleCorpusAggregate = null;
 	private static CorpusBatchModel chekhovBatchCandidate = null;
 	private static CorpusBatchModel maupassantBatchCandidate = null;
 	private static CorpusBatchModel wodehouseBatchCandidate = null;
@@ -40,6 +47,7 @@ public class CorpusIT {
 	private static CorpusBatchModel ohenryBatchGoldSource = null;
 
 	private static final String fileStaging_Path = "../Staging_IT";
+	private static final String fileCorpus_Path = "../Corpora_IT";
 	
 	public CorpusIT() throws Exception {
 		super();
@@ -54,7 +62,7 @@ public class CorpusIT {
 			p.put("wordNet_location", "../data/dict");
 			p.put("verbNet_location", "../data/verbnet3.3");
 			p.put("wikipedia_apikey", "OOPCoreNlp/1.0 httpclient/4.5.6");
-			p.put("fileCorpus_Path", "../Corpora_IT");
+			p.put("fileCorpus_Path", fileCorpus_Path);
 			parameterStore = new ParameterStoreLocal(p);
 		}
 		return parameterStore;
@@ -69,16 +77,18 @@ public class CorpusIT {
 	@BeforeAll
 	private static void init() throws Exception {
 		try {
-			FileUtils.deleteDirectory(new File("../Staging_IT"));
-			File dir = new File("../Staging_IT");
+			FileUtils.deleteDirectory(new File(fileStaging_Path));
+			Thread.sleep(5);
+			File dir = new File(fileStaging_Path);
 			if (!dir.exists()) dir.mkdirs();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		try {
-			FileUtils.deleteDirectory(new File("../Corpora_IT"));
-			File dir = new File("../Corpora_IT");
+			FileUtils.deleteDirectory(new File(fileCorpus_Path));
+			Thread.sleep(5);
+			File dir = new File(fileCorpus_Path);
 			if (!dir.exists()) dir.mkdirs();
 		}
 		catch (Exception e) {
@@ -88,7 +98,7 @@ public class CorpusIT {
 		p.put("wordNet_location", "../data/dict");
 		p.put("verbNet_location", "../data/verbnet3.3");
 		p.put("wikipedia_apikey", "OOPCoreNlp/1.0 httpclient/4.5.6");
-		p.put("fileCorpus_Path", "../Corpora_IT");
+		p.put("fileCorpus_Path", fileCorpus_Path);
 		FileOutputStream fout = null;
 		try {
 			fout = new FileOutputStream(
@@ -105,10 +115,7 @@ public class CorpusIT {
 				fout.close();
 			}
 		}
-		getChekhovBatchCandidate();
-		getMaupassantBatchCandidate();
-		getWodehouseBatchCandidate();
-		getOHenryBatchCandidate();
+
 		getChekhovBatchGoldSource();
 		getMaupassantBatchGoldSource();
 		getWodehouseBatchGoldSource();
@@ -156,8 +163,52 @@ public class CorpusIT {
 			}
 		}
 	}
-		
-	private static void getChekhovBatchCandidate() throws Exception {
+	
+	@Test
+	public void _getSampleCorpusCandidate() throws Exception {
+		//if (sampleAggregate == null || sampleCorpusAggregate == null) {
+			writeFile(
+					fileStaging_Path, 
+					"Sample.txt", 
+					CorpusIT.class.getClassLoader().getResourceAsStream("io/outofprintmagazine/util/story.txt")
+			);
+			writeFile(
+					fileStaging_Path, 
+					"Sample.txt.properties", 
+					CorpusIT.class.getClassLoader().getResourceAsStream("io/outofprintmagazine/util/metadata.properties")
+			);
+			CorpusBatch sampleBatch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/sample/SampleBatch.json");
+			sampleBatch.appendAnalyzeStep();
+			sampleBatch.appendAggregateStep();
+			sampleBatch.run();
+
+			//get documentAggregate and corpusAggregate as JsonNode
+			ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+			CorpusBatchStepModel finalStep = sampleBatch.getData().getCorpusBatchSteps().get(sampleBatch.getData().getCorpusBatchSteps().size()-1);
+			
+			sampleAggregate = mapper.readTree(
+					new File(
+							fileCorpus_Path
+							+ System.getProperty("file.separator", "/")
+							+ sampleBatch.getData().getCorpusId()
+							+ System.getProperty("file.separator", "/")
+							+ finalStep.getOutput().get(0).get("oopNLPAggregatesStorage").asText()
+					)
+			);
+			sampleCorpusAggregate = mapper.readTree(
+					new File(
+							fileCorpus_Path
+							+ System.getProperty("file.separator", "/")
+							+ sampleBatch.getData().getCorpusId()
+							+ System.getProperty("file.separator", "/")
+							+ finalStep.getOutput().get(0).get("oopNLPCorpusAggregatesStorage").asText()
+					)
+			);
+		//}		
+	}
+	
+	@Test
+	public void _getChekhovBatchCandidate() throws Exception {
 		if (chekhovBatchCandidate == null) {
 			writeFile(
 					fileStaging_Path, 
@@ -175,7 +226,8 @@ public class CorpusIT {
 		}
 	}
 	
-	private static void getMaupassantBatchCandidate() throws Exception {
+	@Test
+	public void _getMaupassantBatchCandidate() throws Exception {
 		if (maupassantBatchCandidate == null) {
 			writeFile(
 					fileStaging_Path, 
@@ -193,7 +245,8 @@ public class CorpusIT {
 		}
 	}
 	
-	private static void getWodehouseBatchCandidate() throws Exception {
+	@Test
+	public void _getWodehouseBatchCandidate() throws Exception {
 		if (wodehouseBatchCandidate == null) {
 			writeFile(
 					fileStaging_Path, 
@@ -211,7 +264,8 @@ public class CorpusIT {
 		}
 	}
 	
-	private static void getOHenryBatchCandidate() throws Exception {
+	@Test
+	public void _getOHenryBatchCandidate() throws Exception {
 		if (ohenryBatchCandidate == null) {
 			CorpusBatch ohenryBatch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/wikisource/OHenry.json");
 			ohenryBatch.run();
@@ -219,31 +273,56 @@ public class CorpusIT {
 		}
 	}
 	
-	private static void getChekhovBatchGoldSource() throws IOException {
+	public static void getChekhovBatchGoldSource() throws IOException {
 		if (chekhovBatchGoldSource == null) {
 			chekhovBatchGoldSource = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/gutenberg/ChekhovBatch.json").getData();
 		}
 	}
 	
-	private static void getMaupassantBatchGoldSource() throws IOException {
+	public static void getMaupassantBatchGoldSource() throws IOException {
 		if (maupassantBatchGoldSource == null) {
 			maupassantBatchGoldSource = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/gutenberg/MaupassantBatch.json").getData();
 		}
 	}
 	
-	private static void getWodehouseBatchGoldSource() throws IOException {
+	public static void getWodehouseBatchGoldSource() throws IOException {
 		if (wodehouseBatchGoldSource == null) {
 			wodehouseBatchGoldSource = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/ebook/WodehouseBatch.json").getData();
 		}
 	}
 	
-	private static void getOHenryBatchGoldSource() throws IOException {
+	public static void getOHenryBatchGoldSource() throws IOException {
 		if (ohenryBatchGoldSource == null) {
 			ohenryBatchGoldSource = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/wikisource/OHenryBatch.json").getData();
 		}
 	}
 	
-	private void testInputContents(CorpusBatchStepModel gold, CorpusBatchStepModel candidate) {
+	//there is only one document in sample corpus, so document aggregate should equal corpus aggregate
+	private void checkAggregateScore(JsonNode documentAggregate, JsonNode corpusAggregate, String annotationName) {
+		Iterator<String> scoreNameIter = documentAggregate.get(annotationName).get("scoreStats").get("score").fieldNames();
+		while (scoreNameIter.hasNext()) {
+			String scoreName = scoreNameIter.next();
+			Iterator<String> statNameIter = corpusAggregate.get(annotationName).get("score").get(scoreName).fieldNames();
+			while (statNameIter.hasNext()) {
+				String statName = statNameIter.next();
+				//stddev is hosed
+				if (!statName.equals("stddev")) {
+					assertEquals(
+							documentAggregate.get(annotationName).get("scoreStats").get("score").get(scoreName).asText(),
+							corpusAggregate.get(annotationName).get("score").get(scoreName).get(statName).asText(),
+							String.format(
+									"Aggregate value mismatch: %s %s %s"
+									, annotationName
+									, scoreName
+									, statName
+							)
+					);
+				}
+			}
+		}
+	}
+	
+	private void checkInputContents(CorpusBatchStepModel gold, CorpusBatchStepModel candidate) {
 		for (int i=0;i<gold.getInput().size() && i<candidate.getInput().size();i++) {
 			JsonNode goldItem = gold.getInput().get(i);
 			JsonNode candidateItem = candidate.getInput().get(i);
@@ -258,7 +337,7 @@ public class CorpusIT {
 		}		
 	}
 	
-	private void testOutputContents(CorpusBatchStepModel gold, CorpusBatchStepModel candidate) {
+	private void checkOutputContents(CorpusBatchStepModel gold, CorpusBatchStepModel candidate) {
 		for (int i=0;i<gold.getInput().size() && i<candidate.getInput().size();i++) {
 			JsonNode goldItem = gold.getOutput().get(i);
 			JsonNode candidateItem = candidate.getOutput().get(i);
@@ -273,6 +352,232 @@ public class CorpusIT {
 		}		
 	}
 	
+	
+	@Test
+	public void sampleAggregatesCoreNlpSentimentAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "CoreNlpSentimentAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPActionlessVerbsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPActionlessVerbsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPAdjectiveCategoriesAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPAdjectiveCategoriesAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPAdjectivesAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPAdjectivesAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPAdverbCategoriesAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPAdverbCategoriesAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPAdverbsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPAdverbsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPAmericanizeAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPAmericanizeAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPAngliciseAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPAngliciseAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPBiberAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPBiberAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPBiberDimensionsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPBiberDimensionsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPCharCountAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPCharCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPColorsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPColorsAnnotation");
+	}
+
+	@Test
+	public void sampleAggregatesOOPCommonWordsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPCommonWordsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPFlavorsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPFlavorsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPFleschKincaidAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPFleschKincaidAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPFunctionWordsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPFunctionWordsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPGenderAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPGenderAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPMyersBriggsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPMyersBriggsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPNounGroupsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPNounGroupsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPNounHypernymsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPNounHypernymsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPNounsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPNounsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPParagraphCountAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPParagraphCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPPointlessAdjectivesAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPPointlessAdjectivesAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPPointlessAdverbsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPPointlessAdverbsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPPossessivesAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPPossessivesAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPPrepositionCategoriesAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPPrepositionCategoriesAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPPrepositionsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPPrepositionsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPPronounAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPPronounAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPPunctuationMarkAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPPunctuationMarkAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPSVOAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPSVOAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPSentenceCountAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPSentenceCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPSyllableCountAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPSyllableCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPTokenCountAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPTokenCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPTopicsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPTopicsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPUncommonWordsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPUncommonWordsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPVerbGroupsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPVerbGroupsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPVerbHypernymsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPVerbHypernymsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPVerbTenseAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPVerbTenseAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPVerblessSentencesAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPVerblessSentencesAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPVerbnetGroupsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPVerbnetGroupsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPVerbsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPVerbsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPWikipediaPageviewTopicsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPWikipediaPageviewTopicsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPWordCountAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPWordCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPWordlessWordsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPWordlessWordsAnnotation");
+	}
+	
+	@Test
+	public void sampleAggregatesOOPWordsAnnotation_Test() {
+		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPWordsAnnotation");
+	}
+		
 	@Test
 	public void chekhovImportDirectoryInputSizeIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(0);
@@ -285,7 +590,7 @@ public class CorpusIT {
 	public void chekhovImportDirectoryInputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(0);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(0);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -299,7 +604,7 @@ public class CorpusIT {
 	public void chekhovImportDirectoryOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(0);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(0);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -313,7 +618,7 @@ public class CorpusIT {
 	public void chekhovParseTableTOCInputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(1);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(1);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -327,7 +632,7 @@ public class CorpusIT {
 	public void chekhovParseTableTOCOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(1);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(1);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -341,7 +646,7 @@ public class CorpusIT {
 	public void chekhovParseBodyStoryInputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(2);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(2);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -355,7 +660,7 @@ public class CorpusIT {
 	public void chekhovParseBodyStoryOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(2);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(2);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -369,7 +674,7 @@ public class CorpusIT {
 	public void chekhovCleanTextInputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(3);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(3);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -383,7 +688,7 @@ public class CorpusIT {
 	public void chekhovCleanTextOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(3);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(3);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -397,7 +702,7 @@ public class CorpusIT {
 	public void chekhovGenerateDocIDInputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(4);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -411,7 +716,7 @@ public class CorpusIT {
 	public void chekhovGenerateDocIDOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = chekhovBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = chekhovBatchCandidate.getCorpusBatchSteps().get(4);
-		//testOutputContents(gold, candidate);
+		//checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -425,7 +730,7 @@ public class CorpusIT {
 	public void maupassantImportDirectoryInputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(0);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(0);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -439,7 +744,7 @@ public class CorpusIT {
 	public void maupassantImportDirectoryOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(0);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(0);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -453,7 +758,7 @@ public class CorpusIT {
 	public void maupassantParseTOCInputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(1);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(1);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -467,7 +772,7 @@ public class CorpusIT {
 	public void maupassantParseTOCOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(1);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(1);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -481,7 +786,7 @@ public class CorpusIT {
 	public void maupassantParseStoryInputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(2);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(2);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -495,7 +800,7 @@ public class CorpusIT {
 	public void maupassantParseStoryOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(2);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(2);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -509,7 +814,7 @@ public class CorpusIT {
 	public void maupassantCleanTextInputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(3);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(3);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -523,7 +828,7 @@ public class CorpusIT {
 	public void maupassantCleanTextOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(3);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(3);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -537,7 +842,7 @@ public class CorpusIT {
 	public void maupassantGenerateDocIDInputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(4);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -551,7 +856,7 @@ public class CorpusIT {
 	public void maupassantGenerateDocIDOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = maupassantBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = maupassantBatchCandidate.getCorpusBatchSteps().get(4);
-		//testOutputContents(gold, candidate);
+		//checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -565,7 +870,7 @@ public class CorpusIT {
 	public void wodehouseImportDirectoryInputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(0);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(0);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -579,7 +884,7 @@ public class CorpusIT {
 	public void wodehouseImportDirectoryOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(0);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(0);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -593,7 +898,7 @@ public class CorpusIT {
 	public void wodehouseGenerateTOCInputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(1);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(1);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -607,7 +912,7 @@ public class CorpusIT {
 	public void wodehouseGenerateTOCOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(1);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(1);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -621,7 +926,7 @@ public class CorpusIT {
 	public void wodehouseParseStoryInputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(2);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(2);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -636,7 +941,7 @@ public class CorpusIT {
 	public void wodehouseParseStoryOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(2);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(2);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -650,7 +955,7 @@ public class CorpusIT {
 	public void wodehouseCleanTextInputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(3);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(3);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -664,7 +969,7 @@ public class CorpusIT {
 	public void wodehouseCleanTextOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(3);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(3);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -678,7 +983,7 @@ public class CorpusIT {
 	public void wodehouseGenerateDocIDInputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(4);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -692,7 +997,7 @@ public class CorpusIT {
 	public void wodehouseGenerateDocIDOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = wodehouseBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = wodehouseBatchCandidate.getCorpusBatchSteps().get(4);
-		//testOutputContents(gold, candidate);
+		//checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -706,7 +1011,7 @@ public class CorpusIT {
 	public void ohenryDownloadTOCInputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(0);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(0);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -720,7 +1025,7 @@ public class CorpusIT {
 	public void ohenryDownloadTOCOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(0);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(0);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -734,7 +1039,7 @@ public class CorpusIT {
 	public void ohenryParseTOCInputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(1);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(1);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -748,7 +1053,7 @@ public class CorpusIT {
 	public void ohenryParseTOCOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(1);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(1);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -762,7 +1067,7 @@ public class CorpusIT {
 	public void ohenryDownloadStoryInputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(2);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(2);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -776,7 +1081,7 @@ public class CorpusIT {
 	public void ohenryDownloadStoryOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(2);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(2);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 
 	@Test
@@ -790,7 +1095,7 @@ public class CorpusIT {
 	public void ohenryParseStoryInputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(3);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(3);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -804,7 +1109,7 @@ public class CorpusIT {
 	public void ohenryParseStoryOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(3);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(3);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}	
 	
 	@Test
@@ -818,7 +1123,7 @@ public class CorpusIT {
 	public void ohenryCleanTextInputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(4);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -832,7 +1137,7 @@ public class CorpusIT {
 	public void ohenryCleanTextOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(4);
-		testOutputContents(gold, candidate);
+		checkOutputContents(gold, candidate);
 	}
 	
 	@Test
@@ -846,7 +1151,7 @@ public class CorpusIT {
 	public void ohenryGenerateDocIDInputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(5);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(5);
-		testInputContents(gold, candidate);
+		checkInputContents(gold, candidate);
 	}
 	
 	@Test
@@ -860,8 +1165,9 @@ public class CorpusIT {
 	public void ohenryGenerateDocIDOutputContentsIT_Test() {
 		CorpusBatchStepModel gold = ohenryBatchGoldSource.getCorpusBatchSteps().get(4);
 		CorpusBatchStepModel candidate = ohenryBatchCandidate.getCorpusBatchSteps().get(4);
-		//testOutputContents(gold, candidate);
+		//checkOutputContents(gold, candidate);
 	}
+	
 	
 	public static void main(String[] argv) throws Exception {
 		init();

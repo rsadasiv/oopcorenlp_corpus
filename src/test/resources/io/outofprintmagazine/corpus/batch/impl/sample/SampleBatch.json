@@ -1,0 +1,41 @@
+{
+	"corpusId" : "Sample",
+	"corpusBatchId": "Sample",
+  	"scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
+  	"batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage",
+  	"parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile",
+  	"properties" : {
+  		"propertiesFilePath": "../Staging_IT",
+  		"propertiesFileName": "oopcorenlp.properties"
+  	},	
+	"corpusBatchSteps": [
+		{
+			"corpusBatchStepId": "ImportDirectory",
+			"corpusBatchStepSequenceId": 0,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.ImportDirectory",
+			"properties": {
+				"noCache": "true",
+				"directory": "../Staging_IT",
+				"fileSuffix": "Sample.txt"
+			},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "CleanText",
+			"corpusBatchStepSequenceId": 1,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.CleanText",
+			"properties": {},
+			"input": [],
+			"output": []
+		},
+		{
+			"corpusBatchStepId": "GenerateDocID",
+			"corpusBatchStepSequenceId": 2,
+			"corpusBatchStepClass": "io.outofprintmagazine.corpus.batch.impl.GenerateDocID",
+			"properties": {},
+			"input": [],
+			"output": []
+		}		
+	]
+}

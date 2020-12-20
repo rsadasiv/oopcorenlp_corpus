@@ -54,7 +54,6 @@ import edu.stanford.nlp.util.StringUtils;
 import io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel;
 import io.outofprintmagazine.corpus.storage.IScratchStorage;
 import io.outofprintmagazine.corpus.storage.s3.S3ScratchStorage;
-import io.outofprintmagazine.nlp.utils.TextUtils;
 import io.outofprintmagazine.util.IParameterStore;
 import io.outofprintmagazine.util.ParameterStorePropertiesFile;
 
