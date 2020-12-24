@@ -33,6 +33,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.outofprintmagazine.corpus.batch.model.CorpusBatchModel;
 import io.outofprintmagazine.corpus.batch.model.CorpusBatchStepModel;
@@ -151,7 +152,7 @@ public class CorpusBatch {
 		getData().getCorpusBatchSteps().add(analyzeStep);
 	}
 	
-	public void appendAggregateStep() throws IOException {
+	public void appendAggregateStep()  {
 		CorpusBatchStepModel aggregateStep = new CorpusBatchStepModel();
 		aggregateStep.setCorpusBatchId(getData().getCorpusBatchId());
 		aggregateStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
@@ -193,6 +194,23 @@ public class CorpusBatch {
 		corpusWord2vecStep.setCorpusBatchStepId("CorpusWord2Vec");
 		corpusWord2vecStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.CorpusWord2Vec");
 		getData().getCorpusBatchSteps().add(corpusWord2vecStep);
+	}
+	
+	public void aggregateBatches(List<CorpusBatch> batches) {
+		CorpusBatchStepModel aggregateStep = new CorpusBatchStepModel();
+		aggregateStep.setCorpusBatchId(getData().getCorpusBatchId());
+		aggregateStep.setCorpusBatchStepSequenceId(Integer.valueOf(getData().getCorpusBatchSteps().size()));
+		aggregateStep.setCorpusBatchStepId("CorpusAggregate");
+		aggregateStep.setCorpusBatchStepClass("io.outofprintmagazine.corpus.batch.impl.CorporaAggregate");
+		aggregateStep.getProperties().put("noCache", "true");
+		getData().getCorpusBatchSteps().add(aggregateStep);
+		for (CorpusBatch batch : batches) {
+			for (JsonNode batchOutput : batch.getData().getCorpusBatchSteps().get(batch.getData().getCorpusBatchSteps().size()-1).getOutput()) {
+				ObjectNode sourceOutputItem = (ObjectNode) batchOutput.deepCopy();
+				sourceOutputItem.put("sourceCorpusId", batch.getData().getCorpusId());
+				getData().getCorpusBatchSteps().get(0).getInput().add(sourceOutputItem);
+			}
+		}
 	}
 	
 	public static CorpusBatch buildFromStagingBatch(String corpusName, String batchName) throws Exception {

@@ -142,7 +142,7 @@ public class CorpusAggregate extends CorpusBatchStep implements ICorpusBatchStep
 			storeOOPAggregates(
 				getData().getCorpusId(), 
 				getDocID(inputStepItem),
-				(ObjectNode) getJsonNodeFromStorage(inputStepItem, "oopNLPAggregatesStorage")
+				(ObjectNode) aggregateNode
 			);
 		}
 				
@@ -224,7 +224,7 @@ public class CorpusAggregate extends CorpusBatchStep implements ICorpusBatchStep
 	}
 	
 	
-	private void storeOOPAggregates(String corpus, String docId, ObjectNode in) throws Exception {
+	protected void storeOOPAggregates(String corpus, String docId, ObjectNode in) throws Exception {
 
 		Connection conn = null;
 		PreparedStatement documentDelete = null;

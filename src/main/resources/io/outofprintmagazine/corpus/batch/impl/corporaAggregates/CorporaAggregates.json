@@ -1,0 +1,12 @@
+{
+	"corpusId" : "All",
+	"corpusBatchId": "All",
+  	"scratchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileScratchStorage",
+  	"batchStorageClass" : "io.outofprintmagazine.corpus.storage.file.FileBatchStorage",
+  	"parameterStoreClass" : "io.outofprintmagazine.util.ParameterStorePropertiesFile",
+  	"properties" : {
+  		"propertiesFilePath": "../Staging_IT",
+  		"propertiesFileName": "oopcorenlp.properties"
+  	},	
+	"corpusBatchSteps": [ ]
+}

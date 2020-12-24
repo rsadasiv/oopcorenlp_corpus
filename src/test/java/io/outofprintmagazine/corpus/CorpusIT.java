@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -37,6 +38,7 @@ public class CorpusIT {
 	
 	private static JsonNode sampleAggregate = null;
 	private static JsonNode sampleCorpusAggregate = null;
+	private static JsonNode sampleAllCorporaAggregate = null;
 	private static CorpusBatchModel chekhovBatchCandidate = null;
 	private static CorpusBatchModel maupassantBatchCandidate = null;
 	private static CorpusBatchModel wodehouseBatchCandidate = null;
@@ -164,9 +166,12 @@ public class CorpusIT {
 		}
 	}
 	
+	//MethodOrderer.Alphanumeric ensures that all _getXXX test methods are executed first
+	
 	@Test
 	public void _getSampleCorpusCandidate() throws Exception {
-		//if (sampleAggregate == null || sampleCorpusAggregate == null) {
+		ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+		if (sampleAggregate == null || sampleCorpusAggregate == null || sampleAllCorporaAggregate == null) {
 			writeFile(
 					fileStaging_Path, 
 					"Sample.txt", 
@@ -182,8 +187,20 @@ public class CorpusIT {
 			sampleBatch.appendAggregateStep();
 			sampleBatch.run();
 
+			CorpusBatch corporaAggregatesBatch = CorpusBatch.buildFromTemplate("io/outofprintmagazine/corpus/batch/impl/corporaAggregates/CorporaAggregates.json");
+			try {
+				List<CorpusBatch> corpora = new ArrayList<CorpusBatch>();
+				corpora.add(sampleBatch);
+				corporaAggregatesBatch.aggregateBatches(corpora);
+				corporaAggregatesBatch.run();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				throw e;
+			}
+
 			//get documentAggregate and corpusAggregate as JsonNode
-			ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+
 			CorpusBatchStepModel finalStep = sampleBatch.getData().getCorpusBatchSteps().get(sampleBatch.getData().getCorpusBatchSteps().size()-1);
 			
 			sampleAggregate = mapper.readTree(
@@ -204,7 +221,17 @@ public class CorpusIT {
 							+ finalStep.getOutput().get(0).get("oopNLPCorpusAggregatesStorage").asText()
 					)
 			);
-		//}		
+
+			sampleAllCorporaAggregate = mapper.readTree(
+					new File(
+							fileCorpus_Path
+							+ System.getProperty("file.separator", "/")
+							+ corporaAggregatesBatch.getData().getCorpusId()
+							+ System.getProperty("file.separator", "/")
+							+ corporaAggregatesBatch.getData().getCorpusBatchSteps().get(corporaAggregatesBatch.getData().getCorpusBatchSteps().size()-1).getOutput().get(0).get("oopNLPCorpusAggregatesStorage").asText()
+					)
+			);
+		}		
 	}
 	
 	@Test
@@ -318,6 +345,29 @@ public class CorpusIT {
 							)
 					);
 				}
+			}
+		}
+	}
+	
+	//there is only one corpus in sample corpora, so corpus aggregate should equal corpora aggregate
+	private void checkCorpusAggregateScore(JsonNode corpusAggregate, JsonNode corporaAggregate, String annotationName) {
+		List<String> statNames = Arrays.asList("raw", "normalized", "count");
+		Iterator<String> statNameIter = statNames.iterator();
+		while (statNameIter.hasNext()) {
+			String statName = statNameIter.next();
+			Iterator<String> scoreNameIter = corpusAggregate.get(annotationName).get("score").get(statName).fieldNames();
+			while (scoreNameIter.hasNext()) {
+				String scoreName = scoreNameIter.next();
+				assertEquals(
+						corpusAggregate.get(annotationName).get("score").get(statName).get(scoreName).asText(),
+						corporaAggregate.get(annotationName).get("score").get(statName).get(scoreName).asText(),
+						String.format(
+								"CorpusAggregate value mismatch: %s %s %s"
+								, annotationName
+								, scoreName
+								, statName
+						)
+				);
 			}
 		}
 	}
@@ -577,6 +627,233 @@ public class CorpusIT {
 	public void sampleAggregatesOOPWordsAnnotation_Test() {
 		checkAggregateScore(sampleAggregate, sampleCorpusAggregate, "OOPWordsAnnotation");
 	}
+	
+	
+	@Test
+	public void sampleAllCorporaAggregateCoreNlpSentimentAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "CoreNlpSentimentAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPActionlessVerbsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPActionlessVerbsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregatesOOPAdjectiveCategoriesAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPAdjectiveCategoriesAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPAdjectivesAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPAdjectivesAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPAdverbCategoriesAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPAdverbCategoriesAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPAdverbsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPAdverbsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPAmericanizeAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPAmericanizeAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPAngliciseAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPAngliciseAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPBiberAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPBiberAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPBiberDimensionsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPBiberDimensionsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPCharCountAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPCharCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPColorsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPColorsAnnotation");
+	}
+
+	@Test
+	public void sampleAllCorporaAggregateOOPCommonWordsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPCommonWordsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPFlavorsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPFlavorsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPFleschKincaidAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPFleschKincaidAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPFunctionWordsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPFunctionWordsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPGenderAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPGenderAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPMyersBriggsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPMyersBriggsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPNounGroupsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPNounGroupsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPNounHypernymsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPNounHypernymsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPNounsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPNounsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPParagraphCountAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPParagraphCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPPointlessAdjectivesAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPPointlessAdjectivesAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPPointlessAdverbsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPPointlessAdverbsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPPossessivesAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPPossessivesAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPPrepositionCategoriesAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPPrepositionCategoriesAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPPrepositionsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPPrepositionsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPPronounAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPPronounAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPPunctuationMarkAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPPunctuationMarkAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPSVOAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPSVOAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPSentenceCountAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPSentenceCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPSyllableCountAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPSyllableCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPTokenCountAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPTokenCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPTopicsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPTopicsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPUncommonWordsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPUncommonWordsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPVerbGroupsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPVerbGroupsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPVerbHypernymsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPVerbHypernymsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPVerbTenseAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPVerbTenseAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPVerblessSentencesAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPVerblessSentencesAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPVerbnetGroupsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPVerbnetGroupsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPVerbsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPVerbsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPWikipediaPageviewTopicsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPWikipediaPageviewTopicsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPWordCountAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPWordCountAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPWordlessWordsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPWordlessWordsAnnotation");
+	}
+	
+	@Test
+	public void sampleAllCorporaAggregateOOPWordsAnnotation_Test() {
+		checkCorpusAggregateScore(sampleCorpusAggregate, sampleAllCorporaAggregate, "OOPWordsAnnotation");
+	}
+	
 		
 	@Test
 	public void chekhovImportDirectoryInputSizeIT_Test() {
