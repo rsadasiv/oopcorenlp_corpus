@@ -102,7 +102,7 @@ public class CorpusBatch {
 		return parameterStore;
 	}
 	
-	public void setBatchStorage(IParameterStore parameterStore) {
+	public void setParameterStore(IParameterStore parameterStore) {
 		this.parameterStore = parameterStore;
 	}
 	

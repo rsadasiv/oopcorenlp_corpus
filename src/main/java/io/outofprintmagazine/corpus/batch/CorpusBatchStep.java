@@ -464,7 +464,7 @@ public abstract class CorpusBatchStep implements ICorpusBatchStep {
 //
 //		return storageProperties;
 //	}
-
+	
 	protected Document getJsoupDocumentFromStorage(ObjectNode inputStepItem) throws Exception {
 		InputStream in = null;
 		try {
