@@ -29,9 +29,9 @@ public class ParseTOC extends CorpusBatchStep implements ICorpusBatchStep {
 	@Override
 	public ObjectNode getDefaultProperties() {
 		ObjectNode properties = getMapper().createObjectNode();
-		properties.put("esnlc_AuthorAnnotation", "div.gen_header_title #header_author_text");
-		properties.put("esnlc_DocDateAnnotation", "div.gen_header_title");
-		properties.put("esnlc_DocTitleAnnotation", "div.gen_header_title #header_title_text");
+		properties.put("esnlc_AuthorAnnotation", "span.gen_header_title #header_author_text");
+		properties.put("esnlc_DocDateAnnotation", "span.gen_header_title #header_year_text");
+		properties.put("esnlc_DocTitleAnnotation", "span.gen_header_title #header_title_text");
 		properties.put("selector", "div.mw-parser-output a");
 		return properties;
 	}

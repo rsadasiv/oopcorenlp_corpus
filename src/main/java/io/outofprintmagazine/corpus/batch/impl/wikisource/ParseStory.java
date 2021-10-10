@@ -24,8 +24,8 @@ public class ParseStory extends CorpusBatchStep implements ICorpusBatchStep {
 	public ObjectNode getDefaultProperties() {
 		ObjectNode properties = getMapper().createObjectNode();
 		properties.put("oop_Text", "div.mw-parser-output p");
-		properties.put("esnlc_AuthorAnnotation", "div.gen_header_title #header_author_text");
-		properties.put("esnlc_DocTitleAnnotation", "div.gen_header_title #header_title_text");
+		properties.put("esnlc_AuthorAnnotation", "span.gen_header_title #header_author_text");
+		properties.put("esnlc_DocTitleAnnotation", "span.gen_header_title #header_section_text");
 		return properties;
 	}
 	
