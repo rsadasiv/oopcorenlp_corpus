@@ -90,14 +90,13 @@ public class S3BatchStorage implements IBatchStorage {
 
 	@Override
 	public ObjectNode listCorpora() throws Exception  {
-
 		ObjectNode json = getMapper().createObjectNode();
 		ArrayNode corporaNode = json.putArray("Corpora");
 		ListObjectsV2Request request = new ListObjectsV2Request()
-                .withBucketName(parameterStore.getProperty("s3_Bucket"))
-                .withPrefix(parameterStore.getProperty("s3_Path")+"/")
-                .withDelimiter("/");
-        for (String objectSummary: S3Utils.getInstance(parameterStore).getS3Client().listObjectsV2(request).getCommonPrefixes()) {
+				.withBucketName(parameterStore.getProperty("s3_Bucket"))
+				.withPrefix(parameterStore.getProperty("s3_Path")+"/")
+				.withDelimiter("/");
+		for (String objectSummary: S3Utils.getInstance(parameterStore).getS3Client().listObjectsV2(request).getCommonPrefixes()) {
 			if (objectSummary.endsWith("/")) {
 				corporaNode.add(objectSummary.substring((parameterStore.getProperty("s3_Path")+"/").length(), objectSummary.length() - 1));
 			}
@@ -208,10 +207,10 @@ public class S3BatchStorage implements IBatchStorage {
 		ObjectNode json = getMapper().createObjectNode();
 		ArrayNode corporaNode = json.putArray("Corpora");
 		ListObjectsV2Request request = new ListObjectsV2Request()
-                .withBucketName(parameterStore.getProperty("s3_Bucket"))
-                .withPrefix(getCorpusPath(corpus)+"/")
-                .withDelimiter("/");
-        for (String objectSummary: S3Utils.getInstance(parameterStore).getS3Client().listObjectsV2(request).getCommonPrefixes()) {
+				.withBucketName(parameterStore.getProperty("s3_Bucket"))
+				.withPrefix(getCorpusPath(corpus)+"/")
+				.withDelimiter("/");
+		for (String objectSummary: S3Utils.getInstance(parameterStore).getS3Client().listObjectsV2(request).getCommonPrefixes()) {
 			if (objectSummary.endsWith("/")) {
 				corporaNode.add(objectSummary.substring((getCorpusPath(corpus)+"/").length(), objectSummary.length() - 1));
 			}
