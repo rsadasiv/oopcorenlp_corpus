@@ -27,7 +27,6 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ListObjectsV2Request;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -210,11 +209,11 @@ public class S3BatchStorage implements IBatchStorage {
 		ArrayNode corporaNode = json.putArray("Corpora");
 		ListObjectsV2Request request = new ListObjectsV2Request()
                 .withBucketName(parameterStore.getProperty("s3_Bucket"))
-                .withPrefix(getCorpusPath(corpus))
+                .withPrefix(getCorpusPath(corpus)+"/")
                 .withDelimiter("/");
         for (String objectSummary: S3Utils.getInstance(parameterStore).getS3Client().listObjectsV2(request).getCommonPrefixes()) {
 			if (objectSummary.endsWith("/")) {
-				corporaNode.add(objectSummary.substring(getCorpusPath(corpus).length(), objectSummary.length() - 1));
+				corporaNode.add(objectSummary.substring((getCorpusPath(corpus)+"/").length(), objectSummary.length() - 1));
 			}
 		}
 		return json;
