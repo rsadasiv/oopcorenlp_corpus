@@ -24,6 +24,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.ListObjectsV2Request;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -93,13 +94,13 @@ public class S3BatchStorage implements IBatchStorage {
 
 		ObjectNode json = getMapper().createObjectNode();
 		ArrayNode corporaNode = json.putArray("Corpora");
-
-		for (S3ObjectSummary objectSummary: S3Utils.getInstance(getParameterStore()).getS3Client().listObjects(
-				getParameterStore().getProperty("s3_Bucket"), 
-				getParameterStore().getProperty("s3_Path")
-			).getObjectSummaries()) {
-			if (objectSummary.getKey().endsWith("/")) {
-				corporaNode.add(objectSummary.getKey().substring(0, objectSummary.getKey().length() - 1));
+		ListObjectsV2Request request = new ListObjectsV2Request()
+                .withBucketName(parameterStore.getProperty("s3_Bucket"))
+                .withPrefix(parameterStore.getProperty("s3_Path")+"/")
+                .withDelimiter("/");
+        for (String objectSummary: S3Utils.getInstance(parameterStore).getS3Client().listObjectsV2(request).getCommonPrefixes()) {
+			if (objectSummary.endsWith("/")) {
+				corporaNode.add(objectSummary.substring((parameterStore.getProperty("s3_Path")+"/").length(), objectSummary.length() - 1));
 			}
 		}
 		return json;
@@ -207,13 +208,13 @@ public class S3BatchStorage implements IBatchStorage {
 	public ObjectNode listStagingBatches(String corpus) throws Exception {
 		ObjectNode json = getMapper().createObjectNode();
 		ArrayNode corporaNode = json.putArray("Corpora");
-
-		for (S3ObjectSummary objectSummary: S3Utils.getInstance(getParameterStore()).getS3Client().listObjects(
-				getParameterStore().getProperty("s3_Bucket"), 
-				getCorpusPath(corpus)
-			).getObjectSummaries()) {
-			if (objectSummary.getKey().endsWith("/")) {
-				corporaNode.add(objectSummary.getKey().substring(0, objectSummary.getKey().length() - 1));
+		ListObjectsV2Request request = new ListObjectsV2Request()
+                .withBucketName(parameterStore.getProperty("s3_Bucket"))
+                .withPrefix(getCorpusPath(corpus))
+                .withDelimiter("/");
+        for (String objectSummary: S3Utils.getInstance(parameterStore).getS3Client().listObjectsV2(request).getCommonPrefixes()) {
+			if (objectSummary.endsWith("/")) {
+				corporaNode.add(objectSummary.substring(getCorpusPath(corpus).length(), objectSummary.length() - 1));
 			}
 		}
 		return json;
